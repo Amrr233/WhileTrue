@@ -280,7 +280,7 @@ metadata/_edit_use_anchors_ = true
 shape = SubResource("PlatformShapeSmall")
 
 [node name="Player" parent="." unique_id=309319802 instance=ExtResource("2_player")]
-position = Vector2(586, 321)
+position = Vector2(29, 359)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=631164395]
 position = Vector2(0, -38)
@@ -293,10 +293,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="BossSpawn" type="Marker2D" parent="." unique_id=557903248]
-position = Vector2(44, 70)
+position = Vector2(512, 319)
 
 [node name="MiniBoss" parent="." unique_id=1662424361 instance=ExtResource("3_boss")]
-position = Vector2(47, 72)
+position = Vector2(515, 321)
 
 [node name="ScrollbarElevator" parent="." unique_id=673843346 instance=ExtResource("4_scroll")]
 position = Vector2(934, 379)

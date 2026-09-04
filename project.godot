@@ -13,6 +13,14 @@ config_version=5
 config/name="Go for a Loop"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
+[autoload]
+
+TransitionManager="*uid://bopvkuq7cgpdt"
+
+[debug]
+
+canvas_items/autoload_on_startup=false
+
 [display]
 
 window/size/viewport_width=320

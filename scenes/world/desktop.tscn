@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://d3sug4nsqnap3"]
+
+[ext_resource type="Script" uid="uid://b0wufhagqvms7" path="res://scripts/player/player.gd" id="1_by7yo"]
+[ext_resource type="Texture2D" uid="uid://dpj2e8s3d7a1f" path="res://assets/art/environments/windows xp.jpg" id="1_ng1o1"]
+[ext_resource type="Texture2D" uid="uid://bub4jrbdk866o" path="res://assets/art/ui/recycle pin.png" id="2_5iee3"]
+[ext_resource type="Script" uid="uid://xhuqmsnk362d" path="res://scripts/world/recycle_bin.gd" id="2_gotvs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kgvp"]
+size = Vector2(10, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by7yo"]
+size = Vector2(20, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gotvs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng1o1"]
+size = Vector2(30.5, 35.75)
+
+[node name="Desktop" type="Node2D" unique_id=480735104]
+
+[node name="Ui" type="Node2D" parent="." unique_id=318890580]
+
+[node name="TextureRect" type="TextureRect" parent="Ui" unique_id=2146281923]
+custom_minimum_size = Vector2(320, 180)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ng1o1")
+expand_mode = 1
+
+[node name="Taskbar" type="ColorRect" parent="Ui" unique_id=1306044544]
+offset_top = 164.0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="World" type="Node2D" parent="Ui" unique_id=801429902]
+
+[node name="player" type="CharacterBody2D" parent="Ui/World" unique_id=130828335]
+position = Vector2(266, 158)
+script = ExtResource("1_by7yo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/player" unique_id=1240026751]
+shape = SubResource("RectangleShape2D_8kgvp")
+
+[node name="Visual" type="ColorRect" parent="Ui/World/player" unique_id=1675854018]
+offset_left = -5.0
+offset_top = -7.0
+offset_right = 5.0
+offset_bottom = 7.0
+
+[node name="ground" type="StaticBody2D" parent="Ui/World" unique_id=1510474316]
+position = Vector2(68, 162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/ground" unique_id=1783497371]
+position = Vector2(92, 11)
+rotation = 1.572841
+shape = SubResource("RectangleShape2D_by7yo")
+
+[node name="box1" type="StaticBody2D" parent="Ui/World" unique_id=283903288]
+position = Vector2(128, 138)
+
+[node name="ColorRect" type="ColorRect" parent="Ui/World/box1" unique_id=2057646671]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/box1" unique_id=276687468]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_gotvs")
+
+[node name="box2" type="StaticBody2D" parent="Ui/World" unique_id=753869054]
+position = Vector2(102, 116)
+
+[node name="ColorRect" type="ColorRect" parent="Ui/World/box2" unique_id=169796820]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/box2" unique_id=565768175]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_gotvs")
+
+[node name="box3" type="StaticBody2D" parent="Ui/World" unique_id=1222489066]
+position = Vector2(77, 96)
+
+[node name="ColorRect" type="ColorRect" parent="Ui/World/box3" unique_id=1171625859]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/box3" unique_id=412438811]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_gotvs")
+
+[node name="box4" type="StaticBody2D" parent="Ui/World" unique_id=1475548622]
+position = Vector2(42, 95)
+
+[node name="ColorRect" type="ColorRect" parent="Ui/World/box4" unique_id=1967137241]
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/box4" unique_id=1738469011]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_gotvs")
+
+[node name="RecycleBin" type="Area2D" parent="." unique_id=1727258553]
+script = ExtResource("2_gotvs")
+
+[node name="Sprite2D" type="Sprite2D" parent="RecycleBin" unique_id=1891989712]
+position = Vector2(20, 103)
+scale = Vector2(0.07181372, 0.06941488)
+texture = ExtResource("2_5iee3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecycleBin" unique_id=569059330]
+visible = false
+position = Vector2(19, 101.125)
+shape = SubResource("RectangleShape2D_ng1o1")
+
+[connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]

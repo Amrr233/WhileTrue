@@ -7,9 +7,6 @@ extends Node2D
 func _ready() -> void:
 	if GameState.recycle_bin_boss_defeated:
 		$MiniBoss.queue_free()
-		$BossCheckpoint.queue_free()
-	else:
-		$BossCheckpoint.body_entered.connect(_on_boss_checkpoint_entered)
 
 	if GameState.has_sword:
 		$SwordPickup.queue_free()

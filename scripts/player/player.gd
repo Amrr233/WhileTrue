@@ -5,12 +5,19 @@ signal health_changed(current: int, maximum: int)
 signal sword_state_changed(has_sword: bool)
 
 @export_category("Movement")
-@export var speed: float = 160.0
-@export var jump_velocity: float = -450.0
-@export var acceleration: float = 1200.0
+@export var speed: float = 70.0
+@export var jump_velocity: float = -350.0
+@export var acceleration: float = 900.0
 @export var air_control: float = 0.8
 @export var coyote_time: float = 0.10
 @export var jump_buffer_time: float = 0.10
+
+# --- إضافات تحسين الحركة ---
+@export var fall_gravity_multiplier: float = 1.5 # سرعة النزول
+@export var max_fall_speed: float = 600.0 # أقصى سرعة للوقوع
+@export var apex_threshold: float = 50.0 # نقطة بداية الطفو أعلى النطة
+@export var apex_gravity_multiplier: float = 0.5 # تقليل الجاذبية وقت الطفو
+# --------------------------
 
 @export_category("Combat")
 @export var attack_cooldown: float = 0.28
@@ -85,13 +92,28 @@ func _update_jump_timers(delta: float) -> void:
 
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		var grav = get_gravity()
+		
+		# تطبيق جاذبية مختلفة بناءً على حالة اللاعب (طالع، نازل، أو في أعلى نقطة)
+		if velocity.y > 0.0:
+			velocity += grav * fall_gravity_multiplier * delta # نزول أسرع
+		elif abs(velocity.y) < apex_threshold:
+			velocity += grav * apex_gravity_multiplier * delta # طفو في أعلى النطة
+		else:
+			velocity += grav * delta # طلوع عادي
+			
+		# تحديد سقف لسرعة الوقوع عشان اللاعب ميسقطش بسرعة خيالية
+		velocity.y = minf(velocity.y, max_fall_speed)
 
 func _handle_jump() -> void:
 	if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
+		
+	# التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
+	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+		velocity.y *= 0.5
 
 func _handle_horizontal_movement(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")

@@ -1,32 +1,25 @@
 [gd_scene format=3 uid="uid://dyw2u0n5x0i41"]
 
 [ext_resource type="Script" uid="uid://uxh7qhfek8ye" path="res://scripts/levels/recycle_bin.gd" id="1_level"]
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/mini_boss.tscn" id="3_boss"]
+[ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://bexlqcswe8auf" path="res://scenes/enemies/mini_boss.tscn" id="3_boss"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="5_sword"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
+[ext_resource type="Script" uid="uid://d00faxjxrfjy5" path="res://scripts/interactables/moving_file_platform.gd" id="7_lbk5i"]
 
 [sub_resource type="RectangleShape2D" id="PlatformShapeFloor"]
-size = Vector2(920, 12)
+size = Vector2(18, 12)
 
 [sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
-size = Vector2(40, 8)
+size = Vector2(27.5, 21)
 
 [sub_resource type="RectangleShape2D" id="PlatformShapeMedium"]
-size = Vector2(72, 8)
-
-[sub_resource type="RectangleShape2D" id="CheckpointShape"]
-size = Vector2(28, 40)
+size = Vector2(166, 8)
 
 [node name="RecycleBin" type="Node2D" unique_id=761169033]
+position = Vector2(0, 1)
 script = ExtResource("1_level")
-
-[node name="Background" type="ColorRect" parent="." unique_id=1241896162]
-offset_right = 960.0
-offset_bottom = 480.0
-mouse_filter = 2
-color = Color(0.075, 0.09, 0.12, 1)
 
 [node name="WindowChrome" type="ColorRect" parent="." unique_id=1867269636]
 offset_right = 960.0
@@ -64,6 +57,7 @@ position = Vector2(480, 420)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1303422272]
+position = Vector2(-469, 0)
 shape = SubResource("PlatformShapeFloor")
 
 [node name="GroundVisual" type="ColorRect" parent="Ground" unique_id=145826868]
@@ -75,127 +69,202 @@ mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
 
 [node name="FilePlatform01" type="StaticBody2D" parent="." unique_id=86123545]
-position = Vector2(95, 344)
+position = Vector2(42, 386)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="FilePlatform01" unique_id=742031085]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
+offset_left = -16.0
+offset_top = -3.0
+offset_right = 5.0
+offset_bottom = 17.0
 mouse_filter = 2
 color = Color(0.18, 0.2, 0.23, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform01" unique_id=616261941]
+position = Vector2(-5.5, 6.5)
 shape = SubResource("PlatformShapeSmall")
 
-[node name="FilePlatform02" type="StaticBody2D" parent="." unique_id=2112725183]
-position = Vector2(160, 305)
+[node name="FilePlatform02" type="StaticBody2D" parent="." unique_id=147883524]
+position = Vector2(67, 349)
 collision_layer = 2
 
-[node name="Visual" type="ColorRect" parent="FilePlatform02" unique_id=726400843]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
+[node name="Visual" type="ColorRect" parent="FilePlatform02" unique_id=2013052178]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.18, 0.2, 0.23, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform02" unique_id=1492770274]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform02" unique_id=830436468]
+position = Vector2(2.5, 3.5)
 shape = SubResource("PlatformShapeSmall")
 
-[node name="FilePlatform03" type="StaticBody2D" parent="." unique_id=945513732]
-position = Vector2(225, 270)
+[node name="FilePlatform03" type="StaticBody2D" parent="." unique_id=1742659719]
+position = Vector2(107, 306)
 collision_layer = 2
 
-[node name="Visual" type="ColorRect" parent="FilePlatform03" unique_id=946453571]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
+[node name="Visual" type="ColorRect" parent="FilePlatform03" unique_id=1926632488]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.18, 0.2, 0.23, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform03" unique_id=1871611349]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform03" unique_id=1419333636]
+position = Vector2(2.5, 3.5)
 shape = SubResource("PlatformShapeSmall")
 
-[node name="FilePlatform04" type="StaticBody2D" parent="." unique_id=863740750]
-position = Vector2(285, 310)
+[node name="FilePlatform04" type="StaticBody2D" parent="." unique_id=715424627]
+position = Vector2(152, 264)
 collision_layer = 2
 
-[node name="Visual" type="ColorRect" parent="FilePlatform04" unique_id=1909678571]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
+[node name="Visual" type="ColorRect" parent="FilePlatform04" unique_id=1843599335]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
 mouse_filter = 2
 color = Color(0.18, 0.2, 0.23, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform04" unique_id=1666192454]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform04" unique_id=1858104216]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform05" type="StaticBody2D" parent="." unique_id=1761990994]
+position = Vector2(192, 229)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform05" unique_id=605806343]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform05" unique_id=1116555784]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform06" type="StaticBody2D" parent="." unique_id=1232578606]
+position = Vector2(243, 229)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform06" unique_id=1995398898]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform06" unique_id=1293992120]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform07" type="StaticBody2D" parent="." unique_id=1397883601]
+position = Vector2(298, 229)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform07" unique_id=512415690]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform07" unique_id=1554376890]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform08" type="StaticBody2D" parent="." unique_id=733567286]
+position = Vector2(349, 229)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform08" unique_id=897196612]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform08" unique_id=959392991]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform09" type="StaticBody2D" parent="." unique_id=803756482]
+position = Vector2(101, 146)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform09" unique_id=1640909172]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform09" unique_id=1312953411]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform10" type="StaticBody2D" parent="." unique_id=1788785309]
+position = Vector2(49, 99)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform10" unique_id=1603507096]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform10" unique_id=937311294]
+position = Vector2(1.5, 3.5)
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform11" type="StaticBody2D" parent="." unique_id=1647363365]
+position = Vector2(398, 275)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform11" unique_id=387508069]
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = 14.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform11" unique_id=1858885193]
+position = Vector2(1.5, 3.5)
 shape = SubResource("PlatformShapeSmall")
 
 [node name="BossPlatform" type="StaticBody2D" parent="." unique_id=1187796317]
-position = Vector2(410, 344)
+position = Vector2(475, 344)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="BossPlatform" unique_id=2030867535]
 offset_left = -36.0
 offset_top = -4.0
-offset_right = 36.0
+offset_right = 130.0
 offset_bottom = 4.0
 mouse_filter = 2
 color = Color(0.21, 0.22, 0.25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossPlatform" unique_id=75865156]
+position = Vector2(47, -1)
 shape = SubResource("PlatformShapeMedium")
 
-[node name="FilePlatform05" type="StaticBody2D" parent="." unique_id=578110200]
-position = Vector2(525, 305)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform05" unique_id=1538744800]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform05" unique_id=1900232375]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform06" type="StaticBody2D" parent="." unique_id=1979059430]
-position = Vector2(600, 265)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform06" unique_id=262876181]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform06" unique_id=64173093]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform07" type="StaticBody2D" parent="." unique_id=457772143]
-position = Vector2(675, 305)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform07" unique_id=1093983463]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform07" unique_id=1932014006]
-shape = SubResource("PlatformShapeSmall")
-
 [node name="HighFilePlatform" type="StaticBody2D" parent="." unique_id=56018956]
-position = Vector2(790, 135)
+position = Vector2(878, 80)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="HighFilePlatform" unique_id=334832496]
@@ -205,66 +274,40 @@ offset_right = 20.0
 offset_bottom = 4.0
 mouse_filter = 2
 color = Color(0.16, 0.18, 0.22, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighFilePlatform" unique_id=1667726554]
 shape = SubResource("PlatformShapeSmall")
 
 [node name="Player" parent="." unique_id=309319802 instance=ExtResource("2_player")]
-position = Vector2(56, 320)
+position = Vector2(586, 321)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=631164395]
 position = Vector2(0, -38)
-limit_left = 0
-limit_top = 0
-limit_right = 960
-limit_bottom = 480
+zoom = Vector2(0.6, 0.6)
+limit_left = 1
+limit_top = -57
+limit_right = 961
+limit_bottom = 423
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="BossSpawn" type="Marker2D" parent="." unique_id=557903248]
-position = Vector2(410, 322)
+position = Vector2(44, 70)
 
 [node name="MiniBoss" parent="." unique_id=1662424361 instance=ExtResource("3_boss")]
-position = Vector2(410, 318)
-
-[node name="BossCheckpoint" type="Area2D" parent="." unique_id=824075255]
-position = Vector2(355, 330)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCheckpoint" unique_id=67169082]
-shape = SubResource("CheckpointShape")
+position = Vector2(47, 72)
 
 [node name="ScrollbarElevator" parent="." unique_id=673843346 instance=ExtResource("4_scroll")]
-position = Vector2(798, 380)
-travel_distance = 250.0
-speed = 78.0
-
-[node name="ElevatorHint" type="Label" parent="." unique_id=1464195255]
-offset_left = 748.0
-offset_top = 140.0
-offset_right = 870.0
-offset_bottom = 160.0
-text = "SCROLLBAR"
+position = Vector2(934, 379)
+travel_distance = 300.0
+speed = 80.0
 
 [node name="SwordPickup" parent="." unique_id=594080364 instance=ExtResource("5_sword")]
-position = Vector2(790, 105)
-
-[node name="SwordLabel" type="Label" parent="." unique_id=1930734049]
-offset_left = 762.0
-offset_top = 76.0
-offset_right = 830.0
-offset_bottom = 96.0
-text = "Sword.png"
+position = Vector2(878, 50)
 
 [node name="LevelExit" parent="." unique_id=1638088137 instance=ExtResource("6_exit")]
-position = Vector2(20, 388)
-
-[node name="SpawnText" type="Label" parent="." unique_id=451201911]
-offset_left = 40.0
-offset_top = 390.0
-offset_right = 180.0
-offset_bottom = 408.0
-text = "DELETED FILES"
+position = Vector2(942, 26)
 
 [node name="Instructions" type="Label" parent="." unique_id=1053462593]
 offset_left = 30.0
@@ -272,3 +315,18 @@ offset_top = 28.0
 offset_right = 800.0
 offset_bottom = 48.0
 text = "Recycle Bin // Deleted files // Find another way up"
+
+[node name="MovingFilePlatform12" type="AnimatableBody2D" parent="." unique_id=714556359]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("7_lbk5i")
+
+[node name="ColorRect" type="ColorRect" parent="MovingFilePlatform12" unique_id=750252097]
+offset_left = 614.0
+offset_top = 360.0
+offset_right = 642.0
+offset_bottom = 381.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingFilePlatform12" unique_id=1457762525]
+position = Vector2(628.25, 370)
+shape = SubResource("PlatformShapeSmall")

@@ -8,9 +8,7 @@ class_name ScrollbarElevator
 var _start_position := Vector2.ZERO
 var _top_position := Vector2.ZERO
 var _moving := false
-var _going_up := true
 var _player_nearby := false
-var _player_on_elevator := false
 
 @onready var trigger: Area2D = $InteractArea
 
@@ -20,25 +18,37 @@ func _ready() -> void:
 	trigger.body_entered.connect(_on_body_entered)
 	trigger.body_exited.connect(_on_body_exited)
 
-func _physics_process(delta: float) -> void:
-	if _moving:
-		var target := _top_position if _going_up else _start_position
-		position = position.move_toward(target, speed * delta)
-		if position.distance_to(target) < 0.05:
-			position = target
-			_moving = false
-
+func _physics_process(_delta: float) -> void:
+	# بنشيك هنا على زرار التفاعل لو اللاعب قريب والأسانسير مش بيتحرك
 	if _player_nearby and Input.is_action_just_pressed("interact") and not _moving:
+		print("lol start")
 		_start_trip()
 
 func _start_trip() -> void:
-	_going_up = position.distance_to(_start_position) < position.distance_to(_top_position)
+	
 	_moving = true
+	
+	# بنحدد الهدف: لو إحنا أقرب لنقطة البداية، يبقى الهدف هو النقطة اللي فوق، والعكس صحيح
+	var target := _start_position if position.distance_to(_start_position) > position.distance_to(_top_position) else _top_position
+	
+	# بنحسب الوقت بناءً على المسافة والسرعة عشان السرعة تفضل ثابتة
+	var duration = position.distance_to(target) / speed
+	
+	# بنستخدم Tween عشان يحرك الأسانسير بشكل فيزيائي سليم
+	var tween = create_tween()
+	
+	# لو شغال على Godot 4، الـ Tween مع AnimatableBody2D هيخلي اللاعب يتحرك مع المنصة بسلاسة
+	tween.tween_property(self, "position", target, duration)
+	
+	# لما الـ Tween يخلص رحلته، بنرجع حالة الحركة لـ false عشان نقدر نشغله تاني
+	tween.tween_callback(func(): _moving = false)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		_player_nearby = true
+		print("lol enter",_player_nearby,_moving)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		_player_nearby = false
+		print("lol exit ",_player_nearby,_moving)

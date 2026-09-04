@@ -1,0 +1,274 @@
+[gd_scene format=3 uid="uid://dyw2u0n5x0i41"]
+
+[ext_resource type="Script" uid="uid://uxh7qhfek8ye" path="res://scripts/levels/recycle_bin.gd" id="1_level"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/mini_boss.tscn" id="3_boss"]
+[ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="5_sword"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
+
+[sub_resource type="RectangleShape2D" id="PlatformShapeFloor"]
+size = Vector2(920, 12)
+
+[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
+size = Vector2(40, 8)
+
+[sub_resource type="RectangleShape2D" id="PlatformShapeMedium"]
+size = Vector2(72, 8)
+
+[sub_resource type="RectangleShape2D" id="CheckpointShape"]
+size = Vector2(28, 40)
+
+[node name="RecycleBin" type="Node2D" unique_id=761169033]
+script = ExtResource("1_level")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1241896162]
+offset_right = 960.0
+offset_bottom = 480.0
+mouse_filter = 2
+color = Color(0.075, 0.09, 0.12, 1)
+
+[node name="WindowChrome" type="ColorRect" parent="." unique_id=1867269636]
+offset_right = 960.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.19, 0.36, 0.62, 1)
+
+[node name="WindowTitle" type="Label" parent="." unique_id=275090908]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 20.0
+text = "Recycle Bin"
+
+[node name="FileRows" type="Node2D" parent="." unique_id=704267329]
+
+[node name="Row1" type="ColorRect" parent="FileRows" unique_id=2013292530]
+offset_left = 28.0
+offset_top = 50.0
+offset_right = 900.0
+offset_bottom = 51.0
+mouse_filter = 2
+color = Color(0.2, 0.25, 0.3, 0.45)
+
+[node name="Row2" type="ColorRect" parent="FileRows" unique_id=724453004]
+offset_left = 28.0
+offset_top = 75.0
+offset_right = 900.0
+offset_bottom = 76.0
+mouse_filter = 2
+color = Color(0.2, 0.25, 0.3, 0.45)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=35096635]
+position = Vector2(480, 420)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1303422272]
+shape = SubResource("PlatformShapeFloor")
+
+[node name="GroundVisual" type="ColorRect" parent="Ground" unique_id=145826868]
+offset_left = -460.0
+offset_top = -6.0
+offset_right = 460.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="FilePlatform01" type="StaticBody2D" parent="." unique_id=86123545]
+position = Vector2(95, 344)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform01" unique_id=742031085]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform01" unique_id=616261941]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform02" type="StaticBody2D" parent="." unique_id=2112725183]
+position = Vector2(160, 305)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform02" unique_id=726400843]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform02" unique_id=1492770274]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform03" type="StaticBody2D" parent="." unique_id=945513732]
+position = Vector2(225, 270)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform03" unique_id=946453571]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform03" unique_id=1871611349]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform04" type="StaticBody2D" parent="." unique_id=863740750]
+position = Vector2(285, 310)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform04" unique_id=1909678571]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform04" unique_id=1666192454]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="BossPlatform" type="StaticBody2D" parent="." unique_id=1187796317]
+position = Vector2(410, 344)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="BossPlatform" unique_id=2030867535]
+offset_left = -36.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.21, 0.22, 0.25, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossPlatform" unique_id=75865156]
+shape = SubResource("PlatformShapeMedium")
+
+[node name="FilePlatform05" type="StaticBody2D" parent="." unique_id=578110200]
+position = Vector2(525, 305)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform05" unique_id=1538744800]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform05" unique_id=1900232375]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform06" type="StaticBody2D" parent="." unique_id=1979059430]
+position = Vector2(600, 265)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform06" unique_id=262876181]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform06" unique_id=64173093]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="FilePlatform07" type="StaticBody2D" parent="." unique_id=457772143]
+position = Vector2(675, 305)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FilePlatform07" unique_id=1093983463]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform07" unique_id=1932014006]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="HighFilePlatform" type="StaticBody2D" parent="." unique_id=56018956]
+position = Vector2(790, 135)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="HighFilePlatform" unique_id=334832496]
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.16, 0.18, 0.22, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HighFilePlatform" unique_id=1667726554]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="Player" parent="." unique_id=309319802 instance=ExtResource("2_player")]
+position = Vector2(56, 320)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=631164395]
+position = Vector2(0, -38)
+limit_left = 0
+limit_top = 0
+limit_right = 960
+limit_bottom = 480
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="BossSpawn" type="Marker2D" parent="." unique_id=557903248]
+position = Vector2(410, 322)
+
+[node name="MiniBoss" parent="." unique_id=1662424361 instance=ExtResource("3_boss")]
+position = Vector2(410, 318)
+
+[node name="BossCheckpoint" type="Area2D" parent="." unique_id=824075255]
+position = Vector2(355, 330)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCheckpoint" unique_id=67169082]
+shape = SubResource("CheckpointShape")
+
+[node name="ScrollbarElevator" parent="." unique_id=673843346 instance=ExtResource("4_scroll")]
+position = Vector2(798, 380)
+travel_distance = 250.0
+speed = 78.0
+
+[node name="ElevatorHint" type="Label" parent="." unique_id=1464195255]
+offset_left = 748.0
+offset_top = 140.0
+offset_right = 870.0
+offset_bottom = 160.0
+text = "SCROLLBAR"
+
+[node name="SwordPickup" parent="." unique_id=594080364 instance=ExtResource("5_sword")]
+position = Vector2(790, 105)
+
+[node name="SwordLabel" type="Label" parent="." unique_id=1930734049]
+offset_left = 762.0
+offset_top = 76.0
+offset_right = 830.0
+offset_bottom = 96.0
+text = "Sword.png"
+
+[node name="LevelExit" parent="." unique_id=1638088137 instance=ExtResource("6_exit")]
+position = Vector2(20, 388)
+
+[node name="SpawnText" type="Label" parent="." unique_id=451201911]
+offset_left = 40.0
+offset_top = 390.0
+offset_right = 180.0
+offset_bottom = 408.0
+text = "DELETED FILES"
+
+[node name="Instructions" type="Label" parent="." unique_id=1053462593]
+offset_left = 30.0
+offset_top = 28.0
+offset_right = 800.0
+offset_bottom = 48.0
+text = "Recycle Bin // Deleted files // Find another way up"

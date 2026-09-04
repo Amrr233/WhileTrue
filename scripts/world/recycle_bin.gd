@@ -1,6 +1,11 @@
 extends Area2D
 
+@export_file("*.tscn") var recycle_bin_scene: String = "res://scenes/levels/recycle_bin.tscn"
+var _loading := false
+
 func _on_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		print("Player jumped into the bin! Looping back...")
-		TransitionManager.fade_and_reload_scene()
+	if _loading:
+		return
+	if body is Player:
+		_loading = true
+		TransitionManager.fade_to_scene(recycle_bin_scene)

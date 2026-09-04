@@ -11,11 +11,13 @@ config_version=5
 [application]
 
 config/name="Go for a Loop"
+run/main_scene="res://scenes/world/desktop.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [autoload]
 
 TransitionManager="*uid://bopvkuq7cgpdt"
+GameState="*uid://bymerovichcvg"
 
 [debug]
 

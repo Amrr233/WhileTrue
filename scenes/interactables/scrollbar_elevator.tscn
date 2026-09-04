@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cpel56wmqk22r"]
+
+[ext_resource type="Script" uid="uid://cwn6ia7h3kxt7" path="res://scripts/interactables/scrollbar_elevator.gd" id="1_scroll"]
+
+[sub_resource type="RectangleShape2D" id="ElevatorShape"]
+size = Vector2(26, 8)
+
+[sub_resource type="RectangleShape2D" id="InteractShape"]
+size = Vector2(44, 48)
+
+[node name="ScrollbarElevator" type="AnimatableBody2D" unique_id=818021359]
+collision_layer = 2
+script = ExtResource("1_scroll")
+
+[node name="Platform" type="ColorRect" parent="." unique_id=670460182]
+offset_left = -13.0
+offset_top = -4.0
+offset_right = 13.0
+offset_bottom = 4.0
+mouse_filter = 2
+color = Color(0.2, 0.7, 0.95, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832061156]
+shape = SubResource("ElevatorShape")
+
+[node name="Track" type="ColorRect" parent="." unique_id=1425418576]
+offset_left = -4.0
+offset_top = -16.0
+offset_right = 4.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.07, 0.07, 0.09, 0.8)
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=388762704]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea" unique_id=127805773]
+shape = SubResource("InteractShape")
+
+[connection signal="body_entered" from="InteractArea" to="." method="_on_interact_area_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_interact_area_body_exited"]

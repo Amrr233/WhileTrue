@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://djxmn5887v32y"]
 
 [ext_resource type="Script" uid="uid://b0wufhagqvms7" path="res://scripts/player/player.gd" id="1_player"]
+[ext_resource type="Script" uid="uid://ccagr4yyejdtv" path="res://scripts/ui/health_bar.gd" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://d3i5sg4rxskdk" path="res://assets/art/ui/heart.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://b72b45cdi4ubj" path="res://assets/art/ui/heart_seg.png" id="3_lvxji"]
 
 [sub_resource type="RectangleShape2D" id="PlayerShape"]
 size = Vector2(10, 14)
@@ -34,3 +37,34 @@ shape = SubResource("AttackShape")
 visible = false
 color = Color(1, 0.85, 0.2, 0.75)
 polygon = PackedVector2Array(-9, -6, 9, -6, 9, 6, -9, 6)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1173342034]
+
+[node name="HealthBar" type="Control" parent="HUD" unique_id=790390521]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 12.0
+offset_right = 135.0
+offset_bottom = 32.0
+script = ExtResource("2_dovo2")
+segment_texture = ExtResource("3_lvxji")
+segment_size = Vector2(20, 11)
+segment_gap = -6.0
+
+[node name="Heart" type="TextureRect" parent="HUD/HealthBar" unique_id=1688437284]
+layout_mode = 0
+offset_left = -5.0
+offset_top = -8.0
+offset_right = 35.0
+offset_bottom = 32.0
+texture = ExtResource("3_gmlin")
+stretch_mode = 5
+
+[node name="SegmentsContainer" type="HBoxContainer" parent="HUD/HealthBar" unique_id=247917680]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -10.0
+offset_right = 137.0
+offset_bottom = 30.0
+theme_override_constants/separation = 2

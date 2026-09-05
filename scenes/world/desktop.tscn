@@ -120,6 +120,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/Ground" unique_id=1942912017]
 shape = SubResource("GroundShape")
 
+[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("9_ikds4")]
+position = Vector2(210, 114)
+
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
 position = Vector2(18, 115)
 collision_layer = 0
@@ -145,8 +148,5 @@ texture = ExtResource("7_ml5y0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="antivirus" unique_id=1791655265]
 position = Vector2(54, 125)
 shape = SubResource("RectangleShape2D_ikds4")
-
-[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("9_ikds4")]
-position = Vector2(210, 114)
 
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]

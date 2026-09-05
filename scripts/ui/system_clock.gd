@@ -1,4 +1,5 @@
-extends Label
+
+extends TextureButton
 
 ## If true, shows 24h time (14:30). If false, shows 12h time (2:30 PM).
 @export var use_24_hour: bool = true
@@ -18,19 +19,24 @@ func _ready() -> void:
 	_update_time()
 
 
+func _on_pressed() -> void:
+	print("Clock clicked - hook up a calendar/date popup here later.")
+
+
 func _update_time() -> void:
-	# get_time_dict_from_system() reads the LOCAL time of the machine
-	# running the game, so it automatically adapts to whatever
-	# timezone the player is in - no extra logic needed.
 	var time := Time.get_time_dict_from_system()
 	var hour: int = time.hour
 	var minute: int = time.minute
+	var time_string := ""
 
 	if use_24_hour:
-		text = "%02d:%02d" % [hour, minute]
+		time_string = "%02d:%02d" % [hour, minute]
 	else:
 		var suffix := "AM" if hour < 12 else "PM"
 		var hour_12 := hour % 12
 		if hour_12 == 0:
 			hour_12 = 12
-		text = "%d:%02d %s" % [hour_12, minute, suffix]
+		time_string = "%d:%02d %s" % [hour_12, minute, suffix]
+
+	# السطر ده بيحط الوقت جوه الـ Tooltip عشان يظهر بس لما تقف بالماوس
+	tooltip_text = time_string

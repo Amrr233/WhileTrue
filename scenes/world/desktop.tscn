@@ -3,10 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://dpj2e8s3d7a1f" path="res://assets/art/environments/windows xp.jpg" id="1_bg"]
 [ext_resource type="Texture2D" uid="uid://bub4jrbdk866o" path="res://assets/art/ui/recycle pin.png" id="2_bin"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="2_boens"]
+[ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="3_ml5y0"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="3_player"]
 [ext_resource type="Script" uid="uid://xhuqmsnk362d" path="res://scripts/world/recycle_bin.gd" id="4_bin_script"]
 [ext_resource type="Script" uid="uid://cjwc14nqh0qi2" path="res://scripts/world/antivirus.gd" id="6_ujlt8"]
 [ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="7_ml5y0"]
+[ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="9_ikds4"]
 
 [sub_resource type="RectangleShape2D" id="GroundShape"]
 size = Vector2(320, 12)
@@ -43,20 +45,32 @@ offset_bottom = 40.0
 [node name="wifiicon" type="ColorRect" parent="Ui/Taskbar/SystemTray" unique_id=1655358261]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 
 [node name="batteryicon" type="ColorRect" parent="Ui/Taskbar/SystemTray" unique_id=1099067496]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 
 [node name="audiotoggle" type="Button" parent="Ui/Taskbar/SystemTray" unique_id=562207326]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 
 [node name="clocklabel" type="Label" parent="Ui/Taskbar/SystemTray" unique_id=1385555127]
 visible = false
 layout_mode = 2
 
-[node name="Startmenu" type="TextureButton" parent="Ui/Taskbar" unique_id=1878148747]
+[node name="startmenupanel" type="Panel" parent="Ui/Taskbar" unique_id=1091540408]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -65.0
+offset_right = 79.0
+offset_bottom = -1.0
+mouse_filter = 2
+
+[node name="Startmenu" type="TextureButton" parent="Ui/Taskbar" unique_id=1878148747 node_paths=PackedStringArray("start_menu")]
 texture_filter = 1
 layout_mode = 1
 offset_left = -17.0
@@ -66,6 +80,8 @@ offset_bottom = 27.0
 texture_normal = ExtResource("2_boens")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("3_ml5y0")
+start_menu = NodePath("../startmenupanel")
 
 [node name="World" type="Node2D" parent="Ui" unique_id=607767437]
 
@@ -78,13 +94,6 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/Ground" unique_id=1942912017]
 shape = SubResource("GroundShape")
-
-[node name="startmenupanel" type="Panel" parent="Ui" unique_id=1091540408]
-visible = false
-offset_left = -1.0
-offset_top = 99.0
-offset_right = 79.0
-offset_bottom = 163.0
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
 position = Vector2(18, 115)
@@ -100,6 +109,7 @@ visible = false
 shape = SubResource("BinShape")
 
 [node name="antivirus" type="Area2D" parent="." unique_id=793301714]
+position = Vector2(1, -5)
 script = ExtResource("6_ujlt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="antivirus" unique_id=739201651]
@@ -110,5 +120,8 @@ texture = ExtResource("7_ml5y0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="antivirus" unique_id=1791655265]
 position = Vector2(54, 125)
 shape = SubResource("RectangleShape2D_ikds4")
+
+[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("9_ikds4")]
+position = Vector2(210, 114)
 
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]

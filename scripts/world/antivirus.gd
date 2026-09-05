@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_file("*.tscn") var anti_virus_scene: String = "res://scenes/levels/antivirus_bin.tscn"
+@export_file("*.tscn") var anti_virus_scene: String = "res://scenes/levels/antivirus.tscn"
 var _loading := false
 
 func _on_body_entered(body: Node2D) -> void:

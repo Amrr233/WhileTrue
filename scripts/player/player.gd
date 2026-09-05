@@ -127,6 +127,8 @@ func _handle_horizontal_movement(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
 func _handle_attack() -> void:
+	if get_tree().current_scene.name == "Desktop":
+		return
 	if Input.is_action_just_pressed("attack") and _attack_timer <= 0.0:
 		_start_attack()
 

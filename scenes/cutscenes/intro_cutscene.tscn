@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://b2ms6t65xlsae"]
+
+[ext_resource type="Texture2D" uid="uid://cvftc07nmk2vf" path="res://assets/art/cutscenes/intro cutscene.png" id="1_1iurh"]
+[ext_resource type="Script" uid="uid://divhi5c7h4n53" path="res://scripts/core/intro_cutscene.gd" id="1_8464f"]
+
+[sub_resource type="Animation" id="Animation_8464f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5294118, 0.80784315, 0.92156863, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RoomLighting:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iwduf"]
+resource_name = "day_night_loop"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkyBackground:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.5294118, 0.80784315, 0.92156863, 1), Color(1, 0.27058825, 0, 1), Color(0, 0, 0, 1), Color(1, 0.84313726, 0, 1), Color(0.5294118, 0.80784315, 0.92156863, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RoomLighting:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2.02, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.9137255, 0.5882353, 0.47843137, 1), Color(0.1254902, 0.1254902, 0.2509804, 1), Color(1, 0.98039216, 0.8039216, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfsk7"]
+_data = {
+&"RESET": SubResource("Animation_8464f"),
+&"day_night_loop": SubResource("Animation_iwduf")
+}
+
+[sub_resource type="Gradient" id="Gradient_lgoyb"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ofjb"]
+gradient = SubResource("Gradient_lgoyb")
+width = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0.5)
+
+[node name="intro_cutscene" type="Node2D" unique_id=1664954478]
+script = ExtResource("1_8464f")
+
+[node name="SkyBackground" type="ColorRect" parent="." unique_id=853106367]
+offset_right = 321.0
+offset_bottom = 180.0
+color = Color(0.5294118, 0.80784315, 0.92156863, 1)
+
+[node name="Room" type="Sprite2D" parent="." unique_id=266816359]
+scale = Vector2(0.12, 0.117)
+texture = ExtResource("1_1iurh")
+centered = false
+
+[node name="desk" type="Sprite2D" parent="." unique_id=1738198662]
+
+[node name="player" type="Sprite2D" parent="." unique_id=630908549]
+
+[node name="RoomLighting" type="CanvasModulate" parent="." unique_id=1608849411]
+
+[node name="CutsceneDirector" type="AnimationPlayer" parent="." unique_id=1286283172]
+libraries/ = SubResource("AnimationLibrary_jfsk7")
+autoplay = &"day_night_loop"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1202819577]
+position = Vector2(119, 81)
+color = Color(0, 1, 0, 1)
+energy = 11.04
+texture = SubResource("GradientTexture2D_8ofjb")

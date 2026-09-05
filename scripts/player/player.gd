@@ -106,16 +106,24 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y = minf(velocity.y, max_fall_speed)
 
 func _handle_jump() -> void:
+	if get_tree().current_scene.name == "Desktop":
+		return
+
 	if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		
-	# التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
+	
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= 0.5
 
 func _handle_horizontal_movement(delta: float) -> void:
+							
+	if get_tree().current_scene.name == "Desktop":
+		velocity.x = move_toward(velocity.x, 0.0, acceleration * delta)
+		return
+
 	var direction := Input.get_axis("left", "right")
 	if direction != 0.0:
 		facing = 1 if direction > 0.0 else -1

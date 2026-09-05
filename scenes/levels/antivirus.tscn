@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://6ww1klhynp3s"]
+
+[ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="2_nxaus"]
+
+[sub_resource type="GDScript" id="GDScript_8bvle"]
+script/source = "extends Area2D
+
+@export_file(\"*.tscn\") var anti_virus_scene: String = \"res://scenes/levels/antivirus.tscn\"
+var _loading := false
+
+func _on_body_entered(body: Node2D) -> void:
+	if _loading:
+		return
+	if body is Player:
+		_loading = true
+		TransitionManager.fade_to_scene(anti_virus_scene)
+"
+
+[sub_resource type="RectangleShape2D" id="BinShape"]
+size = Vector2(30.5, 35.75)
+
+[node name="antivirus" type="Area2D" unique_id=637938804]
+collision_layer = 0
+script = SubResource("GDScript_8bvle")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371384210]
+position = Vector2(45, 49)
+scale = Vector2(0.07181372, 0.06941488)
+texture = ExtResource("2_nxaus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=913177063]
+visible = false
+shape = SubResource("BinShape")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -8,9 +8,6 @@
 [ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
 [ext_resource type="Script" uid="uid://d00faxjxrfjy5" path="res://scripts/interactables/moving_file_platform.gd" id="7_lbk5i"]
 
-[sub_resource type="RectangleShape2D" id="PlatformShapeFloor"]
-size = Vector2(18, 12)
-
 [sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
 size = Vector2(27.5, 21)
 
@@ -58,10 +55,9 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1303422272]
 position = Vector2(-469, 0)
-shape = SubResource("PlatformShapeFloor")
 
 [node name="GroundVisual" type="ColorRect" parent="Ground" unique_id=145826868]
-offset_left = -460.0
+offset_left = -480.0
 offset_top = -6.0
 offset_right = 460.0
 offset_bottom = 6.0

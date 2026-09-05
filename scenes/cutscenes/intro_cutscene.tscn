@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://cvftc07nmk2vf" path="res://assets/art/cutscenes/intro cutscene.png" id="1_1iurh"]
 [ext_resource type="Script" uid="uid://divhi5c7h4n53" path="res://scripts/core/intro_cutscene.gd" id="1_8464f"]
+[ext_resource type="Texture2D" uid="uid://bpqv7e4vfkkvm" path="res://assets/art/cutscenes/sun.png" id="2_lgoyb"]
+[ext_resource type="Texture2D" uid="uid://cc0u1rqaa3uuw" path="res://assets/art/cutscenes/moon.png" id="3_8ofjb"]
+[ext_resource type="Texture2D" uid="uid://bpk20a8re576y" path="res://assets/art/cutscenes/cloud.png" id="4_l6gfu"]
 
 [sub_resource type="Animation" id="Animation_8464f"]
 length = 0.001
@@ -28,6 +31,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(220, 95)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("moon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(220.00002, 113)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("clouds:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(259.99997, 72.99999)]
 }
 
 [sub_resource type="Animation" id="Animation_iwduf"]
@@ -58,6 +97,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.9137255, 0.5882353, 0.47843137, 1), Color(0.1254902, 0.1254902, 0.2509804, 1), Color(1, 0.98039216, 0.8039216, 1), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(220, 71), Vector2(220, 113), Vector2(220, 112), Vector2(220, 71)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("moon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 2.02, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(220, 121), Vector2(220, 72), Vector2(220, 122)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("clouds:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(158, 75), Vector2(283, 76)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jfsk7"]
 _data = {
@@ -82,6 +157,21 @@ script = ExtResource("1_8464f")
 offset_right = 321.0
 offset_bottom = 180.0
 color = Color(0.5294118, 0.80784315, 0.92156863, 1)
+
+[node name="clouds" type="Sprite2D" parent="." unique_id=1891042665]
+position = Vector2(259.99997, 72.99999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_l6gfu")
+
+[node name="sun" type="Sprite2D" parent="." unique_id=1850026846]
+position = Vector2(220, 95)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_lgoyb")
+
+[node name="moon" type="Sprite2D" parent="." unique_id=1021121859]
+position = Vector2(220.00002, 113)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_8ofjb")
 
 [node name="Room" type="Sprite2D" parent="." unique_id=266816359]
 scale = Vector2(0.12, 0.117)

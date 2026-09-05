@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemies/antivirus_final_boss.gd" id="1_boss"]
+
+[sub_resource type="RectangleShape2D" id="FinalBossShape"]
+size = Vector2(28, 34)
+
+[node name="AntivirusFinalBoss" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("FinalBossShape")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.75, 0.1, 0.15, 1)
+polygon = PackedVector2Array(-14, -17, 14, -17, 14, 11, 0, 17, -14, 11)
+
+[node name="Core" type="Polygon2D" parent="."]
+color = Color(0.95, 0.85, 0.2, 1)
+polygon = PackedVector2Array(-4, -5, 4, -5, 4, 5, -4, 5)

@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="2_boens"]
 [ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="3_b7fx7"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="3_ml5y0"]
-[ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="4_7gd84"]
 [ext_resource type="Script" uid="uid://xhuqmsnk362d" path="res://scripts/world/recycle_bin.gd" id="4_bin_script"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="5_1y8lu"]
 [ext_resource type="Script" uid="uid://cjwc14nqh0qi2" path="res://scripts/world/antivirusIcon.gd" id="6_ujlt8"]
 [ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="7_ml5y0"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="9_ikds4"]
+[ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="9_player"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_audio"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="11_clock"]
 
@@ -110,8 +110,8 @@ start_menu = NodePath("../startmenupanel")
 
 [node name="World" type="Node2D" parent="Ui" unique_id=607767437]
 
-[node name="Player" parent="Ui/World" unique_id=258071161 instance=ExtResource("3_player")]
-position = Vector2(266, 150)
+[node name="Player" parent="Ui/World" unique_id=258071161 instance=ExtResource("9_player")]
+position = Vector2(271, 148)
 
 [node name="Ground" type="StaticBody2D" parent="Ui/World" unique_id=816463372]
 position = Vector2(160, 158)
@@ -125,7 +125,8 @@ position = Vector2(210, 114)
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
 position = Vector2(18, 115)
-collision_layer = 0
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("4_bin_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="RecycleBin" unique_id=698071649]
@@ -133,11 +134,12 @@ scale = Vector2(0.07181372, 0.06941488)
 texture = ExtResource("2_bin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RecycleBin" unique_id=384448972]
-visible = false
 shape = SubResource("BinShape")
 
 [node name="antivirusIcon" type="Area2D" parent="." unique_id=793301714]
 position = Vector2(1, -5)
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("6_ujlt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="antivirusIcon" unique_id=739201651]

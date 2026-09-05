@@ -56,6 +56,7 @@ var _attack_active_timer := 0.0
 var _invulnerability_timer := 0.0
 var _attack_hit_ids: Dictionary = {}
 var respawn_position := Vector2.ZERO
+var _falling_phase := false
 var _checkpoint_set := false
 
 @onready var attack_area: Area2D = $AttackArea
@@ -75,6 +76,13 @@ func _ready() -> void:
 	attack_shape.disabled = true
 	attack_visual.visible = false
 	health_changed.emit(health, max_health)
+
+	# الوضع الطبيعي: واقف على أول فريم بس، من غير ما يتحرك
+	if visual is AnimatedSprite2D:
+		visual.animation = "stand_up"
+		visual.frame = 0
+		visual.stop()
+		visual.animation_finished.connect(_on_stand_up_finished)
 
 func _physics_process(delta: float) -> void:
 	if _invulnerability_timer > 0.0:
@@ -249,6 +257,36 @@ func respawn() -> void:
 	_invulnerability_timer = 1.0
 	health_changed.emit(health, max_health)
 
-func set_checkpoint(position: Vector2) -> void:
-	respawn_position = position
+func set_checkpoint(new_position: Vector2) -> void:
+	respawn_position = new_position
 	_checkpoint_set = true
+
+## Called by cursor.gd when the mouse presses down and grabs the player
+## (used for the Desktop hub's "pick up the character" interaction).
+func on_mouse_hold() -> void:
+	if visual is AnimatedSprite2D:
+		_falling_phase = false
+		# فريم واحد ثابت بس (المقلوب) - من غير أنيميشن
+		visual.animation = "grabbed"
+		visual.frame = 0
+		visual.stop()
+
+## Called by cursor.gd when the mouse releases the player.
+func on_mouse_release() -> void:
+	if visual is AnimatedSprite2D:
+		# المرحلة 1: يقع للأمام (فريمات 0 لـ 4)
+		_falling_phase = true
+		visual.animation = "stand_up"
+		visual.play()
+
+## بعد ما مرحلة من الأنيميشن تخلص: لو كان بيقع، نشغّل "بيقوم" بالعكس.
+## ولو كان بيقوم، نوقف ونرجع نقف عادي على أول فريم.
+func _on_stand_up_finished() -> void:
+	if not (visual is AnimatedSprite2D) or visual.animation != "stand_up":
+		return
+	if _falling_phase:
+		_falling_phase = false
+		visual.play_backwards("stand_up")  # المرحلة 2: بيقوم (عكس السقوط)
+	else:
+		visual.frame = 0
+		visual.stop()

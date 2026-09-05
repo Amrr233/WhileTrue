@@ -36,6 +36,10 @@ func _input(event: InputEvent) -> void:
 		if event.pressed and player_ref != null:
 			# بداية السحب
 			is_dragging = true
+			if player_ref.has_method("on_mouse_hold"):
+				player_ref.on_mouse_hold()
 		elif not event.pressed:
 			# إفلات اللاعب لما نشيل إيدنا من على الكليك
+			if is_dragging and player_ref != null and player_ref.has_method("on_mouse_release"):
+				player_ref.on_mouse_release()
 			is_dragging = false

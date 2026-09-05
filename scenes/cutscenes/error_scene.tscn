@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dq56efg2uksej"]
+
+[ext_resource type="Script" uid="uid://cd4kp7mq7x4sp" path="res://scripts/core/error_scene.gd" id="1_3t2dd"]
+[ext_resource type="Texture2D" uid="uid://dipgc54f1ov8u" path="res://assets/art/cutscenes/error scene.png" id="1_21m6n"]
+
+[node name="error_scene" type="Node2D" unique_id=1067681254]
+script = ExtResource("1_3t2dd")
+
+[node name="background" type="Sprite2D" parent="." unique_id=202352265]
+scale = Vector2(0.31, 0.42)
+texture = ExtResource("1_21m6n")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1563128606]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1268751233]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

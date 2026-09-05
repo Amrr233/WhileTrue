@@ -1,35 +1,508 @@
 [gd_scene format=3 uid="uid://6ww1klhynp3s"]
 
-[ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="2_nxaus"]
+[ext_resource type="Script" uid="uid://d0rl06wn0xdm8" path="res://scripts/levels/antivirus.gd" id="1_level"]
+[ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="Script" uid="uid://0f47ocsf4vin" path="res://scripts/interactables/antivirus_option.gd" id="3_option"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="4_exit"]
 
-[sub_resource type="GDScript" id="GDScript_8bvle"]
-script/source = "extends Area2D
+[sub_resource type="RectangleShape2D" id="GroundShapeWide"]
+size = Vector2(960, 12)
 
-@export_file(\"*.tscn\") var anti_virus_scene: String = \"res://scenes/levels/antivirus.tscn\"
-var _loading := false
+[sub_resource type="RectangleShape2D" id="OptionShape"]
+size = Vector2(70, 60)
 
-func _on_body_entered(body: Node2D) -> void:
-	if _loading:
-		return
-	if body is Player:
-		_loading = true
-		TransitionManager.fade_to_scene(anti_virus_scene)
-"
+[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
+size = Vector2(60, 10)
 
-[sub_resource type="RectangleShape2D" id="BinShape"]
-size = Vector2(30.5, 35.75)
+[sub_resource type="RectangleShape2D" id="GroundShapeMed"]
+size = Vector2(300, 12)
 
-[node name="antivirus" type="Area2D" unique_id=637938804]
-collision_layer = 0
-script = SubResource("GDScript_8bvle")
+[node name="Antivirus" type="Node2D" unique_id=1799093417]
+script = ExtResource("1_level")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1371384210]
-position = Vector2(45, 49)
-scale = Vector2(0.07181372, 0.06941488)
-texture = ExtResource("2_nxaus")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=297553699]
+layer = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=913177063]
+[node name="RewardLabel" type="Label" parent="HUD" unique_id=950629210]
 visible = false
-shape = SubResource("BinShape")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+offset_bottom = -30.0
+theme_override_font_sizes/font_size = 14
+text = "REWARD"
+horizontal_alignment = 1
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="HubArea" type="Node2D" parent="." unique_id=150556746]
+
+[node name="WindowChrome" type="ColorRect" parent="HubArea" unique_id=296394210]
+offset_right = 960.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(0.19, 0.36, 0.62, 1)
+
+[node name="WindowTitle" type="Label" parent="HubArea" unique_id=1234396579]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 300.0
+offset_bottom = 20.0
+text = "PixelGuard Antivirus"
+
+[node name="TaskBar" type="Label" parent="HubArea" unique_id=1393007427]
+offset_left = 8.0
+offset_top = 26.0
+offset_right = 400.0
+offset_bottom = 42.0
+text = "File   Edit   View   Tools   Help"
+
+[node name="HubGround" type="StaticBody2D" parent="HubArea" unique_id=830699118]
+position = Vector2(480, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="HubArea/HubGround" unique_id=368618345]
+offset_left = -480.0
+offset_top = -6.0
+offset_right = 480.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/HubGround" unique_id=353072437]
+shape = SubResource("GroundShapeWide")
+
+[node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
+position = Vector2(60, 395)
+
+[node name="Instructions" type="Label" parent="HubArea" unique_id=1509564513]
+offset_left = 30.0
+offset_top = 48.0
+offset_right = 800.0
+offset_bottom = 68.0
+text = "PixelGuard Antivirus // Walk into CHECK, SCAN or INVESTIGATE"
+
+[node name="LevelExit" parent="HubArea" unique_id=1502445892 instance=ExtResource("4_exit")]
+position = Vector2(40, 400)
+
+[node name="Options" type="Node2D" parent="HubArea" unique_id=345804705]
+
+[node name="OptionCheck" type="Area2D" parent="HubArea/Options" unique_id=1305416982]
+position = Vector2(250, 420)
+collision_layer = 0
+script = ExtResource("3_option")
+
+[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionCheck" unique_id=1410279582]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+mouse_filter = 2
+color = Color(0.75, 0.78, 0.82, 1)
+
+[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionCheck" unique_id=1197833022]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -48.0
+mouse_filter = 2
+color = Color(0.35, 0.8, 0.4, 1)
+
+[node name="Label" type="Label" parent="HubArea/Options/OptionCheck" unique_id=1889714267]
+offset_left = -35.0
+offset_top = -46.0
+offset_right = 35.0
+offset_bottom = -28.0
+text = "CHECK"
+horizontal_alignment = 1
+
+[node name="LockLabel" type="Label" parent="HubArea/Options/OptionCheck" unique_id=2014745042]
+visible = false
+modulate = Color(1, 0.35, 0.35, 1)
+offset_left = -35.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -10.0
+text = "LOCKED"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionCheck" unique_id=1955364254]
+position = Vector2(0, -30)
+shape = SubResource("OptionShape")
+
+[node name="OptionScan" type="Area2D" parent="HubArea/Options" unique_id=2093314999]
+position = Vector2(480, 420)
+collision_layer = 0
+script = ExtResource("3_option")
+
+[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionScan" unique_id=1264523503]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+mouse_filter = 2
+color = Color(0.75, 0.78, 0.82, 1)
+
+[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionScan" unique_id=278023103]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -48.0
+mouse_filter = 2
+color = Color(0.85, 0.55, 0.15, 1)
+
+[node name="Label" type="Label" parent="HubArea/Options/OptionScan" unique_id=1923544020]
+offset_left = -35.0
+offset_top = -46.0
+offset_right = 35.0
+offset_bottom = -28.0
+text = "SCAN"
+horizontal_alignment = 1
+
+[node name="LockLabel" type="Label" parent="HubArea/Options/OptionScan" unique_id=1008448992]
+visible = false
+modulate = Color(1, 0.35, 0.35, 1)
+offset_left = -35.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -10.0
+text = "LOCKED"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionScan" unique_id=1087265214]
+position = Vector2(0, -30)
+shape = SubResource("OptionShape")
+
+[node name="OptionInvestigate" type="Area2D" parent="HubArea/Options" unique_id=1690148697]
+position = Vector2(710, 420)
+collision_layer = 0
+script = ExtResource("3_option")
+
+[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionInvestigate" unique_id=1526613033]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+mouse_filter = 2
+color = Color(0.75, 0.78, 0.82, 1)
+
+[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionInvestigate" unique_id=396064094]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -48.0
+mouse_filter = 2
+color = Color(0.55, 0.15, 0.75, 1)
+
+[node name="Label" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=1959467508]
+offset_left = -35.0
+offset_top = -46.0
+offset_right = 35.0
+offset_bottom = -28.0
+text = "INVESTIGATE"
+horizontal_alignment = 1
+
+[node name="LockLabel" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=1090649662]
+visible = false
+modulate = Color(1, 0.35, 0.35, 1)
+offset_left = -35.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -10.0
+text = "LOCKED"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionInvestigate" unique_id=1473591837]
+position = Vector2(0, -30)
+shape = SubResource("OptionShape")
+
+[node name="OptionFinal" type="Area2D" parent="HubArea/Options" unique_id=316930277]
+position = Vector2(900, 420)
+collision_layer = 0
+script = ExtResource("3_option")
+
+[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionFinal" unique_id=782304099]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+mouse_filter = 2
+color = Color(0.75, 0.78, 0.82, 1)
+
+[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionFinal" unique_id=2108391685]
+offset_left = -35.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -48.0
+mouse_filter = 2
+color = Color(0.75, 0.1, 0.15, 1)
+
+[node name="Label" type="Label" parent="HubArea/Options/OptionFinal" unique_id=560581528]
+offset_left = -35.0
+offset_top = -46.0
+offset_right = 35.0
+offset_bottom = -28.0
+text = "FINAL"
+horizontal_alignment = 1
+
+[node name="LockLabel" type="Label" parent="HubArea/Options/OptionFinal" unique_id=1410789677]
+visible = false
+modulate = Color(1, 0.35, 0.35, 1)
+offset_left = -35.0
+offset_top = -26.0
+offset_right = 35.0
+offset_bottom = -10.0
+text = "LOCKED"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionFinal" unique_id=814705133]
+position = Vector2(0, -30)
+shape = SubResource("OptionShape")
+
+[node name="CheckArena" type="Node2D" parent="." unique_id=662528291]
+
+[node name="Ground" type="StaticBody2D" parent="CheckArena" unique_id=1598653216]
+position = Vector2(1680, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="CheckArena/Ground" unique_id=1130373942]
+offset_left = -480.0
+offset_top = -6.0
+offset_right = 480.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckArena/Ground" unique_id=1921863314]
+shape = SubResource("GroundShapeWide")
+
+[node name="Platform01" type="StaticBody2D" parent="CheckArena" unique_id=958293828]
+position = Vector2(1500, 365)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="CheckArena/Platform01" unique_id=1806268305]
+offset_left = -30.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckArena/Platform01" unique_id=746382162]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="Platform02" type="StaticBody2D" parent="CheckArena" unique_id=1516298816]
+position = Vector2(1760, 335)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="CheckArena/Platform02" unique_id=1134245584]
+offset_left = -30.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckArena/Platform02" unique_id=1336058285]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="PlayerSpawn" type="Marker2D" parent="CheckArena" unique_id=1133693418]
+position = Vector2(1240, 395)
+
+[node name="Instructions" type="Label" parent="CheckArena" unique_id=819205521]
+offset_left = 1210.0
+offset_top = 320.0
+offset_right = 1800.0
+offset_bottom = 340.0
+text = "CHECK // Clear the viruses"
+
+[node name="Spawns" type="Node2D" parent="CheckArena" unique_id=2066451898]
+
+[node name="Spawn1" type="Marker2D" parent="CheckArena/Spawns" unique_id=351385977]
+position = Vector2(1460, 395)
+
+[node name="Spawn2" type="Marker2D" parent="CheckArena/Spawns" unique_id=1187277932]
+position = Vector2(1720, 395)
+
+[node name="Spawn3" type="Marker2D" parent="CheckArena/Spawns" unique_id=96676277]
+position = Vector2(1980, 395)
+
+[node name="ScanArena" type="Node2D" parent="." unique_id=596607070]
+
+[node name="GroundA" type="StaticBody2D" parent="ScanArena" unique_id=1728755237]
+position = Vector2(2550, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="ScanArena/GroundA" unique_id=513149242]
+offset_left = -150.0
+offset_top = -6.0
+offset_right = 150.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/GroundA" unique_id=141962155]
+shape = SubResource("GroundShapeMed")
+
+[node name="GroundB" type="StaticBody2D" parent="ScanArena" unique_id=1749354162]
+position = Vector2(2905, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="ScanArena/GroundB" unique_id=1730396785]
+offset_left = -150.0
+offset_top = -6.0
+offset_right = 150.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/GroundB" unique_id=251758993]
+shape = SubResource("GroundShapeMed")
+
+[node name="ElevatedPlatform" type="StaticBody2D" parent="ScanArena" unique_id=2053049932]
+position = Vector2(3160, 350)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="ScanArena/ElevatedPlatform" unique_id=1845296420]
+offset_left = -30.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/ElevatedPlatform" unique_id=823852115]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="GroundC" type="StaticBody2D" parent="ScanArena" unique_id=298358224]
+position = Vector2(3350, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="ScanArena/GroundC" unique_id=652051804]
+offset_left = -150.0
+offset_top = -6.0
+offset_right = 150.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/GroundC" unique_id=1855205621]
+shape = SubResource("GroundShapeMed")
+
+[node name="PlayerSpawn" type="Marker2D" parent="ScanArena" unique_id=406227919]
+position = Vector2(2440, 395)
+
+[node name="Instructions" type="Label" parent="ScanArena" unique_id=29640131]
+offset_left = 2410.0
+offset_top = 320.0
+offset_right = 3000.0
+offset_bottom = 340.0
+text = "SCAN // Faster viruses, small projectiles — use DASH to cross the gaps"
+
+[node name="Spawns" type="Node2D" parent="ScanArena" unique_id=1562493783]
+
+[node name="Spawn1" type="Marker2D" parent="ScanArena/Spawns" unique_id=1189497195]
+position = Vector2(2520, 395)
+
+[node name="Spawn2" type="Marker2D" parent="ScanArena/Spawns" unique_id=1149169120]
+position = Vector2(2905, 395)
+
+[node name="Spawn3" type="Marker2D" parent="ScanArena/Spawns" unique_id=338922132]
+position = Vector2(3350, 395)
+
+[node name="InvestigateArena" type="Node2D" parent="." unique_id=348815091]
+
+[node name="Ground" type="StaticBody2D" parent="InvestigateArena" unique_id=1508905042]
+position = Vector2(4280, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="InvestigateArena/Ground" unique_id=406838146]
+offset_left = -480.0
+offset_top = -6.0
+offset_right = 480.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvestigateArena/Ground" unique_id=2083297556]
+shape = SubResource("GroundShapeWide")
+
+[node name="Platform01" type="StaticBody2D" parent="InvestigateArena" unique_id=1345733038]
+position = Vector2(4280, 350)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="InvestigateArena/Platform01" unique_id=872490236]
+offset_left = -40.0
+offset_top = -5.0
+offset_right = 40.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvestigateArena/Platform01" unique_id=1275170053]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="PlayerSpawn" type="Marker2D" parent="InvestigateArena" unique_id=1581763094]
+position = Vector2(3840, 395)
+
+[node name="Instructions" type="Label" parent="InvestigateArena" unique_id=1746348874]
+offset_left = 3810.0
+offset_top = 320.0
+offset_right = 4500.0
+offset_bottom = 340.0
+text = "INVESTIGATE // Fast, teleporting hunters — melee hits harder than their ranged attack"
+
+[node name="Spawns" type="Node2D" parent="InvestigateArena" unique_id=1246167106]
+
+[node name="Spawn1" type="Marker2D" parent="InvestigateArena/Spawns" unique_id=1603545730]
+position = Vector2(4000, 395)
+
+[node name="Spawn2" type="Marker2D" parent="InvestigateArena/Spawns" unique_id=1529054001]
+position = Vector2(4280, 395)
+
+[node name="Spawn3" type="Marker2D" parent="InvestigateArena/Spawns" unique_id=942273871]
+position = Vector2(4560, 395)
+
+[node name="FinalArena" type="Node2D" parent="." unique_id=496427461]
+
+[node name="Ground" type="StaticBody2D" parent="FinalArena" unique_id=298581769]
+position = Vector2(5580, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="FinalArena/Ground" unique_id=1841961982]
+offset_left = -480.0
+offset_top = -6.0
+offset_right = 480.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinalArena/Ground" unique_id=324444194]
+shape = SubResource("GroundShapeWide")
+
+[node name="PlayerSpawn" type="Marker2D" parent="FinalArena" unique_id=1092871545]
+position = Vector2(5140, 395)
+
+[node name="Instructions" type="Label" parent="FinalArena" unique_id=1531468015]
+offset_left = 5110.0
+offset_top = 320.0
+offset_right = 5700.0
+offset_bottom = 340.0
+text = "FINAL // The core threat — defeat it to obtain the Cure"
+
+[node name="Spawns" type="Node2D" parent="FinalArena" unique_id=515173476]
+
+[node name="Spawn1" type="Marker2D" parent="FinalArena/Spawns" unique_id=1642951126]
+position = Vector2(5580, 395)
+
+[node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
+position = Vector2(60, 395)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=939686405]
+position = Vector2(0, -38)
+zoom = Vector2(0.6, 0.6)
+limit_left = 0
+limit_top = -80
+limit_right = 6060
+limit_bottom = 460
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

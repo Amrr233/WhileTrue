@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://du7xs0fosn64t"]
+
+[ext_resource type="Script" uid="uid://dl0u6feo3c3rh" path="res://scripts/core/quote_scene.gd" id="1_s72m0"]
+
+[sub_resource type="Animation" id="Animation_wclpv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gusoe"]
+resource_name = "play_quote"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 4.5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87632"]
+_data = {
+&"RESET": SubResource("Animation_wclpv"),
+&"play_quote": SubResource("Animation_gusoe")
+}
+
+[node name="quote_scene" type="Node2D" unique_id=752434354]
+script = ExtResource("1_s72m0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1055518703]
+offset_right = 322.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=122287170]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "To break a cycle, you must first realize you are trapped inside one
+~ConsernedApes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1478341336]
+libraries/ = SubResource("AnimationLibrary_87632")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

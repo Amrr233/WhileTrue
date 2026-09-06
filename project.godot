@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Go for a Loop"
-run/main_scene="uid://b2ms6t65xlsae"
+run/main_scene="uid://du7xs0fosn64t"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 
 [autoload]

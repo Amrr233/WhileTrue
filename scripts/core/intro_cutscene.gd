@@ -1,12 +1,10 @@
 extends Node2D
 
 func _ready():
-	# Wait for the day/night cutscene loop
-	await get_tree().create_timer(2.0).timeout
-	
-	# Play the fade to black
-	$CutsceneDirector.play("fade_out")
-	await $CutsceneDirector.animation_finished
-	
-	# Change to your new error scene (adjust path to where you saved it)
+	# Start your full cutscene timeline (which now includes the fade to black at the end)
+	# Change "fade_out" to the actual name of your day/night animation if it is different
+	$CutsceneDirector.play("day_night_loop") 
+
+func _on_cutscene_director_animation_finished(anim_name: StringName) -> void:
+	# Changes the scene the exact millisecond the animation finishes
 	get_tree().change_scene_to_file("res://scenes/cutscenes/error_scene.tscn")

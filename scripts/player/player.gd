@@ -148,20 +148,32 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y = minf(velocity.y, max_fall_speed)
 
 func _handle_jump() -> void:
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_velocity
-		jump_sound.play()
+	# 1. الإيقاف الفوري لأي نطة لو إحنا في سين الـ Desktop
 	if get_tree().current_scene.name == "Desktop":
 		return
 
+	# 2. معالجة النطة العادية (مع تشغيل الصوت)
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = jump_velocity
+		jump_sound.play()
+
+	# 3. معالجة نظام الـ Jump Buffer والـ Coyote Time
 	if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
+		jump_sound.play() # تشغيل الصوت لو نط بنظام الـ Buffer
+		
+	# 4. معالجة الدابل جامب (مع تشغيل الصوت)
 	elif _jump_buffer_timer > 0.0 and has_double_jump and _double_jump_available and not is_on_floor():
 		velocity.y = double_jump_velocity
 		_jump_buffer_timer = 0.0
 		_double_jump_available = false
+		jump_sound.play() # تشغيل الصوت وقت الدابل جامب
+		
+	# 5. التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
+	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+		velocity.y *= 0.5
 		
 	# التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
@@ -233,7 +245,7 @@ func _start_attack() -> void:
 	
 	attack_visual.visible = true
 	
-	attack_area.position.x = 12.0 * facing
+	attack_area.position.x = 32.0 * facing
 
 	# --- الجديد: تشغيل أنيميشن الضرب ---
 	if visual is AnimatedSprite2D:

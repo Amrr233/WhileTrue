@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="2_aiwav"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="Script" uid="uid://0f47ocsf4vin" path="res://scripts/interactables/antivirus_option.gd" id="3_option"]
-[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="4_exit"]
 [ext_resource type="Texture2D" uid="uid://cacleupipoj32" path="res://assets/art/ui/exit.png" id="4_v5mxn"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="9_mht4f"]
 [ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="10_p5ovw"]
@@ -149,86 +148,8 @@ stretch_mode = 0
 script = ExtResource("16_hso3t")
 start_menu = NodePath("../startmenupanel")
 
-[node name="WindowChrome" type="ColorRect" parent="HubArea" unique_id=296394210]
-offset_right = 320.0
-offset_bottom = 16.0
-mouse_filter = 2
-color = Color(0.003921569, 0.3529412, 0.9098039, 1)
-
-[node name="Label" type="Label" parent="HubArea/WindowChrome" unique_id=2055025236]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 1.0
-offset_right = 126.0
-offset_bottom = 34.0
-rotation = -0.0035957948
-theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 12
-text = "Antivirus"
-
-[node name="WindowChrome2" type="ColorRect" parent="HubArea" unique_id=463635671]
-offset_top = 16.0
-offset_right = 320.0
-offset_bottom = 26.0
-mouse_filter = 2
-color = Color(0.9254902, 0.9019608, 0.8392157, 1)
-
-[node name="Label2" type="Label" parent="HubArea/WindowChrome2" unique_id=1206462438]
-layout_mode = 0
-offset_left = 5.0
-offset_right = 26.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
-text = "File"
-
-[node name="Label3" type="Label" parent="HubArea/WindowChrome2" unique_id=1401014981]
-layout_mode = 0
-offset_left = 81.00001
-offset_right = 102.00001
-offset_bottom = 10.0
-rotation = -0.0059144013
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
-text = "Help"
-
-[node name="Label4" type="Label" parent="HubArea/WindowChrome2" unique_id=1259502100]
-layout_mode = 0
-offset_left = 50.0
-offset_right = 73.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
-text = "Tools"
-
-[node name="Label5" type="Label" parent="HubArea/WindowChrome2" unique_id=2007578110]
-layout_mode = 0
-offset_left = 29.0
-offset_right = 50.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
-text = "Edit"
-
-[node name="icon" type="Sprite2D" parent="HubArea" unique_id=1675847924]
-texture_filter = 1
-position = Vector2(10, 7)
-texture = ExtResource("2_aiwav")
-
-[node name="icon2" type="Sprite2D" parent="HubArea" unique_id=1169519909]
-texture_filter = 1
-position = Vector2(307, 8)
-texture = ExtResource("4_v5mxn")
-
 [node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
 position = Vector2(42, 99)
-
-[node name="LevelExit" parent="HubArea" unique_id=1502445892 instance=ExtResource("4_exit")]
-position = Vector2(307, 9)
 
 [node name="Options" type="Node2D" parent="HubArea" unique_id=345804705]
 
@@ -496,3 +417,88 @@ position = Vector2(5580, 395)
 texture_filter = 1
 position = Vector2(151, 125)
 scale = Vector2(0.5, 0.5)
+
+[node name="top_bar" type="CanvasLayer" parent="." unique_id=1186141951]
+layer = -1
+
+[node name="WindowChrome" type="ColorRect" parent="top_bar" unique_id=16852296]
+offset_right = 320.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.003921569, 0.3529412, 0.9098039, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=1568374155]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 34.0
+rotation = -0.0035957948
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 12
+text = "Antivirus"
+metadata/_edit_use_anchors_ = true
+
+[node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=1612548555]
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 26.0
+mouse_filter = 2
+color = Color(0.9254902, 0.9019608, 0.8392157, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="top_bar/WindowChrome2" unique_id=15703364]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 26.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 8
+text = "File"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="top_bar/WindowChrome2" unique_id=191598776]
+layout_mode = 0
+offset_left = 81.00001
+offset_right = 102.00001
+offset_bottom = 10.0
+rotation = -0.0059144013
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 8
+text = "Help"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="top_bar/WindowChrome2" unique_id=587947902]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 73.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 8
+text = "Tools"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="top_bar/WindowChrome2" unique_id=971272497]
+layout_mode = 0
+offset_left = 29.0
+offset_right = 50.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 8
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="Sprite2D" parent="top_bar" unique_id=1810023060]
+texture_filter = 1
+position = Vector2(10, 7)
+texture = ExtResource("2_aiwav")
+
+[node name="icon2" type="Sprite2D" parent="top_bar" unique_id=1597621984]
+texture_filter = 1
+position = Vector2(307, 8)
+texture = ExtResource("4_v5mxn")

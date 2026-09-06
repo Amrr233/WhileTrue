@@ -36,10 +36,11 @@ reward_text = "SCAN COMPLETE — DOUBLE JUMP UNLOCKED"
 layer = -2
 
 [node name="background" type="ColorRect" parent="CanvasLayer" unique_id=399543967]
-offset_left = -73.0
-offset_top = -24.0
-offset_right = 1636.0
-offset_bottom = 659.0
+visible = false
+offset_left = -175.0
+offset_top = -154.0
+offset_right = 1534.0
+offset_bottom = 529.0
 color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
 [node name="top_bar" type="CanvasLayer" parent="." unique_id=1191544235]
@@ -210,7 +211,7 @@ position = Vector2(-98.5, -50)
 shape = SubResource("GroundShapeMed")
 
 [node name="GroundA5" type="StaticBody2D" parent="." unique_id=1969488178]
-position = Vector2(358, 402)
+position = Vector2(299, 414)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA5" unique_id=2119918060]
@@ -226,7 +227,7 @@ position = Vector2(-105, -50)
 shape = SubResource("RectangleShape2D_jlwql")
 
 [node name="GroundA6" type="StaticBody2D" parent="." unique_id=1310367511]
-position = Vector2(419, 447)
+position = Vector2(396, 446)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA6" unique_id=1165465275]
@@ -242,7 +243,7 @@ position = Vector2(5.5, -50)
 shape = SubResource("RectangleShape2D_bnj5g")
 
 [node name="GroundA7" type="StaticBody2D" parent="." unique_id=1142576350]
-position = Vector2(645, 429)
+position = Vector2(817, 375)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA7" unique_id=971330877]
@@ -258,36 +259,70 @@ position = Vector2(3.5, -50)
 shape = SubResource("RectangleShape2D_1kypq")
 
 [node name="GroundA8" type="StaticBody2D" parent="." unique_id=1026110103]
-position = Vector2(856, 399)
+position = Vector2(1021, 288)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA8" unique_id=1148107581]
-offset_left = -111.0
-offset_top = -56.0
-offset_right = 5.0
-offset_bottom = -44.0
+offset_left = -85.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 6.0
 mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA8" unique_id=2005632201]
-position = Vector2(-53, -50)
+position = Vector2(-27, 0)
 shape = SubResource("RectangleShape2D_a5k84")
 
 [node name="GroundA9" type="StaticBody2D" parent="." unique_id=1217506561]
-position = Vector2(999, 428)
+position = Vector2(1164, 317)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA9" unique_id=485704569]
-offset_left = -135.0
+offset_left = -109.0
+offset_top = -6.0
+offset_right = 31.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA9" unique_id=1472138672]
+position = Vector2(-39, 0)
+shape = SubResource("RectangleShape2D_i0n57")
+
+[node name="GroundA10" type="StaticBody2D" parent="." unique_id=186962801]
+position = Vector2(669, 413)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA10" unique_id=1933595337]
+offset_left = -117.0
+offset_top = 1.0
+offset_right = -79.0
+offset_bottom = 13.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA10" unique_id=1524537138]
+position = Vector2(-98, 7)
+shape = SubResource("RectangleShape2D_jlwql")
+
+[node name="GroundA11" type="StaticBody2D" parent="." unique_id=116830030]
+position = Vector2(716, 437)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA11" unique_id=2093188061]
+offset_left = -124.0
 offset_top = -56.0
-offset_right = 5.0
+offset_right = -86.0
 offset_bottom = -44.0
 mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA9" unique_id=1472138672]
-position = Vector2(-65, -50)
-shape = SubResource("RectangleShape2D_i0n57")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA11" unique_id=623903061]
+position = Vector2(-105, -50)
+shape = SubResource("RectangleShape2D_jlwql")
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=710330229]
 position = Vector2(18, 388)
@@ -295,25 +330,57 @@ position = Vector2(18, 388)
 [node name="CanvasGroup" type="CanvasGroup" parent="PlayerSpawn" unique_id=2105923266]
 position = Vector2(-40, -395)
 
+[node name="GroundA12" type="StaticBody2D" parent="." unique_id=201103653]
+position = Vector2(757, 414)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA12" unique_id=890199018]
+offset_left = -124.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA12" unique_id=2047932980]
+position = Vector2(-105, -50)
+shape = SubResource("RectangleShape2D_jlwql")
+
+[node name="GroundA13" type="StaticBody2D" parent="." unique_id=1903838787]
+position = Vector2(789, 387)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA13" unique_id=73011011]
+offset_left = -124.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA13" unique_id=127619805]
+position = Vector2(-105, -50)
+shape = SubResource("RectangleShape2D_jlwql")
+
 [node name="Spawns" type="Node2D" parent="." unique_id=1198833542]
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=1661484653]
-position = Vector2(401, 367)
+position = Vector2(155, 331)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=408788993]
-position = Vector2(468, 361)
+position = Vector2(346, 360)
 
 [node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=749709010]
-position = Vector2(568, 340)
+position = Vector2(575, 397)
 
 [node name="Spawn4" type="Marker2D" parent="Spawns" unique_id=1246422304]
-position = Vector2(664, 330)
+position = Vector2(757, 271)
 
 [node name="Spawn5" type="Marker2D" parent="Spawns" unique_id=280935440]
-position = Vector2(833, 315)
+position = Vector2(1024, 254)
 
 [node name="Spawn6" type="Marker2D" parent="Spawns" unique_id=974019742]
-position = Vector2(933, 353)
+position = Vector2(1124, 292)
 
 [node name="Player" parent="." unique_id=292960772 instance=ExtResource("2_player")]
 texture_filter = 1

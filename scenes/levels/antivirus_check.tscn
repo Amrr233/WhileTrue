@@ -4,9 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/virus_basic.tscn" id="3_enemy"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="3_k6phv"]
-[ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="4_c0bn3"]
-[ext_resource type="Texture2D" uid="uid://cacleupipoj32" path="res://assets/art/ui/exit.png" id="5_81xju"]
+[ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="5_81xju"]
+[ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="6_h8xk7"]
 [ext_resource type="AudioStream" uid="uid://fog0m7eggfap" path="res://assets/audio/sfx/Windows XP Hardware Remove.wav" id="7_c0bn3"]
+[ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="8_cbpmr"]
+[ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="9_540j4"]
+[ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="10_te8ey"]
+[ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="11_750d8"]
+[ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="12_03h55"]
+[ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="13_wb1u8"]
+[ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="14_cdjtt"]
+[ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="15_gw4w0"]
 
 [sub_resource type="RectangleShape2D" id="GroundShapeWide"]
 size = Vector2(960, 12)
@@ -107,7 +115,6 @@ position = Vector2(780, 395)
 
 [node name="Player" parent="." unique_id=1297168465 instance=ExtResource("2_player")]
 texture_filter = 1
-scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1698604293]
 position = Vector2(0, -60)
@@ -118,91 +125,6 @@ limit_right = 960
 limit_bottom = 430
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-
-[node name="top_bar" type="CanvasLayer" parent="." unique_id=1407333510]
-layer = -1
-
-[node name="WindowChrome" type="ColorRect" parent="top_bar" unique_id=1733499034]
-offset_right = 320.0
-offset_bottom = 16.0
-mouse_filter = 2
-color = Color(0.003921569, 0.3529412, 0.9098039, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=264235804]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 1.0
-offset_right = 126.0
-offset_bottom = 34.0
-rotation = -0.0035957948
-theme_override_fonts/font = ExtResource("3_k6phv")
-theme_override_font_sizes/font_size = 12
-text = "Antivirus"
-metadata/_edit_use_anchors_ = true
-
-[node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=4313174]
-offset_top = 16.0
-offset_right = 320.0
-offset_bottom = 26.0
-mouse_filter = 2
-color = Color(0.9254902, 0.9019608, 0.8392157, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="top_bar/WindowChrome2" unique_id=1800620582]
-layout_mode = 0
-offset_left = 5.0
-offset_right = 26.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("3_k6phv")
-theme_override_font_sizes/font_size = 8
-text = "File"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label3" type="Label" parent="top_bar/WindowChrome2" unique_id=674635165]
-layout_mode = 0
-offset_left = 81.00001
-offset_right = 102.00001
-offset_bottom = 10.0
-rotation = -0.0059144013
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("3_k6phv")
-theme_override_font_sizes/font_size = 8
-text = "Help"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label4" type="Label" parent="top_bar/WindowChrome2" unique_id=1218160651]
-layout_mode = 0
-offset_left = 50.0
-offset_right = 73.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("3_k6phv")
-theme_override_font_sizes/font_size = 8
-text = "Tools"
-metadata/_edit_use_anchors_ = true
-
-[node name="Label5" type="Label" parent="top_bar/WindowChrome2" unique_id=1257786532]
-layout_mode = 0
-offset_left = 29.0
-offset_right = 50.0
-offset_bottom = 10.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
-theme_override_fonts/font = ExtResource("3_k6phv")
-theme_override_font_sizes/font_size = 8
-text = "Edit"
-metadata/_edit_use_anchors_ = true
-
-[node name="icon" type="Sprite2D" parent="top_bar" unique_id=526022786]
-texture_filter = 1
-position = Vector2(10, 7)
-texture = ExtResource("4_c0bn3")
-
-[node name="icon2" type="Sprite2D" parent="top_bar" unique_id=1982825109]
-texture_filter = 1
-position = Vector2(307, 8)
-texture = ExtResource("5_81xju")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=901749874]
 layer = -2
@@ -217,3 +139,195 @@ color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 [node name="CheckStartSound" type="AudioStreamPlayer" parent="." unique_id=89444304]
 stream = ExtResource("7_c0bn3")
 volume_db = 15.0
+
+[node name="top_bar" type="CanvasLayer" parent="." unique_id=920176795]
+layer = -1
+
+[node name="WindowChrome" type="ColorRect" parent="top_bar" unique_id=1679824706]
+offset_right = 800.0
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.003921569, 0.3529412, 0.9098039, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=267165477]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030000005
+anchor_top = 0.0625
+anchor_right = 0.09375
+anchor_bottom = 0.0625
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 34.0
+rotation = -0.0035957948
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 22
+text = "Antivirus"
+metadata/_edit_use_anchors_ = true
+
+[node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=1339460751]
+anchors_preset = -1
+anchor_left = -0.035
+anchor_right = 0.5675
+anchor_bottom = 0.02
+offset_left = 26.0
+offset_top = 32.0
+offset_right = 346.0
+offset_bottom = 42.0
+mouse_filter = 2
+color = Color(0.9254902, 0.9019608, 0.8392157, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="top_bar/WindowChrome2" unique_id=522398218]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012468828
+anchor_top = 0.10526316
+anchor_right = 0.021197008
+anchor_bottom = 0.15789473
+offset_left = 5.0
+offset_right = 26.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 12
+text = "File"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="top_bar/WindowChrome2" unique_id=72489990]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064837895
+anchor_top = 0.10526316
+anchor_right = 0.07356607
+anchor_bottom = 0.15789473
+offset_left = 81.00001
+offset_right = 102.00001
+offset_bottom = 10.0
+rotation = -0.0059144013
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 12
+text = "Help"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="top_bar/WindowChrome2" unique_id=1542638212]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0037406483
+anchor_top = 0.10526316
+anchor_right = 0.018703243
+anchor_bottom = 0.15789473
+offset_left = 50.0
+offset_right = 73.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 12
+text = "Tools"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="top_bar/WindowChrome2" unique_id=1564027833]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08728179
+anchor_top = 0.10526316
+anchor_right = 0.09600998
+anchor_bottom = 0.15789473
+offset_left = 29.0
+offset_right = 50.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 12
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="Sprite2D" parent="top_bar" unique_id=251263687]
+texture_filter = 1
+position = Vector2(23, 16)
+scale = Vector2(0.07019277, 0.04547385)
+texture = ExtResource("6_h8xk7")
+
+[node name="icon2" type="Sprite2D" parent="top_bar" unique_id=1850387827]
+texture_filter = 1
+position = Vector2(772.5, 14.937497)
+scale = Vector2(0.08984388, 0.0864258)
+texture = ExtResource("5_81xju")
+
+[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=923478011]
+offset_left = -2.0
+offset_top = 409.0
+offset_right = 804.0
+offset_bottom = 449.0
+mouse_filter = 2
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=1626271003]
+layout_mode = 0
+offset_left = 425.0
+offset_top = -4.0
+offset_right = 790.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1623803066]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("8_cbpmr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=756723501]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("9_540j4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1418098915]
+custom_minimum_size = Vector2(10, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("10_te8ey")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_750d8")
+
+[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=972389976]
+custom_minimum_size = Vector2(20, 18)
+layout_mode = 2
+texture_normal = ExtResource("12_03h55")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("13_wb1u8")
+
+[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=1529990223]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -193.0
+offset_right = 164.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=2095370261 node_paths=PackedStringArray("start_menu")]
+texture_filter = 1
+layout_mode = 1
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 134.0
+offset_bottom = 69.0
+texture_normal = ExtResource("14_cdjtt")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("15_gw4w0")
+start_menu = NodePath("../startmenupanel")

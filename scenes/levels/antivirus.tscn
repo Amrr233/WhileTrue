@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="11_jwbkc"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="12_jwbkc"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="13_p42ld"]
+[ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="13_wjt0n"]
 [ext_resource type="AudioStream" uid="uid://c6qhpixjnp8ps" path="res://assets/audio/sfx/Windows XP Battery Low.wav" id="14_p42ld"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="14_wjt0n"]
 [ext_resource type="Texture2D" uid="uid://cqy14cq2iet3p" path="res://assets/art/ui/checkIcon.PNG" id="15_3hcds"]
@@ -21,18 +22,6 @@
 [ext_resource type="Script" uid="uid://5j0pf4gkuano" path="res://scenes/levels/title2.gd" id="18_jwbkc"]
 [ext_resource type="Script" uid="uid://45hr57ipd8od" path="res://scenes/levels/title3.gd" id="20_p42ld"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwbkc"]
-size = Vector2(35, 17)
-
-[sub_resource type="RectangleShape2D" id="OptionShape"]
-size = Vector2(19, 21)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5ovw"]
-size = Vector2(58, 14.625)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_amlij"]
-size = Vector2(48, 11)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlij"]
 bg_color = Color(0.8117647, 0.8117647, 0.8117647, 1)
 border_width_left = 1
@@ -40,6 +29,18 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwbkc"]
+size = Vector2(94, 78.25)
+
+[sub_resource type="RectangleShape2D" id="OptionShape"]
+size = Vector2(95.107086, 81.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5ovw"]
+size = Vector2(116.5, 46.328125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amlij"]
+size = Vector2(119, 27)
 
 [sub_resource type="RectangleShape2D" id="GroundShapeWide"]
 size = Vector2(941.2141, 12)
@@ -68,118 +69,146 @@ horizontal_alignment = 1
 [node name="HubArea" type="Node2D" parent="." unique_id=150556746]
 
 [node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
-position = Vector2(42, 99)
+position = Vector2(160, 257)
 
 [node name="Options" type="Node2D" parent="HubArea" unique_id=345804705]
 
-[node name="OptionCheck" type="Area2D" parent="HubArea/Options" unique_id=1305416982]
-position = Vector2(378, 183)
+[node name="Panel" type="Panel" parent="HubArea/Options" unique_id=1520092097]
+offset_left = 24.0
+offset_top = 74.0
+offset_right = 238.0
+offset_bottom = 322.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
+
+[node name="OptionCheck" type="Area2D" parent="HubArea/Options/Panel" unique_id=1305416982]
+position = Vector2(399, 277)
 collision_layer = 0
 script = ExtResource("3_option")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionCheck" unique_id=1955364254]
-position = Vector2(-338, -131)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/Panel/OptionCheck" unique_id=1955364254]
+position = Vector2(-288, -220)
 shape = SubResource("RectangleShape2D_jwbkc")
 
-[node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionCheck" unique_id=1148636525]
+[node name="Icon" type="Sprite2D" parent="HubArea/Options/Panel/OptionCheck" unique_id=1148636525]
 texture_filter = 1
-position = Vector2(-335, -117)
+position = Vector2(-293, -185)
+scale = Vector2(2.6822774, 2.638525)
 texture = ExtResource("15_3hcds")
 
-[node name="Title" type="Label" parent="HubArea/Options/OptionCheck" unique_id=1619188949]
-offset_left = -359.0
-offset_top = -152.0
-offset_right = -312.0
-offset_bottom = -129.0
+[node name="Title" type="Label" parent="HubArea/Options/Panel/OptionCheck" unique_id=1619188949]
+offset_left = -349.0
+offset_top = -266.0
+offset_right = -244.0
+offset_bottom = -234.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 36
 text = "Check"
 script = ExtResource("16_amlij")
 
-[node name="description" type="Label" parent="HubArea/Options/OptionCheck" unique_id=152845689]
+[node name="description" type="Label" parent="HubArea/Options/Panel/OptionCheck" unique_id=152845689]
 offset_left = -368.0
-offset_top = -99.0
-offset_right = -301.0
-offset_bottom = -77.0
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+offset_top = -133.0
+offset_right = -208.0
+offset_bottom = -103.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
-text = "fast check on little annoying baby viruses"
+theme_override_font_sizes/font_size = 14
+text = "The eesiest part go
+to get DASH"
 autowrap_mode = 2
 
-[node name="CheckSound" type="AudioStreamPlayer" parent="HubArea/Options/OptionCheck" unique_id=1889314080]
+[node name="CheckSound" type="AudioStreamPlayer" parent="HubArea/Options/Panel/OptionCheck" unique_id=1889314080]
 stream = ExtResource("14_p42ld")
 
-[node name="OptionScan" type="Area2D" parent="HubArea/Options" unique_id=2093314999]
-position = Vector2(351.21417, -134.08002)
+[node name="Panel2" type="Panel" parent="HubArea/Options" unique_id=1998580861]
+offset_left = 273.0
+offset_top = 74.0
+offset_right = 487.0
+offset_bottom = 322.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
+
+[node name="OptionScan" type="Area2D" parent="HubArea/Options/Panel2" unique_id=2093314999]
+position = Vector2(122, -34)
 collision_layer = 0
 script = ExtResource("3_option")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionScan" unique_id=1087265214]
-position = Vector2(-185.71417, 176.58002)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/Panel2/OptionScan" unique_id=1087265214]
+position = Vector2(-25, 86)
 shape = SubResource("OptionShape")
 
-[node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionScan" unique_id=556841829]
+[node name="Icon" type="Sprite2D" parent="HubArea/Options/Panel2/OptionScan" unique_id=556841829]
 texture_filter = 1
-position = Vector2(-205.21419, 199.08002)
+position = Vector2(-18.999989, 124)
+scale = Vector2(2.3108559, 2.6517854)
 texture = ExtResource("16_mht4f")
 
-[node name="Title" type="Label" parent="HubArea/Options/OptionScan" unique_id=1949515465]
-offset_left = -226.21417
-offset_top = 165.08002
-offset_right = -179.21417
-offset_bottom = 188.08002
+[node name="Title" type="Label" parent="HubArea/Options/Panel2/OptionScan" unique_id=1949515465]
+offset_left = -69.0
+offset_top = 52.0
+offset_right = 15.0
+offset_bottom = 84.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 36
 text = "Scan"
 script = ExtResource("18_jwbkc")
 tutorial_type = 1
 
-[node name="description" type="Label" parent="HubArea/Options/OptionScan" unique_id=292765819]
-offset_left = -131.21417
-offset_top = 216.08002
-offset_right = -65.21417
-offset_bottom = 238.08002
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+[node name="description" type="Label" parent="HubArea/Options/Panel2/OptionScan" unique_id=292765819]
+offset_left = -107.0
+offset_top = 173.0
+offset_right = 79.0
+offset_bottom = 218.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
-text = "fast check on little annoying baby viruses"
+theme_override_font_sizes/font_size = 14
+text = "a bit hard use your dash and get the double jumbn"
 autowrap_mode = 2
 
-[node name="OptionInvestigate" type="Area2D" parent="HubArea/Options" unique_id=1690148697]
-position = Vector2(418.4283, -134.16003)
+[node name="Panel3" type="Panel" parent="HubArea/Options" unique_id=960344211]
+offset_left = 536.0
+offset_top = 74.0
+offset_right = 777.0
+offset_bottom = 322.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
+
+[node name="OptionInvestigate" type="Area2D" parent="HubArea/Options/Panel3" unique_id=1690148697]
+position = Vector2(-70, -28)
 collision_layer = 0
 script = ExtResource("3_option")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionInvestigate" unique_id=1473591837]
-position = Vector2(-163.42831, 169.84753)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/Panel3/OptionInvestigate" unique_id=1473591837]
+position = Vector2(196.75, 54.835938)
 shape = SubResource("RectangleShape2D_p5ovw")
 
-[node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionInvestigate" unique_id=1206604940]
+[node name="Icon" type="Sprite2D" parent="HubArea/Options/Panel3/OptionInvestigate" unique_id=1206604940]
 texture_filter = 1
-position = Vector2(-166.42833, 198.16005)
+position = Vector2(189.00002, 115)
+scale = Vector2(2.139397, 2.4057598)
 texture = ExtResource("17_p5ovw")
 
-[node name="Title" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=480345243]
-offset_left = -208.42831
-offset_top = 163.16003
-offset_right = -105.428314
-offset_bottom = 186.16003
+[node name="Title" type="Label" parent="HubArea/Options/Panel3/OptionInvestigate" unique_id=480345243]
+offset_left = 73.0
+offset_top = 46.0
+offset_right = 305.0
+offset_bottom = 78.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-text = "Invesitgate"
+theme_override_font_sizes/font_size = 36
+text = "Investigate"
 script = ExtResource("20_p42ld")
 tutorial_type = 2
 
-[node name="description" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=386145781]
-offset_left = -303.4283
-offset_top = 217.16003
-offset_right = -239.42831
-offset_bottom = 239.16003
-theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+[node name="description" type="Label" parent="HubArea/Options/Panel3/OptionInvestigate" unique_id=386145781]
+offset_left = 106.0
+offset_top = 174.0
+offset_right = 279.0
+offset_bottom = 204.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
-text = "fast check on little annoying baby viruses"
+theme_override_font_sizes/font_size = 14
+text = "good luck."
 autowrap_mode = 2
 
 [node name="OptionFinal" type="Area2D" parent="HubArea/Options" unique_id=316930277]
@@ -228,79 +257,79 @@ position = Vector2(-24, -43)
 shape = SubResource("OptionShape")
 
 [node name="Platfrom1" type="StaticBody2D" parent="HubArea" unique_id=924391611]
-position = Vector2(-3, -13)
+position = Vector2(7, 113)
 collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom1" unique_id=1826830324]
-position = Vector2(41, 136.5)
+position = Vector2(129.5, 177.5)
 shape = SubResource("RectangleShape2D_amlij")
 
 [node name="Panel" type="Panel" parent="HubArea/Platfrom1" unique_id=962425861]
-offset_left = 17.0
-offset_top = 133.0
-offset_right = 65.0
-offset_bottom = 143.0
+offset_left = 69.0
+offset_top = 163.0
+offset_right = 188.0
+offset_bottom = 191.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
 
 [node name="Start Scan" type="Label" parent="HubArea/Platfrom1" unique_id=147993562]
-offset_left = 23.0
-offset_top = 132.0
-offset_right = 66.0
-offset_bottom = 145.0
+offset_left = 77.0
+offset_top = 168.0
+offset_right = 153.0
+offset_bottom = 188.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 13
 text = "Start check"
 
-[node name="Platfrom2" type="StaticBody2D" parent="HubArea" unique_id=132602908]
-position = Vector2(110, -13)
+[node name="Platfrom2" type="StaticBody2D" parent="HubArea" unique_id=1998354872]
+position = Vector2(250, 113)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom2" unique_id=586034128]
-position = Vector2(41, 135)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom2" unique_id=1921459326]
+position = Vector2(129.5, 177.5)
 shape = SubResource("RectangleShape2D_amlij")
 
-[node name="Panel" type="Panel" parent="HubArea/Platfrom2" unique_id=719225207]
-offset_left = 17.0
-offset_top = 133.0
-offset_right = 65.0
-offset_bottom = 143.0
+[node name="Panel" type="Panel" parent="HubArea/Platfrom2" unique_id=612154275]
+offset_left = 69.0
+offset_top = 163.0
+offset_right = 188.0
+offset_bottom = 191.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
 
-[node name="Start Scan" type="Label" parent="HubArea/Platfrom2" unique_id=1700001039]
-offset_left = 24.0
-offset_top = 132.0
-offset_right = 67.0
-offset_bottom = 145.0
+[node name="Start Scan" type="Label" parent="HubArea/Platfrom2" unique_id=143366404]
+offset_left = 77.0
+offset_top = 168.0
+offset_right = 153.0
+offset_bottom = 188.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-text = "Start scan"
+theme_override_font_sizes/font_size = 13
+text = "Start check"
 
-[node name="Platfrom3" type="StaticBody2D" parent="HubArea" unique_id=938677718]
-position = Vector2(211, -1)
+[node name="Platfrom3" type="StaticBody2D" parent="HubArea" unique_id=233120363]
+position = Vector2(526, 110)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom3" unique_id=502282120]
-position = Vector2(41, 135)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom3" unique_id=2000366072]
+position = Vector2(129.5, 177.5)
 shape = SubResource("RectangleShape2D_amlij")
 
-[node name="Panel" type="Panel" parent="HubArea/Platfrom3" unique_id=1992381328]
-offset_left = 17.0
-offset_top = 133.0
-offset_right = 65.0
-offset_bottom = 142.0
+[node name="Panel" type="Panel" parent="HubArea/Platfrom3" unique_id=157819567]
+offset_left = 69.0
+offset_top = 163.0
+offset_right = 188.0
+offset_bottom = 191.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
 
-[node name="Start Scan" type="Label" parent="HubArea/Platfrom3" unique_id=387014744]
-offset_left = 21.0
-offset_top = 132.0
-offset_right = 64.0
-offset_bottom = 145.0
+[node name="Start Scan" type="Label" parent="HubArea/Platfrom3" unique_id=935426693]
+offset_left = 77.0
+offset_top = 168.0
+offset_right = 153.0
+offset_bottom = 188.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 7
-text = "Start invest"
+theme_override_font_sizes/font_size = 13
+text = "Start check"
 
 [node name="FinalArena" type="Node2D" parent="." unique_id=496427461]
 
@@ -333,12 +362,11 @@ text = "FINAL // The core threat — defeat it to obtain the Cure"
 position = Vector2(-108, -1)
 
 [node name="Spawn1" type="Marker2D" parent="FinalArena/Spawns" unique_id=1642951126]
-position = Vector2(5580, 395)
+position = Vector2(6899, 718)
 
 [node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
 texture_filter = 1
-position = Vector2(151, 125)
-scale = Vector2(0.5, 0.5)
+position = Vector2(133, 238)
 
 [node name="top_bar" type="CanvasLayer" parent="." unique_id=1186141951]
 layer = -1
@@ -353,9 +381,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=1568374155]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.043750003
-anchor_top = 0.0625
-anchor_right = 0.1075
+anchor_left = 0.030000005
+anchor_top = 0.06250001
+anchor_right = 0.09375
 anchor_bottom = 0.0625
 offset_left = 19.0
 offset_top = 1.0
@@ -368,87 +396,114 @@ text = "Antivirus"
 metadata/_edit_use_anchors_ = true
 
 [node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=1612548555]
-offset_left = 27.0
-offset_top = 73.0
-offset_right = 347.0
-offset_bottom = 83.0
+anchors_preset = -1
+anchor_left = -0.035
+anchor_right = 0.5675
+anchor_bottom = 0.02
+offset_left = 26.0
+offset_top = 32.0
+offset_right = 346.0
+offset_bottom = 42.0
 mouse_filter = 2
 color = Color(0.9254902, 0.9019608, 0.8392157, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="top_bar/WindowChrome2" unique_id=15703364]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012468828
+anchor_top = 0.10526316
+anchor_right = 0.021197008
+anchor_bottom = 0.15789473
 offset_left = 5.0
 offset_right = 26.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "File"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="top_bar/WindowChrome2" unique_id=191598776]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064837895
+anchor_top = 0.10526316
+anchor_right = 0.07356607
+anchor_bottom = 0.15789473
 offset_left = 81.00001
 offset_right = 102.00001
 offset_bottom = 10.0
 rotation = -0.0059144013
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "Help"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label4" type="Label" parent="top_bar/WindowChrome2" unique_id=587947902]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0037406483
+anchor_top = 0.10526316
+anchor_right = 0.018703243
+anchor_bottom = 0.15789473
 offset_left = 50.0
 offset_right = 73.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "Tools"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label5" type="Label" parent="top_bar/WindowChrome2" unique_id=971272497]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08728179
+anchor_top = 0.10526316
+anchor_right = 0.09600998
+anchor_bottom = 0.15789473
 offset_left = 29.0
 offset_right = 50.0
 offset_bottom = 10.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 12
 text = "Edit"
 metadata/_edit_use_anchors_ = true
 
 [node name="icon" type="Sprite2D" parent="top_bar" unique_id=1810023060]
 texture_filter = 1
-position = Vector2(31.000002, 15)
+position = Vector2(23, 16)
 scale = Vector2(0.07019277, 0.04547385)
 texture = ExtResource("11_jwbkc")
 
 [node name="icon2" type="Sprite2D" parent="top_bar" unique_id=1597621984]
 texture_filter = 1
-position = Vector2(307, 8)
+position = Vector2(772.5, 14.937497)
+scale = Vector2(0.08984388, 0.0864258)
+texture = ExtResource("13_wjt0n")
 
-[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=1607338746]
-offset_top = 164.0
-offset_right = 320.0
-offset_bottom = 180.0
+[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=259733512]
+offset_left = -2.0
+offset_top = 409.0
+offset_right = 804.0
+offset_bottom = 449.0
 mouse_filter = 2
 color = Color(0.14117648, 0.36862746, 0.8627451, 1)
 
-[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=1361571853]
+[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=309915720]
 layout_mode = 0
-offset_left = 174.0
-offset_top = -2.0
-offset_right = 320.0
-offset_bottom = 18.0
+offset_left = 425.0
+offset_top = -4.0
+offset_right = 790.0
+offset_bottom = 46.0
 mouse_filter = 2
 theme_override_constants/separation = 4
 alignment = 2
 
-[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=2145798796]
+[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1131704141]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 size_flags_vertical = 4
@@ -457,7 +512,7 @@ texture = ExtResource("9_mht4f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=508278688]
+[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=170369567]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
 size_flags_vertical = 4
@@ -466,7 +521,7 @@ texture = ExtResource("10_p5ovw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1807672833]
+[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1367260734]
 custom_minimum_size = Vector2(10, 20)
 layout_mode = 2
 size_flags_vertical = 4
@@ -475,7 +530,7 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("12_jwbkc")
 
-[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=993064882]
+[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=813552074]
 custom_minimum_size = Vector2(20, 18)
 layout_mode = 2
 texture_normal = ExtResource("13_p42ld")
@@ -483,24 +538,34 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("14_wjt0n")
 
-[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=1371628844]
+[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=2106863147]
 visible = false
 layout_mode = 0
-offset_left = -1.0
-offset_top = -65.0
-offset_right = 79.0
-offset_bottom = -1.0
+offset_left = 2.0
+offset_top = -193.0
+offset_right = 164.0
+offset_bottom = 1.0
 mouse_filter = 2
 
-[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1860074564 node_paths=PackedStringArray("start_menu")]
+[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1178704530 node_paths=PackedStringArray("start_menu")]
 texture_filter = 1
 layout_mode = 1
-offset_left = -17.0
-offset_top = -9.0
-offset_right = 53.0
-offset_bottom = 27.0
+offset_left = -23.0
+offset_top = -25.0
+offset_right = 134.0
+offset_bottom = 69.0
 texture_normal = ExtResource("15_kp4bk")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("16_hso3t")
 start_menu = NodePath("../startmenupanel")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1498732880]
+layer = -2
+
+[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1659768472]
+offset_left = -7.0
+offset_top = -24.0
+offset_right = 822.0
+offset_bottom = 478.0
+color = Color(0.8039216, 0.8039216, 0.8117647, 1)

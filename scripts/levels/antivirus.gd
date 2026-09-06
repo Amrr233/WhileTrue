@@ -17,9 +17,9 @@ const INVESTIGATE_SCENE := "res://scenes/levels/antivirus_investigate.tscn"
 @onready var reward_label: Label = $HUD/RewardLabel
 @onready var hub_spawn: Marker2D = $HubArea/HubSpawn
 
-@onready var option_check: AntivirusOption = $HubArea/Options/OptionCheck
-@onready var option_scan: AntivirusOption = $HubArea/Options/OptionScan
-@onready var option_investigate: AntivirusOption = $HubArea/Options/OptionInvestigate
+@onready var option_check: AntivirusOption = $HubArea/Options/Panel/OptionCheck
+@onready var option_scan: AntivirusOption = $HubArea/Options/Panel2/OptionScan
+@onready var option_investigate: AntivirusOption = $HubArea/Options/Panel3/OptionInvestigate
 @onready var option_final: AntivirusOption = $HubArea/Options/OptionFinal
 
 @onready var final_arena: Node2D = $FinalArena

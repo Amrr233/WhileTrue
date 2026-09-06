@@ -2,13 +2,12 @@
 
 [ext_resource type="Script" uid="uid://d0rl06wn0xdm8" path="res://scripts/levels/antivirus.gd" id="1_level"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_7lyvm"]
-[ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="2_aiwav"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="Script" uid="uid://0f47ocsf4vin" path="res://scripts/interactables/antivirus_option.gd" id="3_option"]
-[ext_resource type="Texture2D" uid="uid://cacleupipoj32" path="res://assets/art/ui/exit.png" id="4_v5mxn"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="9_mht4f"]
 [ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="10_p5ovw"]
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="11_amlij"]
+[ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="11_jwbkc"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="12_jwbkc"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="13_p42ld"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="14_wjt0n"]
@@ -66,87 +65,6 @@ text = "REWARD"
 horizontal_alignment = 1
 
 [node name="HubArea" type="Node2D" parent="." unique_id=150556746]
-
-[node name="ColorRect" type="ColorRect" parent="HubArea" unique_id=367082786]
-offset_top = 17.0
-offset_right = 320.0
-offset_bottom = 180.0
-color = Color(0.8039216, 0.8039216, 0.8117647, 1)
-
-[node name="Taskbar" type="ColorRect" parent="HubArea/ColorRect" unique_id=1892305258]
-layout_mode = 0
-offset_top = 147.0
-offset_right = 320.0
-offset_bottom = 163.0
-mouse_filter = 2
-color = Color(0.14117648, 0.36862746, 0.8627451, 1)
-
-[node name="SystemTray" type="HBoxContainer" parent="HubArea/ColorRect/Taskbar" unique_id=1026335940]
-layout_mode = 0
-offset_left = 174.0
-offset_top = -2.0
-offset_right = 320.0
-offset_bottom = 18.0
-mouse_filter = 2
-theme_override_constants/separation = 4
-alignment = 2
-
-[node name="wifiicon" type="TextureRect" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=1090316745]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 0
-texture = ExtResource("9_mht4f")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="batteryicon" type="TextureRect" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=1105002307]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 0
-texture = ExtResource("10_p5ovw")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="audiotoggle" type="TextureButton" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=261535497]
-custom_minimum_size = Vector2(10, 20)
-layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("11_amlij")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("12_jwbkc")
-
-[node name="clocklabel" type="TextureButton" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=1262858017]
-custom_minimum_size = Vector2(20, 18)
-layout_mode = 2
-texture_normal = ExtResource("13_p42ld")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("14_wjt0n")
-
-[node name="startmenupanel" type="Panel" parent="HubArea/ColorRect/Taskbar" unique_id=1383522210]
-visible = false
-layout_mode = 0
-offset_left = -1.0
-offset_top = -65.0
-offset_right = 79.0
-offset_bottom = -1.0
-mouse_filter = 2
-
-[node name="Startmenu" type="TextureButton" parent="HubArea/ColorRect/Taskbar" unique_id=1991956880 node_paths=PackedStringArray("start_menu")]
-texture_filter = 1
-layout_mode = 1
-offset_left = -17.0
-offset_top = -9.0
-offset_right = 53.0
-offset_bottom = 27.0
-texture_normal = ExtResource("15_kp4bk")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("16_hso3t")
-start_menu = NodePath("../startmenupanel")
 
 [node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
 position = Vector2(42, 99)
@@ -422,28 +340,34 @@ scale = Vector2(0.5, 0.5)
 layer = -1
 
 [node name="WindowChrome" type="ColorRect" parent="top_bar" unique_id=16852296]
-offset_right = 320.0
-offset_bottom = 16.0
+offset_right = 800.0
+offset_bottom = 32.0
 mouse_filter = 2
 color = Color(0.003921569, 0.3529412, 0.9098039, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=1568374155]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043750003
+anchor_top = 0.0625
+anchor_right = 0.1075
+anchor_bottom = 0.0625
 offset_left = 19.0
 offset_top = 1.0
 offset_right = 126.0
 offset_bottom = 34.0
 rotation = -0.0035957948
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 22
 text = "Antivirus"
 metadata/_edit_use_anchors_ = true
 
 [node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=1612548555]
-offset_top = 16.0
-offset_right = 320.0
-offset_bottom = 26.0
+offset_left = 27.0
+offset_top = 73.0
+offset_right = 347.0
+offset_bottom = 83.0
 mouse_filter = 2
 color = Color(0.9254902, 0.9019608, 0.8392157, 1)
 metadata/_edit_use_anchors_ = true
@@ -495,10 +419,84 @@ metadata/_edit_use_anchors_ = true
 
 [node name="icon" type="Sprite2D" parent="top_bar" unique_id=1810023060]
 texture_filter = 1
-position = Vector2(10, 7)
-texture = ExtResource("2_aiwav")
+position = Vector2(31.000002, 15)
+scale = Vector2(0.07019277, 0.04547385)
+texture = ExtResource("11_jwbkc")
 
 [node name="icon2" type="Sprite2D" parent="top_bar" unique_id=1597621984]
 texture_filter = 1
 position = Vector2(307, 8)
-texture = ExtResource("4_v5mxn")
+
+[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=1607338746]
+offset_top = 164.0
+offset_right = 320.0
+offset_bottom = 180.0
+mouse_filter = 2
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=1361571853]
+layout_mode = 0
+offset_left = 174.0
+offset_top = -2.0
+offset_right = 320.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=2145798796]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("9_mht4f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=508278688]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("10_p5ovw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1807672833]
+custom_minimum_size = Vector2(10, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("11_amlij")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("12_jwbkc")
+
+[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=993064882]
+custom_minimum_size = Vector2(20, 18)
+layout_mode = 2
+texture_normal = ExtResource("13_p42ld")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("14_wjt0n")
+
+[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=1371628844]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -65.0
+offset_right = 79.0
+offset_bottom = -1.0
+mouse_filter = 2
+
+[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1860074564 node_paths=PackedStringArray("start_menu")]
+texture_filter = 1
+layout_mode = 1
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 53.0
+offset_bottom = 27.0
+texture_normal = ExtResource("15_kp4bk")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("16_hso3t")
+start_menu = NodePath("../startmenupanel")

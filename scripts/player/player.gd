@@ -290,7 +290,6 @@ func on_mouse_hold() -> void:
 
 ## Called by cursor.gd when the mouse releases the player.
 func on_mouse_release() -> void:
-	drop_sound.play()
 	if visual is AnimatedSprite2D:
 		# المرحلة 1: يقع للأمام (فريمات 0 لـ 4)
 		_falling_phase = true

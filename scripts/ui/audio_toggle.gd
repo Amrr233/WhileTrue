@@ -20,3 +20,7 @@ func _update_icon() -> void:
 	# اسحب صور الأيقونات بتاعتك وحط مساراتها هنا
 	if _muted:
 		texture_normal = preload("res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png") # صورة السماعة المكتومة
+
+
+func _on_antivirus_icon_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

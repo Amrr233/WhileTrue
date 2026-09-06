@@ -522,7 +522,7 @@ position = Vector2(5580, 395)
 [node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
 position = Vector2(57, 342)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=939686405]
+[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=939686405]
 position = Vector2(0, -38)
 offset = Vector2(38, 0)
 limit_left = 0

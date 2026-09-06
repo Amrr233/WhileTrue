@@ -189,7 +189,7 @@ position = Vector2(0, 3.5)
 shape = SubResource("PlayerShape")
 
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=59882741]
-texture_filter = 1
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_y4wgv")
 animation = &"jumping"
 
@@ -208,14 +208,12 @@ polygon = PackedVector2Array(-9, -6, 9, -6, 9, 6, -9, 6)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173342034]
 
 [node name="HealthBar" type="Control" parent="HUD" unique_id=790390521]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 106.0
+offset_right = 134.0
 offset_bottom = 24.0
-scale = Vector2(0.6, 0.6)
 script = ExtResource("2_dovo2")
 segment_texture = ExtResource("3_lvxji")
 segment_size = Vector2(20, 11)
@@ -237,5 +235,3 @@ offset_top = -10.0
 offset_right = 137.0
 offset_bottom = 30.0
 theme_override_constants/separation = -6
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2048529897]

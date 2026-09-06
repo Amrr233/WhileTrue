@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://bu5dk7ctgyljm"]
+
+[ext_resource type="Texture2D" uid="uid://by03disegdm11" path="res://assets/art/cutscenes/the loop monester.jpg" id="1_2hw55"]
+[ext_resource type="Script" uid="uid://cx04bl8taif8y" path="res://scripts/core/monster_cutscene.gd" id="1_6fdsf"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="3_6pr8g"]
+
+[sub_resource type="Animation" id="Animation_6pr8g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lotuc"]
+resource_name = "fade_out"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7kvec"]
+resource_name = "reveal_and_fade"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.04),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lotuc"]
+_data = {
+&"RESET": SubResource("Animation_6pr8g"),
+&"fade_out": SubResource("Animation_lotuc"),
+&"reveal": SubResource("Animation_7kvec")
+}
+
+[node name="MonsterCutscene" type="Node2D" unique_id=742735953]
+script = ExtResource("1_6fdsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1102567766]
+scale = Vector2(0.11721611, 0.1171875)
+texture = ExtResource("1_2hw55")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=855832174]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=284059692]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox" type="ColorRect" parent="CanvasLayer" unique_id=718897150]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -58.0
+offset_right = 86.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.078431375)
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogueBox" unique_id=813941712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_6pr8g")
+autowrap_mode = 2
+
+[node name="TypeTimer" type="Timer" parent="CanvasLayer/DialogueBox" unique_id=799797317]
+wait_time = 0.1
+
+[node name="namelapel" type="Label" parent="CanvasLayer/DialogueBox" unique_id=1538351971]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 40.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.95022565, 3.9948522e-06, 9.62615e-07, 1)
+theme_override_fonts/font = ExtResource("3_6pr8g")
+text = "???"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=882670002]
+libraries/ = SubResource("AnimationLibrary_lotuc")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

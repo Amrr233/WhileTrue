@@ -84,8 +84,10 @@ func _ready() -> void:
 		visual.frame = 0
 		visual.stop()
 		visual.animation_finished.connect(_on_stand_up_finished)
+		
 	if get_tree().current_scene.name == "Desktop":
-		camera.enabled = false
+		if camera:
+			camera.enabled = false
 
 func _physics_process(delta: float) -> void:
 	if _invulnerability_timer > 0.0:

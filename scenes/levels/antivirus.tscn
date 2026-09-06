@@ -23,16 +23,16 @@
 [ext_resource type="Script" uid="uid://45hr57ipd8od" path="res://scenes/levels/title3.gd" id="20_p42ld"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwbkc"]
-size = Vector2(38, 21.03125)
+size = Vector2(35, 17)
 
 [sub_resource type="RectangleShape2D" id="OptionShape"]
-size = Vector2(47.5, 23.875)
+size = Vector2(19, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5ovw"]
-size = Vector2(58, 19.25)
+size = Vector2(58, 14.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amlij"]
-size = Vector2(48, 8)
+size = Vector2(48, 11)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlij"]
 bg_color = Color(0.8117647, 0.8117647, 0.8117647, 1)
@@ -244,7 +244,7 @@ collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionCheck" unique_id=1955364254]
-position = Vector2(-344, -124)
+position = Vector2(-338, -131)
 shape = SubResource("RectangleShape2D_jwbkc")
 
 [node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionCheck" unique_id=1148636525]
@@ -279,7 +279,7 @@ collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionScan" unique_id=1087265214]
-position = Vector2(-206.21417, 177.08002)
+position = Vector2(-185.71417, 176.58002)
 shape = SubResource("OptionShape")
 
 [node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionScan" unique_id=556841829]
@@ -315,7 +315,7 @@ collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionInvestigate" unique_id=1473591837]
-position = Vector2(-163.42831, 196.16003)
+position = Vector2(-163.42831, 169.84753)
 shape = SubResource("RectangleShape2D_p5ovw")
 
 [node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionInvestigate" unique_id=1206604940]
@@ -396,24 +396,24 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom1" unique_id=1826830324]
-position = Vector2(41, 135)
+position = Vector2(41, 136.5)
 shape = SubResource("RectangleShape2D_amlij")
 
 [node name="Panel" type="Panel" parent="HubArea/Platfrom1" unique_id=962425861]
 offset_left = 17.0
 offset_top = 133.0
 offset_right = 65.0
-offset_bottom = 140.0
+offset_bottom = 143.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
 
 [node name="Start Scan" type="Label" parent="HubArea/Platfrom1" unique_id=147993562]
-offset_left = 27.0
+offset_left = 23.0
 offset_top = 132.0
-offset_right = 70.0
+offset_right = 66.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
-text = "start scan"
+text = "Start check"
 
 [node name="Platfrom2" type="StaticBody2D" parent="HubArea" unique_id=132602908]
 position = Vector2(110, -13)
@@ -428,17 +428,17 @@ shape = SubResource("RectangleShape2D_amlij")
 offset_left = 17.0
 offset_top = 133.0
 offset_right = 65.0
-offset_bottom = 140.0
+offset_bottom = 143.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
 
 [node name="Start Scan" type="Label" parent="HubArea/Platfrom2" unique_id=1700001039]
-offset_left = 27.0
+offset_left = 24.0
 offset_top = 132.0
-offset_right = 70.0
+offset_right = 67.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
-text = "start scan"
+text = "Start scan"
 
 [node name="Platfrom3" type="StaticBody2D" parent="HubArea" unique_id=938677718]
 position = Vector2(211, -1)
@@ -453,17 +453,17 @@ shape = SubResource("RectangleShape2D_amlij")
 offset_left = 17.0
 offset_top = 133.0
 offset_right = 65.0
-offset_bottom = 140.0
+offset_bottom = 142.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
 
 [node name="Start Scan" type="Label" parent="HubArea/Platfrom3" unique_id=387014744]
-offset_left = 27.0
+offset_left = 21.0
 offset_top = 132.0
-offset_right = 70.0
+offset_right = 64.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 7
-text = "start scan"
+text = "Start invest"
 
 [node name="FinalArena" type="Node2D" parent="." unique_id=496427461]
 

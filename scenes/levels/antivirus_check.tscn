@@ -15,12 +15,13 @@
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="13_wb1u8"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="14_cdjtt"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="15_gw4w0"]
+[ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="16_cbpmr"]
 
-[sub_resource type="RectangleShape2D" id="GroundShapeWide"]
-size = Vector2(960, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_540j4"]
+size = Vector2(56.5, 35)
 
-[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
-size = Vector2(60, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbpmr"]
+size = Vector2(290.5, 35)
 
 [node name="AntivirusCheck" type="Node2D" unique_id=1197594841]
 script = ExtResource("1_arena")
@@ -47,96 +48,32 @@ theme_override_font_sizes/font_size = 14
 text = "REWARD"
 horizontal_alignment = 1
 
-[node name="Ground" type="StaticBody2D" parent="." unique_id=283363246]
-position = Vector2(481, 354)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="Ground" unique_id=1611130562]
-offset_left = -480.0
-offset_top = -6.0
-offset_right = 480.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1311402815]
-shape = SubResource("GroundShapeWide")
-
-[node name="Platform01" type="StaticBody2D" parent="." unique_id=454775591]
-position = Vector2(298, 262)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="Platform01" unique_id=249677189]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform01" unique_id=455005591]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="Platform02" type="StaticBody2D" parent="." unique_id=457317195]
-position = Vector2(558, 232)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="Platform02" unique_id=48092365]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform02" unique_id=1886473506]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="Platform03" type="StaticBody2D" parent="." unique_id=1951879921]
-position = Vector2(890, 261)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="Platform03" unique_id=1612672977]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform03" unique_id=285774996]
-shape = SubResource("PlatformShapeSmall")
-
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=709783733]
 position = Vector2(47, 282)
 
-[node name="Instructions" type="Label" parent="." unique_id=423654117]
-offset_left = 10.0
-offset_top = 320.0
-offset_right = 600.0
-offset_bottom = 340.0
-text = "CHECK // Clear the viruses"
-
 [node name="Spawns" type="Node2D" parent="." unique_id=887874578]
+position = Vector2(36, -123)
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=725308070]
-position = Vector2(217, 270)
+position = Vector2(519, 358)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1095502375]
-position = Vector2(473, 254)
+position = Vector2(976, 298)
 
 [node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=1965097890]
-position = Vector2(775, 319)
+position = Vector2(1328, 424)
 
 [node name="Player" parent="." unique_id=1297168465 instance=ExtResource("2_player")]
 texture_filter = 1
+position = Vector2(80, 304)
+jump_velocity = -360.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1698604293]
-position = Vector2(101, 101)
+position = Vector2(138, 101)
 scale = Vector2(2, 2)
 limit_left = 3
 limit_top = 1
-limit_right = 951
+limit_right = 1410065408
 limit_bottom = 453
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
@@ -346,3 +283,228 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("15_gw4w0")
 start_menu = NodePath("../startmenupanel")
+
+[node name="Platform" type="Node2D" parent="." unique_id=1791158231]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Platform" unique_id=603914237]
+position = Vector2(1157, -218)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D2" unique_id=1571809159]
+position = Vector2(38, 79)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/StaticBody2D2" unique_id=1077463342]
+offset_left = -97.0
+offset_top = 81.0
+offset_right = 416.0
+offset_bottom = 121.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform1" type="StaticBody2D" parent="Platform" unique_id=389927026]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform1" unique_id=2052186533]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform1" unique_id=679323104]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform2" type="StaticBody2D" parent="Platform" unique_id=1545854510]
+position = Vector2(86, -40)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2" unique_id=284789055]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform2" unique_id=1020177637]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=250918857]
+position = Vector2(194, -42)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=1590560337]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform3" unique_id=1045178738]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=128694815]
+position = Vector2(277, -84)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4" unique_id=268699462]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform4" unique_id=1545278022]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform5" type="StaticBody2D" parent="Platform" unique_id=546313184]
+position = Vector2(391, -84)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5" unique_id=590324849]
+position = Vector2(193.75, 358.5)
+shape = SubResource("RectangleShape2D_cbpmr")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform5" unique_id=1733601986]
+offset_left = 16.0
+offset_top = 343.0
+offset_right = 380.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform11" type="StaticBody2D" parent="Platform" unique_id=1357995682]
+position = Vector2(1709, -155)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform11" unique_id=1391241298]
+position = Vector2(193.75, 358.5)
+shape = SubResource("RectangleShape2D_cbpmr")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform11" unique_id=299487184]
+offset_left = 16.0
+offset_top = 343.0
+offset_right = 380.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform6" type="StaticBody2D" parent="Platform" unique_id=114963861]
+position = Vector2(743, -83)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform6" unique_id=217680712]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform6" unique_id=752598216]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform12" type="StaticBody2D" parent="Platform" unique_id=643027274]
+position = Vector2(1510, -79)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12" unique_id=840045183]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform12" unique_id=30395430]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform13" type="StaticBody2D" parent="Platform" unique_id=1711784411]
+position = Vector2(1598, -147)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1032493352]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform13" unique_id=1870814295]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform7" type="StaticBody2D" parent="Platform" unique_id=1097264240]
+position = Vector2(838, -126)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=196090641]
+position = Vector2(193.75, 358.5)
+shape = SubResource("RectangleShape2D_cbpmr")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform7" unique_id=1151417775]
+offset_left = 16.0
+offset_top = 343.0
+offset_right = 380.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform8" type="StaticBody2D" parent="Platform" unique_id=360612376]
+position = Vector2(1186, -10)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8" unique_id=1511996982]
+position = Vector2(193.75, 358.5)
+shape = SubResource("RectangleShape2D_cbpmr")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform8" unique_id=823167989]
+offset_left = 16.0
+offset_top = 343.0
+offset_right = 380.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform9" type="StaticBody2D" parent="Platform" unique_id=1448272052]
+position = Vector2(391, -84)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform9" unique_id=1395528810]
+position = Vector2(193.75, 358.5)
+shape = SubResource("RectangleShape2D_cbpmr")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform9" unique_id=955563099]
+offset_left = 16.0
+offset_top = 343.0
+offset_right = 380.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")
+
+[node name="Platform10" type="StaticBody2D" parent="Platform" unique_id=457641713]
+position = Vector2(0, 1)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform10" unique_id=215095671]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_540j4")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform10" unique_id=1185268738]
+offset_left = 38.0
+offset_top = 343.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("16_cbpmr")

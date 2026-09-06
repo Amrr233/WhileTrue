@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="9_player"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_audio"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="11_clock"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="14_yn8t8"]
 
 [sub_resource type="RectangleShape2D" id="GroundShape"]
 size = Vector2(320, 12)
@@ -126,7 +127,7 @@ shape = SubResource("GroundShape")
 position = Vector2(210, 114)
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
-position = Vector2(40, 51)
+position = Vector2(93, 84)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("4_bin_script")
@@ -139,8 +140,19 @@ texture = ExtResource("2_bin")
 shape = SubResource("BinShape")
 one_way_collision = true
 
+[node name="Label" type="Label" parent="RecycleBin" unique_id=1999032194]
+offset_left = -49.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 5
+text = "recycle_bin"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="antivirusIcon" type="Area2D" parent="." unique_id=793301714]
-position = Vector2(-13, -5)
+position = Vector2(-12, -37)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("6_ujlt8")
@@ -153,6 +165,15 @@ texture = ExtResource("7_ml5y0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="antivirusIcon" unique_id=1791655265]
 position = Vector2(53, 121.5)
 shape = SubResource("RectangleShape2D_ikds4")
+
+[node name="Label" type="Label" parent="antivirusIcon" unique_id=97333750]
+offset_left = 42.0
+offset_top = 141.0
+offset_right = 120.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 5
+text = "Anti_Virus"
 
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]
 [connection signal="body_entered" from="antivirusIcon" to="antivirusIcon" method="_on_body_entered"]

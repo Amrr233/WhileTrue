@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ctrr4gglnc5pn" path="res://assets/art/characters/character-spritesheet.png" id="4_sheet"]
 [ext_resource type="AudioStream" uid="uid://6a5w0wvns8rc" path="res://assets/audio/sfx/grabsound.wav" id="6_75vfm"]
 [ext_resource type="AudioStream" uid="uid://cnaapmmr0w13b" path="res://assets/audio/sfx/Recycle.wav" id="7_0owmy"]
+[ext_resource type="AudioStream" uid="uid://dnkggpr5s7uqm" path="res://assets/audio/sfx/jump.wav" id="8_qek5x"]
+[ext_resource type="AudioStream" uid="uid://bcrbl4gb68rv6" path="res://assets/audio/sfx/hurt.wav" id="9_5gtgg"]
+[ext_resource type="AudioStream" uid="uid://3kycbb5nrclt" path="res://assets/audio/sfx/tap.wav" id="10_h17s1"]
 
 [sub_resource type="RectangleShape2D" id="PlayerShape"]
 size = Vector2(26, 46)
@@ -381,3 +384,12 @@ volume_db = 15.0
 [node name="DropSound" type="AudioStreamPlayer2D" parent="." unique_id=1708113551]
 stream = ExtResource("7_0owmy")
 volume_db = 15.0
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1462637812]
+stream = ExtResource("8_qek5x")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="." unique_id=1845810092]
+stream = ExtResource("9_5gtgg")
+
+[node name="AttackSound" type="AudioStreamPlayer" parent="." unique_id=1485040361]
+stream = ExtResource("10_h17s1")

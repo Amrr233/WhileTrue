@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_audio"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="11_clock"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="14_yn8t8"]
+[ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="17_3265r"]
 
 [sub_resource type="RectangleShape2D" id="GroundShape"]
 size = Vector2(320, 12)
@@ -174,6 +175,10 @@ offset_bottom = 164.0
 theme_override_fonts/font = ExtResource("14_yn8t8")
 theme_override_font_sizes/font_size = 5
 text = "Anti_Virus"
+
+[node name="desktob starting" type="AudioStreamPlayer" parent="." unique_id=1544037763]
+stream = ExtResource("17_3265r")
+autoplay = true
 
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]
 [connection signal="body_entered" from="antivirusIcon" to="antivirusIcon" method="_on_body_entered"]

@@ -36,7 +36,7 @@ func show_line() -> void:
 		dialogue_box.visible = false
 		anim.play("fade_out")
 		await anim.animation_finished
-		get_tree().change_scene_to_file("res://scenes/world/desktop.tscn")
+		get_tree().change_scene_to_file("res://scenes/cutscenes/sucked_cutscene.tscn")
 
 func _input(event: InputEvent) -> void:
 	var clicked = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1yjkqpeq35ds"]
+
+[ext_resource type="Texture2D" uid="uid://bmjlrrrqj6be4" path="res://assets/art/cutscenes/sucking.jpg" id="1_jleom"]
+[ext_resource type="Script" uid="uid://cydwhxcr0pe8f" path="res://scripts/core/sucked_cutscene.gd" id="1_mlekt"]
+
+[node name="SuckedCutscene" type="Node2D" unique_id=238567563]
+script = ExtResource("1_mlekt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=92931161]
+position = Vector2(160, 90.00001)
+scale = Vector2(0.11721611, 0.11588541)
+texture = ExtResource("1_jleom")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=623349763]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1640819371]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

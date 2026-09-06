@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cap7bdvd7oifl"]
+
+[ext_resource type="AudioStream" uid="uid://bm5ihesgyy3vo" path="res://assets/audio/music/TypeCastTheme.wav" id="1_nybvi"]
+[ext_resource type="Script" uid="uid://lsawfq8ar12f" path="res://resources/background_music_manager.gd" id="2_n08v2"]
+[ext_resource type="AudioStream" uid="uid://bq636psi16xl8" path="res://assets/audio/music/MeltdownTheme.wav" id="3_o68ir"]
+
+[node name="BackgroundMusicManager" type="Node" unique_id=2040572770]
+script = ExtResource("2_n08v2")
+
+[node name="DesktopMusic" type="AudioStreamPlayer" parent="." unique_id=812002988]
+stream = ExtResource("1_nybvi")
+
+[node name="RecycleBinMusic" type="AudioStreamPlayer" parent="." unique_id=1298846585]
+stream = ExtResource("3_o68ir")

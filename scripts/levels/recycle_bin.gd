@@ -1,16 +1,24 @@
 extends Node2D
 
-@onready var player: Player = $Player
-@onready var boss_spawn: Marker2D = $BossSpawn
-@onready var exit_gate: Area2D = $LevelExit
+@onready var desktop_startup_sound: AudioStreamPlayer = $"desktob starting"
 
 func _ready() -> void:
-	if GameState.recycle_bin_boss_defeated:
-		$MiniBoss.queue_free()
-
-	if GameState.has_sword:
-		$SwordPickup.queue_free()
-
-func _on_boss_checkpoint_entered(body: Node2D) -> void:
-	if body is Player:
-		body.set_checkpoint($BossCheckpoint.global_position + Vector2(0, -12))
+	if not GameState.desktop_startup_played:
+		GameState.desktop_startup_played = true
+		if desktop_startup_sound != null:
+			print("1. Playing startup sound...")
+			desktop_startup_sound.play()
+			
+			# Wait until the startup sound finishes completely
+			await desktop_startup_sound.finished
+			print("2. Startup sound finished successfully!")
+			
+			# Then start the global background music
+			BackgroundMusicManager.play_desktop_music()
+			print("3. Background music function called!")
+		else:
+			print("Error: Startup sound node is null.")
+			BackgroundMusicManager.play_desktop_music()
+	else:
+		print("Startup already played this session. Skipping straight to music.")
+		BackgroundMusicManager.play_desktop_music()

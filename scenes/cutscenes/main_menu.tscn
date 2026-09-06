@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dg8l7gvcvlbwh" path="res://scripts/core/main_menu.gd" id="1_qoahg"]
 [ext_resource type="Texture2D" uid="uid://d2dhg2l5kioq0" path="res://assets/art/cutscenes/the main menu background.jpg" id="2_0a0fo"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="3_ceqpf"]
+[ext_resource type="AudioStream" uid="uid://cpyx5jrlikh11" path="res://assets/audio/music/DarkCavern_PhoneHome.wav" id="4_0a0fo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
 bg_color = Color(0, 0, 0, 0.6313726)
@@ -41,5 +42,9 @@ theme_override_fonts/font = ExtResource("3_ceqpf")
 theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
 text = "START THE LOOP"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=196370339]
+stream = ExtResource("4_0a0fo")
+autoplay = true
 
 [connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]

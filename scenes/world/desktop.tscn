@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c4udty2hgiwdh"]
 
+[ext_resource type="Script" uid="uid://ctdlablbkv5dt" path="res://scripts/world/desktop.gd" id="1_1guff"]
 [ext_resource type="Texture2D" uid="uid://dpj2e8s3d7a1f" path="res://assets/art/environments/windows xp.jpg" id="1_bg"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="2_b7fx7"]
 [ext_resource type="Texture2D" uid="uid://bub4jrbdk866o" path="res://assets/art/ui/recycle pin.png" id="2_bin"]
@@ -32,6 +33,7 @@ size = Vector2(77.75, 67.75)
 size = Vector2(79.375, 67)
 
 [node name="Desktop" type="Node2D" unique_id=1245239160]
+script = ExtResource("1_1guff")
 
 [node name="Ui" type="Node2D" parent="." unique_id=810903109]
 
@@ -209,7 +211,6 @@ texture = ExtResource("17_1guff")
 
 [node name="desktob starting" type="AudioStreamPlayer" parent="." unique_id=1544037763]
 stream = ExtResource("17_3265r")
-autoplay = true
 
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]
 [connection signal="body_entered" from="antivirusIcon" to="antivirusIcon" method="_on_body_entered"]

@@ -17,6 +17,9 @@ var antivirus_scan_completed: bool = false
 var antivirus_investigate_completed: bool = false
 var antivirus_completed: bool = false
 
+# --- NEW: Tracks whether the desktop boot/startup sound has played this session ---
+var desktop_startup_played: bool = false
+
 func reset_progress() -> void:
 	has_sword = false
 	recycle_bin_boss_defeated = false
@@ -31,3 +34,6 @@ func reset_progress() -> void:
 	antivirus_scan_completed = false
 	antivirus_investigate_completed = false
 	antivirus_completed = false
+	
+	# Reset startup sound flag on a full game reset
+	desktop_startup_played = false

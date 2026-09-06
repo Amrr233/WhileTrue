@@ -487,6 +487,7 @@ offset_bottom = 340.0
 text = "FINAL // The core threat — defeat it to obtain the Cure"
 
 [node name="Spawns" type="Node2D" parent="FinalArena" unique_id=515173476]
+position = Vector2(-108, -1)
 
 [node name="Spawn1" type="Marker2D" parent="FinalArena/Spawns" unique_id=1642951126]
 position = Vector2(5580, 395)

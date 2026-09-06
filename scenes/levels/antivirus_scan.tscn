@@ -32,8 +32,10 @@ completed_flag = "antivirus_scan_completed"
 unlock_flag = "has_double_jump"
 reward_text = "SCAN COMPLETE — DOUBLE JUMP UNLOCKED"
 
-[node name="background" type="ColorRect" parent="." unique_id=399543967]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=789837837]
+layer = -2
+
+[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=399543967]
 offset_left = -73.0
 offset_top = -24.0
 offset_right = 1636.0

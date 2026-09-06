@@ -196,12 +196,17 @@ func _handle_horizontal_movement(delta: float) -> void:
 	if visual is AnimatedSprite2D:
 		visual.flip_h = (facing == -1)
 		
-		if not is_on_floor():
-			visual.play("jumping")
-		elif direction != 0.0:
-			visual.play("running")
-		else:
-			visual.play("idle")
+		# بنتحقق هل اللاعب بيضرب حالياً والأنيميشن لسه شغال؟
+		var is_attacking = (visual.animation == "hit_sword" or visual.animation == "hit_hand") and visual.is_playing()
+		
+		# لو مش بيضرب، شغل أنيميشن الحركة العادي
+		if not is_attacking:
+			if not is_on_floor():
+				visual.play("jumping")
+			elif direction != 0.0:
+				visual.play("running")
+			else:
+				visual.play("idle")
 
 func _handle_attack() -> void:
 	if get_tree().current_scene.name == "Desktop":
@@ -215,8 +220,18 @@ func _start_attack() -> void:
 	_attack_active_timer = attack_time
 	_attack_hit_ids.clear()
 	attack_shape.disabled = false
-	attack_visual.visible = true
+	
+	# لو حابب تخفي المربع الملون القديم بتاع الهجوم، خلي دي false، أو سيبها لو بتستخدمه كـ Debug
+	attack_visual.visible = true 
+	
 	attack_area.position.x = 12.0 * facing
+
+	# --- الجديد: تشغيل أنيميشن الضرب ---
+	if visual is AnimatedSprite2D:
+		if has_sword:
+			visual.play("hit_sword")
+		else:
+			visual.play("hit_hand")
 
 func _end_attack() -> void:
 	attack_shape.disabled = true

@@ -20,13 +20,6 @@ completed_flag = "antivirus_investigate_completed"
 unlock_flag = "has_key"
 reward_text = "INVESTIGATION COMPLETE — KEY OBTAINED"
 
-[node name="background" type="ColorRect" parent="." unique_id=1900822577]
-offset_left = -73.0
-offset_top = -24.0
-offset_right = 1636.0
-offset_bottom = 659.0
-color = Color(0.8039216, 0.8039216, 0.8117647, 1)
-
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1017970974]
 layer = 5
 
@@ -194,3 +187,13 @@ texture = ExtResource("5_10ony")
 texture_filter = 1
 position = Vector2(307, 8)
 texture = ExtResource("6_mbssk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1253853290]
+layer = -2
+
+[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1900822577]
+offset_left = -73.0
+offset_top = -24.0
+offset_right = 1636.0
+offset_bottom = 659.0
+color = Color(0.8039216, 0.8039216, 0.8117647, 1)

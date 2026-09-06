@@ -20,14 +20,6 @@ completed_flag = "antivirus_check_completed"
 unlock_flag = "has_dash"
 reward_text = "THREAT NEUTRALIZED — DASH UNLOCKED"
 
-[node name="background" type="ColorRect" parent="." unique_id=1186996138]
-visible = false
-offset_left = -73.0
-offset_top = -24.0
-offset_right = 1636.0
-offset_bottom = 659.0
-color = Color(0.8039216, 0.8039216, 0.8117647, 1)
-
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1260401068]
 layer = 5
 
@@ -210,3 +202,13 @@ texture = ExtResource("4_c0bn3")
 texture_filter = 1
 position = Vector2(307, 8)
 texture = ExtResource("5_81xju")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=901749874]
+layer = -2
+
+[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1186996138]
+offset_left = -73.0
+offset_top = -24.0
+offset_right = 1636.0
+offset_bottom = 659.0
+color = Color(0.8039216, 0.8039216, 0.8117647, 1)

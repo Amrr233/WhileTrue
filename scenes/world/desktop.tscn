@@ -137,6 +137,7 @@ texture = ExtResource("2_bin")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RecycleBin" unique_id=384448972]
 shape = SubResource("BinShape")
+one_way_collision = true
 
 [node name="antivirusIcon" type="Area2D" parent="." unique_id=793301714]
 position = Vector2(-13, -5)

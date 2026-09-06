@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://d3i5sg4rxskdk" path="res://assets/art/ui/heart.png" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://b72b45cdi4ubj" path="res://assets/art/ui/heart_seg.png" id="3_lvxji"]
 [ext_resource type="Texture2D" uid="uid://ctrr4gglnc5pn" path="res://assets/art/characters/character-spritesheet.png" id="4_sheet"]
+[ext_resource type="AudioStream" uid="uid://6a5w0wvns8rc" path="res://assets/audio/sfx/grabsound.wav" id="6_75vfm"]
+[ext_resource type="AudioStream" uid="uid://cnaapmmr0w13b" path="res://assets/audio/sfx/Recycle.wav" id="7_0owmy"]
 
 [sub_resource type="RectangleShape2D" id="PlayerShape"]
 size = Vector2(26, 46)
@@ -235,3 +237,11 @@ offset_top = -10.0
 offset_right = 137.0
 offset_bottom = 30.0
 theme_override_constants/separation = -6
+
+[node name="GrabSound" type="AudioStreamPlayer2D" parent="." unique_id=731341381]
+stream = ExtResource("6_75vfm")
+volume_db = 15.0
+
+[node name="DropSound" type="AudioStreamPlayer2D" parent="." unique_id=1708113551]
+stream = ExtResource("7_0owmy")
+volume_db = 15.0

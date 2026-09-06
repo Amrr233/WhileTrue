@@ -59,6 +59,8 @@ var respawn_position := Vector2.ZERO
 var _falling_phase := false
 var _checkpoint_set := false
 
+@onready var drop_sound: AudioStreamPlayer2D = $DropSound
+@onready var grab_sound: AudioStreamPlayer2D = $GrabSound
 @onready var camera: Camera2D = $Camera2D
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_shape: CollisionShape2D = $AttackArea/CollisionShape2D
@@ -278,6 +280,7 @@ func set_checkpoint(new_position: Vector2) -> void:
 ## Called by cursor.gd when the mouse presses down and grabs the player
 ## (used for the Desktop hub's "pick up the character" interaction).
 func on_mouse_hold() -> void:
+	grab_sound.play()
 	if visual is AnimatedSprite2D:
 		_falling_phase = false
 		# فريم واحد ثابت بس (المقلوب) - من غير أنيميشن
@@ -287,6 +290,7 @@ func on_mouse_hold() -> void:
 
 ## Called by cursor.gd when the mouse releases the player.
 func on_mouse_release() -> void:
+	drop_sound.play()
 	if visual is AnimatedSprite2D:
 		# المرحلة 1: يقع للأمام (فريمات 0 لـ 4)
 		_falling_phase = true

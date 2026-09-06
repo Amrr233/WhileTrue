@@ -163,7 +163,7 @@ offset_bottom = 218.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
 theme_override_font_sizes/font_size = 14
-text = "a bit hard use your dash and get the double jumbn"
+text = "a bit hard use your dash and get the double jump"
 autowrap_mode = 2
 
 [node name="Panel3" type="Panel" parent="HubArea/Options" unique_id=960344211]
@@ -304,7 +304,7 @@ offset_right = 153.0
 offset_bottom = 188.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
-text = "Start check"
+text = "Start scan"
 
 [node name="Platfrom3" type="StaticBody2D" parent="HubArea" unique_id=233120363]
 position = Vector2(526, 110)
@@ -329,7 +329,7 @@ offset_right = 153.0
 offset_bottom = 188.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
-text = "Start check"
+text = "Start investigate"
 
 [node name="FinalArena" type="Node2D" parent="." unique_id=496427461]
 
@@ -382,7 +382,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.030000005
-anchor_top = 0.06250001
+anchor_top = 0.0625
 anchor_right = 0.09375
 anchor_bottom = 0.0625
 offset_left = 19.0

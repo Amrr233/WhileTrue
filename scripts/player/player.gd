@@ -8,7 +8,7 @@ signal double_jump_state_changed(has_double_jump: bool)
 
 @export_category("Movement")
 @export var speed: float = 180.0
-@export var jump_velocity: float = -500.0
+@export var jump_velocity: float = -350.0
 @export var acceleration: float = 900.0
 @export var air_control: float = 0.8
 @export var coyote_time: float = 0.10
@@ -300,6 +300,16 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	velocity.x = knockback_x
 	velocity.y = knockback_y
 	health_changed.emit(health, max_health)
+	
+	# --- الجديد: وميض اللاعب باللون الأحمر عند الإصابة ---
+	if visual:
+		# نلون اللاعب بالأحمر الشفاف
+		visual.modulate = Color(1.0, 0.2, 0.2, 0.8)
+		
+		# نستخدم Tween لإرجاع لونه للأبيض الطبيعي بسلاسة
+		var tween = create_tween()
+		tween.tween_property(visual, "modulate", Color.WHITE, 0.2)
+	# ----------------------------------------------------
 
 	if health <= 0:
 		respawn()
@@ -310,6 +320,7 @@ func respawn() -> void:
 	health = max_health
 	_invulnerability_timer = 1.0
 	health_changed.emit(health, max_health)
+	get_tree().reload_current_scene()
 
 func set_checkpoint(new_position: Vector2) -> void:
 	respawn_position = new_position

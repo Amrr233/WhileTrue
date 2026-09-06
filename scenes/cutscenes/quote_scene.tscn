@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://du7xs0fosn64t"]
 
 [ext_resource type="Script" uid="uid://dl0u6feo3c3rh" path="res://scripts/core/quote_scene.gd" id="1_s72m0"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_wclpv"]
 
 [sub_resource type="Animation" id="Animation_wclpv"]
 length = 0.001
@@ -57,6 +58,7 @@ offset_left = 13.0
 offset_right = -8.466675
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wclpv")
 theme_override_font_sizes/font_size = 40
 text = "To break a loop, you must first realize you are trapped inside one
 ~ConcernedApes"

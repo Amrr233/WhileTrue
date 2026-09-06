@@ -10,6 +10,7 @@ class_name AntivirusArena
 ## Keep this scene's own layout a simple prototype (ground + a couple of
 ## platforms); enemy waves and difficulty are the part still being iterated on.
 
+@export_enum("check", "scan", "investigate") var arena_type: String = "check"
 @export var enemy_scene: PackedScene
 @export var completed_flag: String = ""   # GameState bool set true on clear, e.g. "antivirus_check_completed"
 @export var unlock_flag: String = ""      # GameState bool to also set true, e.g. "has_dash" (leave empty for none)
@@ -25,6 +26,13 @@ var _remaining := 0
 var _completed := false
 
 func _ready() -> void:
+	if arena_type == "check":
+		BackgroundMusicManager.play_check_music()
+	elif arena_type == "scan":
+		BackgroundMusicManager.play_scan_music()
+	elif arena_type == "investigate":
+		BackgroundMusicManager.play_investigate_music()
+
 	reward_label.visible = false
 
 	player.global_position = player_spawn.global_position

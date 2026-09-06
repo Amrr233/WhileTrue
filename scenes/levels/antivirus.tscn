@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://6ww1klhynp3s"]
 
 [ext_resource type="Script" uid="uid://d0rl06wn0xdm8" path="res://scripts/levels/antivirus.gd" id="1_level"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_7lyvm"]
+[ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="2_aiwav"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="Script" uid="uid://0f47ocsf4vin" path="res://scripts/interactables/antivirus_option.gd" id="3_option"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="4_exit"]
@@ -9,7 +11,7 @@
 size = Vector2(960, 12)
 
 [sub_resource type="RectangleShape2D" id="OptionShape"]
-size = Vector2(70, 60)
+size = Vector2(22, 34)
 
 [sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
 size = Vector2(60, 10)
@@ -40,11 +42,18 @@ horizontal_alignment = 1
 
 [node name="HubArea" type="Node2D" parent="." unique_id=150556746]
 
+[node name="ColorRect" type="ColorRect" parent="HubArea" unique_id=367082786]
+offset_top = 183.0
+offset_right = 533.0
+offset_bottom = 460.0
+color = Color(0.8039216, 0.8039216, 0.8117647, 1)
+
 [node name="WindowChrome" type="ColorRect" parent="HubArea" unique_id=296394210]
-offset_right = 960.0
-offset_bottom = 24.0
+offset_top = 159.0
+offset_right = 533.0
+offset_bottom = 183.0
 mouse_filter = 2
-color = Color(0.19, 0.36, 0.62, 1)
+color = Color(0.003921569, 0.3529412, 0.9098039, 1)
 
 [node name="WindowTitle" type="Label" parent="HubArea" unique_id=1234396579]
 offset_left = 8.0
@@ -53,54 +62,57 @@ offset_right = 300.0
 offset_bottom = 20.0
 text = "PixelGuard Antivirus"
 
-[node name="TaskBar" type="Label" parent="HubArea" unique_id=1393007427]
-offset_left = 8.0
-offset_top = 26.0
-offset_right = 400.0
-offset_bottom = 42.0
-text = "File   Edit   View   Tools   Help"
+[node name="Label" type="Label" parent="HubArea" unique_id=2055025236]
+offset_left = 31.0
+offset_top = 164.0
+offset_right = 101.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 12
+text = "Antivirus"
+
+[node name="icon" type="Sprite2D" parent="HubArea" unique_id=1675847924]
+position = Vector2(19.000002, 171.00002)
+scale = Vector2(0.078046925, 0.05799995)
+texture = ExtResource("2_aiwav")
 
 [node name="HubGround" type="StaticBody2D" parent="HubArea" unique_id=830699118]
 position = Vector2(480, 420)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="HubArea/HubGround" unique_id=368618345]
-offset_left = -480.0
-offset_top = -6.0
-offset_right = 480.0
-offset_bottom = 6.0
+offset_left = -474.0
+offset_top = -54.0
+offset_right = 486.0
+offset_bottom = -42.0
 mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/HubGround" unique_id=353072437]
+position = Vector2(5, -49)
 shape = SubResource("GroundShapeWide")
 
 [node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
-position = Vector2(60, 395)
-
-[node name="Instructions" type="Label" parent="HubArea" unique_id=1509564513]
-offset_left = 30.0
-offset_top = 48.0
-offset_right = 800.0
-offset_bottom = 68.0
-text = "PixelGuard Antivirus // Walk into CHECK, SCAN or INVESTIGATE"
+position = Vector2(57, 342)
 
 [node name="LevelExit" parent="HubArea" unique_id=1502445892 instance=ExtResource("4_exit")]
-position = Vector2(40, 400)
+position = Vector2(17, 343)
 
 [node name="Options" type="Node2D" parent="HubArea" unique_id=345804705]
 
 [node name="OptionCheck" type="Area2D" parent="HubArea/Options" unique_id=1305416982]
-position = Vector2(250, 420)
+position = Vector2(102, 303)
 collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="Panel" type="ColorRect" parent="HubArea/Options/OptionCheck" unique_id=1410279582]
-offset_left = -35.0
+offset_left = -36.0
 offset_top = -60.0
-offset_right = 35.0
+offset_right = 34.0
 mouse_filter = 2
 color = Color(0.75, 0.78, 0.82, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionCheck" unique_id=1197833022]
 offset_left = -35.0
@@ -109,14 +121,16 @@ offset_right = 35.0
 offset_bottom = -48.0
 mouse_filter = 2
 color = Color(0.35, 0.8, 0.4, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HubArea/Options/OptionCheck" unique_id=1889714267]
-offset_left = -35.0
-offset_top = -46.0
-offset_right = 35.0
-offset_bottom = -28.0
+offset_left = -33.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = -14.0
 text = "CHECK"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LockLabel" type="Label" parent="HubArea/Options/OptionCheck" unique_id=2014745042]
 visible = false
@@ -133,7 +147,7 @@ position = Vector2(0, -30)
 shape = SubResource("OptionShape")
 
 [node name="OptionScan" type="Area2D" parent="HubArea/Options" unique_id=2093314999]
-position = Vector2(480, 420)
+position = Vector2(261, 304)
 collision_layer = 0
 script = ExtResource("3_option")
 
@@ -143,6 +157,7 @@ offset_top = -60.0
 offset_right = 35.0
 mouse_filter = 2
 color = Color(0.75, 0.78, 0.82, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionScan" unique_id=278023103]
 offset_left = -35.0
@@ -151,6 +166,7 @@ offset_right = 35.0
 offset_bottom = -48.0
 mouse_filter = 2
 color = Color(0.85, 0.55, 0.15, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HubArea/Options/OptionScan" unique_id=1923544020]
 offset_left = -35.0
@@ -159,6 +175,7 @@ offset_right = 35.0
 offset_bottom = -28.0
 text = "SCAN"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LockLabel" type="Label" parent="HubArea/Options/OptionScan" unique_id=1008448992]
 visible = false
@@ -175,16 +192,18 @@ position = Vector2(0, -30)
 shape = SubResource("OptionShape")
 
 [node name="OptionInvestigate" type="Area2D" parent="HubArea/Options" unique_id=1690148697]
-position = Vector2(710, 420)
+position = Vector2(403, 301)
 collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="Panel" type="ColorRect" parent="HubArea/Options/OptionInvestigate" unique_id=1526613033]
 offset_left = -35.0
-offset_top = -60.0
+offset_top = -56.0
 offset_right = 35.0
+offset_bottom = 4.0
 mouse_filter = 2
 color = Color(0.75, 0.78, 0.82, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionInvestigate" unique_id=396064094]
 offset_left = -35.0
@@ -193,6 +212,7 @@ offset_right = 35.0
 offset_bottom = -48.0
 mouse_filter = 2
 color = Color(0.55, 0.15, 0.75, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=1959467508]
 offset_left = -35.0
@@ -201,6 +221,7 @@ offset_right = 35.0
 offset_bottom = -28.0
 text = "INVESTIGATE"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LockLabel" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=1090649662]
 visible = false
@@ -217,16 +238,18 @@ position = Vector2(0, -30)
 shape = SubResource("OptionShape")
 
 [node name="OptionFinal" type="Area2D" parent="HubArea/Options" unique_id=316930277]
-position = Vector2(900, 420)
+position = Vector2(-1556, 519)
 collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="Panel" type="ColorRect" parent="HubArea/Options/OptionFinal" unique_id=782304099]
 offset_left = -35.0
 offset_top = -60.0
-offset_right = 35.0
+offset_right = -22.0
+offset_bottom = -35.0
 mouse_filter = 2
 color = Color(0.75, 0.78, 0.82, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionFinal" unique_id=2108391685]
 offset_left = -35.0
@@ -235,6 +258,7 @@ offset_right = 35.0
 offset_bottom = -48.0
 mouse_filter = 2
 color = Color(0.75, 0.1, 0.15, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HubArea/Options/OptionFinal" unique_id=560581528]
 offset_left = -35.0
@@ -243,6 +267,7 @@ offset_right = 35.0
 offset_bottom = -28.0
 text = "FINAL"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="LockLabel" type="Label" parent="HubArea/Options/OptionFinal" unique_id=1410789677]
 visible = false
@@ -255,7 +280,7 @@ text = "LOCKED"
 horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionFinal" unique_id=814705133]
-position = Vector2(0, -30)
+position = Vector2(-24, -43)
 shape = SubResource("OptionShape")
 
 [node name="CheckArena" type="Node2D" parent="." unique_id=662528291]
@@ -495,13 +520,13 @@ text = "FINAL // The core threat — defeat it to obtain the Cure"
 position = Vector2(5580, 395)
 
 [node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
-position = Vector2(60, 395)
+position = Vector2(57, 342)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=939686405]
 position = Vector2(0, -38)
-zoom = Vector2(0.6, 0.6)
+offset = Vector2(38, 0)
 limit_left = 0
-limit_top = -80
+limit_top = 160
 limit_right = 6060
 limit_bottom = 460
 position_smoothing_enabled = true

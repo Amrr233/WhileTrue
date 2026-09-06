@@ -228,7 +228,7 @@ texture = ExtResource("4_v5mxn")
 position = Vector2(42, 99)
 
 [node name="LevelExit" parent="HubArea" unique_id=1502445892 instance=ExtResource("4_exit")]
-position = Vector2(307, 17)
+position = Vector2(307, 9)
 
 [node name="Options" type="Node2D" parent="HubArea" unique_id=345804705]
 

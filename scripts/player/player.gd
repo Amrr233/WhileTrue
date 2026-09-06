@@ -59,6 +59,10 @@ var respawn_position := Vector2.ZERO
 var _falling_phase := false
 var _checkpoint_set := false
 
+
+@onready var attack_sound: AudioStreamPlayer = $AttackSound
+@onready var hurt_sound: AudioStreamPlayer = $HurtSound
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var drop_sound: AudioStreamPlayer2D = $DropSound
 @onready var grab_sound: AudioStreamPlayer2D = $GrabSound
 @onready var camera: Camera2D = $Camera2D
@@ -86,8 +90,6 @@ func _ready() -> void:
 		visual.frame = 0
 		visual.stop()
 		visual.animation_finished.connect(_on_stand_up_finished)
-	#if get_tree().current_scene.name == "Desktop":
-		#camera.enabled = false
 
 func _physics_process(delta: float) -> void:
 	if _invulnerability_timer > 0.0:
@@ -142,6 +144,9 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y = minf(velocity.y, max_fall_speed)
 
 func _handle_jump() -> void:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = jump_velocity
+		jump_sound.play()
 	if get_tree().current_scene.name == "Desktop":
 		return
 
@@ -216,13 +221,13 @@ func _handle_attack() -> void:
 		_start_attack()
 
 func _start_attack() -> void:
+	attack_sound.play() # <--- Your attack sound triggers here
 	_attack_timer = attack_cooldown
 	_attack_active_timer = attack_time
 	_attack_hit_ids.clear()
 	attack_shape.disabled = false
 	
-	# لو حابب تخفي المربع الملون القديم بتاع الهجوم، خلي دي false، أو سيبها لو بتستخدمه كـ Debug
-	attack_visual.visible = true 
+	attack_visual.visible = true
 	
 	attack_area.position.x = 12.0 * facing
 
@@ -271,6 +276,9 @@ func set_has_double_jump(value: bool) -> void:
 func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90.0) -> void:
 	if _invulnerability_timer > 0.0:
 		return
+		
+	# Fixed Indentation: Hurt sound now plays correctly outside the early return loop
+	hurt_sound.play()
 
 	health = maxi(health - amount, 0)
 	_invulnerability_timer = contact_invulnerability
@@ -318,7 +326,7 @@ func _on_stand_up_finished() -> void:
 		return
 	if _falling_phase:
 		_falling_phase = false
-		visual.play_backwards("stand_up")  # المرحلة 2: بيقوم (عكس السقوط)
+		visual.play_backwards("stand_up") # المرحلة 2: بيقوم (عكس السقوط)
 	else:
 		visual.frame = 0
 		visual.stop()

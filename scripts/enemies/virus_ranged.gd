@@ -22,6 +22,8 @@ var health: int
 var _attack_timer := 0.0
 var _fire_timer := 0.0
 var _target: Player
+var _spawn_y := 0.0
+var _spawn_y_set := false
 
 func _ready() -> void:
 	add_to_group("enemies")
@@ -30,6 +32,19 @@ func _ready() -> void:
 	_fire_timer = randf_range(0.4, fire_cooldown)
 
 func _physics_process(delta: float) -> void:
+	# نسجل نقطة الظهور الحقيقية أول فريم فيزيائي بس (بعد ما الأرينا تكون
+	# حركته لمكانه الصح - وقت _ready() لسه بيكون في نقطة (0,0) الافتراضية).
+	if not _spawn_y_set:
+		_spawn_y = global_position.y
+		_spawn_y_set = true
+
+	# لو وقع في فجوة/حفرة تحت نقطة ظهوره بمسافة كبيرة، يتحسب خسران
+	# ويموت تلقائيًا - عشان اللاعب متتحبسش في الليفل لو فيروس عالق.
+	if global_position.y > _spawn_y + 300.0:
+		died.emit()
+		queue_free()
+		return
+
 	if _attack_timer > 0.0:
 		_attack_timer -= delta
 	if _fire_timer > 0.0:
@@ -42,6 +57,23 @@ func _physics_process(delta: float) -> void:
 	var distance := global_position.distance_to(_target.global_position)
 	if distance <= chase_range:
 		var direction := signf(_target.global_position.x - global_position.x)
+		
+		# --- EDGE DETECTION LOGIC ---
+		# Checks if you added the RayCast2D so the game doesn't crash if it's missing
+		if has_node("RayCast2D"):
+			var edge_check: RayCast2D = $RayCast2D
+			
+			# Move the RayCast slightly ahead in the direction the enemy wants to go
+			edge_check.position.x = direction * 15.0
+			# مدى قصير (نزلة بسيطة بس) - عشان مايعتبرش أي هوة كبيرة "أرضية آمنة"
+			edge_check.target_position = Vector2(0, 40)
+			edge_check.force_raycast_update()
+			
+			# لو مفيش أرضية قريبة قدامه (حافة/فجوة حقيقية)، يوقف فورًا
+			if not edge_check.is_colliding():
+				direction = 0.0 
+		# -----------------------------
+		
 		velocity.x = move_toward(velocity.x, direction * speed, 220.0 * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, 200.0 * delta)

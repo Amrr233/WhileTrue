@@ -226,6 +226,7 @@ centered = false
 [node name="CutsceneDirector" type="AnimationPlayer" parent="." unique_id=1286283172]
 libraries/ = SubResource("AnimationLibrary_jfsk7")
 autoplay = &"day_night_loop"
+speed_scale = 0.5
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1202819577]
 position = Vector2(119, 81)

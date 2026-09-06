@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c86r3qhkq3be5" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/virus_ranged.tscn" id="3_enemy"]
+[ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="3_enemy"]
 [ext_resource type="Texture2D" uid="uid://cacleupipoj32" path="res://assets/art/ui/exit.png" id="4_8j87y"]
 [ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="4_bnj5g"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_s0ay3"]
@@ -258,7 +258,7 @@ position = Vector2(3.5, -50)
 shape = SubResource("RectangleShape2D_1kypq")
 
 [node name="GroundA8" type="StaticBody2D" parent="." unique_id=1026110103]
-position = Vector2(857, 405)
+position = Vector2(856, 399)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA8" unique_id=1148107581]
@@ -274,7 +274,7 @@ position = Vector2(-53, -50)
 shape = SubResource("RectangleShape2D_a5k84")
 
 [node name="GroundA9" type="StaticBody2D" parent="." unique_id=1217506561]
-position = Vector2(992, 442)
+position = Vector2(999, 428)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="GroundA9" unique_id=485704569]

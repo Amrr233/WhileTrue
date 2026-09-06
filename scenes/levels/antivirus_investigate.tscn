@@ -253,11 +253,11 @@ offset_top = -4.0
 offset_right = 790.0
 offset_bottom = 46.0
 mouse_filter = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 12
 alignment = 2
 
 [node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1920482635]
-custom_minimum_size = Vector2(12, 12)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 0
@@ -266,7 +266,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1300867818]
-custom_minimum_size = Vector2(12, 12)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 0
@@ -275,7 +275,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1992361260]
-custom_minimum_size = Vector2(10, 20)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("9_0nc7b")
@@ -284,7 +284,7 @@ stretch_mode = 5
 script = ExtResource("10_se3md")
 
 [node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1318639391]
-custom_minimum_size = Vector2(20, 18)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("11_nlgur")
 ignore_texture_size = true
@@ -303,10 +303,10 @@ mouse_filter = 2
 [node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1191360323 node_paths=PackedStringArray("start_menu")]
 texture_filter = 1
 layout_mode = 1
-offset_left = -23.0
-offset_top = -25.0
-offset_right = 134.0
-offset_bottom = 69.0
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 104.0
+offset_bottom = 48.0
 texture_normal = ExtResource("13_moxm3")
 ignore_texture_size = true
 stretch_mode = 0

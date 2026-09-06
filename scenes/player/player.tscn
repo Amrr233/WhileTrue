@@ -377,7 +377,6 @@ polygon = PackedVector2Array(-9, -6, 9, -6, 9, 6, -9, 6)
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1173342034]
 
 [node name="HealthBar" type="Control" parent="HUD" unique_id=790390521]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0

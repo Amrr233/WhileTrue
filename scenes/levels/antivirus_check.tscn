@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c86r3qhkq3be5" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/virus_basic.tscn" id="3_enemy"]
+[ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="3_enemy"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="3_k6phv"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="5_81xju"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="6_h8xk7"]
@@ -48,7 +48,7 @@ text = "REWARD"
 horizontal_alignment = 1
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=283363246]
-position = Vector2(480, 420)
+position = Vector2(481, 354)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="Ground" unique_id=1611130562]
@@ -63,7 +63,7 @@ color = Color(0.12, 0.14, 0.18, 1)
 shape = SubResource("GroundShapeWide")
 
 [node name="Platform01" type="StaticBody2D" parent="." unique_id=454775591]
-position = Vector2(300, 365)
+position = Vector2(298, 262)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="Platform01" unique_id=249677189]
@@ -78,7 +78,7 @@ color = Color(0.18, 0.2, 0.23, 1)
 shape = SubResource("PlatformShapeSmall")
 
 [node name="Platform02" type="StaticBody2D" parent="." unique_id=457317195]
-position = Vector2(560, 335)
+position = Vector2(558, 232)
 collision_layer = 2
 
 [node name="Visual" type="ColorRect" parent="Platform02" unique_id=48092365]
@@ -92,8 +92,23 @@ color = Color(0.18, 0.2, 0.23, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform02" unique_id=1886473506]
 shape = SubResource("PlatformShapeSmall")
 
+[node name="Platform03" type="StaticBody2D" parent="." unique_id=1951879921]
+position = Vector2(890, 261)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="Platform03" unique_id=1612672977]
+offset_left = -30.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform03" unique_id=285774996]
+shape = SubResource("PlatformShapeSmall")
+
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=709783733]
-position = Vector2(40, 395)
+position = Vector2(47, 282)
 
 [node name="Instructions" type="Label" parent="." unique_id=423654117]
 offset_left = 10.0
@@ -105,29 +120,30 @@ text = "CHECK // Clear the viruses"
 [node name="Spawns" type="Node2D" parent="." unique_id=887874578]
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=725308070]
-position = Vector2(260, 395)
+position = Vector2(217, 270)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1095502375]
-position = Vector2(520, 395)
+position = Vector2(473, 254)
 
 [node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=1965097890]
-position = Vector2(780, 395)
+position = Vector2(775, 319)
 
 [node name="Player" parent="." unique_id=1297168465 instance=ExtResource("2_player")]
 texture_filter = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1698604293]
-position = Vector2(0, -60)
+position = Vector2(101, 101)
 scale = Vector2(2, 2)
-limit_left = 0
-limit_top = -60
-limit_right = 960
-limit_bottom = 430
+limit_left = 3
+limit_top = 1
+limit_right = 951
+limit_bottom = 453
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=901749874]
 layer = -2
+visible = false
 
 [node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1186996138]
 offset_left = -73.0
@@ -258,7 +274,6 @@ scale = Vector2(0.08984388, 0.0864258)
 texture = ExtResource("5_81xju")
 
 [node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=923478011]
-offset_left = -2.0
 offset_top = 409.0
 offset_right = 804.0
 offset_bottom = 449.0

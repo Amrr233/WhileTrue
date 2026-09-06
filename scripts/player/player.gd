@@ -7,8 +7,8 @@ signal dash_state_changed(has_dash: bool)
 signal double_jump_state_changed(has_double_jump: bool)
 
 @export_category("Movement")
-@export var speed: float = 90.0
-@export var jump_velocity: float = -300.0
+@export var speed: float = 180.0
+@export var jump_velocity: float = -500.0
 @export var acceleration: float = 900.0
 @export var air_control: float = 0.8
 @export var coyote_time: float = 0.10
@@ -33,7 +33,7 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export var contact_invulnerability: float = 0.55
 
 @export_category("Dash")
-@export var dash_speed: float = 200.0
+@export var dash_speed: float = 400.0
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 0.45
 

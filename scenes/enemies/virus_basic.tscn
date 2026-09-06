@@ -1,22 +1,126 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://b7lax1cf5cckh"]
 
-[ext_resource type="Script" path="res://scripts/enemies/virus_basic.gd" id="1_basic"]
+[ext_resource type="Script" uid="uid://biuciylrljhs4" path="res://scripts/enemies/virus_basic.gd" id="1_basic"]
+[ext_resource type="Texture2D" uid="uid://cfmedp2t7t5k0" path="res://assets/art/enemies/basic_vrius.png" id="2_so5o7"]
 
-[sub_resource type="CircleShape2D" id="VirusShapeBasic"]
-radius = 7.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_so5o7"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(0, 184, 169, 184)
 
-[node name="VirusBasic" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvgju"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(169, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeioc"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(338, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5sop"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(507, 184, 169, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdhvq"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(0, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr01f"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(112, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpt0g"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(0, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3olh"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(112, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kf83"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(224, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5icik"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(336, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd85j"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(448, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1d4p"]
+atlas = ExtResource("2_so5o7")
+region = Rect2(560, 0, 112, 184)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvgju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so5o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvgju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeioc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5sop")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdhvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr01f")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpt0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3olh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kf83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5icik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd85j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1d4p")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so5o7"]
+size = Vector2(49, 59)
+
+[node name="VirusBasic" type="CharacterBody2D" unique_id=183869775]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_basic")
+max_health = 6
+chase_range = 120.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("VirusShapeBasic")
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1600130829]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_lvgju")
+animation = &"idle"
+frame_progress = 0.9999427
 
-[node name="Body" type="Polygon2D" parent="."]
-color = Color(0.35, 0.8, 0.4, 1)
-polygon = PackedVector2Array(-7, -3, -4, -7, 4, -7, 7, -3, 7, 4, 3, 7, -3, 7, -7, 4)
-
-[node name="Spot" type="Polygon2D" parent="."]
-color = Color(0.85, 0.3, 0.55, 1)
-polygon = PackedVector2Array(-2, -3, 2, -3, 2, 1, -2, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=648210079]
+position = Vector2(-1.5, 7.5)
+shape = SubResource("RectangleShape2D_so5o7")

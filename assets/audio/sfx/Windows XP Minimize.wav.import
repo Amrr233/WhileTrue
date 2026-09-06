@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://liw0jxbi513n"
+path="res://.godot/imported/Windows XP Minimize.wav-a24e91fa44afb9410a0784387ca4a8e3.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Windows XP Minimize.wav"
+dest_files=["res://.godot/imported/Windows XP Minimize.wav-a24e91fa44afb9410a0784387ca4a8e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

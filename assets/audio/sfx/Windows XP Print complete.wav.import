@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8v4ouvc58h15"
+path="res://.godot/imported/Windows XP Print complete.wav-8ab5d3d42cb4fb6bcbfdcda662b3d440.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Windows XP Print complete.wav"
+dest_files=["res://.godot/imported/Windows XP Print complete.wav-8ab5d3d42cb4fb6bcbfdcda662b3d440.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

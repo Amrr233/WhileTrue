@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
 [ext_resource type="Script" uid="uid://d00faxjxrfjy5" path="res://scripts/interactables/moving_file_platform.gd" id="7_lbk5i"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbk5i"]
+size = Vector2(64, 12)
+
 [sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
 size = Vector2(27.5, 21)
 
@@ -54,10 +57,11 @@ position = Vector2(480, 420)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1303422272]
-position = Vector2(-469, 0)
+position = Vector2(-491, -1)
+shape = SubResource("RectangleShape2D_lbk5i")
 
 [node name="GroundVisual" type="ColorRect" parent="Ground" unique_id=145826868]
-offset_left = -480.0
+offset_left = -535.0
 offset_top = -6.0
 offset_right = 460.0
 offset_bottom = 6.0
@@ -276,11 +280,12 @@ metadata/_edit_use_anchors_ = true
 shape = SubResource("PlatformShapeSmall")
 
 [node name="Player" parent="." unique_id=309319802 instance=ExtResource("2_player")]
-position = Vector2(29, 359)
+position = Vector2(-23, 396)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=937872958]
-position = Vector2(262, -54)
+position = Vector2(0, -54)
+scale = Vector2(2, 2)
 
 [node name="BossSpawn" type="Marker2D" parent="." unique_id=557903248]
 position = Vector2(512, 319)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8nfx3gqpgwln"
+path="res://.godot/imported/Windows XP Information Bar.wav-ee3e8f59a8badb6345c68ca1f1cb3eb0.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Windows XP Information Bar.wav"
+dest_files=["res://.godot/imported/Windows XP Information Bar.wav-ee3e8f59a8badb6345c68ca1f1cb3eb0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -39,9 +39,9 @@ func _ready() -> void:
 	option_investigate.activated.connect(func() -> void: TransitionManager.fade_to_scene(INVESTIGATE_SCENE))
 	option_final.activated.connect(_on_final_activated)
 
-	option_check.set_locked(false)
-	option_scan.set_locked(false)
-	option_investigate.set_locked(false)
+	option_check.set_locked(GameState.antivirus_check_completed)
+	option_scan.set_locked(GameState.antivirus_scan_completed)
+	option_investigate.set_locked(GameState.antivirus_investigate_completed)
 	option_final.set_locked(not GameState.has_key)
 
 ## --- FINAL round (still local to the hub until it gets its own scene) ---
@@ -105,3 +105,4 @@ func _show_reward(text: String) -> void:
 	tween.tween_callback(func() -> void:
 		reward_label.visible = false
 	)
+	

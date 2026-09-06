@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://btlmaea0el7t1"
+path="res://.godot/imported/Windows Pop-up Blocked.wav-a4da5b235f3a51ebf3232c9b112fed81.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Windows Pop-up Blocked.wav"
+dest_files=["res://.godot/imported/Windows Pop-up Blocked.wav-a4da5b235f3a51ebf3232c9b112fed81.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b10qp7jfs8y47"
+path="res://.godot/imported/Windows XP Hardware Insert.wav-926005e71d3bd7a4a74c08dc6f98dab4.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Windows XP Hardware Insert.wav"
+dest_files=["res://.godot/imported/Windows XP Hardware Insert.wav-926005e71d3bd7a4a74c08dc6f98dab4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

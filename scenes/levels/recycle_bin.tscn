@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="5_sword"]
 [ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
+[ext_resource type="AudioStream" uid="uid://57b758q36lrc" path="res://assets/audio/sfx/power_up.wav" id="6_tcfsx"]
 [ext_resource type="Script" uid="uid://d00faxjxrfjy5" path="res://scripts/interactables/moving_file_platform.gd" id="7_lbk5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbk5i"]
@@ -300,6 +301,9 @@ speed = 80.0
 
 [node name="SwordPickup" parent="." unique_id=594080364 instance=ExtResource("5_sword")]
 position = Vector2(878, 50)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="SwordPickup" unique_id=1159989479]
+stream = ExtResource("6_tcfsx")
 
 [node name="LevelExit" parent="." unique_id=1638088137 instance=ExtResource("6_exit")]
 position = Vector2(942, 26)

@@ -10,6 +10,7 @@ var _active := true
 var _locked := false
 
 @onready var _lock_label: Label = get_node_or_null("LockLabel")
+@onready var enter_sound: AudioStreamPlayer = $CheckSound
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -17,6 +18,8 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player and _active and not _locked:
+		if enter_sound != null:
+			enter_sound.play()
 		activated.emit()
 
 func set_active(value: bool) -> void:

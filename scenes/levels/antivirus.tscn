@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="11_amlij"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="12_jwbkc"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="13_p42ld"]
+[ext_resource type="AudioStream" uid="uid://c6qhpixjnp8ps" path="res://assets/audio/sfx/Windows XP Battery Low.wav" id="14_p42ld"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="14_wjt0n"]
 [ext_resource type="Texture2D" uid="uid://cqy14cq2iet3p" path="res://assets/art/ui/checkIcon.PNG" id="15_3hcds"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="15_kp4bk"]
@@ -187,6 +188,9 @@ theme_override_fonts/font = ExtResource("2_7lyvm")
 theme_override_font_sizes/font_size = 7
 text = "fast check on little annoying baby viruses"
 autowrap_mode = 2
+
+[node name="CheckSound" type="AudioStreamPlayer" parent="HubArea/Options/OptionCheck" unique_id=1889314080]
+stream = ExtResource("14_p42ld")
 
 [node name="OptionScan" type="Area2D" parent="HubArea/Options" unique_id=2093314999]
 position = Vector2(351.21417, -134.08002)

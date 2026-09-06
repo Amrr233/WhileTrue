@@ -44,7 +44,7 @@ _data = {
 script = ExtResource("1_3t2dd")
 
 [node name="background" type="Sprite2D" parent="." unique_id=202352265]
-scale = Vector2(0.31, 0.42)
+scale = Vector2(0.790039, 1.0592254)
 texture = ExtResource("1_21m6n")
 centered = false
 
@@ -52,10 +52,10 @@ centered = false
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1268751233]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = 2.0
+anchor_bottom = 0.97800004
+offset_bottom = 11.899994
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -66,13 +66,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -57.5
-offset_top = -23.0
-offset_right = 57.5
+offset_left = -130.0
+offset_top = -50.0
+offset_right = 133.0
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_8sqvm")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 30
 text = "What the hell?!"
 horizontal_alignment = 1
 vertical_alignment = 1

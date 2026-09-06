@@ -35,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sun:position")
+tracks/2/path = NodePath("AnimContainer/sun:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -47,7 +47,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("moon:position")
+tracks/3/path = NodePath("AnimContainer/moon:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -59,7 +59,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("clouds:position")
+tracks/4/path = NodePath("AnimContainer/clouds:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -111,7 +111,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sun:position")
+tracks/2/path = NodePath("AnimContainer/sun:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -123,7 +123,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("moon:position")
+tracks/3/path = NodePath("AnimContainer/moon:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -135,7 +135,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("clouds:position")
+tracks/4/path = NodePath("AnimContainer/clouds:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -193,27 +193,30 @@ fill_to = Vector2(0.5, 0.5)
 script = ExtResource("1_8464f")
 
 [node name="SkyBackground" type="ColorRect" parent="." unique_id=853106367]
-offset_right = 321.0
-offset_bottom = 180.0
+offset_right = 803.0
+offset_bottom = 457.0
 color = Color(0.5294118, 0.80784315, 0.92156863, 1)
 
-[node name="clouds" type="Sprite2D" parent="." unique_id=1891042665]
+[node name="AnimContainer" type="Node2D" parent="." unique_id=1150511046]
+position = Vector2(321, 67)
+
+[node name="clouds" type="Sprite2D" parent="AnimContainer" unique_id=1891042665]
 position = Vector2(259.99997, 72.99999)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.16428572, 0.15306121)
 texture = ExtResource("4_l6gfu")
 
-[node name="sun" type="Sprite2D" parent="." unique_id=1850026846]
+[node name="sun" type="Sprite2D" parent="AnimContainer" unique_id=1850026846]
 position = Vector2(220, 95)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.2388889, 0.24444441)
 texture = ExtResource("2_lgoyb")
 
-[node name="moon" type="Sprite2D" parent="." unique_id=1021121859]
+[node name="moon" type="Sprite2D" parent="AnimContainer" unique_id=1021121859]
 position = Vector2(220.00002, 113)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.17357141, 0.1642857)
 texture = ExtResource("3_8ofjb")
 
 [node name="Room" type="Sprite2D" parent="." unique_id=266816359]
-scale = Vector2(0.12, 0.117)
+scale = Vector2(0.29392385, 0.296875)
 texture = ExtResource("1_1iurh")
 centered = false
 
@@ -229,7 +232,7 @@ autoplay = &"day_night_loop"
 speed_scale = 0.5
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1202819577]
-position = Vector2(119, 81)
+position = Vector2(281, 250)
 color = Color(0, 1, 0, 1)
 energy = 11.04
 texture = SubResource("GradientTexture2D_8ofjb")
@@ -241,6 +244,8 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)

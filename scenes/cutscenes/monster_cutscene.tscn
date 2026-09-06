@@ -62,16 +62,19 @@ _data = {
 script = ExtResource("1_6fdsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1102567766]
-scale = Vector2(0.11721611, 0.1171875)
+scale = Vector2(0.29890108, 0.29882813)
 texture = ExtResource("1_2hw55")
 centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=855832174]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=284059692]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 14.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
@@ -92,12 +95,19 @@ color = Color(0, 0, 0, 0.078431375)
 
 [node name="Label" type="Label" parent="CanvasLayer/DialogueBox" unique_id=813941712]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = -0.416
+anchor_top = -2.357
+anchor_right = 1.572
+anchor_bottom = 1.536
+offset_left = -10.944
+offset_top = -0.0039978027
+offset_right = 0.04800415
+offset_bottom = -0.00799942
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_6pr8g")
+theme_override_font_sizes/font_size = 40
 autowrap_mode = 2
 
 [node name="TypeTimer" type="Timer" parent="CanvasLayer/DialogueBox" unique_id=799797317]

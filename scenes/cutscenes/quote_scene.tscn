@@ -43,8 +43,8 @@ _data = {
 script = ExtResource("1_s72m0")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1055518703]
-offset_right = 322.0
-offset_bottom = 180.0
+offset_right = 803.0
+offset_bottom = 462.0
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="ColorRect" unique_id=122287170]
@@ -53,8 +53,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 13.0
+offset_right = -8.466675
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 40
 text = "To break a loop, you must first realize you are trapped inside one
 ~ConsernedApes"
 horizontal_alignment = 1

@@ -59,7 +59,6 @@ var respawn_position := Vector2.ZERO
 var _falling_phase := false
 var _checkpoint_set := false
 
-
 @onready var attack_sound: AudioStreamPlayer = $AttackSound
 @onready var hurt_sound: AudioStreamPlayer = $HurtSound
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
@@ -110,6 +109,11 @@ func _physics_process(delta: float) -> void:
 		_handle_horizontal_movement(delta)
 		
 	_handle_attack()
+	
+	# --- NEW: Call desktop actions only in the Desktop scene ---
+	if get_tree().current_scene.name == "Desktop":
+		_handle_desktop_actions()
+	# -----------------------------------------------------------
 
 	move_and_slide()
 
@@ -330,3 +334,20 @@ func _on_stand_up_finished() -> void:
 	else:
 		visual.frame = 0
 		visual.stop()
+
+# --- NEW: Function to handle W key pressing on desktop ---
+func _handle_desktop_actions() -> void:
+	if visual is AnimatedSprite2D:
+		# Do not interrupt the mouse grab or the drop/stand-up sequence
+		if _falling_phase or visual.animation == "grabbed" or (visual.animation == "stand_up" and visual.is_playing()):
+			return
+
+		# Check if the "W" key is physically pressed down
+		if Input.is_physical_key_pressed(KEY_S):
+			if visual.animation != "sit":
+				visual.play("sit")
+		# If "W" is released and we were sitting, revert to the default standing pose
+		elif visual.animation == "sit":
+			visual.animation = "stand_up"
+			visual.frame = 0
+			visual.stop()

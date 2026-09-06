@@ -138,6 +138,18 @@ region = Rect2(384, 2624, 64, 64)
 atlas = ExtResource("4_sheet")
 region = Rect2(448, 2624, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q8fn"]
+atlas = ExtResource("4_sheet")
+region = Rect2(128, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wva7c"]
+atlas = ExtResource("4_sheet")
+region = Rect2(64, 1280, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7obkq"]
+atlas = ExtResource("4_sheet")
+region = Rect2(0, 2048, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yn8t8"]
 atlas = ExtResource("4_sheet")
 region = Rect2(0, 1280, 64, 64)
@@ -293,6 +305,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5q8fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wva7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7obkq")
+}],
+"loop": false,
+"name": &"sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yn8t8")
 }, {
 "duration": 2.0,
@@ -331,7 +357,9 @@ shape = SubResource("PlayerShape")
 
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=59882741]
 sprite_frames = SubResource("SpriteFrames_y4wgv")
-animation = &"hit_hand"
+animation = &"sit"
+frame = 2
+frame_progress = 1.0
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=134206205]
 collision_layer = 0

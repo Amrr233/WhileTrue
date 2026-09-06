@@ -7,8 +7,8 @@ signal dash_state_changed(has_dash: bool)
 signal double_jump_state_changed(has_double_jump: bool)
 
 @export_category("Movement")
-@export var speed: float = 70.0
-@export var jump_velocity: float = -350.0
+@export var speed: float = 90.0
+@export var jump_velocity: float = -270.0
 @export var acceleration: float = 900.0
 @export var air_control: float = 0.8
 @export var coyote_time: float = 0.10
@@ -84,8 +84,8 @@ func _ready() -> void:
 		visual.frame = 0
 		visual.stop()
 		visual.animation_finished.connect(_on_stand_up_finished)
-	if get_tree().current_scene.name == "Desktop":
-		camera.enabled = false
+	#if get_tree().current_scene.name == "Desktop":
+		#camera.enabled = false
 
 func _physics_process(delta: float) -> void:
 	if _invulnerability_timer > 0.0:

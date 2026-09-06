@@ -1,31 +1,21 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://cn41dwdcugo3"]
 
-[ext_resource type="Script" path="res://scripts/interactables/level_exit.gd" id="1_exit"]
+[ext_resource type="Script" uid="uid://dtm5wma1q8281" path="res://scripts/interactables/level_exit.gd" id="1_exit"]
 
 [sub_resource type="RectangleShape2D" id="ExitShape"]
 size = Vector2(18, 28)
 
-[node name="LevelExit" type="Area2D"]
+[node name="LevelExit" type="Area2D" unique_id=1228670635]
 collision_layer = 0
-collision_mask = 1
-monitoring = true
 script = ExtResource("1_exit")
 
-[node name="Visual" type="ColorRect" parent="."]
-offset_left = -9.0
-offset_top = -14.0
-offset_right = 9.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.5, 0.75, 1, 0.65)
-
-[node name="Prompt" type="Label" parent="."]
+[node name="Prompt" type="Label" parent="." unique_id=726981461]
+visible = false
 offset_left = -9.0
 offset_top = -25.0
 offset_right = 18.0
 offset_bottom = -8.0
 text = "[E] Exit"
-visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1958518270]
 shape = SubResource("ExitShape")

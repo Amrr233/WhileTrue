@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ctrr4gglnc5pn" path="res://assets/art/characters/character-spritesheet.png" id="4_sheet"]
 
 [sub_resource type="RectangleShape2D" id="PlayerShape"]
-size = Vector2(14, 21)
+size = Vector2(26, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("4_sheet")
@@ -185,7 +185,7 @@ collision_mask = 6
 script = ExtResource("1_player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906220922]
-position = Vector2(0, 3.5)
+position = Vector2(0, 5)
 shape = SubResource("PlayerShape")
 
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=59882741]
@@ -199,6 +199,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1375364081]
 shape = SubResource("AttackShape")
+debug_color = Color(0.87252676, 0.00046994866, 0.8448645, 0.41960785)
 
 [node name="AttackVisual" type="Polygon2D" parent="AttackArea" unique_id=675756283]
 visible = false
@@ -213,7 +214,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 106.0
+offset_right = 134.0
 offset_bottom = 24.0
 scale = Vector2(0.6, 0.6)
 script = ExtResource("2_dovo2")
@@ -237,5 +238,3 @@ offset_top = -10.0
 offset_right = 137.0
 offset_bottom = 30.0
 theme_override_constants/separation = -6
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2048529897]

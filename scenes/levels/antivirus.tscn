@@ -5,13 +5,45 @@
 [ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="2_aiwav"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="Script" uid="uid://0f47ocsf4vin" path="res://scripts/interactables/antivirus_option.gd" id="3_option"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="4_exit"]
+[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="4_exit"]
+[ext_resource type="Texture2D" uid="uid://cacleupipoj32" path="res://assets/art/ui/exit.png" id="4_v5mxn"]
+[ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="9_mht4f"]
+[ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="10_p5ovw"]
+[ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="11_amlij"]
+[ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="12_jwbkc"]
+[ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="13_p42ld"]
+[ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="14_wjt0n"]
+[ext_resource type="Texture2D" uid="uid://cqy14cq2iet3p" path="res://assets/art/ui/checkIcon.PNG" id="15_3hcds"]
+[ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="15_kp4bk"]
+[ext_resource type="Script" uid="uid://cggvthrgf0m53" path="res://scripts/ui/antivirus/title1.gd" id="16_amlij"]
+[ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="16_hso3t"]
+[ext_resource type="Texture2D" uid="uid://cxltk2ax5cy67" path="res://assets/art/ui/scanIcon.png" id="16_mht4f"]
+[ext_resource type="Texture2D" uid="uid://37g7e11hhnu3" path="res://assets/art/ui/InvestigateIcon.png" id="17_p5ovw"]
+[ext_resource type="Script" uid="uid://5j0pf4gkuano" path="res://scenes/levels/title2.gd" id="18_jwbkc"]
+[ext_resource type="Script" uid="uid://45hr57ipd8od" path="res://scenes/levels/title3.gd" id="20_p42ld"]
 
-[sub_resource type="RectangleShape2D" id="GroundShapeWide"]
-size = Vector2(960, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwbkc"]
+size = Vector2(38, 21.03125)
 
 [sub_resource type="RectangleShape2D" id="OptionShape"]
-size = Vector2(22, 34)
+size = Vector2(47.5, 23.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5ovw"]
+size = Vector2(58, 19.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amlij"]
+size = Vector2(48, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlij"]
+bg_color = Color(0.8117647, 0.8117647, 0.8117647, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="GroundShapeWide"]
+size = Vector2(941.2141, 12)
 
 [sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
 size = Vector2(60, 10)
@@ -43,199 +75,281 @@ horizontal_alignment = 1
 [node name="HubArea" type="Node2D" parent="." unique_id=150556746]
 
 [node name="ColorRect" type="ColorRect" parent="HubArea" unique_id=367082786]
-offset_top = 183.0
-offset_right = 533.0
-offset_bottom = 460.0
+offset_top = 17.0
+offset_right = 320.0
+offset_bottom = 180.0
 color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
+[node name="Taskbar" type="ColorRect" parent="HubArea/ColorRect" unique_id=1892305258]
+layout_mode = 0
+offset_top = 147.0
+offset_right = 320.0
+offset_bottom = 163.0
+mouse_filter = 2
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="SystemTray" type="HBoxContainer" parent="HubArea/ColorRect/Taskbar" unique_id=1026335940]
+layout_mode = 0
+offset_left = 174.0
+offset_top = -2.0
+offset_right = 320.0
+offset_bottom = 18.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="wifiicon" type="TextureRect" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=1090316745]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("9_mht4f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="batteryicon" type="TextureRect" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=1105002307]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("10_p5ovw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="audiotoggle" type="TextureButton" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=261535497]
+custom_minimum_size = Vector2(10, 20)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("11_amlij")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("12_jwbkc")
+
+[node name="clocklabel" type="TextureButton" parent="HubArea/ColorRect/Taskbar/SystemTray" unique_id=1262858017]
+custom_minimum_size = Vector2(20, 18)
+layout_mode = 2
+texture_normal = ExtResource("13_p42ld")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("14_wjt0n")
+
+[node name="startmenupanel" type="Panel" parent="HubArea/ColorRect/Taskbar" unique_id=1383522210]
+visible = false
+layout_mode = 0
+offset_left = -1.0
+offset_top = -65.0
+offset_right = 79.0
+offset_bottom = -1.0
+mouse_filter = 2
+
+[node name="Startmenu" type="TextureButton" parent="HubArea/ColorRect/Taskbar" unique_id=1991956880 node_paths=PackedStringArray("start_menu")]
+texture_filter = 1
+layout_mode = 1
+offset_left = -17.0
+offset_top = -9.0
+offset_right = 53.0
+offset_bottom = 27.0
+texture_normal = ExtResource("15_kp4bk")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("16_hso3t")
+start_menu = NodePath("../startmenupanel")
+
 [node name="WindowChrome" type="ColorRect" parent="HubArea" unique_id=296394210]
-offset_top = 159.0
-offset_right = 533.0
-offset_bottom = 183.0
+offset_right = 320.0
+offset_bottom = 16.0
 mouse_filter = 2
 color = Color(0.003921569, 0.3529412, 0.9098039, 1)
 
+[node name="WindowChrome2" type="ColorRect" parent="HubArea" unique_id=463635671]
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 26.0
+mouse_filter = 2
+color = Color(0.9254902, 0.9019608, 0.8392157, 1)
+
 [node name="WindowTitle" type="Label" parent="HubArea" unique_id=1234396579]
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 300.0
-offset_bottom = 20.0
+offset_left = 53.0
+offset_top = 414.0
+offset_right = 345.0
+offset_bottom = 437.0
 text = "PixelGuard Antivirus"
 
 [node name="Label" type="Label" parent="HubArea" unique_id=2055025236]
-offset_left = 31.0
-offset_top = 164.0
-offset_right = 101.0
-offset_bottom = 187.0
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 34.0
+rotation = -0.0035957948
 theme_override_fonts/font = ExtResource("2_7lyvm")
 theme_override_font_sizes/font_size = 12
 text = "Antivirus"
 
+[node name="Label2" type="Label" parent="HubArea" unique_id=1206462438]
+offset_left = 5.0
+offset_top = 16.0
+offset_right = 26.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 7
+text = "File"
+
+[node name="Label3" type="Label" parent="HubArea" unique_id=1401014981]
+offset_left = 81.00001
+offset_top = 16.0
+offset_right = 102.00001
+offset_bottom = 26.0
+rotation = -0.0059144013
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 7
+text = "Help"
+
+[node name="Label4" type="Label" parent="HubArea" unique_id=1259502100]
+offset_left = 50.0
+offset_top = 16.0
+offset_right = 71.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 7
+text = "Tools"
+
+[node name="Label5" type="Label" parent="HubArea" unique_id=2007578110]
+offset_left = 29.0
+offset_top = 16.0
+offset_right = 50.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 7
+text = "Edit"
+
 [node name="icon" type="Sprite2D" parent="HubArea" unique_id=1675847924]
-position = Vector2(19.000002, 171.00002)
-scale = Vector2(0.078046925, 0.05799995)
+position = Vector2(10, 7)
+scale = Vector2(0.055362817, 0.03500583)
 texture = ExtResource("2_aiwav")
 
-[node name="HubGround" type="StaticBody2D" parent="HubArea" unique_id=830699118]
-position = Vector2(480, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="HubArea/HubGround" unique_id=368618345]
-offset_left = -474.0
-offset_top = -54.0
-offset_right = 486.0
-offset_bottom = -42.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/HubGround" unique_id=353072437]
-position = Vector2(5, -49)
-shape = SubResource("GroundShapeWide")
+[node name="icon2" type="Sprite2D" parent="HubArea" unique_id=1169519909]
+position = Vector2(307, 8)
+scale = Vector2(0.06283765, 0.04484666)
+texture = ExtResource("4_v5mxn")
 
 [node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
-position = Vector2(57, 342)
+position = Vector2(42, 99)
 
 [node name="LevelExit" parent="HubArea" unique_id=1502445892 instance=ExtResource("4_exit")]
-position = Vector2(17, 343)
+position = Vector2(307, 17)
 
 [node name="Options" type="Node2D" parent="HubArea" unique_id=345804705]
 
 [node name="OptionCheck" type="Area2D" parent="HubArea/Options" unique_id=1305416982]
-position = Vector2(102, 303)
+position = Vector2(378, 183)
 collision_layer = 0
 script = ExtResource("3_option")
-
-[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionCheck" unique_id=1410279582]
-offset_left = -36.0
-offset_top = -60.0
-offset_right = 34.0
-mouse_filter = 2
-color = Color(0.75, 0.78, 0.82, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionCheck" unique_id=1197833022]
-offset_left = -35.0
-offset_top = -60.0
-offset_right = 35.0
-offset_bottom = -48.0
-mouse_filter = 2
-color = Color(0.35, 0.8, 0.4, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="HubArea/Options/OptionCheck" unique_id=1889714267]
-offset_left = -33.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = -14.0
-text = "CHECK"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LockLabel" type="Label" parent="HubArea/Options/OptionCheck" unique_id=2014745042]
-visible = false
-modulate = Color(1, 0.35, 0.35, 1)
-offset_left = -35.0
-offset_top = -26.0
-offset_right = 35.0
-offset_bottom = -10.0
-text = "LOCKED"
-horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionCheck" unique_id=1955364254]
-position = Vector2(0, -30)
-shape = SubResource("OptionShape")
+position = Vector2(-344, -124)
+shape = SubResource("RectangleShape2D_jwbkc")
+
+[node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionCheck" unique_id=1148636525]
+position = Vector2(-335, -117)
+scale = Vector2(0.08901873, 0.08546178)
+texture = ExtResource("15_3hcds")
+
+[node name="Title" type="Label" parent="HubArea/Options/OptionCheck" unique_id=1619188949]
+offset_left = -359.0
+offset_top = -152.0
+offset_right = -312.0
+offset_bottom = -129.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+text = "Check"
+script = ExtResource("16_amlij")
+
+[node name="description" type="Label" parent="HubArea/Options/OptionCheck" unique_id=152845689]
+offset_left = -368.0
+offset_top = -99.0
+offset_right = -301.0
+offset_bottom = -77.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 5
+text = "fast check on little annoying baby viruses"
+autowrap_mode = 2
 
 [node name="OptionScan" type="Area2D" parent="HubArea/Options" unique_id=2093314999]
-position = Vector2(261, 304)
+position = Vector2(351.21417, -134.08002)
 collision_layer = 0
 script = ExtResource("3_option")
-
-[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionScan" unique_id=1264523503]
-offset_left = -35.0
-offset_top = -60.0
-offset_right = 35.0
-mouse_filter = 2
-color = Color(0.75, 0.78, 0.82, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionScan" unique_id=278023103]
-offset_left = -35.0
-offset_top = -60.0
-offset_right = 35.0
-offset_bottom = -48.0
-mouse_filter = 2
-color = Color(0.85, 0.55, 0.15, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="HubArea/Options/OptionScan" unique_id=1923544020]
-offset_left = -35.0
-offset_top = -46.0
-offset_right = 35.0
-offset_bottom = -28.0
-text = "SCAN"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LockLabel" type="Label" parent="HubArea/Options/OptionScan" unique_id=1008448992]
-visible = false
-modulate = Color(1, 0.35, 0.35, 1)
-offset_left = -35.0
-offset_top = -26.0
-offset_right = 35.0
-offset_bottom = -10.0
-text = "LOCKED"
-horizontal_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionScan" unique_id=1087265214]
-position = Vector2(0, -30)
+position = Vector2(-206.96417, 198.14252)
 shape = SubResource("OptionShape")
 
+[node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionScan" unique_id=556841829]
+position = Vector2(-205.21419, 199.08002)
+scale = Vector2(0.1244362, 0.13209373)
+texture = ExtResource("16_mht4f")
+
+[node name="Title" type="Label" parent="HubArea/Options/OptionScan" unique_id=1949515465]
+offset_left = -226.21417
+offset_top = 165.08002
+offset_right = -179.21417
+offset_bottom = 188.08002
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+text = "Scan"
+script = ExtResource("18_jwbkc")
+tutorial_type = 1
+
+[node name="description" type="Label" parent="HubArea/Options/OptionScan" unique_id=292765819]
+offset_left = -131.21417
+offset_top = 216.08002
+offset_right = -65.21417
+offset_bottom = 238.08002
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 5
+text = "fast check on little annoying baby viruses"
+autowrap_mode = 2
+
 [node name="OptionInvestigate" type="Area2D" parent="HubArea/Options" unique_id=1690148697]
-position = Vector2(403, 301)
+position = Vector2(418.4283, -134.16003)
 collision_layer = 0
 script = ExtResource("3_option")
 
-[node name="Panel" type="ColorRect" parent="HubArea/Options/OptionInvestigate" unique_id=1526613033]
-offset_left = -35.0
-offset_top = -56.0
-offset_right = 35.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.75, 0.78, 0.82, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="PanelHeader" type="ColorRect" parent="HubArea/Options/OptionInvestigate" unique_id=396064094]
-offset_left = -35.0
-offset_top = -60.0
-offset_right = 35.0
-offset_bottom = -48.0
-mouse_filter = 2
-color = Color(0.55, 0.15, 0.75, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=1959467508]
-offset_left = -35.0
-offset_top = -46.0
-offset_right = 35.0
-offset_bottom = -28.0
-text = "INVESTIGATE"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="LockLabel" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=1090649662]
-visible = false
-modulate = Color(1, 0.35, 0.35, 1)
-offset_left = -35.0
-offset_top = -26.0
-offset_right = 35.0
-offset_bottom = -10.0
-text = "LOCKED"
-horizontal_alignment = 1
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionInvestigate" unique_id=1473591837]
-position = Vector2(0, -30)
-shape = SubResource("OptionShape")
+position = Vector2(-163.42831, 196.16003)
+shape = SubResource("RectangleShape2D_p5ovw")
+
+[node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionInvestigate" unique_id=1206604940]
+position = Vector2(-166.42833, 198.16005)
+scale = Vector2(0.13817662, 0.13572139)
+texture = ExtResource("17_p5ovw")
+
+[node name="Title" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=480345243]
+offset_left = -208.42831
+offset_top = 163.16003
+offset_right = -105.428314
+offset_bottom = 186.16003
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+text = "Invesitgate"
+script = ExtResource("20_p42ld")
+tutorial_type = 2
+
+[node name="description" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=386145781]
+offset_left = -303.4283
+offset_top = 217.16003
+offset_right = -239.42831
+offset_bottom = 239.16003
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 5
+text = "fast check on little annoying baby viruses"
+autowrap_mode = 2
 
 [node name="OptionFinal" type="Area2D" parent="HubArea/Options" unique_id=316930277]
 position = Vector2(-1556, 519)
@@ -265,7 +379,6 @@ offset_left = -35.0
 offset_top = -46.0
 offset_right = 35.0
 offset_bottom = -28.0
-text = "FINAL"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
@@ -282,6 +395,81 @@ horizontal_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionFinal" unique_id=814705133]
 position = Vector2(-24, -43)
 shape = SubResource("OptionShape")
+
+[node name="Platfrom1" type="StaticBody2D" parent="HubArea" unique_id=924391611]
+position = Vector2(-3, -13)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom1" unique_id=1826830324]
+position = Vector2(41, 135)
+shape = SubResource("RectangleShape2D_amlij")
+
+[node name="Panel" type="Panel" parent="HubArea/Platfrom1" unique_id=962425861]
+offset_left = 17.0
+offset_top = 133.0
+offset_right = 65.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
+
+[node name="Start Scan" type="Label" parent="HubArea/Platfrom1" unique_id=147993562]
+offset_left = 27.0
+offset_top = 132.0
+offset_right = 70.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 5
+text = "start scan"
+
+[node name="Platfrom2" type="StaticBody2D" parent="HubArea" unique_id=132602908]
+position = Vector2(110, -13)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom2" unique_id=586034128]
+position = Vector2(41, 135)
+shape = SubResource("RectangleShape2D_amlij")
+
+[node name="Panel" type="Panel" parent="HubArea/Platfrom2" unique_id=719225207]
+offset_left = 17.0
+offset_top = 133.0
+offset_right = 65.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
+
+[node name="Start Scan" type="Label" parent="HubArea/Platfrom2" unique_id=1700001039]
+offset_left = 27.0
+offset_top = 132.0
+offset_right = 70.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 5
+text = "start scan"
+
+[node name="Platfrom3" type="StaticBody2D" parent="HubArea" unique_id=938677718]
+position = Vector2(211, -1)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Platfrom3" unique_id=502282120]
+position = Vector2(41, 135)
+shape = SubResource("RectangleShape2D_amlij")
+
+[node name="Panel" type="Panel" parent="HubArea/Platfrom3" unique_id=1992381328]
+offset_left = 17.0
+offset_top = 133.0
+offset_right = 65.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_amlij")
+
+[node name="Start Scan" type="Label" parent="HubArea/Platfrom3" unique_id=387014744]
+offset_left = 27.0
+offset_top = 132.0
+offset_right = 70.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 5
+text = "start scan"
 
 [node name="CheckArena" type="Node2D" parent="." unique_id=662528291]
 
@@ -520,14 +708,6 @@ text = "FINAL // The core threat — defeat it to obtain the Cure"
 position = Vector2(5580, 395)
 
 [node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
-position = Vector2(57, 342)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=939686405]
-position = Vector2(0, -38)
-offset = Vector2(38, 0)
-limit_left = 0
-limit_top = 160
-limit_right = 6060
-limit_bottom = 460
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+texture_filter = 1
+position = Vector2(151, 125)
+scale = Vector2(0.5, 0.5)

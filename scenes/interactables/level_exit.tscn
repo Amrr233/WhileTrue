@@ -19,3 +19,10 @@ text = "[E] Exit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1958518270]
 shape = SubResource("ExitShape")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2090795712]
+offset_left = -8.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 15.0
+color = Color(1, 0, 0, 0.49019608)

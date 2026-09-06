@@ -33,7 +33,7 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export var contact_invulnerability: float = 0.55
 
 @export_category("Dash")
-@export var dash_speed: float = 150.0
+@export var dash_speed: float = 200.0
 @export var dash_duration: float = 0.2
 @export var dash_cooldown: float = 0.45
 

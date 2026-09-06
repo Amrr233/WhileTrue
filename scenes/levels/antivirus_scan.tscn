@@ -1,27 +1,134 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqk3n2x0scan002"]
+[gd_scene format=3 uid="uid://dkeyhbucwdrwr"]
 
-[ext_resource type="Script" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
+[ext_resource type="Script" uid="uid://c86r3qhkq3be5" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/virus_ranged.tscn" id="3_enemy"]
+[ext_resource type="Texture2D" uid="uid://cacleupipoj32" path="res://assets/art/ui/exit.png" id="4_8j87y"]
+[ext_resource type="Texture2D" uid="uid://byd01tn08topj" path="res://assets/art/ui/virus.png" id="4_bnj5g"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_s0ay3"]
 
 [sub_resource type="RectangleShape2D" id="GroundShapeMed"]
-size = Vector2(300, 12)
+size = Vector2(25, 12)
 
-[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
-size = Vector2(60, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlwql"]
+size = Vector2(38, 12)
 
-[node name="AntivirusScan" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnj5g"]
+size = Vector2(233, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kypq"]
+size = Vector2(229, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5k84"]
+size = Vector2(116, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0n57"]
+size = Vector2(140, 12)
+
+[node name="AntivirusScan" type="Node2D" unique_id=1589291216]
 script = ExtResource("1_arena")
 enemy_scene = ExtResource("3_enemy")
 completed_flag = "antivirus_scan_completed"
 unlock_flag = "has_double_jump"
 reward_text = "SCAN COMPLETE — DOUBLE JUMP UNLOCKED"
-next_scene = "res://scenes/levels/antivirus.tscn"
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="background" type="ColorRect" parent="." unique_id=399543967]
+visible = false
+offset_left = -73.0
+offset_top = -24.0
+offset_right = 1636.0
+offset_bottom = 659.0
+color = Color(0.8039216, 0.8039216, 0.8117647, 1)
+
+[node name="top_bar" type="CanvasLayer" parent="." unique_id=1191544235]
+layer = -1
+
+[node name="WindowChrome" type="ColorRect" parent="top_bar" unique_id=822494196]
+offset_right = 320.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.003921569, 0.3529412, 0.9098039, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=1696418399]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 34.0
+rotation = -0.0035957948
+theme_override_fonts/font = ExtResource("4_s0ay3")
+theme_override_font_sizes/font_size = 12
+text = "Antivirus"
+metadata/_edit_use_anchors_ = true
+
+[node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=365186239]
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 26.0
+mouse_filter = 2
+color = Color(0.9254902, 0.9019608, 0.8392157, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="top_bar/WindowChrome2" unique_id=1158862926]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 26.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_s0ay3")
+theme_override_font_sizes/font_size = 8
+text = "File"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="top_bar/WindowChrome2" unique_id=624564203]
+layout_mode = 0
+offset_left = 81.00001
+offset_right = 102.00001
+offset_bottom = 10.0
+rotation = -0.0059144013
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_s0ay3")
+theme_override_font_sizes/font_size = 8
+text = "Help"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="top_bar/WindowChrome2" unique_id=2067127639]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 73.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_s0ay3")
+theme_override_font_sizes/font_size = 8
+text = "Tools"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="top_bar/WindowChrome2" unique_id=512607482]
+layout_mode = 0
+offset_left = 29.0
+offset_right = 50.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_s0ay3")
+theme_override_font_sizes/font_size = 8
+text = "Edit"
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="Sprite2D" parent="top_bar" unique_id=1073500606]
+texture_filter = 1
+position = Vector2(10, 7)
+texture = ExtResource("4_bnj5g")
+
+[node name="icon2" type="Sprite2D" parent="top_bar" unique_id=705270522]
+texture_filter = 1
+position = Vector2(307, 8)
+texture = ExtResource("4_8j87y")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1891019093]
 layer = 5
 
-[node name="RewardLabel" type="Label" parent="HUD"]
+[node name="RewardLabel" type="Label" parent="HUD" unique_id=761564875]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,97 +143,187 @@ theme_override_font_sizes/font_size = 14
 text = "REWARD"
 horizontal_alignment = 1
 
-[node name="GroundA" type="StaticBody2D" parent="."]
-position = Vector2(150, 420)
+[node name="GroundA" type="StaticBody2D" parent="." unique_id=638456387]
+position = Vector2(117, 469)
 collision_layer = 2
 
-[node name="Visual" type="ColorRect" parent="GroundA"]
-offset_left = -150.0
-offset_top = -6.0
-offset_right = 150.0
-offset_bottom = 6.0
+[node name="Visual" type="ColorRect" parent="GroundA" unique_id=2114764774]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
 mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA" unique_id=1039572138]
+position = Vector2(-98.5, -50)
 shape = SubResource("GroundShapeMed")
 
-[node name="GroundB" type="StaticBody2D" parent="."]
-position = Vector2(505, 420)
+[node name="GroundA2" type="StaticBody2D" parent="." unique_id=2079384350]
+position = Vector2(148, 446)
 collision_layer = 2
 
-[node name="Visual" type="ColorRect" parent="GroundB"]
-offset_left = -150.0
-offset_top = -6.0
-offset_right = 150.0
-offset_bottom = 6.0
+[node name="Visual" type="ColorRect" parent="GroundA2" unique_id=995897406]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
 mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundB"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA2" unique_id=2021088309]
+position = Vector2(-98.5, -50)
 shape = SubResource("GroundShapeMed")
 
-[node name="ElevatedPlatform" type="StaticBody2D" parent="."]
-position = Vector2(760, 350)
+[node name="GroundA3" type="StaticBody2D" parent="." unique_id=1551805176]
+position = Vector2(189, 424)
 collision_layer = 2
 
-[node name="Visual" type="ColorRect" parent="ElevatedPlatform"]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatedPlatform"]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="GroundC" type="StaticBody2D" parent="."]
-position = Vector2(950, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="GroundC"]
-offset_left = -150.0
-offset_top = -6.0
-offset_right = 150.0
-offset_bottom = 6.0
+[node name="Visual" type="ColorRect" parent="GroundA3" unique_id=718094310]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
 mouse_filter = 2
 color = Color(0.12, 0.14, 0.18, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundC"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA3" unique_id=1927898539]
+position = Vector2(-98.5, -50)
 shape = SubResource("GroundShapeMed")
 
-[node name="PlayerSpawn" type="Marker2D" parent="."]
-position = Vector2(40, 395)
+[node name="GroundA4" type="StaticBody2D" parent="." unique_id=1800859114]
+position = Vector2(253, 403)
+collision_layer = 2
 
-[node name="Instructions" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 320.0
-offset_right = 600.0
-offset_bottom = 340.0
-text = "SCAN // Faster viruses, small projectiles — use DASH to cross the gaps"
+[node name="Visual" type="ColorRect" parent="GroundA4" unique_id=251599178]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
 
-[node name="Spawns" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA4" unique_id=968441331]
+position = Vector2(-98.5, -50)
+shape = SubResource("GroundShapeMed")
 
-[node name="Spawn1" type="Marker2D" parent="Spawns"]
-position = Vector2(120, 395)
+[node name="GroundA5" type="StaticBody2D" parent="." unique_id=1969488178]
+position = Vector2(358, 402)
+collision_layer = 2
 
-[node name="Spawn2" type="Marker2D" parent="Spawns"]
-position = Vector2(505, 395)
+[node name="Visual" type="ColorRect" parent="GroundA5" unique_id=2119918060]
+offset_left = -124.0
+offset_top = -56.0
+offset_right = -86.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
 
-[node name="Spawn3" type="Marker2D" parent="Spawns"]
-position = Vector2(950, 395)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA5" unique_id=903793947]
+position = Vector2(-105, -50)
+shape = SubResource("RectangleShape2D_jlwql")
 
-[node name="Player" parent="." instance=ExtResource("2_player")]
+[node name="GroundA6" type="StaticBody2D" parent="." unique_id=1310367511]
+position = Vector2(419, 447)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA6" unique_id=1165465275]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = 122.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA6" unique_id=680808482]
+position = Vector2(5.5, -50)
+shape = SubResource("RectangleShape2D_bnj5g")
+
+[node name="GroundA7" type="StaticBody2D" parent="." unique_id=1142576350]
+position = Vector2(645, 429)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA7" unique_id=971330877]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = 119.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA7" unique_id=935180143]
+position = Vector2(3.5, -50)
+shape = SubResource("RectangleShape2D_1kypq")
+
+[node name="GroundA8" type="StaticBody2D" parent="." unique_id=1026110103]
+position = Vector2(857, 405)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA8" unique_id=1148107581]
+offset_left = -111.0
+offset_top = -56.0
+offset_right = 5.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA8" unique_id=2005632201]
+position = Vector2(-53, -50)
+shape = SubResource("RectangleShape2D_a5k84")
+
+[node name="GroundA9" type="StaticBody2D" parent="." unique_id=1217506561]
+position = Vector2(992, 442)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA9" unique_id=485704569]
+offset_left = -135.0
+offset_top = -56.0
+offset_right = 5.0
+offset_bottom = -44.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA9" unique_id=1472138672]
+position = Vector2(-65, -50)
+shape = SubResource("RectangleShape2D_i0n57")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=710330229]
+position = Vector2(18, 388)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="PlayerSpawn" unique_id=2105923266]
+position = Vector2(-40, -395)
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1198833542]
+
+[node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=1661484653]
+position = Vector2(401, 367)
+
+[node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=408788993]
+position = Vector2(468, 361)
+
+[node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=749709010]
+position = Vector2(568, 340)
+
+[node name="Spawn4" type="Marker2D" parent="Spawns" unique_id=1246422304]
+position = Vector2(664, 330)
+
+[node name="Spawn5" type="Marker2D" parent="Spawns" unique_id=280935440]
+position = Vector2(833, 315)
+
+[node name="Spawn6" type="Marker2D" parent="Spawns" unique_id=974019742]
+position = Vector2(933, 353)
+
+[node name="Player" parent="." unique_id=292960772 instance=ExtResource("2_player")]
 texture_filter = 1
+position = Vector2(17, 390)
 scale = Vector2(0.5, 0.5)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=16779371]
 position = Vector2(0, -60)
 scale = Vector2(2, 2)
-limit_left = 0
-limit_top = -60
-limit_right = 1100
+limit_left = -4
+limit_top = 250
+limit_right = 1096
 limit_bottom = 430
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0

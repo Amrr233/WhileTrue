@@ -8,4 +8,9 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if body is Player:
 		_loading = true
+		
+		# Optional: If your drop sound is on the player, this gives 
+		# it a full second to finish playing before the scene unloads.
+		await get_tree().create_timer(1.0).timeout
+		
 		TransitionManager.fade_to_scene(recycle_bin_scene)

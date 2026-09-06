@@ -23,6 +23,7 @@ size = Vector2(60, 10)
 
 [node name="AntivirusInvestigate" type="Node2D" unique_id=1623202442]
 script = ExtResource("1_arena")
+arena_type = "investigate"
 enemy_scene = ExtResource("3_enemy")
 completed_flag = "antivirus_investigate_completed"
 unlock_flag = "has_key"

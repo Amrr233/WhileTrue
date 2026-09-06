@@ -28,6 +28,7 @@ var _final_round_active := false
 var _remaining := 0
 
 func _ready() -> void:
+	BackgroundMusicManager.play_antivirus_hub_music()
 	reward_label.visible = false
 
 	player.global_position = hub_spawn.global_position

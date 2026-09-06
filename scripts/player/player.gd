@@ -155,6 +155,7 @@ func _handle_jump() -> void:
 	# 2. معالجة النطة العادية (مع تشغيل الصوت)
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
+		jump_sound.pitch_scale = randf_range(0.9, 1.2)
 		jump_sound.play()
 
 	# 3. معالجة نظام الـ Jump Buffer والـ Coyote Time
@@ -162,6 +163,7 @@ func _handle_jump() -> void:
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
+		jump_sound.pitch_scale = randf_range(0.9, 1.2)
 		jump_sound.play() # تشغيل الصوت لو نط بنظام الـ Buffer
 		
 	# 4. معالجة الدابل جامب (مع تشغيل الصوت)
@@ -169,13 +171,10 @@ func _handle_jump() -> void:
 		velocity.y = double_jump_velocity
 		_jump_buffer_timer = 0.0
 		_double_jump_available = false
+		jump_sound.pitch_scale = randf_range(0.6, 1.5)
 		jump_sound.play() # تشغيل الصوت وقت الدابل جامب
 		
 	# 5. التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
-	if Input.is_action_just_released("jump") and velocity.y < 0.0:
-		velocity.y *= 0.5
-		
-	# التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= 0.5
 
@@ -347,18 +346,18 @@ func _on_stand_up_finished() -> void:
 		visual.frame = 0
 		visual.stop()
 
-# --- NEW: Function to handle W key pressing on desktop ---
+# --- NEW: Function to handle S key pressing on desktop ---
 func _handle_desktop_actions() -> void:
 	if visual is AnimatedSprite2D:
 		# Do not interrupt the mouse grab or the drop/stand-up sequence
 		if _falling_phase or visual.animation == "grabbed" or (visual.animation == "stand_up" and visual.is_playing()):
 			return
 
-		# Check if the "W" key is physically pressed down
+		# Check if the "S" key is physically pressed down
 		if Input.is_physical_key_pressed(KEY_S):
 			if visual.animation != "sit":
 				visual.play("sit")
-		# If "W" is released and we were sitting, revert to the default standing pose
+		# If "S" is released and we were sitting, revert to the default standing pose
 		elif visual.animation == "sit":
 			visual.animation = "stand_up"
 			visual.frame = 0

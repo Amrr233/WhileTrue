@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://liw0jxbi513n"
-path="res://.godot/imported/Windows XP Minimize.wav-a24e91fa44afb9410a0784387ca4a8e3.sample"
+path="res://.godot/imported/dash.wav-751f76a9c829859a6ceee9808d98ce52.sample"
 
 [deps]
 
-source_file="res://assets/audio/sfx/Windows XP Minimize.wav"
-dest_files=["res://.godot/imported/Windows XP Minimize.wav-a24e91fa44afb9410a0784387ca4a8e3.sample"]
+source_file="res://assets/audio/sfx/dash.wav"
+dest_files=["res://.godot/imported/dash.wav-751f76a9c829859a6ceee9808d98ce52.sample"]
 
 [params]
 

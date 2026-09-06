@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bexlqcswe8auf" path="res://scenes/enemies/mini_boss.tscn" id="3_boss"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
 [ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="5_sword"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
+[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
 [ext_resource type="Script" uid="uid://d00faxjxrfjy5" path="res://scripts/interactables/moving_file_platform.gd" id="7_lbk5i"]
 
 [sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
@@ -277,15 +277,10 @@ shape = SubResource("PlatformShapeSmall")
 
 [node name="Player" parent="." unique_id=309319802 instance=ExtResource("2_player")]
 position = Vector2(29, 359)
+scale = Vector2(0.5, 0.5)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=631164395]
-position = Vector2(0, -38)
-limit_left = 1
-limit_top = -57
-limit_right = 961
-limit_bottom = 423
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=937872958]
+position = Vector2(262, -54)
 
 [node name="BossSpawn" type="Marker2D" parent="." unique_id=557903248]
 position = Vector2(512, 319)

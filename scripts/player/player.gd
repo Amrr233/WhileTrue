@@ -8,7 +8,7 @@ signal double_jump_state_changed(has_double_jump: bool)
 
 @export_category("Movement")
 @export var speed: float = 90.0
-@export var jump_velocity: float = -270.0
+@export var jump_velocity: float = -300.0
 @export var acceleration: float = 900.0
 @export var air_control: float = 0.8
 @export var coyote_time: float = 0.10

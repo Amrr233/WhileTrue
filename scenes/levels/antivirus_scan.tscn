@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqk3n2x0scan002"]
+
+[ext_resource type="Script" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
+[ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/virus_ranged.tscn" id="3_enemy"]
+
+[sub_resource type="RectangleShape2D" id="GroundShapeMed"]
+size = Vector2(300, 12)
+
+[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
+size = Vector2(60, 10)
+
+[node name="AntivirusScan" type="Node2D"]
+script = ExtResource("1_arena")
+enemy_scene = ExtResource("3_enemy")
+completed_flag = "antivirus_scan_completed"
+unlock_flag = "has_double_jump"
+reward_text = "SCAN COMPLETE — DOUBLE JUMP UNLOCKED"
+next_scene = "res://scenes/levels/antivirus.tscn"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="RewardLabel" type="Label" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+offset_bottom = -30.0
+theme_override_font_sizes/font_size = 14
+text = "REWARD"
+horizontal_alignment = 1
+
+[node name="GroundA" type="StaticBody2D" parent="."]
+position = Vector2(150, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundA"]
+offset_left = -150.0
+offset_top = -6.0
+offset_right = 150.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundA"]
+shape = SubResource("GroundShapeMed")
+
+[node name="GroundB" type="StaticBody2D" parent="."]
+position = Vector2(505, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundB"]
+offset_left = -150.0
+offset_top = -6.0
+offset_right = 150.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundB"]
+shape = SubResource("GroundShapeMed")
+
+[node name="ElevatedPlatform" type="StaticBody2D" parent="."]
+position = Vector2(760, 350)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="ElevatedPlatform"]
+offset_left = -30.0
+offset_top = -5.0
+offset_right = 30.0
+offset_bottom = 5.0
+mouse_filter = 2
+color = Color(0.18, 0.2, 0.23, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ElevatedPlatform"]
+shape = SubResource("PlatformShapeSmall")
+
+[node name="GroundC" type="StaticBody2D" parent="."]
+position = Vector2(950, 420)
+collision_layer = 2
+
+[node name="Visual" type="ColorRect" parent="GroundC"]
+offset_left = -150.0
+offset_top = -6.0
+offset_right = 150.0
+offset_bottom = 6.0
+mouse_filter = 2
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundC"]
+shape = SubResource("GroundShapeMed")
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(40, 395)
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 320.0
+offset_right = 600.0
+offset_bottom = 340.0
+text = "SCAN // Faster viruses, small projectiles — use DASH to cross the gaps"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Marker2D" parent="Spawns"]
+position = Vector2(120, 395)
+
+[node name="Spawn2" type="Marker2D" parent="Spawns"]
+position = Vector2(505, 395)
+
+[node name="Spawn3" type="Marker2D" parent="Spawns"]
+position = Vector2(950, 395)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -60)
+scale = Vector2(2, 2)
+limit_left = 0
+limit_top = -60
+limit_right = 1100
+limit_bottom = 430
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0

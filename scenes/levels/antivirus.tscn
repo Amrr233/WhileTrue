@@ -45,12 +45,6 @@ border_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="GroundShapeWide"]
 size = Vector2(941.2141, 12)
 
-[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
-size = Vector2(60, 10)
-
-[sub_resource type="RectangleShape2D" id="GroundShapeMed"]
-size = Vector2(300, 12)
-
 [node name="Antivirus" type="Node2D" unique_id=1799093417]
 script = ExtResource("1_level")
 
@@ -192,7 +186,7 @@ offset_right = 26.0
 offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 text = "File"
 
 [node name="Label3" type="Label" parent="HubArea" unique_id=1401014981]
@@ -203,7 +197,7 @@ offset_bottom = 26.0
 rotation = -0.0059144013
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 text = "Help"
 
 [node name="Label4" type="Label" parent="HubArea" unique_id=1259502100]
@@ -213,7 +207,7 @@ offset_right = 71.0
 offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 text = "Tools"
 
 [node name="Label5" type="Label" parent="HubArea" unique_id=2007578110]
@@ -223,17 +217,17 @@ offset_right = 50.0
 offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 8
 text = "Edit"
 
 [node name="icon" type="Sprite2D" parent="HubArea" unique_id=1675847924]
+texture_filter = 1
 position = Vector2(10, 7)
-scale = Vector2(0.055362817, 0.03500583)
 texture = ExtResource("2_aiwav")
 
 [node name="icon2" type="Sprite2D" parent="HubArea" unique_id=1169519909]
+texture_filter = 1
 position = Vector2(307, 8)
-scale = Vector2(0.06283765, 0.04484666)
 texture = ExtResource("4_v5mxn")
 
 [node name="HubSpawn" type="Marker2D" parent="HubArea" unique_id=1019479386]
@@ -254,8 +248,8 @@ position = Vector2(-344, -124)
 shape = SubResource("RectangleShape2D_jwbkc")
 
 [node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionCheck" unique_id=1148636525]
+texture_filter = 1
 position = Vector2(-335, -117)
-scale = Vector2(0.08901873, 0.08546178)
 texture = ExtResource("15_3hcds")
 
 [node name="Title" type="Label" parent="HubArea/Options/OptionCheck" unique_id=1619188949]
@@ -275,7 +269,7 @@ offset_right = -301.0
 offset_bottom = -77.0
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 7
 text = "fast check on little annoying baby viruses"
 autowrap_mode = 2
 
@@ -285,12 +279,12 @@ collision_layer = 0
 script = ExtResource("3_option")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HubArea/Options/OptionScan" unique_id=1087265214]
-position = Vector2(-206.96417, 198.14252)
+position = Vector2(-206.21417, 177.08002)
 shape = SubResource("OptionShape")
 
 [node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionScan" unique_id=556841829]
+texture_filter = 1
 position = Vector2(-205.21419, 199.08002)
-scale = Vector2(0.1244362, 0.13209373)
 texture = ExtResource("16_mht4f")
 
 [node name="Title" type="Label" parent="HubArea/Options/OptionScan" unique_id=1949515465]
@@ -311,7 +305,7 @@ offset_right = -65.21417
 offset_bottom = 238.08002
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 7
 text = "fast check on little annoying baby viruses"
 autowrap_mode = 2
 
@@ -325,8 +319,8 @@ position = Vector2(-163.42831, 196.16003)
 shape = SubResource("RectangleShape2D_p5ovw")
 
 [node name="Icon" type="Sprite2D" parent="HubArea/Options/OptionInvestigate" unique_id=1206604940]
+texture_filter = 1
 position = Vector2(-166.42833, 198.16005)
-scale = Vector2(0.13817662, 0.13572139)
 texture = ExtResource("17_p5ovw")
 
 [node name="Title" type="Label" parent="HubArea/Options/OptionInvestigate" unique_id=480345243]
@@ -347,7 +341,7 @@ offset_right = -239.42831
 offset_bottom = 239.16003
 theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 7
 text = "fast check on little annoying baby viruses"
 autowrap_mode = 2
 
@@ -418,7 +412,7 @@ offset_top = 132.0
 offset_right = 70.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 7
 text = "start scan"
 
 [node name="Platfrom2" type="StaticBody2D" parent="HubArea" unique_id=132602908]
@@ -443,7 +437,7 @@ offset_top = 132.0
 offset_right = 70.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 7
 text = "start scan"
 
 [node name="Platfrom3" type="StaticBody2D" parent="HubArea" unique_id=938677718]
@@ -468,212 +462,8 @@ offset_top = 132.0
 offset_right = 70.0
 offset_bottom = 145.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 7
 text = "start scan"
-
-[node name="CheckArena" type="Node2D" parent="." unique_id=662528291]
-
-[node name="Ground" type="StaticBody2D" parent="CheckArena" unique_id=1598653216]
-position = Vector2(1680, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="CheckArena/Ground" unique_id=1130373942]
-offset_left = -480.0
-offset_top = -6.0
-offset_right = 480.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckArena/Ground" unique_id=1921863314]
-shape = SubResource("GroundShapeWide")
-
-[node name="Platform01" type="StaticBody2D" parent="CheckArena" unique_id=958293828]
-position = Vector2(1500, 365)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="CheckArena/Platform01" unique_id=1806268305]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckArena/Platform01" unique_id=746382162]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="Platform02" type="StaticBody2D" parent="CheckArena" unique_id=1516298816]
-position = Vector2(1760, 335)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="CheckArena/Platform02" unique_id=1134245584]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckArena/Platform02" unique_id=1336058285]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="PlayerSpawn" type="Marker2D" parent="CheckArena" unique_id=1133693418]
-position = Vector2(1240, 395)
-
-[node name="Instructions" type="Label" parent="CheckArena" unique_id=819205521]
-offset_left = 1210.0
-offset_top = 320.0
-offset_right = 1800.0
-offset_bottom = 340.0
-text = "CHECK // Clear the viruses"
-
-[node name="Spawns" type="Node2D" parent="CheckArena" unique_id=2066451898]
-
-[node name="Spawn1" type="Marker2D" parent="CheckArena/Spawns" unique_id=351385977]
-position = Vector2(1460, 395)
-
-[node name="Spawn2" type="Marker2D" parent="CheckArena/Spawns" unique_id=1187277932]
-position = Vector2(1720, 395)
-
-[node name="Spawn3" type="Marker2D" parent="CheckArena/Spawns" unique_id=96676277]
-position = Vector2(1980, 395)
-
-[node name="ScanArena" type="Node2D" parent="." unique_id=596607070]
-
-[node name="GroundA" type="StaticBody2D" parent="ScanArena" unique_id=1728755237]
-position = Vector2(2550, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="ScanArena/GroundA" unique_id=513149242]
-offset_left = -150.0
-offset_top = -6.0
-offset_right = 150.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/GroundA" unique_id=141962155]
-shape = SubResource("GroundShapeMed")
-
-[node name="GroundB" type="StaticBody2D" parent="ScanArena" unique_id=1749354162]
-position = Vector2(2905, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="ScanArena/GroundB" unique_id=1730396785]
-offset_left = -150.0
-offset_top = -6.0
-offset_right = 150.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/GroundB" unique_id=251758993]
-shape = SubResource("GroundShapeMed")
-
-[node name="ElevatedPlatform" type="StaticBody2D" parent="ScanArena" unique_id=2053049932]
-position = Vector2(3160, 350)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="ScanArena/ElevatedPlatform" unique_id=1845296420]
-offset_left = -30.0
-offset_top = -5.0
-offset_right = 30.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/ElevatedPlatform" unique_id=823852115]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="GroundC" type="StaticBody2D" parent="ScanArena" unique_id=298358224]
-position = Vector2(3350, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="ScanArena/GroundC" unique_id=652051804]
-offset_left = -150.0
-offset_top = -6.0
-offset_right = 150.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArena/GroundC" unique_id=1855205621]
-shape = SubResource("GroundShapeMed")
-
-[node name="PlayerSpawn" type="Marker2D" parent="ScanArena" unique_id=406227919]
-position = Vector2(2440, 395)
-
-[node name="Instructions" type="Label" parent="ScanArena" unique_id=29640131]
-offset_left = 2410.0
-offset_top = 320.0
-offset_right = 3000.0
-offset_bottom = 340.0
-text = "SCAN // Faster viruses, small projectiles — use DASH to cross the gaps"
-
-[node name="Spawns" type="Node2D" parent="ScanArena" unique_id=1562493783]
-
-[node name="Spawn1" type="Marker2D" parent="ScanArena/Spawns" unique_id=1189497195]
-position = Vector2(2520, 395)
-
-[node name="Spawn2" type="Marker2D" parent="ScanArena/Spawns" unique_id=1149169120]
-position = Vector2(2905, 395)
-
-[node name="Spawn3" type="Marker2D" parent="ScanArena/Spawns" unique_id=338922132]
-position = Vector2(3350, 395)
-
-[node name="InvestigateArena" type="Node2D" parent="." unique_id=348815091]
-
-[node name="Ground" type="StaticBody2D" parent="InvestigateArena" unique_id=1508905042]
-position = Vector2(4280, 420)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="InvestigateArena/Ground" unique_id=406838146]
-offset_left = -480.0
-offset_top = -6.0
-offset_right = 480.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvestigateArena/Ground" unique_id=2083297556]
-shape = SubResource("GroundShapeWide")
-
-[node name="Platform01" type="StaticBody2D" parent="InvestigateArena" unique_id=1345733038]
-position = Vector2(4280, 350)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="InvestigateArena/Platform01" unique_id=872490236]
-offset_left = -40.0
-offset_top = -5.0
-offset_right = 40.0
-offset_bottom = 5.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InvestigateArena/Platform01" unique_id=1275170053]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="PlayerSpawn" type="Marker2D" parent="InvestigateArena" unique_id=1581763094]
-position = Vector2(3840, 395)
-
-[node name="Instructions" type="Label" parent="InvestigateArena" unique_id=1746348874]
-offset_left = 3810.0
-offset_top = 320.0
-offset_right = 4500.0
-offset_bottom = 340.0
-text = "INVESTIGATE // Fast, teleporting hunters — melee hits harder than their ranged attack"
-
-[node name="Spawns" type="Node2D" parent="InvestigateArena" unique_id=1246167106]
-
-[node name="Spawn1" type="Marker2D" parent="InvestigateArena/Spawns" unique_id=1603545730]
-position = Vector2(4000, 395)
-
-[node name="Spawn2" type="Marker2D" parent="InvestigateArena/Spawns" unique_id=1529054001]
-position = Vector2(4280, 395)
-
-[node name="Spawn3" type="Marker2D" parent="InvestigateArena/Spawns" unique_id=942273871]
-position = Vector2(4560, 395)
 
 [node name="FinalArena" type="Node2D" parent="." unique_id=496427461]
 

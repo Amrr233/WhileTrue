@@ -23,6 +23,7 @@ size = Vector2(320, 12)
 size = Vector2(30.5, 35.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikds4"]
+size = Vector2(30, 29)
 
 [node name="Desktop" type="Node2D" unique_id=1245239160]
 
@@ -112,6 +113,7 @@ start_menu = NodePath("../startmenupanel")
 
 [node name="Player" parent="Ui/World" unique_id=258071161 instance=ExtResource("9_player")]
 position = Vector2(271, 148)
+scale = Vector2(0.5, 0.5)
 
 [node name="Ground" type="StaticBody2D" parent="Ui/World" unique_id=816463372]
 position = Vector2(160, 158)
@@ -124,7 +126,7 @@ shape = SubResource("GroundShape")
 position = Vector2(210, 114)
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
-position = Vector2(18, 115)
+position = Vector2(40, 51)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("4_bin_script")
@@ -137,18 +139,18 @@ texture = ExtResource("2_bin")
 shape = SubResource("BinShape")
 
 [node name="antivirusIcon" type="Area2D" parent="." unique_id=793301714]
-position = Vector2(1, -5)
+position = Vector2(-13, -5)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("6_ujlt8")
 
 [node name="Sprite2D" type="Sprite2D" parent="antivirusIcon" unique_id=739201651]
-position = Vector2(55, 125)
-scale = Vector2(0.072, 0.072)
+position = Vector2(53, 120.00001)
+scale = Vector2(2.3059137, 2.9945035)
 texture = ExtResource("7_ml5y0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="antivirusIcon" unique_id=1791655265]
-position = Vector2(54, 125)
+position = Vector2(53, 121.5)
 shape = SubResource("RectangleShape2D_ikds4")
 
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]

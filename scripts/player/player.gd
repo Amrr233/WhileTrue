@@ -59,6 +59,7 @@ var respawn_position := Vector2.ZERO
 var _falling_phase := false
 var _checkpoint_set := false
 
+@onready var camera: Camera2D = $Camera2D
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_shape: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var attack_visual: Polygon2D = $AttackArea/AttackVisual
@@ -83,6 +84,8 @@ func _ready() -> void:
 		visual.frame = 0
 		visual.stop()
 		visual.animation_finished.connect(_on_stand_up_finished)
+	if get_tree().current_scene.name == "Desktop":
+		camera.enabled = false
 
 func _physics_process(delta: float) -> void:
 	if _invulnerability_timer > 0.0:
@@ -186,6 +189,17 @@ func _handle_horizontal_movement(delta: float) -> void:
 	else:
 		var deceleration := acceleration * (1.0 if is_on_floor() else 0.65)
 		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+
+	# --- Animation Logic for Levels (Idle, Running, Jumping) ---
+	if visual is AnimatedSprite2D:
+		visual.flip_h = (facing == -1)
+		
+		if not is_on_floor():
+			visual.play("jumping")
+		elif direction != 0.0:
+			visual.play("running")
+		else:
+			visual.play("idle")
 
 func _handle_attack() -> void:
 	if get_tree().current_scene.name == "Desktop":

@@ -13,6 +13,7 @@ script = ExtResource("2_n08v2")
 
 [node name="DesktopMusic" type="AudioStreamPlayer" parent="." unique_id=812002988]
 stream = ExtResource("1_nybvi")
+volume_db = -10.986
 
 [node name="RecycleBinMusic" type="AudioStreamPlayer" parent="." unique_id=1298846585]
 stream = ExtResource("3_o68ir")

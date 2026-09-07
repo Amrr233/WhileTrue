@@ -18,10 +18,12 @@
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="14_58e74"]
 [ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="15_cyrvx"]
 [ext_resource type="Texture2D" uid="uid://debraqorww8n0" path="res://assets/art/environments/recycle pin FOLDER.png" id="15_i5h8w"]
+[ext_resource type="Script" uid="uid://bdkykjmogih7g" path="res://scripts/interactables/platform_2.gd" id="15_mjela"]
 [ext_resource type="Texture2D" uid="uid://bf3vkf7iqmbh8" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item20.png" id="16_58e74"]
 [ext_resource type="Texture2D" uid="uid://djxnbif7coobw" path="res://assets/art/environments/recycle pin sprite sheet.png" id="16_h864q"]
 [ext_resource type="Texture2D" uid="uid://gnrrdk4ih4w4" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item67.png" id="19_cyrvx"]
 [ext_resource type="Texture2D" uid="uid://5pweojdj7jlc" path="res://assets/art/environments/recycle pin LONG 2.png" id="19_ffx3s"]
+[ext_resource type="Script" uid="uid://cn7n10k7dtwks" path="res://scripts/interactables/platform_5.gd" id="19_vr70j"]
 [ext_resource type="Texture2D" uid="uid://bcbmdia4hbjfg" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item40.png" id="20_cyrvx"]
 [ext_resource type="Texture2D" uid="uid://bdwb3l82x37vt" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item19.png" id="21_fkmt1"]
 [ext_resource type="Texture2D" uid="uid://bcghwmj5jlrwf" path="res://assets/art/environments/recycle pin LONG.png" id="22_auj4k"]
@@ -32,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="25_iygvn"]
 [ext_resource type="Texture2D" uid="uid://c5wepesantfwj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item73.png" id="26_chgt7"]
 [ext_resource type="Texture2D" uid="uid://cdop1ggbbenei" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item97.png" id="26_jm2ap"]
+[ext_resource type="Script" uid="uid://s4r6nhdqun6n" path="res://scripts/interactables/platform_13.gd" id="27_hq7h7"]
 [ext_resource type="Texture2D" uid="uid://dscd4ymai2857" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item84.png" id="27_nlswu"]
 [ext_resource type="Texture2D" uid="uid://d3biw5slqj3tp" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item98.png" id="27_p0pwk"]
 [ext_resource type="Texture2D" uid="uid://dc4nhdimg2w1e" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item49.png" id="28_45y5q"]
@@ -41,15 +44,52 @@
 [ext_resource type="Texture2D" uid="uid://4i7faq6unjbv" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item15.png" id="29_q7br2"]
 [ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="30_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://if3hs7gua86k" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item60.png" id="30_pspfu"]
+[ext_resource type="Script" uid="uid://d1djmwkxrfsmh" path="res://scripts/interactables/platform_8.gd" id="35_aildm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmt1"]
-size = Vector2(56.5, 35)
+size = Vector2(39, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vr70j"]
+size = Vector2(49, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjela"]
+size = Vector2(58, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq7h7"]
+size = Vector2(57, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyrvx"]
 size = Vector2(29.55605, 31.986778)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aildm"]
+size = Vector2(34.242134, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5xix"]
+size = Vector2(34.432983, 22.57074)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxqbr"]
+size = Vector2(31.312012, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4r81"]
+size = Vector2(31.298935, 21.226738)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnqmk"]
 size = Vector2(120.976654, 21.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4qvbm"]
+size = Vector2(58, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2uwu5"]
+size = Vector2(50, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m36km"]
+size = Vector2(57, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jwjl"]
+size = Vector2(58, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfdno"]
+size = Vector2(59, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_auj4k"]
 size = Vector2(256, 21)
@@ -62,6 +102,18 @@ size = Vector2(25, 26.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chgt7"]
 size = Vector2(31.5, 19.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dt4i"]
+size = Vector2(27, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhux8"]
+size = Vector2(34, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aif7k"]
+size = Vector2(29, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq06n"]
+size = Vector2(28, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63p7e"]
 size = Vector2(117, 182)
@@ -105,7 +157,6 @@ _data = {
 }
 
 [node name="RecycleBin" type="Node2D" unique_id=761169033]
-position = Vector2(0, 1)
 script = ExtResource("1_level")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=983451721]
@@ -346,6 +397,7 @@ start_menu = NodePath("../startmenupanel")
 position = Vector2(86, -40)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("15_mjela")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2" unique_id=402799638]
 position = Vector2(76.75, 358.5)
@@ -356,14 +408,22 @@ offset_left = 34.0
 offset_top = 333.0
 offset_right = 124.0
 offset_bottom = 387.0
+pivot_offset = Vector2(45, 27)
 texture = ExtResource("15_i5h8w")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform2" unique_id=375660536]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2/BounceTrigger" unique_id=60875082]
+position = Vector2(77, 355)
+shape = SubResource("RectangleShape2D_vr70j")
 
 [node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=422405899]
 position = Vector2(194, -42)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("15_mjela")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=1096199971]
 position = Vector2(76.75, 358.5)
@@ -378,10 +438,17 @@ texture = ExtResource("16_58e74")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform3" unique_id=498354626]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3/BounceTrigger" unique_id=743997418]
+position = Vector2(76, 356)
+shape = SubResource("RectangleShape2D_mjela")
+
 [node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=575113679]
 position = Vector2(277, -84)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("15_mjela")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4" unique_id=1480696894]
 position = Vector2(76.75, 358.5)
@@ -396,10 +463,17 @@ texture = ExtResource("8_folder")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform4" unique_id=1649834247]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4/BounceTrigger" unique_id=1254544937]
+position = Vector2(76.5, 354)
+shape = SubResource("RectangleShape2D_hq7h7")
+
 [node name="Platform5" type="StaticBody2D" parent="Platform" unique_id=1523395149]
 position = Vector2(391, -84)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("19_vr70j")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform5" unique_id=1865149433]
 offset_left = 34.0
@@ -453,6 +527,38 @@ position = Vector2(288, 325.99997)
 rotation = -0.44539657
 shape = SubResource("RectangleShape2D_cyrvx")
 
+[node name="Trigger1" type="Area2D" parent="Platform/Platform5" unique_id=1759351167]
+position = Vector2(-226, 403)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5/Trigger1" unique_id=1235970458]
+position = Vector2(282.58456, 0.6355896)
+rotation = -0.41529775
+shape = SubResource("RectangleShape2D_aildm")
+
+[node name="Trigger2" type="Area2D" parent="Platform/Platform5" unique_id=2061052123]
+position = Vector2(136, 379)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5/Trigger2" unique_id=1265147591]
+position = Vector2(1.7961426, -7.859497)
+rotation = -0.43309334
+shape = SubResource("RectangleShape2D_h5xix")
+
+[node name="Trigger3" type="Area2D" parent="Platform/Platform5" unique_id=1967949869]
+position = Vector2(214, 343)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5/Trigger3" unique_id=194407670]
+position = Vector2(-2, -2)
+rotation = -0.45544907
+shape = SubResource("RectangleShape2D_cxqbr")
+
+[node name="Trigger4" type="Area2D" parent="Platform/Platform5" unique_id=300336651]
+position = Vector2(282, 326)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5/Trigger4" unique_id=1166338420]
+position = Vector2(3.0755615, -6.329529)
+rotation = -0.436691
+shape = SubResource("RectangleShape2D_u4r81")
+
 [node name="Platform11" type="AnimatableBody2D" parent="Platform" unique_id=2145906245]
 position = Vector2(1711, -202)
 collision_layer = 7
@@ -476,6 +582,7 @@ shape = SubResource("RectangleShape2D_fnqmk")
 position = Vector2(743, -83)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("15_mjela")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform6" unique_id=1331148906]
 position = Vector2(27, 359)
@@ -490,29 +597,43 @@ texture = ExtResource("19_cyrvx")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform6" unique_id=456031554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform6/BounceTrigger" unique_id=1747579935]
+position = Vector2(27, 351.5)
+shape = SubResource("RectangleShape2D_4qvbm")
+
 [node name="Platform12" type="StaticBody2D" parent="Platform" unique_id=2028939597]
 position = Vector2(1510, -79)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("15_mjela")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform12" unique_id=1411811827]
+offset_left = 98.0
+offset_top = 341.0
+offset_right = 138.0
+offset_bottom = 381.0
+texture = ExtResource("24_pspfu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12" unique_id=1505566236]
 position = Vector2(117, 358)
 shape = SubResource("RectangleShape2D_fkmt1")
 
-[node name="TextureRect" type="TextureRect" parent="Platform/Platform12" unique_id=1595662122]
-offset_left = -629.0
-offset_top = 319.0
-offset_right = -548.0
-offset_bottom = 359.0
-texture = ExtResource("15_cyrvx")
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform12" unique_id=114464481]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12/BounceTrigger" unique_id=778049188]
+position = Vector2(121, 346.5)
+shape = SubResource("RectangleShape2D_2uwu5")
 
 [node name="Platform13" type="StaticBody2D" parent="Platform" unique_id=1176877490]
 position = Vector2(1598, -147)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("27_hq7h7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1201225232]
-position = Vector2(94, 379)
+position = Vector2(90.5, 379)
 shape = SubResource("RectangleShape2D_fkmt1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1917738183]
@@ -555,13 +676,6 @@ offset_right = -408.0
 offset_bottom = 429.0
 texture = ExtResource("15_cyrvx")
 
-[node name="TextureRect5" type="TextureRect" parent="Platform/Platform13" unique_id=1411811827]
-offset_left = 10.0
-offset_top = 409.0
-offset_right = 50.0
-offset_bottom = 449.0
-texture = ExtResource("24_pspfu")
-
 [node name="TextureRect6" type="TextureRect" parent="Platform/Platform13" unique_id=787116243]
 offset_left = 75.0
 offset_top = 360.0
@@ -583,18 +697,31 @@ offset_right = 555.0
 offset_bottom = 361.0
 texture = ExtResource("28_ajdkx")
 
-[node name="TextureRect9" type="TextureRect" parent="Platform/Platform13" unique_id=1751119103]
-offset_left = 515.0
-offset_top = 321.0
-offset_right = 555.0
-offset_bottom = 361.0
-texture = ExtResource("28_ajdkx")
-
 [node name="SwordPickup" parent="Platform/Platform13" unique_id=235410236 instance=ExtResource("29_mjela")]
 position = Vector2(555, 297)
 
 [node name="LevelExit" parent="Platform/Platform13" unique_id=1228670635 instance=ExtResource("30_ajdkx")]
 position = Vector2(631, 349)
+
+[node name="TRIGGER1" type="Area2D" parent="Platform/Platform13" unique_id=1643214338]
+position = Vector2(93, 372)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13/TRIGGER1" unique_id=2025172198]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_m36km")
+
+[node name="TRIGGER2" type="Area2D" parent="Platform/Platform13" unique_id=1926882054]
+position = Vector2(181, 331)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13/TRIGGER2" unique_id=1549504299]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_0jwjl")
+
+[node name="TRIGGER3" type="Area2D" parent="Platform/Platform13" unique_id=722360372]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13/TRIGGER3" unique_id=490674652]
+position = Vector2(535, 333)
+shape = SubResource("RectangleShape2D_kfdno")
 
 [node name="Platform7" type="StaticBody2D" parent="Platform" unique_id=483094006]
 position = Vector2(838, -126)
@@ -617,6 +744,7 @@ expand_mode = 1
 position = Vector2(1186, -10)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("35_aildm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8" unique_id=634128488]
 position = Vector2(201, 320)
@@ -624,14 +752,6 @@ shape = SubResource("RectangleShape2D_nlswu")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform8" unique_id=706734976]
 position = Vector2(123, 339)
-shape = SubResource("RectangleShape2D_nlswu")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform/Platform8" unique_id=1176705249]
-position = Vector2(74, 333.375)
-shape = SubResource("RectangleShape2D_nlswu")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platform/Platform8" unique_id=123083495]
-position = Vector2(25, 292)
 shape = SubResource("RectangleShape2D_nlswu")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform8" unique_id=437115551]
@@ -713,6 +833,30 @@ shape = SubResource("RectangleShape2D_a45wt")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Platform/Platform8" unique_id=1455717709]
 position = Vector2(83, 244)
 shape = SubResource("RectangleShape2D_chgt7")
+
+[node name="TRIGGER1" type="Area2D" parent="Platform/Platform8" unique_id=914944253]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8/TRIGGER1" unique_id=314185978]
+position = Vector2(29.5, 226)
+shape = SubResource("RectangleShape2D_4dt4i")
+
+[node name="TRIGGER2" type="Area2D" parent="Platform/Platform8" unique_id=1337767178]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8/TRIGGER2" unique_id=2026222181]
+position = Vector2(83, 242.5)
+shape = SubResource("RectangleShape2D_fhux8")
+
+[node name="TRIGGER3" type="Area2D" parent="Platform/Platform8" unique_id=287243510]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8/TRIGGER3" unique_id=1522735053]
+position = Vector2(124, 334)
+shape = SubResource("RectangleShape2D_aif7k")
+
+[node name="TRIGGER4" type="Area2D" parent="Platform/Platform8" unique_id=761881133]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8/TRIGGER4" unique_id=2055069293]
+position = Vector2(201, 319)
+shape = SubResource("RectangleShape2D_dq06n")
 
 [node name="Platform10" type="StaticBody2D" parent="Platform" unique_id=1178539842]
 position = Vector2(0, 1)
@@ -822,6 +966,42 @@ collision_mask = 7
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform14" unique_id=619289898]
 position = Vector2(65.5, 315)
 shape = SubResource("RectangleShape2D_63p7e")
+
+[node name="TextureRect14" type="TextureRect" parent="Platform/Platform14" unique_id=1791338264]
+offset_left = -72.0
+offset_top = 441.0
+offset_right = 202.0
+offset_bottom = 491.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect13" type="TextureRect" parent="Platform/Platform14" unique_id=1097321900]
+offset_left = -72.0
+offset_top = 422.0
+offset_right = 202.0
+offset_bottom = 472.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect12" type="TextureRect" parent="Platform/Platform14" unique_id=1058738592]
+offset_left = -72.0
+offset_top = 404.0
+offset_right = 202.0
+offset_bottom = 454.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect11" type="TextureRect" parent="Platform/Platform14" unique_id=750786386]
+offset_left = -72.0
+offset_top = 386.0
+offset_right = 202.0
+offset_bottom = 436.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform14" unique_id=1595935988]
 offset_left = -72.0

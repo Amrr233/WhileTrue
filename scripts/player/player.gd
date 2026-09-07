@@ -15,10 +15,10 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export var jump_buffer_time: float = 0.10
 
 # --- إضافات تحسين الحركة ---
-@export var fall_gravity_multiplier: float = 1.5  
-@export var max_fall_speed: float = 600.0  
-@export var apex_threshold: float = 50.0  
-@export var apex_gravity_multiplier: float = 0.5  
+@export var fall_gravity_multiplier: float = 1.5
+@export var max_fall_speed: float = 600.0
+@export var apex_threshold: float = 50.0
+@export var apex_gravity_multiplier: float = 0.5
 # --------------------------
 
 @export_category("Combat")
@@ -83,7 +83,6 @@ func _ready() -> void:
 	attack_visual.visible = false
 	health_changed.emit(health, max_health)
 
-	
 	if visual is AnimatedSprite2D:
 		visual.animation = "stand_up"
 		visual.frame = 0
@@ -112,7 +111,6 @@ func _physics_process(delta: float) -> void:
 	
 	if get_tree().current_scene.name == "Desktop":
 		_handle_desktop_actions()
-
 
 	move_and_slide()
 
@@ -145,17 +143,14 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y = minf(velocity.y, max_fall_speed)
 
 func _handle_jump() -> void:
-	
 	if get_tree().current_scene.name == "Desktop":
 		return
 
-	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
 		jump_sound.pitch_scale = randf_range(0.9, 1.2)
 		jump_sound.play()
 
-	
 	if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0.0
@@ -211,9 +206,7 @@ func _handle_horizontal_movement(delta: float) -> void:
 	if visual is AnimatedSprite2D:
 		visual.flip_h = (facing == -1)
 		
-		
 		var is_attacking = (visual.animation == "hit_sword" or visual.animation == "hit_hand") and visual.is_playing()
-		
 		
 		if not is_attacking:
 			if not is_on_floor():
@@ -231,17 +224,15 @@ func _handle_attack() -> void:
 		_start_attack()
 
 func _start_attack() -> void:
-	attack_sound.play() # <--- Your attack sound triggers here
+	attack_sound.play()
 	_attack_timer = attack_cooldown
 	_attack_active_timer = attack_time
 	_attack_hit_ids.clear()
 	attack_shape.disabled = false
 	
 	attack_visual.visible = true
-	
 	attack_area.position.x = 32.0 * facing
 
-	
 	if visual is AnimatedSprite2D:
 		if has_sword:
 			visual.play("hit_sword")
@@ -307,6 +298,9 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 		respawn(true)
 
 func respawn(reload_scene: bool = false) -> void:
+	# ---> HERE is the new line that resets the scrollbar elevator <---
+	get_tree().call_group("reset_on_death", "reset_state")
+
 	if reload_scene:
 		set_physics_process(false)
 		var current_scene_path = get_tree().current_scene.scene_file_path
@@ -322,7 +316,6 @@ func set_checkpoint(new_position: Vector2) -> void:
 	respawn_position = new_position
 	_checkpoint_set = true
 
-
 func on_mouse_hold() -> void:
 	grab_sound.play()
 	if visual is AnimatedSprite2D:
@@ -330,7 +323,6 @@ func on_mouse_hold() -> void:
 		visual.animation = "grabbed"
 		visual.frame = 0
 		visual.stop()
-
  
 func on_mouse_release() -> void:
 	if visual is AnimatedSprite2D:
@@ -351,13 +343,11 @@ func _on_stand_up_finished() -> void:
 		visual.frame = 0
 		visual.stop()
 
-
 func _handle_desktop_actions() -> void:
 	if visual is AnimatedSprite2D:
 		# Do not interrupt the mouse grab or the drop/stand-up sequence
 		if _falling_phase or visual.animation == "grabbed" or (visual.animation == "stand_up" and visual.is_playing()):
 			return
-
 	 
 		if Input.is_physical_key_pressed(KEY_S):
 			if visual.animation != "sit":

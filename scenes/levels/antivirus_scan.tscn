@@ -45,6 +45,7 @@ size = Vector2(591.5, 41)
 size = Vector2(598, 53)
 
 [node name="AntivirusScan" type="Node2D" unique_id=1589291216]
+position = Vector2(7, 36)
 script = ExtResource("1_arena")
 arena_type = "scan"
 enemy_scene = ExtResource("2_n5wal")

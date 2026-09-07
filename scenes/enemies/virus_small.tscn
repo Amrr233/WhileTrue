@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://v5k031eiy686"]
+
+[ext_resource type="Script" uid="uid://biuciylrljhs4" path="res://scripts/enemies/virus_basic.gd" id="1_dq2us"]
+[ext_resource type="Texture2D" uid="uid://chywe4at15b6c" path="res://assets/art/enemies/virus_green.png" id="2_jn07u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpt0g"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3olh"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kf83"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5icik"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd85j"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1d4p"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvgju"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeioc"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5sop"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so5o7"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdhvq"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr01f"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imesh"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjtkm"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n727h"]
+atlas = ExtResource("2_jn07u")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvgju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpt0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3olh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kf83")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5icik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd85j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1d4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvgju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeioc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5sop")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so5o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdhvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr01f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imesh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjtkm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n727h")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so5o7"]
+size = Vector2(11, 8)
+
+[node name="VirusBasic" type="CharacterBody2D" unique_id=183869775]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_dq2us")
+speed = 70.0
+chase_range = 190.0
+attack_range = 35.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1600130829]
+position = Vector2(-1.5, 2.5)
+scale = Vector2(0.625, 0.7083333)
+sprite_frames = SubResource("SpriteFrames_lvgju")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=648210079]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_so5o7")

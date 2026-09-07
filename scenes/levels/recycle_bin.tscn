@@ -2,330 +2,813 @@
 
 [ext_resource type="Script" uid="uid://uxh7qhfek8ye" path="res://scripts/levels/recycle_bin.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" uid="uid://bexlqcswe8auf" path="res://scenes/enemies/mini_boss.tscn" id="3_boss"]
+[ext_resource type="AudioStream" uid="uid://fog0m7eggfap" path="res://assets/audio/sfx/Windows XP Hardware Remove.wav" id="3_hrp3q"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_14nmw"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="5_sword"]
-[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="6_exit"]
-[ext_resource type="AudioStream" uid="uid://57b758q36lrc" path="res://assets/audio/sfx/power_up.wav" id="6_tcfsx"]
-[ext_resource type="Script" uid="uid://d00faxjxrfjy5" path="res://scripts/interactables/moving_file_platform.gd" id="7_lbk5i"]
+[ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="5_h864q"]
+[ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="6_63p7e"]
+[ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="7_i5h8w"]
+[ext_resource type="Texture2D" uid="uid://d3o01l6wihtcx" path="res://assets/art/environments/corrupted_folder.png" id="8_folder"]
+[ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="8_hgd7y"]
+[ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="9_a2cc8"]
+[ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_ffx3s"]
+[ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="11_c3ncu"]
+[ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="12_co7em"]
+[ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="13_8j3he"]
+[ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="14_58e74"]
+[ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="15_cyrvx"]
+[ext_resource type="Texture2D" uid="uid://debraqorww8n0" path="res://assets/art/environments/recycle pin FOLDER.png" id="15_i5h8w"]
+[ext_resource type="Texture2D" uid="uid://bf3vkf7iqmbh8" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item20.png" id="16_58e74"]
+[ext_resource type="Texture2D" uid="uid://djxnbif7coobw" path="res://assets/art/environments/recycle pin sprite sheet.png" id="16_h864q"]
+[ext_resource type="Texture2D" uid="uid://gnrrdk4ih4w4" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item67.png" id="19_cyrvx"]
+[ext_resource type="Texture2D" uid="uid://5pweojdj7jlc" path="res://assets/art/environments/recycle pin LONG 2.png" id="19_ffx3s"]
+[ext_resource type="Texture2D" uid="uid://bcbmdia4hbjfg" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item40.png" id="20_cyrvx"]
+[ext_resource type="Texture2D" uid="uid://bdwb3l82x37vt" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item19.png" id="21_fkmt1"]
+[ext_resource type="Texture2D" uid="uid://cb2887fddvi88" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item29.png" id="22_fnqmk"]
+[ext_resource type="Texture2D" uid="uid://df45752ftg2qo" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item53.png" id="24_jm2ap"]
+[ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="25_iygvn"]
+[ext_resource type="Texture2D" uid="uid://cdop1ggbbenei" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item97.png" id="26_jm2ap"]
+[ext_resource type="Texture2D" uid="uid://dscd4ymai2857" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item84.png" id="27_nlswu"]
+[ext_resource type="Texture2D" uid="uid://d3biw5slqj3tp" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item98.png" id="27_p0pwk"]
+[ext_resource type="Texture2D" uid="uid://dc4nhdimg2w1e" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item49.png" id="28_45y5q"]
+[ext_resource type="Texture2D" uid="uid://d2mi50dpkpuw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item99.png" id="28_aowqg"]
+[ext_resource type="Texture2D" uid="uid://4i7faq6unjbv" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item15.png" id="29_q7br2"]
+[ext_resource type="Texture2D" uid="uid://if3hs7gua86k" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item60.png" id="30_pspfu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbk5i"]
-size = Vector2(64, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmt1"]
+size = Vector2(56.5, 35)
 
-[sub_resource type="RectangleShape2D" id="PlatformShapeSmall"]
-size = Vector2(27.5, 21)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyrvx"]
+size = Vector2(29.55605, 31.986778)
 
-[sub_resource type="RectangleShape2D" id="PlatformShapeMedium"]
-size = Vector2(166, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnqmk"]
+size = Vector2(290.5, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlswu"]
+size = Vector2(27, 20.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a45wt"]
+size = Vector2(25, 26.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chgt7"]
+size = Vector2(31.5, 19.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63p7e"]
+size = Vector2(117, 182)
 
 [node name="RecycleBin" type="Node2D" unique_id=761169033]
 position = Vector2(0, 1)
 script = ExtResource("1_level")
 
-[node name="WindowChrome" type="ColorRect" parent="." unique_id=1867269636]
-offset_right = 960.0
-offset_bottom = 24.0
-mouse_filter = 2
-color = Color(0.19, 0.36, 0.62, 1)
+[node name="HUD" type="CanvasLayer" parent="." unique_id=983451721]
+layer = 5
 
-[node name="WindowTitle" type="Label" parent="." unique_id=275090908]
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 180.0
-offset_bottom = 20.0
-text = "Recycle Bin"
+[node name="RewardLabel" type="Label" parent="HUD" unique_id=1881304883]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -60.0
+offset_right = 160.0
+offset_bottom = -30.0
+theme_override_font_sizes/font_size = 14
+text = "REWARD"
+horizontal_alignment = 1
 
-[node name="FileRows" type="Node2D" parent="." unique_id=704267329]
+[node name="Player" parent="." unique_id=1447993816 instance=ExtResource("2_player")]
+texture_filter = 1
+position = Vector2(80, 194)
+jump_velocity = -360.0
 
-[node name="Row1" type="ColorRect" parent="FileRows" unique_id=2013292530]
-offset_left = 28.0
-offset_top = 50.0
-offset_right = 900.0
-offset_bottom = 51.0
-mouse_filter = 2
-color = Color(0.2, 0.25, 0.3, 0.45)
-
-[node name="Row2" type="ColorRect" parent="FileRows" unique_id=724453004]
-offset_left = 28.0
-offset_top = 75.0
-offset_right = 900.0
-offset_bottom = 76.0
-mouse_filter = 2
-color = Color(0.2, 0.25, 0.3, 0.45)
-
-[node name="Ground" type="StaticBody2D" parent="." unique_id=35096635]
-position = Vector2(480, 420)
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1303422272]
-position = Vector2(-491, -1)
-shape = SubResource("RectangleShape2D_lbk5i")
-
-[node name="GroundVisual" type="ColorRect" parent="Ground" unique_id=145826868]
-offset_left = -535.0
-offset_top = -6.0
-offset_right = 460.0
-offset_bottom = 6.0
-mouse_filter = 2
-color = Color(0.12, 0.14, 0.18, 1)
-
-[node name="FilePlatform01" type="StaticBody2D" parent="." unique_id=86123545]
-position = Vector2(42, 386)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform01" unique_id=742031085]
-offset_left = -16.0
-offset_top = -3.0
-offset_right = 5.0
-offset_bottom = 17.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform01" unique_id=616261941]
-position = Vector2(-5.5, 6.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform02" type="StaticBody2D" parent="." unique_id=147883524]
-position = Vector2(67, 349)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform02" unique_id=2013052178]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform02" unique_id=830436468]
-position = Vector2(2.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform03" type="StaticBody2D" parent="." unique_id=1742659719]
-position = Vector2(107, 306)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform03" unique_id=1926632488]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform03" unique_id=1419333636]
-position = Vector2(2.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform04" type="StaticBody2D" parent="." unique_id=715424627]
-position = Vector2(152, 264)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform04" unique_id=1843599335]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform04" unique_id=1858104216]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform05" type="StaticBody2D" parent="." unique_id=1761990994]
-position = Vector2(192, 229)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform05" unique_id=605806343]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform05" unique_id=1116555784]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform06" type="StaticBody2D" parent="." unique_id=1232578606]
-position = Vector2(243, 229)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform06" unique_id=1995398898]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform06" unique_id=1293992120]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform07" type="StaticBody2D" parent="." unique_id=1397883601]
-position = Vector2(298, 229)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform07" unique_id=512415690]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform07" unique_id=1554376890]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform08" type="StaticBody2D" parent="." unique_id=733567286]
-position = Vector2(349, 229)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform08" unique_id=897196612]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform08" unique_id=959392991]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform09" type="StaticBody2D" parent="." unique_id=803756482]
-position = Vector2(101, 146)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform09" unique_id=1640909172]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform09" unique_id=1312953411]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform10" type="StaticBody2D" parent="." unique_id=1788785309]
-position = Vector2(49, 99)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform10" unique_id=1603507096]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform10" unique_id=937311294]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="FilePlatform11" type="StaticBody2D" parent="." unique_id=1647363365]
-position = Vector2(398, 275)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="FilePlatform11" unique_id=387508069]
-offset_left = -8.0
-offset_top = -6.0
-offset_right = 13.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.18, 0.2, 0.23, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FilePlatform11" unique_id=1858885193]
-position = Vector2(1.5, 3.5)
-shape = SubResource("PlatformShapeSmall")
-
-[node name="BossPlatform" type="StaticBody2D" parent="." unique_id=1187796317]
-position = Vector2(475, 344)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="BossPlatform" unique_id=2030867535]
-offset_left = -36.0
-offset_top = -4.0
-offset_right = 130.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.21, 0.22, 0.25, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BossPlatform" unique_id=75865156]
-position = Vector2(47, -1)
-shape = SubResource("PlatformShapeMedium")
-
-[node name="HighFilePlatform" type="StaticBody2D" parent="." unique_id=56018956]
-position = Vector2(878, 80)
-collision_layer = 2
-
-[node name="Visual" type="ColorRect" parent="HighFilePlatform" unique_id=334832496]
-offset_left = -20.0
-offset_top = -4.0
-offset_right = 20.0
-offset_bottom = 4.0
-mouse_filter = 2
-color = Color(0.16, 0.18, 0.22, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HighFilePlatform" unique_id=1667726554]
-shape = SubResource("PlatformShapeSmall")
-
-[node name="Player" parent="." unique_id=309319802 instance=ExtResource("2_player")]
-position = Vector2(-23, 396)
-scale = Vector2(0.5, 0.5)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=937872958]
-position = Vector2(0, -54)
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1551076545]
+position = Vector2(138, 101)
 scale = Vector2(2, 2)
+limit_left = 3
+limit_top = 1
+limit_right = 1410065408
+limit_bottom = 453
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
-[node name="BossSpawn" type="Marker2D" parent="." unique_id=557903248]
-position = Vector2(512, 319)
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=127056777]
+layer = -2
 
-[node name="MiniBoss" parent="." unique_id=1662424361 instance=ExtResource("3_boss")]
-position = Vector2(515, 321)
+[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=895801805]
+offset_left = -845.0
+offset_top = -24.0
+offset_right = 2662.0
+offset_bottom = 659.0
+color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
-[node name="ScrollbarElevator" parent="." unique_id=673843346 instance=ExtResource("4_scroll")]
-position = Vector2(934, 379)
-travel_distance = 300.0
-speed = 80.0
+[node name="CheckStartSound" type="AudioStreamPlayer" parent="." unique_id=147040923]
+stream = ExtResource("3_hrp3q")
+volume_db = 15.0
 
-[node name="SwordPickup" parent="." unique_id=594080364 instance=ExtResource("5_sword")]
-position = Vector2(878, 50)
+[node name="top_bar" type="CanvasLayer" parent="." unique_id=829722645]
+layer = -1
 
-[node name="PickupSound" type="AudioStreamPlayer" parent="SwordPickup" unique_id=1159989479]
-stream = ExtResource("6_tcfsx")
-
-[node name="LevelExit" parent="." unique_id=1638088137 instance=ExtResource("6_exit")]
-position = Vector2(942, 26)
-
-[node name="Instructions" type="Label" parent="." unique_id=1053462593]
-offset_left = 30.0
-offset_top = 28.0
+[node name="WindowChrome" type="ColorRect" parent="top_bar" unique_id=891356512]
 offset_right = 800.0
-offset_bottom = 48.0
-text = "Recycle Bin // Deleted files // Find another way up"
+offset_bottom = 32.0
+mouse_filter = 2
+color = Color(0.003921569, 0.3529412, 0.9098039, 1)
 
-[node name="MovingFilePlatform12" type="AnimatableBody2D" parent="." unique_id=714556359]
+[node name="Label" type="Label" parent="top_bar/WindowChrome" unique_id=1638576437]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.030000005
+anchor_top = 0.0625
+anchor_right = 0.09375
+anchor_bottom = 0.0625
+offset_left = 19.0
+offset_top = 1.0
+offset_right = 126.0
+offset_bottom = 34.0
+rotation = -0.0035957948
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 22
+text = "Recycle pin"
+
+[node name="WindowChrome2" type="ColorRect" parent="top_bar" unique_id=370935630]
+anchors_preset = -1
+anchor_left = -0.035
+anchor_right = 0.5675
+anchor_bottom = 0.02
+offset_left = 26.0
+offset_top = 32.0
+offset_right = 346.0
+offset_bottom = 42.0
+mouse_filter = 2
+color = Color(0.9254902, 0.9019608, 0.8392157, 1)
+
+[node name="Label2" type="Label" parent="top_bar/WindowChrome2" unique_id=1248605448]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.012468828
+anchor_top = 0.10526316
+anchor_right = 0.021197008
+anchor_bottom = 0.15789473
+offset_left = 5.0
+offset_right = 26.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 12
+text = "File"
+
+[node name="Label3" type="Label" parent="top_bar/WindowChrome2" unique_id=1580555508]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064837895
+anchor_top = 0.10526316
+anchor_right = 0.07356607
+anchor_bottom = 0.15789473
+offset_left = 81.00001
+offset_right = 102.00001
+offset_bottom = 10.0
+rotation = -0.0059144013
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 12
+text = "Help"
+
+[node name="Label4" type="Label" parent="top_bar/WindowChrome2" unique_id=1933902370]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0037406483
+anchor_top = 0.10526316
+anchor_right = 0.018703243
+anchor_bottom = 0.15789473
+offset_left = 50.0
+offset_right = 73.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 12
+text = "Tools"
+
+[node name="Label5" type="Label" parent="top_bar/WindowChrome2" unique_id=1107406973]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08728179
+anchor_top = 0.10526316
+anchor_right = 0.09600998
+anchor_bottom = 0.15789473
+offset_left = 29.0
+offset_right = 50.0
+offset_bottom = 10.0
+theme_override_colors/font_color = Color(0.3254902, 0.30980393, 0.2784314, 1)
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 12
+text = "Edit"
+
+[node name="icon" type="Sprite2D" parent="top_bar" unique_id=1991687583]
+texture_filter = 1
+position = Vector2(23, 16)
+scale = Vector2(0.07019277, 0.04547385)
+texture = ExtResource("5_h864q")
+
+[node name="icon2" type="Sprite2D" parent="top_bar" unique_id=1911679375]
+texture_filter = 1
+position = Vector2(772.5, 14.937497)
+scale = Vector2(0.08984388, 0.0864258)
+texture = ExtResource("6_63p7e")
+
+[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=120284529]
+offset_top = 409.0
+offset_right = 804.0
+offset_bottom = 449.0
+mouse_filter = 2
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=1045993878]
+layout_mode = 0
+offset_left = 425.0
+offset_top = -4.0
+offset_right = 790.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=422317403]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("7_i5h8w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1495671918]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("8_hgd7y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1846036553]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("9_a2cc8")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("10_ffx3s")
+
+[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=67633671]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("11_c3ncu")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("12_co7em")
+
+[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=580056152]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -193.0
+offset_right = 164.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=757385641 node_paths=PackedStringArray("start_menu")]
+texture_filter = 1
+layout_mode = 1
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 104.0
+offset_bottom = 48.0
+texture_normal = ExtResource("13_8j3he")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("14_58e74")
+start_menu = NodePath("../startmenupanel")
+
+[node name="Platform" type="Node2D" parent="." unique_id=618369800]
+
+[node name="Platform2" type="StaticBody2D" parent="Platform" unique_id=765152346]
+position = Vector2(86, -40)
 collision_layer = 7
 collision_mask = 7
-script = ExtResource("7_lbk5i")
 
-[node name="ColorRect" type="ColorRect" parent="MovingFilePlatform12" unique_id=750252097]
-offset_left = 614.0
-offset_top = 360.0
-offset_right = 642.0
-offset_bottom = 381.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2" unique_id=402799638]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_fkmt1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingFilePlatform12" unique_id=1457762525]
-position = Vector2(628.25, 370)
-shape = SubResource("PlatformShapeSmall")
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform2" unique_id=587724432]
+offset_left = 34.0
+offset_top = 333.0
+offset_right = 124.0
+offset_bottom = 387.0
+texture = ExtResource("15_i5h8w")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=422405899]
+position = Vector2(194, -42)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=1096199971]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform3" unique_id=1105593744]
+offset_left = 27.0
+offset_top = 339.0
+offset_right = 125.0
+offset_bottom = 380.0
+texture = ExtResource("16_58e74")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=575113679]
+position = Vector2(277, -84)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4" unique_id=1480696894]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform4" unique_id=1133674943]
+offset_left = 32.0
+offset_top = 337.0
+offset_right = 119.0
+offset_bottom = 383.0
+texture = ExtResource("8_folder")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Platform5" type="StaticBody2D" parent="Platform" unique_id=1523395149]
+position = Vector2(391, -84)
+collision_layer = 7
+collision_mask = 7
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform5" unique_id=1865149433]
+offset_left = 34.0
+offset_top = 399.0
+offset_right = 74.0
+offset_bottom = 439.0
+rotation = -0.40150478
+texture = ExtResource("21_fkmt1")
+
+[node name="TextureRect2" type="TextureRect" parent="Platform/Platform5" unique_id=1988775957]
+offset_left = 114.0
+offset_top = 365.0
+offset_right = 154.0
+offset_bottom = 405.0
+rotation = -0.40150478
+texture = ExtResource("22_fnqmk")
+
+[node name="TextureRect3" type="TextureRect" parent="Platform/Platform5" unique_id=237467502]
+offset_left = 190.0
+offset_top = 336.99997
+offset_right = 230.0
+offset_bottom = 376.99997
+rotation = -0.40150478
+texture = ExtResource("20_cyrvx")
+
+[node name="TextureRect4" type="TextureRect" parent="Platform/Platform5" unique_id=903348409]
+offset_left = 261.0
+offset_top = 315.0
+offset_right = 301.0
+offset_bottom = 355.0
+rotation = -0.40150478
+texture = ExtResource("24_jm2ap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5" unique_id=991284619]
+position = Vector2(60.722137, 411.8035)
+rotation = -0.44539657
+shape = SubResource("RectangleShape2D_cyrvx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform5" unique_id=794299654]
+position = Vector2(140.84607, 376.2933)
+rotation = -0.44539657
+shape = SubResource("RectangleShape2D_cyrvx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform/Platform5" unique_id=461760414]
+position = Vector2(215, 347)
+rotation = -0.44539657
+shape = SubResource("RectangleShape2D_cyrvx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platform/Platform5" unique_id=622880978]
+position = Vector2(288, 325.99997)
+rotation = -0.44539657
+shape = SubResource("RectangleShape2D_cyrvx")
+
+[node name="Platform11" type="StaticBody2D" parent="Platform" unique_id=280491910]
+position = Vector2(1709, -155)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform11" unique_id=452092281]
+position = Vector2(306, 359)
+shape = SubResource("RectangleShape2D_fnqmk")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform11" unique_id=1732373175]
+offset_left = 119.0
+offset_top = 343.0
+offset_right = 483.0
+offset_bottom = 383.0
+texture = ExtResource("15_cyrvx")
+
+[node name="Platform6" type="StaticBody2D" parent="Platform" unique_id=439107607]
+position = Vector2(743, -83)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform6" unique_id=1331148906]
+position = Vector2(27, 359)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform6" unique_id=1096615267]
+offset_left = -17.0
+offset_top = 333.0
+offset_right = 75.0
+offset_bottom = 385.0
+texture = ExtResource("19_cyrvx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Platform12" type="StaticBody2D" parent="Platform" unique_id=2028939597]
+position = Vector2(1510, -79)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12" unique_id=1505566236]
+position = Vector2(76.75, 358.5)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform12" unique_id=1595662122]
+offset_left = -629.0
+offset_top = 319.0
+offset_right = -548.0
+offset_bottom = 359.0
+texture = ExtResource("15_cyrvx")
+
+[node name="Platform13" type="StaticBody2D" parent="Platform" unique_id=1176877490]
+position = Vector2(1598, -147)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1201225232]
+position = Vector2(94, 379)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform13" unique_id=441816283]
+offset_left = -661.0
+offset_top = 388.0
+offset_right = -580.0
+offset_bottom = 428.0
+texture = ExtResource("15_cyrvx")
+
+[node name="TextureRect2" type="TextureRect" parent="Platform/Platform13" unique_id=912579633]
+offset_left = -605.0
+offset_top = 388.0
+offset_right = -524.0
+offset_bottom = 428.0
+texture = ExtResource("15_cyrvx")
+
+[node name="TextureRect3" type="TextureRect" parent="Platform/Platform13" unique_id=1352513309]
+offset_left = -542.0
+offset_top = 388.0
+offset_right = -461.0
+offset_bottom = 428.0
+texture = ExtResource("15_cyrvx")
+
+[node name="TextureRect4" type="TextureRect" parent="Platform/Platform13" unique_id=1153398600]
+offset_left = -489.0
+offset_top = 389.0
+offset_right = -408.0
+offset_bottom = 429.0
+texture = ExtResource("15_cyrvx")
+
+[node name="Platform7" type="StaticBody2D" parent="Platform" unique_id=483094006]
+position = Vector2(838, -126)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=2006497438]
+position = Vector2(193.75, 358.5)
+shape = SubResource("RectangleShape2D_fnqmk")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform7" unique_id=1250267705]
+offset_left = 39.0
+offset_top = 329.0
+offset_right = 339.0
+offset_bottom = 389.0
+texture = ExtResource("19_ffx3s")
+expand_mode = 1
+
+[node name="Platform8" type="StaticBody2D" parent="Platform" unique_id=815375702]
+position = Vector2(1186, -10)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform8" unique_id=634128488]
+position = Vector2(201, 320)
+shape = SubResource("RectangleShape2D_nlswu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform8" unique_id=706734976]
+position = Vector2(123, 339)
+shape = SubResource("RectangleShape2D_nlswu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform/Platform8" unique_id=1176705249]
+position = Vector2(74, 333.375)
+shape = SubResource("RectangleShape2D_nlswu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platform/Platform8" unique_id=123083495]
+position = Vector2(25, 292)
+shape = SubResource("RectangleShape2D_nlswu")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform8" unique_id=437115551]
+offset_left = 178.0
+offset_top = 306.0
+offset_right = 226.0
+offset_bottom = 344.0
+texture = ExtResource("25_iygvn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Platform/Platform8" unique_id=2133636022]
+offset_left = 54.0
+offset_top = 305.0
+offset_right = 96.0
+offset_bottom = 362.0
+texture = ExtResource("26_jm2ap")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Platform/Platform8" unique_id=1657654863]
+offset_left = 103.0
+offset_top = 320.0
+offset_right = 147.0
+offset_bottom = 361.0
+texture = ExtResource("27_nlswu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="Platform/Platform8" unique_id=1315923592]
+offset_left = 111.0
+offset_top = 242.0
+offset_right = 155.0
+offset_bottom = 283.0
+texture = ExtResource("28_45y5q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="Platform/Platform8" unique_id=977336654]
+offset_left = 179.0
+offset_top = 239.0
+offset_right = 223.0
+offset_bottom = 280.0
+texture = ExtResource("29_q7br2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect7" type="TextureRect" parent="Platform/Platform8" unique_id=941856975]
+offset_left = 62.0
+offset_top = 230.0
+offset_right = 106.0
+offset_bottom = 271.0
+texture = ExtResource("30_pspfu")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect8" type="TextureRect" parent="Platform/Platform8" unique_id=107410589]
+offset_left = 9.0
+offset_top = 208.0
+offset_right = 53.0
+offset_bottom = 249.0
+texture = ExtResource("27_p0pwk")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Platform/Platform8" unique_id=1664731626]
+offset_left = 10.0
+offset_top = 271.0
+offset_right = 47.0
+offset_bottom = 307.0
+texture = ExtResource("28_aowqg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Platform/Platform8" unique_id=962992929]
+position = Vector2(29.5, 230.125)
+shape = SubResource("RectangleShape2D_a45wt")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Platform/Platform8" unique_id=1455717709]
+position = Vector2(83, 244)
+shape = SubResource("RectangleShape2D_chgt7")
+
+[node name="Platform10" type="StaticBody2D" parent="Platform" unique_id=1178539842]
+position = Vector2(0, 1)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform10" unique_id=137810386]
+position = Vector2(65.5, 315)
+shape = SubResource("RectangleShape2D_63p7e")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform10" unique_id=534399661]
+offset_left = -72.0
+offset_top = 367.0
+offset_right = 202.0
+offset_bottom = 417.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="Platform/Platform10" unique_id=914307754]
+offset_left = -72.0
+offset_top = 367.0
+offset_right = 202.0
+offset_bottom = 417.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Platform/Platform10" unique_id=786147947]
+offset_left = -72.0
+offset_top = 348.0
+offset_right = 202.0
+offset_bottom = 398.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Platform/Platform10" unique_id=1187711973]
+offset_left = -72.0
+offset_top = 329.0
+offset_right = 202.0
+offset_bottom = 379.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="Platform/Platform10" unique_id=1512808563]
+offset_left = -72.0
+offset_top = 311.0
+offset_right = 202.0
+offset_bottom = 361.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="Platform/Platform10" unique_id=1151673317]
+offset_left = -72.0
+offset_top = 292.0
+offset_right = 202.0
+offset_bottom = 342.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect7" type="TextureRect" parent="Platform/Platform10" unique_id=332433548]
+offset_left = -72.0
+offset_top = 274.0
+offset_right = 202.0
+offset_bottom = 324.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect8" type="TextureRect" parent="Platform/Platform10" unique_id=1956556805]
+offset_left = -72.0
+offset_top = 257.0
+offset_right = 202.0
+offset_bottom = 307.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect9" type="TextureRect" parent="Platform/Platform10" unique_id=895485807]
+offset_left = -72.0
+offset_top = 239.0
+offset_right = 202.0
+offset_bottom = 289.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect10" type="TextureRect" parent="Platform/Platform10" unique_id=335369183]
+offset_left = -72.0
+offset_top = 221.0
+offset_right = 202.0
+offset_bottom = 271.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Platform14" type="StaticBody2D" parent="Platform" unique_id=204986346]
+visible = false
+position = Vector2(1438, -64)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform14" unique_id=619289898]
+position = Vector2(65.5, 315)
+shape = SubResource("RectangleShape2D_63p7e")
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform14" unique_id=1595935988]
+offset_left = -72.0
+offset_top = 367.0
+offset_right = 202.0
+offset_bottom = 417.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="Platform/Platform14" unique_id=656305071]
+offset_left = -72.0
+offset_top = 367.0
+offset_right = 202.0
+offset_bottom = 417.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Platform/Platform14" unique_id=1062515876]
+offset_left = -72.0
+offset_top = 348.0
+offset_right = 202.0
+offset_bottom = 398.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Platform/Platform14" unique_id=2055734890]
+offset_left = -72.0
+offset_top = 329.0
+offset_right = 202.0
+offset_bottom = 379.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="Platform/Platform14" unique_id=1686814909]
+offset_left = -72.0
+offset_top = 311.0
+offset_right = 202.0
+offset_bottom = 361.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="Platform/Platform14" unique_id=1142438396]
+offset_left = -72.0
+offset_top = 292.0
+offset_right = 202.0
+offset_bottom = 342.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect7" type="TextureRect" parent="Platform/Platform14" unique_id=55253873]
+offset_left = -72.0
+offset_top = 274.0
+offset_right = 202.0
+offset_bottom = 324.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect8" type="TextureRect" parent="Platform/Platform14" unique_id=375812576]
+offset_left = -72.0
+offset_top = 257.0
+offset_right = 202.0
+offset_bottom = 307.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect9" type="TextureRect" parent="Platform/Platform14" unique_id=1224930137]
+offset_left = -72.0
+offset_top = 239.0
+offset_right = 202.0
+offset_bottom = 289.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect10" type="TextureRect" parent="Platform/Platform14" unique_id=1058216849]
+offset_left = -72.0
+offset_top = 221.0
+offset_right = 202.0
+offset_bottom = 271.0
+texture = ExtResource("16_h864q")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollbarElevator" parent="." unique_id=818021359 instance=ExtResource("4_scroll")]
+position = Vector2(1468, 306)

@@ -19,7 +19,6 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 TransitionManager="*uid://bopvkuq7cgpdt"
 GameState="*uid://bymerovichcvg"
 BackgroundMusicManager="*uid://cap7bdvd7oifl"
-PauseMenu="*uid://3u0tr5gu5vpu"
 
 [debug]
 

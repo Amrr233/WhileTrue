@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://c86r3qhkq3be5" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://d3h7rti3ho1w8" path="res://scenes/enemies/virus_hunter.tscn" id="3_enemy"]
+[ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="3_nlgur"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_g1f4f"]
+[ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="4_qrxir"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="5_bjf84"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="6_mbssk"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="7_ofryp"]
@@ -37,6 +39,9 @@ size = Vector2(903, 41)
 script = ExtResource("1_arena")
 arena_type = "investigate"
 enemy_scene = ExtResource("3_enemy")
+basic_virus_scene = ExtResource("3_nlgur")
+ranged_virus_scene = ExtResource("4_qrxir")
+hunter_virus_scene = ExtResource("3_enemy")
 completed_flag = "antivirus_investigate_completed"
 unlock_flag = "has_key"
 reward_text = "INVESTIGATION COMPLETE — KEY OBTAINED"
@@ -65,8 +70,14 @@ horizontal_alignment = 1
 [node name="Spawns" type="Node2D" parent="." unique_id=2034646526]
 position = Vector2(1026, -392)
 
-[node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=1081111755]
+[node name="basic" type="Marker2D" parent="Spawns" unique_id=1081111755]
 position = Vector2(214, 482)
+
+[node name="ranged" type="Marker2D" parent="Spawns" unique_id=161952604]
+position = Vector2(214, 482)
+
+[node name="hunter" type="Marker2D" parent="Spawns" unique_id=511063391]
+position = Vector2(41, 488)
 
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("15_ofryp")]
 visible = false

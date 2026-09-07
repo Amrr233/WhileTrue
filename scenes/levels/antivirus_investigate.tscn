@@ -38,7 +38,7 @@ size = Vector2(903, 41)
 [node name="AntivirusInvestigate" type="Node2D" unique_id=1623202442]
 script = ExtResource("1_arena")
 arena_type = "investigate"
-enemy_scene = ExtResource("3_enemy")
+enemy_scene = ExtResource("3_nlgur")
 basic_virus_scene = ExtResource("3_nlgur")
 ranged_virus_scene = ExtResource("4_qrxir")
 hunter_virus_scene = ExtResource("3_enemy")

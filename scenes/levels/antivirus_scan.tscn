@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dkeyhbucwdrwr"]
 
 [ext_resource type="Script" uid="uid://c86r3qhkq3be5" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
+[ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="2_n5wal"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="3_enemy"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="4_8j87y"]
+[ext_resource type="PackedScene" uid="uid://d3h7rti3ho1w8" path="res://scenes/enemies/virus_hunter.tscn" id="4_74vhd"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_s0ay3"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="5_ohspl"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="7_idgkl"]
@@ -45,7 +47,10 @@ size = Vector2(598, 53)
 [node name="AntivirusScan" type="Node2D" unique_id=1589291216]
 script = ExtResource("1_arena")
 arena_type = "scan"
-enemy_scene = ExtResource("3_enemy")
+enemy_scene = ExtResource("2_n5wal")
+basic_virus_scene = ExtResource("2_n5wal")
+ranged_virus_scene = ExtResource("3_enemy")
+hunter_virus_scene = ExtResource("4_74vhd")
 completed_flag = "antivirus_scan_completed"
 unlock_flag = "has_double_jump"
 reward_text = "SCAN COMPLETE — DOUBLE JUMP UNLOCKED"

@@ -15,10 +15,10 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export var jump_buffer_time: float = 0.10
 
 # --- إضافات تحسين الحركة ---
-@export var fall_gravity_multiplier: float = 1.5 # سرعة النزول
-@export var max_fall_speed: float = 600.0 # أقصى سرعة للوقوع
-@export var apex_threshold: float = 50.0 # نقطة بداية الطفو أعلى النطة
-@export var apex_gravity_multiplier: float = 0.5 # تقليل الجاذبية وقت الطفو
+@export var fall_gravity_multiplier: float = 1.5  
+@export var max_fall_speed: float = 600.0  
+@export var apex_threshold: float = 50.0  
+@export var apex_gravity_multiplier: float = 0.5  
 # --------------------------
 
 @export_category("Combat")
@@ -83,7 +83,7 @@ func _ready() -> void:
 	attack_visual.visible = false
 	health_changed.emit(health, max_health)
 
-	# الوضع الطبيعي: واقف على أول فريم بس، من غير ما يتحرك
+	
 	if visual is AnimatedSprite2D:
 		visual.animation = "stand_up"
 		visual.frame = 0
@@ -110,15 +110,14 @@ func _physics_process(delta: float) -> void:
 		
 	_handle_attack()
 	
-	# --- NEW: Call desktop actions only in the Desktop scene ---
 	if get_tree().current_scene.name == "Desktop":
 		_handle_desktop_actions()
-	# -----------------------------------------------------------
+
 
 	move_and_slide()
 
 	if global_position.y > 520.0:
-		respawn()
+		respawn(false)
 
 func _update_jump_timers(delta: float) -> void:
 	if is_on_floor():
@@ -136,45 +135,41 @@ func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		var grav = get_gravity()
 		
-		# تطبيق جاذبية مختلفة بناءً على حالة اللاعب (طالع، نازل، أو في أعلى نقطة)
 		if velocity.y > 0.0:
-			velocity += grav * fall_gravity_multiplier * delta # نزول أسرع
+			velocity += grav * fall_gravity_multiplier * delta 
 		elif abs(velocity.y) < apex_threshold:
-			velocity += grav * apex_gravity_multiplier * delta # طفو في أعلى النطة
+			velocity += grav * apex_gravity_multiplier * delta  
 		else:
-			velocity += grav * delta # طلوع عادي
-			
-		# تحديد سقف لسرعة الوقوع عشان اللاعب ميسقطش بسرعة خيالية
+			velocity += grav * delta
+			 
 		velocity.y = minf(velocity.y, max_fall_speed)
 
 func _handle_jump() -> void:
-	# 1. الإيقاف الفوري لأي نطة لو إحنا في سين الـ Desktop
+	
 	if get_tree().current_scene.name == "Desktop":
 		return
 
-	# 2. معالجة النطة العادية (مع تشغيل الصوت)
+	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_velocity
 		jump_sound.pitch_scale = randf_range(0.9, 1.2)
 		jump_sound.play()
 
-	# 3. معالجة نظام الـ Jump Buffer والـ Coyote Time
+	
 	if _jump_buffer_timer > 0.0 and _coyote_timer > 0.0:
 		velocity.y = jump_velocity
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		jump_sound.pitch_scale = randf_range(0.9, 1.2)
-		jump_sound.play() # تشغيل الصوت لو نط بنظام الـ Buffer
+		jump_sound.play() 
 		
-	# 4. معالجة الدابل جامب (مع تشغيل الصوت)
 	elif _jump_buffer_timer > 0.0 and has_double_jump and _double_jump_available and not is_on_floor():
 		velocity.y = double_jump_velocity
 		_jump_buffer_timer = 0.0
 		_double_jump_available = false
 		jump_sound.pitch_scale = randf_range(0.6, 1.5)
-		jump_sound.play() # تشغيل الصوت وقت الدابل جامب
+		jump_sound.play() 
 		
-	# 5. التحكم في ارتفاع النطة: لو اللاعب ساب الزرار بدري وهو لسه بيطلع
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= 0.5
 
@@ -216,10 +211,10 @@ func _handle_horizontal_movement(delta: float) -> void:
 	if visual is AnimatedSprite2D:
 		visual.flip_h = (facing == -1)
 		
-		# بنتحقق هل اللاعب بيضرب حالياً والأنيميشن لسه شغال؟
+		
 		var is_attacking = (visual.animation == "hit_sword" or visual.animation == "hit_hand") and visual.is_playing()
 		
-		# لو مش بيضرب، شغل أنيميشن الحركة العادي
+		
 		if not is_attacking:
 			if not is_on_floor():
 				visual.play("jumping")
@@ -246,7 +241,7 @@ func _start_attack() -> void:
 	
 	attack_area.position.x = 32.0 * facing
 
-	# --- الجديد: تشغيل أنيميشن الضرب ---
+	
 	if visual is AnimatedSprite2D:
 		if has_sword:
 			visual.play("hit_sword")
@@ -292,7 +287,6 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	if _invulnerability_timer > 0.0:
 		return
 		
-	# Fixed Indentation: Hurt sound now plays correctly outside the early return loop
 	hurt_sound.play()
 
 	health = maxi(health - amount, 0)
@@ -301,43 +295,43 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	velocity.y = knockback_y
 	health_changed.emit(health, max_health)
 	
-	# --- الجديد: وميض اللاعب باللون الأحمر عند الإصابة ---
+	
 	if visual:
-		# نلون اللاعب بالأحمر الشفاف
 		visual.modulate = Color(1.0, 0.2, 0.2, 0.8)
 		
-		# نستخدم Tween لإرجاع لونه للأبيض الطبيعي بسلاسة
 		var tween = create_tween()
 		tween.tween_property(visual, "modulate", Color.WHITE, 0.2)
 	# ----------------------------------------------------
 
 	if health <= 0:
-		respawn()
+		respawn(true)
 
-func respawn() -> void:
-	global_position = respawn_position
-	velocity = Vector2.ZERO
-	health = max_health
-	_invulnerability_timer = 1.0
-	health_changed.emit(health, max_health)
-	get_tree().reload_current_scene()
+func respawn(reload_scene: bool = false) -> void:
+	if reload_scene:
+		set_physics_process(false)
+		var current_scene_path = get_tree().current_scene.scene_file_path
+		TransitionManager.fade_to_scene(current_scene_path)
+	else:
+		global_position = respawn_position
+		velocity = Vector2.ZERO
+		health = max_health
+		_invulnerability_timer = 1.0
+		health_changed.emit(health, max_health)
 
 func set_checkpoint(new_position: Vector2) -> void:
 	respawn_position = new_position
 	_checkpoint_set = true
 
-## Called by cursor.gd when the mouse presses down and grabs the player
-## (used for the Desktop hub's "pick up the character" interaction).
+
 func on_mouse_hold() -> void:
 	grab_sound.play()
 	if visual is AnimatedSprite2D:
 		_falling_phase = false
-		# فريم واحد ثابت بس (المقلوب) - من غير أنيميشن
 		visual.animation = "grabbed"
 		visual.frame = 0
 		visual.stop()
 
-## Called by cursor.gd when the mouse releases the player.
+ 
 func on_mouse_release() -> void:
 	if visual is AnimatedSprite2D:
 		# المرحلة 1: يقع للأمام (فريمات 0 لـ 4)
@@ -352,23 +346,23 @@ func _on_stand_up_finished() -> void:
 		return
 	if _falling_phase:
 		_falling_phase = false
-		visual.play_backwards("stand_up") # المرحلة 2: بيقوم (عكس السقوط)
+		visual.play_backwards("stand_up") 
 	else:
 		visual.frame = 0
 		visual.stop()
 
-# --- NEW: Function to handle S key pressing on desktop ---
+
 func _handle_desktop_actions() -> void:
 	if visual is AnimatedSprite2D:
 		# Do not interrupt the mouse grab or the drop/stand-up sequence
 		if _falling_phase or visual.animation == "grabbed" or (visual.animation == "stand_up" and visual.is_playing()):
 			return
 
-		# Check if the "S" key is physically pressed down
+	 
 		if Input.is_physical_key_pressed(KEY_S):
 			if visual.animation != "sit":
 				visual.play("sit")
-		# If "S" is released and we were sitting, revert to the default standing pose
+		 
 		elif visual.animation == "sit":
 			visual.animation = "stand_up"
 			visual.frame = 0

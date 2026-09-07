@@ -2,26 +2,109 @@
 
 [ext_resource type="Script" uid="uid://7cxu2k0p1roc" path="res://scripts/enemies/virus_ranged.gd" id="1_ranged"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/virus_projectile.tscn" id="2_projectile"]
+[ext_resource type="Texture2D" uid="uid://dihsrohy1f2rm" path="res://assets/art/enemies/ranged_virus.png" id="3_ndd6p"]
 
-[sub_resource type="CircleShape2D" id="VirusShapeRanged"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndd6p"]
+size = Vector2(96.66667, 86.66667)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndd6p"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(224, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt685"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(336, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llihv"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(560, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qulth"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(448, 0, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6gof"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(0, 184, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lly1"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(112, 184, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6i8t"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(224, 184, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp454"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(336, 184, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mm8e"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(448, 184, 112, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqtwc"]
+atlas = ExtResource("3_ndd6p")
+region = Rect2(560, 184, 112, 184)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kqjoj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndd6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt685")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llihv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qulth")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6gof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lly1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6i8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp454")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mm8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqtwc")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 10.0
+}]
 
 [node name="VirusRanged" type="CharacterBody2D" unique_id=235726423]
+scale = Vector2(0.9, 0.9)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_ranged")
 projectile_scene = ExtResource("2_projectile")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=188901034]
-shape = SubResource("VirusShapeRanged")
-
-[node name="Body" type="Polygon2D" parent="." unique_id=1039832064]
-color = Color(0.85, 0.55, 0.15, 1)
-polygon = PackedVector2Array(-8, -3, -5, -8, 5, -8, 8, -3, 8, 4, 3, 8, -3, 8, -8, 4)
-
-[node name="Spot" type="Polygon2D" parent="." unique_id=1140510918]
-color = Color(0.2, 0.15, 0.4, 1)
-polygon = PackedVector2Array(-3, -4, 3, -4, 3, 1, -3, 1)
+position = Vector2(-10.555557, 0)
+shape = SubResource("RectangleShape2D_ndd6p")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1808000857]
 target_position = Vector2(0, 100)
+
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=1131988174]
+sprite_frames = SubResource("SpriteFrames_kqjoj")
+animation = &"throw"
+frame_progress = 1.0

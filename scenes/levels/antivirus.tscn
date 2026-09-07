@@ -569,3 +569,13 @@ offset_top = -24.0
 offset_right = 822.0
 offset_bottom = 478.0
 color = Color(0.8039216, 0.8039216, 0.8117647, 1)
+
+[node name="Label" type="Label" parent="." unique_id=267487082]
+offset_left = 25.0
+offset_top = 369.0
+offset_right = 302.0
+offset_bottom = 392.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 22
+text = "YOU HAVE TO REMOVE EVERY VIRUS!!"

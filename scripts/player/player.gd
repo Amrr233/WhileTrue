@@ -38,7 +38,7 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export var dash_cooldown: float = 0.45
 
 @export_category("Double Jump")
-@export var double_jump_velocity: float = -300.0
+@export var double_jump_velocity: float = -360.0
 
 var has_sword: bool = false
 var has_dash: bool = false

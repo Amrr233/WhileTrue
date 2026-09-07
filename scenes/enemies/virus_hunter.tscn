@@ -1,24 +1,24 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://d3h7rti3ho1w8"]
 
-[ext_resource type="Script" path="res://scripts/enemies/virus_hunter.gd" id="1_hunter"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/virus_projectile.tscn" id="2_projectile"]
+[ext_resource type="Script" uid="uid://bfw1imlas33vb" path="res://scripts/enemies/virus_hunter.gd" id="1_hunter"]
+[ext_resource type="PackedScene" uid="uid://cav6bvw8xlhkp" path="res://scenes/enemies/virus_projectile.tscn" id="2_projectile"]
 
 [sub_resource type="CircleShape2D" id="VirusShapeHunter"]
 radius = 8.0
 
-[node name="VirusHunter" type="CharacterBody2D"]
+[node name="VirusHunter" type="CharacterBody2D" unique_id=850691534]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_hunter")
 projectile_scene = ExtResource("2_projectile")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=872589895]
 shape = SubResource("VirusShapeHunter")
 
-[node name="Body" type="Polygon2D" parent="."]
+[node name="Body" type="Polygon2D" parent="." unique_id=1934191510]
 color = Color(0.55, 0.15, 0.75, 1)
 polygon = PackedVector2Array(0, -10, 9, -3, 6, 9, -6, 9, -9, -3)
 
-[node name="Spot" type="Polygon2D" parent="."]
+[node name="Spot" type="Polygon2D" parent="." unique_id=1186831055]
 color = Color(0.95, 0.85, 0.2, 1)
 polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)

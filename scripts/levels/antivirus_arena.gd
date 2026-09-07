@@ -52,7 +52,8 @@ func _spawn_enemies() -> void:
 func _on_enemy_died() -> void:
 	_remaining -= 1
 	if _remaining <= 0 and not _completed:
-		_complete_round()
+		#_complete_round()
+		return
 
 func _complete_round() -> void:
 	_completed = true

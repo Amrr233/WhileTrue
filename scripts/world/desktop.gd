@@ -23,5 +23,5 @@ func _ready() -> void:
 		print("Startup already played this session. Skipping straight to music.")
 		BackgroundMusicManager.play_desktop_music()
 
-func _on_start_menu_pressed() -> void:
-	PauseMenu.toggle_pause()
+#func _on_start_menu_pressed() -> void:
+	#PauseMenu.toggle_pause()

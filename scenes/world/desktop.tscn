@@ -200,7 +200,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Collider for recycle bin icon" type="StaticBody2D" parent="." unique_id=164008325]
-visible = false
 collision_layer = 7
 collision_mask = 7
 

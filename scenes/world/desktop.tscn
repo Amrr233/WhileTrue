@@ -13,12 +13,14 @@
 [ext_resource type="Script" uid="uid://cjwc14nqh0qi2" path="res://scripts/world/antivirusIcon.gd" id="6_ujlt8"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="9_ikds4"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="9_player"]
+[ext_resource type="Texture2D" uid="uid://chg7k7n250t7j" path="res://assets/art/ui/pause menu.png" id="9_v8i6v"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_audio"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="11_clock"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="14_yn8t8"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="17_1guff"]
 [ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="17_3265r"]
 [ext_resource type="AudioStream" uid="uid://d3p16pgfgabir" path="res://assets/audio/sfx/Windows XP Error.wav" id="17_n22mp"]
+[ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="20_pause"]
 
 [sub_resource type="RectangleShape2D" id="GroundShape"]
 size = Vector2(801, 40)
@@ -97,14 +99,47 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("11_clock")
 
-[node name="startmenupanel" type="Panel" parent="Ui/Taskbar" unique_id=1091540408]
-visible = false
+[node name="startmenupanel" type="TextureRect" parent="Ui/Taskbar" unique_id=5385707]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -193.0
-offset_right = 164.0
-offset_bottom = 1.0
+offset_left = -65.0
+offset_top = -205.0
+offset_right = 185.0
+offset_bottom = 68.0
 mouse_filter = 2
+texture = ExtResource("9_v8i6v")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("20_pause")
+
+[node name="PlayButton" type="Button" parent="Ui/Taskbar/startmenupanel" unique_id=100001]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 108.0
+offset_right = 184.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 10
+text = "PLAY"
+
+[node name="ResetButton" type="Button" parent="Ui/Taskbar/startmenupanel" unique_id=100002]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 136.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 10
+text = "RESET"
+
+[node name="CloseButton" type="Button" parent="Ui/Taskbar/startmenupanel" unique_id=100003]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 164.0
+offset_right = 185.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 10
+text = "CLOSE"
 
 [node name="Startmenu" type="TextureButton" parent="Ui/Taskbar" unique_id=1878148747 node_paths=PackedStringArray("start_menu")]
 texture_filter = 1

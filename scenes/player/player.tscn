@@ -350,7 +350,6 @@ size = Vector2(18, 12)
 [node name="Player" type="CharacterBody2D" unique_id=1447993816]
 collision_mask = 6
 script = ExtResource("1_player")
-unarmed_damage = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906220922]
 position = Vector2(0, 5)

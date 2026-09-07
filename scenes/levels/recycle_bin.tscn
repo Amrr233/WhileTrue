@@ -649,30 +649,30 @@ position = Vector2(631, 369)
 shape = SubResource("RectangleShape2D_fkmt1")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform13" unique_id=441816283]
-offset_left = -661.0
+offset_left = -715.0
 offset_top = 388.0
-offset_right = -580.0
+offset_right = -634.0
 offset_bottom = 428.0
 texture = ExtResource("15_cyrvx")
 
 [node name="TextureRect2" type="TextureRect" parent="Platform/Platform13" unique_id=912579633]
-offset_left = -605.0
+offset_left = -658.0
 offset_top = 388.0
-offset_right = -524.0
+offset_right = -577.0
 offset_bottom = 428.0
 texture = ExtResource("15_cyrvx")
 
 [node name="TextureRect3" type="TextureRect" parent="Platform/Platform13" unique_id=1352513309]
-offset_left = -542.0
+offset_left = -601.0
 offset_top = 388.0
-offset_right = -461.0
+offset_right = -520.0
 offset_bottom = 428.0
 texture = ExtResource("15_cyrvx")
 
 [node name="TextureRect4" type="TextureRect" parent="Platform/Platform13" unique_id=1153398600]
-offset_left = -489.0
+offset_left = -539.0
 offset_top = 389.0
-offset_right = -408.0
+offset_right = -458.0
 offset_bottom = 429.0
 texture = ExtResource("15_cyrvx")
 
@@ -729,13 +729,13 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=1104622786]
-position = Vector2(186, 357.5)
+position = Vector2(170, 359)
 shape = SubResource("RectangleShape2D_auj4k")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform7" unique_id=1250267705]
-offset_left = 39.0
+offset_left = 26.0
 offset_top = 329.0
-offset_right = 339.0
+offset_right = 326.0
 offset_bottom = 389.0
 texture = ExtResource("19_ffx3s")
 expand_mode = 1

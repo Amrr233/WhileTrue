@@ -26,7 +26,7 @@ volume_db = 8.092
 
 [node name="CheckMusic" type="AudioStreamPlayer" parent="." unique_id=1244023149]
 stream = ExtResource("5_rvq2l")
-volume_db = -29.714
+volume_db = -1.214
 
 [node name="ScanMusic" type="AudioStreamPlayer" parent="." unique_id=1938503019]
 stream = ExtResource("6_aqb66")

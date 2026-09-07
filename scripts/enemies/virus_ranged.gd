@@ -4,6 +4,7 @@ class_name VirusRanged
 ## virus projectiles at the player, creating pressure that rewards using Dash.
 
 signal died
+signal took_damage
 
 @export var max_health: int = 3
 @export var speed: float = 48.0
@@ -48,6 +49,7 @@ func _physics_process(delta: float) -> void:
 		_spawn_y_set = true
 
 	if global_position.y > _spawn_y + 300.0:
+		took_damage.emit()
 		died.emit()
 		queue_free()
 		return
@@ -135,6 +137,8 @@ func _on_animation_finished() -> void:
 func take_damage(amount: int, knockback_x: float = 0.0) -> void:
 	health -= amount
 	velocity.x += knockback_x * knockback_resistance
+
+	took_damage.emit()
 
 	if visual:
 		visual.modulate = Color(1.0, 0.2, 0.2, 0.8)

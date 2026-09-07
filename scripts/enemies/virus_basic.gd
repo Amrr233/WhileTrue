@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name VirusBasic
 ## CHECK round enemy. Weak, simple, colorful — teaches the player the sword.
 
+signal took_damage
 signal died
 
 @export var max_health: int = 2
@@ -34,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		_spawn_y_set = true
 
 	if global_position.y > _spawn_y + 300.0:
+		took_damage.emit()
 		died.emit()
 		queue_free()
 		return
@@ -78,6 +80,9 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int, knockback_x: float = 0.0) -> void:
 	health -= amount
 	velocity.x += knockback_x * knockback_resistance
+	
+	# Emit the signal so the arena knows we took a hit!
+	took_damage.emit()
 	
 	if visual:
 		visual.modulate = Color(1.0, 0.2, 0.2, 0.8) 

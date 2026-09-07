@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://37g7e11hhnu3" path="res://assets/art/ui/InvestigateIcon.png" id="17_p5ovw"]
 [ext_resource type="Script" uid="uid://5j0pf4gkuano" path="res://scenes/levels/title2.gd" id="18_jwbkc"]
 [ext_resource type="Script" uid="uid://45hr57ipd8od" path="res://scenes/levels/title3.gd" id="20_p42ld"]
+[ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="22_wjt0n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlij"]
 bg_color = Color(0.8117647, 0.8117647, 0.8117647, 1)
@@ -368,6 +369,81 @@ position = Vector2(6899, 718)
 texture_filter = 1
 position = Vector2(133, 238)
 
+[node name="Taskbar" type="ColorRect" parent="." unique_id=259733512]
+offset_left = -2.0
+offset_top = 409.0
+offset_right = 804.0
+offset_bottom = 449.0
+mouse_filter = 2
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="SystemTray" type="HBoxContainer" parent="Taskbar" unique_id=309915720]
+layout_mode = 0
+offset_left = 425.0
+offset_top = -4.0
+offset_right = 790.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="wifiicon" type="TextureRect" parent="Taskbar/SystemTray" unique_id=1131704141]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("9_mht4f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="batteryicon" type="TextureRect" parent="Taskbar/SystemTray" unique_id=170369567]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("10_p5ovw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="audiotoggle" type="TextureButton" parent="Taskbar/SystemTray" unique_id=1367260734]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("11_amlij")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("12_jwbkc")
+
+[node name="clocklabel" type="TextureButton" parent="Taskbar/SystemTray" unique_id=813552074]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("13_p42ld")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("14_wjt0n")
+
+[node name="startmenupanel" type="Panel" parent="Taskbar" unique_id=2106863147]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = -193.0
+offset_right = 164.0
+offset_bottom = 1.0
+mouse_filter = 2
+
+[node name="Startmenu" type="TextureButton" parent="Taskbar" unique_id=1178704530 node_paths=PackedStringArray("start_menu")]
+texture_filter = 1
+layout_mode = 1
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 104.0
+offset_bottom = 48.0
+texture_normal = ExtResource("15_kp4bk")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("16_hso3t")
+start_menu = NodePath("../startmenupanel")
+
 [node name="top_bar" type="CanvasLayer" parent="." unique_id=1186141951]
 layer = -1
 
@@ -485,81 +561,6 @@ position = Vector2(772.5, 14.937497)
 scale = Vector2(0.08984388, 0.0864258)
 texture = ExtResource("13_wjt0n")
 
-[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=259733512]
-offset_left = -2.0
-offset_top = 409.0
-offset_right = 804.0
-offset_bottom = 449.0
-mouse_filter = 2
-color = Color(0.14117648, 0.36862746, 0.8627451, 1)
-
-[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=309915720]
-layout_mode = 0
-offset_left = 425.0
-offset_top = -4.0
-offset_right = 790.0
-offset_bottom = 46.0
-mouse_filter = 2
-theme_override_constants/separation = 12
-alignment = 2
-
-[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1131704141]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 0
-texture = ExtResource("9_mht4f")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=170369567]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 0
-texture = ExtResource("10_p5ovw")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1367260734]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("11_amlij")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("12_jwbkc")
-
-[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=813552074]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture_normal = ExtResource("13_p42ld")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("14_wjt0n")
-
-[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=2106863147]
-visible = false
-layout_mode = 0
-offset_left = 2.0
-offset_top = -193.0
-offset_right = 164.0
-offset_bottom = 1.0
-mouse_filter = 2
-
-[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1178704530 node_paths=PackedStringArray("start_menu")]
-texture_filter = 1
-layout_mode = 1
-offset_left = -4.0
-offset_top = -7.0
-offset_right = 104.0
-offset_bottom = 48.0
-texture_normal = ExtResource("15_kp4bk")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("16_hso3t")
-start_menu = NodePath("../startmenupanel")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1498732880]
 layer = -2
 
@@ -579,3 +580,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
 theme_override_font_sizes/font_size = 22
 text = "YOU HAVE TO REMOVE EVERY VIRUS!!"
+
+[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("22_wjt0n")]
+position = Vector2(210, 114)

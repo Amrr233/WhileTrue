@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="14_cdjtt"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="15_gw4w0"]
 [ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="16_cbpmr"]
+[ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="17_540j4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_540j4"]
 size = Vector2(56.5, 35)
@@ -494,3 +495,6 @@ offset_top = 343.0
 offset_right = 119.0
 offset_bottom = 383.0
 texture = ExtResource("16_cbpmr")
+
+[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("17_540j4")]
+position = Vector2(210, 114)

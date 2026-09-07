@@ -295,12 +295,12 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	velocity.y = knockback_y
 	health_changed.emit(health, max_health)
 	
-	
+	# --- التعديل هنا: ضمان تطبيق الوميض الأحمر بشكل قاطع ---
 	if visual:
-		visual.modulate = Color(1.0, 0.2, 0.2, 0.8)
+		visual.modulate = Color(1.0, 0.2, 0.2, 1.0) # لون أحمر صريح وقوي
 		
 		var tween = create_tween()
-		tween.tween_property(visual, "modulate", Color.WHITE, 0.2)
+		tween.tween_property(visual, "modulate", Color.WHITE, 0.3) # جعل المدة أطول قليلاً (0.3 ثانية) ليكون الوميض واضحاً للعين
 	# ----------------------------------------------------
 
 	if health <= 0:

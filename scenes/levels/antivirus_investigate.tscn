@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="12_qrxir"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="13_moxm3"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="14_71jbh"]
+[ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="15_ofryp"]
 
 [sub_resource type="RectangleShape2D" id="GroundShapeWide"]
 size = Vector2(960, 12)
@@ -312,3 +313,6 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("14_71jbh")
 start_menu = NodePath("../startmenupanel")
+
+[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("15_ofryp")]
+position = Vector2(210, 114)

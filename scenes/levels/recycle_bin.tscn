@@ -24,15 +24,22 @@
 [ext_resource type="Texture2D" uid="uid://5pweojdj7jlc" path="res://assets/art/environments/recycle pin LONG 2.png" id="19_ffx3s"]
 [ext_resource type="Texture2D" uid="uid://bcbmdia4hbjfg" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item40.png" id="20_cyrvx"]
 [ext_resource type="Texture2D" uid="uid://bdwb3l82x37vt" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item19.png" id="21_fkmt1"]
+[ext_resource type="Texture2D" uid="uid://bcghwmj5jlrwf" path="res://assets/art/environments/recycle pin LONG.png" id="22_auj4k"]
 [ext_resource type="Texture2D" uid="uid://cb2887fddvi88" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item29.png" id="22_fnqmk"]
 [ext_resource type="Texture2D" uid="uid://df45752ftg2qo" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item53.png" id="24_jm2ap"]
+[ext_resource type="Texture2D" uid="uid://ci5kue87sjh3y" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item57.png" id="24_pspfu"]
+[ext_resource type="Texture2D" uid="uid://6ccm6ro4nvl4" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item56.png" id="25_a45wt"]
 [ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="25_iygvn"]
+[ext_resource type="Texture2D" uid="uid://c5wepesantfwj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item73.png" id="26_chgt7"]
 [ext_resource type="Texture2D" uid="uid://cdop1ggbbenei" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item97.png" id="26_jm2ap"]
 [ext_resource type="Texture2D" uid="uid://dscd4ymai2857" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item84.png" id="27_nlswu"]
 [ext_resource type="Texture2D" uid="uid://d3biw5slqj3tp" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item98.png" id="27_p0pwk"]
 [ext_resource type="Texture2D" uid="uid://dc4nhdimg2w1e" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item49.png" id="28_45y5q"]
+[ext_resource type="Texture2D" uid="uid://debmdqoxxef5x" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item81.png" id="28_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://d2mi50dpkpuw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item99.png" id="28_aowqg"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="29_mjela"]
 [ext_resource type="Texture2D" uid="uid://4i7faq6unjbv" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item15.png" id="29_q7br2"]
+[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="30_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://if3hs7gua86k" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item60.png" id="30_pspfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmt1"]
@@ -42,7 +49,10 @@ size = Vector2(56.5, 35)
 size = Vector2(29.55605, 31.986778)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnqmk"]
-size = Vector2(290.5, 35)
+size = Vector2(120.976654, 21.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_auj4k"]
+size = Vector2(256, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlswu"]
 size = Vector2(27, 20.375)
@@ -55,6 +65,44 @@ size = Vector2(31.5, 19.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63p7e"]
 size = Vector2(117, 182)
+
+[sub_resource type="Animation" id="Animation_vr70j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform/Platform11:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1711, -202)]
+}
+
+[sub_resource type="Animation" id="Animation_hq7h7"]
+resource_name = "move_platform"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Platform/Platform11:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1711, -202), Vector2(1822, -202)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aildm"]
+_data = {
+&"RESET": SubResource("Animation_vr70j"),
+&"move_platform": SubResource("Animation_hq7h7")
+}
 
 [node name="RecycleBin" type="Node2D" unique_id=761169033]
 position = Vector2(0, 1)
@@ -80,7 +128,7 @@ horizontal_alignment = 1
 
 [node name="Player" parent="." unique_id=1447993816 instance=ExtResource("2_player")]
 texture_filter = 1
-position = Vector2(80, 194)
+position = Vector2(74, 197)
 jump_velocity = -360.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1551076545]
@@ -97,10 +145,10 @@ position_smoothing_speed = 8.0
 layer = -2
 
 [node name="background" type="ColorRect" parent="CanvasLayer" unique_id=895801805]
-offset_left = -845.0
-offset_top = -24.0
-offset_right = 2662.0
-offset_bottom = 659.0
+offset_left = -910.0
+offset_top = -15.0
+offset_right = 2597.0
+offset_bottom = 668.0
 color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
 [node name="CheckStartSound" type="AudioStreamPlayer" parent="." unique_id=147040923]
@@ -256,6 +304,7 @@ stretch_mode = 5
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
+toggle_mode = true
 texture_normal = ExtResource("9_a2cc8")
 ignore_texture_size = true
 stretch_mode = 5
@@ -404,21 +453,24 @@ position = Vector2(288, 325.99997)
 rotation = -0.44539657
 shape = SubResource("RectangleShape2D_cyrvx")
 
-[node name="Platform11" type="StaticBody2D" parent="Platform" unique_id=280491910]
-position = Vector2(1709, -155)
+[node name="Platform11" type="AnimatableBody2D" parent="Platform" unique_id=2145906245]
+position = Vector2(1711, -202)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform11" unique_id=452092281]
-position = Vector2(306, 359)
-shape = SubResource("RectangleShape2D_fnqmk")
-
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform11" unique_id=1732373175]
-offset_left = 119.0
-offset_top = 343.0
-offset_right = 483.0
-offset_bottom = 383.0
-texture = ExtResource("15_cyrvx")
+offset_left = 131.0
+offset_top = 375.0
+offset_right = 263.0
+offset_bottom = 415.0
+texture = ExtResource("22_auj4k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform11" unique_id=452092281]
+position = Vector2(197.4303, 394)
+scale = Vector2(1.1, 1)
+shape = SubResource("RectangleShape2D_fnqmk")
 
 [node name="Platform6" type="StaticBody2D" parent="Platform" unique_id=439107607]
 position = Vector2(743, -83)
@@ -444,7 +496,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12" unique_id=1505566236]
-position = Vector2(76.75, 358.5)
+position = Vector2(117, 358)
 shape = SubResource("RectangleShape2D_fkmt1")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform12" unique_id=1595662122]
@@ -461,6 +513,18 @@ collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1201225232]
 position = Vector2(94, 379)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1917738183]
+position = Vector2(181, 330)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1567990518]
+position = Vector2(535, 342)
+shape = SubResource("RectangleShape2D_fkmt1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Platform/Platform13" unique_id=558475925]
+position = Vector2(631, 369)
 shape = SubResource("RectangleShape2D_fkmt1")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform13" unique_id=441816283]
@@ -491,14 +555,55 @@ offset_right = -408.0
 offset_bottom = 429.0
 texture = ExtResource("15_cyrvx")
 
+[node name="TextureRect5" type="TextureRect" parent="Platform/Platform13" unique_id=1411811827]
+offset_left = 10.0
+offset_top = 409.0
+offset_right = 50.0
+offset_bottom = 449.0
+texture = ExtResource("24_pspfu")
+
+[node name="TextureRect6" type="TextureRect" parent="Platform/Platform13" unique_id=787116243]
+offset_left = 75.0
+offset_top = 360.0
+offset_right = 115.0
+offset_bottom = 400.0
+texture = ExtResource("25_a45wt")
+
+[node name="TextureRect7" type="TextureRect" parent="Platform/Platform13" unique_id=1613771674]
+offset_left = 163.0
+offset_top = 311.0
+offset_right = 203.0
+offset_bottom = 351.0
+texture = ExtResource("26_chgt7")
+
+[node name="TextureRect8" type="TextureRect" parent="Platform/Platform13" unique_id=1683867640]
+offset_left = 515.0
+offset_top = 321.0
+offset_right = 555.0
+offset_bottom = 361.0
+texture = ExtResource("28_ajdkx")
+
+[node name="TextureRect9" type="TextureRect" parent="Platform/Platform13" unique_id=1751119103]
+offset_left = 515.0
+offset_top = 321.0
+offset_right = 555.0
+offset_bottom = 361.0
+texture = ExtResource("28_ajdkx")
+
+[node name="SwordPickup" parent="Platform/Platform13" unique_id=235410236 instance=ExtResource("29_mjela")]
+position = Vector2(555, 297)
+
+[node name="LevelExit" parent="Platform/Platform13" unique_id=1228670635 instance=ExtResource("30_ajdkx")]
+position = Vector2(631, 349)
+
 [node name="Platform7" type="StaticBody2D" parent="Platform" unique_id=483094006]
 position = Vector2(838, -126)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=2006497438]
-position = Vector2(193.75, 358.5)
-shape = SubResource("RectangleShape2D_fnqmk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=1104622786]
+position = Vector2(186, 357.5)
+shape = SubResource("RectangleShape2D_auj4k")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform7" unique_id=1250267705]
 offset_left = 39.0
@@ -710,8 +815,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Platform14" type="StaticBody2D" parent="Platform" unique_id=204986346]
-visible = false
-position = Vector2(1438, -64)
+position = Vector2(1483, -72)
 collision_layer = 7
 collision_mask = 7
 
@@ -812,3 +916,9 @@ stretch_mode = 5
 
 [node name="ScrollbarElevator" parent="." unique_id=818021359 instance=ExtResource("4_scroll")]
 position = Vector2(1468, 306)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1755715894]
+libraries/ = SubResource("AnimationLibrary_aildm")
+autoplay = &"move_platform"
+
+[connection signal="toggled" from="top_bar/Taskbar/SystemTray/audiotoggle" to="." method="_on_audiotoggle_toggled"]

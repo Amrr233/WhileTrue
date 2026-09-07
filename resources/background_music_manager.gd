@@ -7,6 +7,11 @@ extends Node
 @onready var scan_music: AudioStreamPlayer = $ScanMusic
 @onready var investigate_music: AudioStreamPlayer = $InvestigateMusic
 
+func _ready() -> void:
+	# Bus index 0 is the default "Master" audio bus. 
+	# If you created a specific "Music" bus, change the 0 to AudioServer.get_bus_index("Music")
+	AudioServer.set_bus_mute(0, false)
+	
 func stop_all() -> void:
 	desktop_music.stop()
 	recycle_bin_music.stop()

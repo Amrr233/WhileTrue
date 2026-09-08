@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://clc8n5sceis76"]
 
-[ext_resource type="Script" path="res://scripts/ui/boss_health_bar.gd" id="1_bhb"]
+[ext_resource type="Script" uid="uid://b4lf0bqhoehf0" path="res://scripts/ui/boss_health_bar.gd" id="1_bhb"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_font"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
@@ -11,42 +11,43 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[node name="BossHealthBar" type="Control"]
+[node name="BossHealthBar" type="Control" unique_id=2134759954]
+layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 8.0
-offset_bottom = 46.0
+offset_bottom = 72.0
 grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("1_bhb")
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=961287723]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.0
 anchor_right = 0.5
-anchor_bottom = 0.0
 offset_left = -140.0
 offset_top = 6.0
 offset_right = 140.0
 offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
 
-[node name="VBox" type="VBoxContainer" parent="Panel"]
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=997344718]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="NameLabel" type="Label" parent="Panel/VBox"]
+[node name="NameLabel" type="Label" parent="Panel/VBox" unique_id=221147049]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
 text = "FINAL BOSS"
 horizontal_alignment = 1
 
-[node name="FillBar" type="ProgressBar" parent="Panel/VBox"]
-layout_mode = 2
+[node name="FillBar" type="ProgressBar" parent="Panel/VBox" unique_id=896188887]
 custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
 max_value = 1.0
 value = 1.0
 show_percentage = false

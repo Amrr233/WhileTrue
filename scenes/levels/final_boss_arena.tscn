@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://cf3ke31bu7jtm" path="res://scenes/enemies/final_boss.tscn" id="3_boss"]
 [ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="4_0gh4m"]
-[ext_resource type="PackedScene" path="res://scenes/ui/boss_health_bar.tscn" id="4_hbar"]
+[ext_resource type="PackedScene" uid="uid://clc8n5sceis76" path="res://scenes/ui/boss_health_bar.tscn" id="4_hbar"]
 [ext_resource type="PackedScene" uid="uid://bh0v2tptecdng" path="res://scenes/ui/boss_dialogue_box.tscn" id="5_dbox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prix1"]
@@ -16,6 +16,14 @@ size = Vector2(20, 400)
 [node name="FinalBossArena" type="Node2D" unique_id=665553925]
 script = ExtResource("1_arena")
 next_scene_after_defeat = "uid://c85if8brcwo6s"
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=261471014]
+layer = 10
+
+[node name="BossHealthBar" parent="HUD" unique_id=1412356063 instance=ExtResource("4_hbar")]
+offset_bottom = 54.0
+
+[node name="BossDialogueBox" parent="HUD" unique_id=1235871716 instance=ExtResource("5_dbox")]
 
 [node name="Background" type="ColorRect" parent="." unique_id=78662718]
 offset_right = 900.0
@@ -79,11 +87,3 @@ position = Vector2(450, 390)
 
 [node name="Point3" type="Marker2D" parent="SummonPoints" unique_id=7200804 groups=["boss_summon_point"]]
 position = Vector2(600, 390)
-
-[node name="HUD" type="CanvasLayer" parent="." unique_id=261471014]
-layer = 5
-
-[node name="BossHealthBar" parent="HUD" unique_id=1412356063 instance=ExtResource("4_hbar")]
-layout_mode = 3
-
-[node name="BossDialogueBox" parent="HUD" unique_id=1235871716 instance=ExtResource("5_dbox")]

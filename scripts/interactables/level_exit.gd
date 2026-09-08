@@ -11,7 +11,7 @@ func _ready() -> void:
 	prompt.visible = false
 
 func _physics_process(_delta: float) -> void:
-	if _player_nearby and Input.is_action_just_pressed("interact") and GameState.has_sword:
+	if _player_nearby and Input.is_action_just_pressed("interact"):
 		# التأكد من وجود مشهد سابق محفوظ في TransitionManager
 		if TransitionManager.has_method("go_to_previous_scene"):
 			TransitionManager.go_to_previous_scene(fallback_scene)
@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		_player_nearby = true
-		prompt.visible = GameState.has_sword
+		prompt.visible = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:

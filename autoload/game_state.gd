@@ -2,14 +2,14 @@ extends Node
 ## Runtime-persistent progression for the whole game.
 ## This survives scene changes because GameState is an Autoload singleton.
 
-var has_sword: bool = false
+var has_sword: bool = true
 var recycle_bin_boss_defeated: bool = false
 var recycle_bin_completed: bool = false
 
 # --- Antivirus level progression ---
-var has_dash: bool = false
-var has_double_jump: bool = false
-var has_key: bool = false
+var has_dash: bool = true
+var has_double_jump: bool = true
+var has_key: bool = true
 var has_cure: bool = false
 
 var antivirus_check_completed: bool = false

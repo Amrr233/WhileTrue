@@ -113,10 +113,17 @@ func _get_dialogue_box() -> BossDialogueBox:
 	return box
 
 func _play_intro_dialogue() -> void:
-	var box := _get_dialogue_box()
-	if box and not intro_dialogue.is_empty():
-		await box.play_sequence(intro_dialogue)
-	begin_fight()
+	# تشغيل حوار الانترو فقط إذا لم يتم تشغيله سابقاً في اللعبة وكانت حالة البوس INTRO
+	if not GameState.boss_intro_played and state == State.INTRO:
+		GameState.boss_intro_played = true
+		var box := _get_dialogue_box()
+		if box and not intro_dialogue.is_empty():
+			await box.play_sequence(intro_dialogue)
+		begin_fight()
+	else:
+		# إذا تم تشغيل الانترو سابقاً وما زال البوس في حالة INTRO، ابدأ القتال مباشرة
+		if state == State.INTRO:
+			begin_fight()
 
 func _build_telegraph_indicator() -> void:
 	_telegraph_indicator = Node2D.new()
@@ -163,7 +170,7 @@ func set_state(new_state: int) -> void:
 			_update_collision_for_animation()
 
 func begin_fight() -> void:
-	BackgroundMusicManager.play_final_boss_music() # Replace 'AudioManager' with your autoload name if different (e.g., Audio or SoundManager)
+	BackgroundMusicManager.play_final_boss_music()
 	set_state(State.PHASE_1)
 
 func _cleanup_transient() -> void:
@@ -435,7 +442,6 @@ func _attack_summon() -> void:
 
 	_change_animation("throw")
 
-	# تشغيل صوت الاستدعاء مع تغيير بسيط في طبقة الصوت تنويعاً
 	if summon_sound and summon_sound.stream:
 		summon_sound.pitch_scale = randf_range(0.95, 1.1)
 		summon_sound.play()

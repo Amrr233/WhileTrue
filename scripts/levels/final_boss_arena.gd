@@ -37,10 +37,8 @@ func _ready() -> void:
 
 	var checkpoint: int = GameState.boss_phase_checkpoint
 
-	if checkpoint <= 1 and not GameState.boss_intro_played:
-		GameState.boss_intro_played = true
-		# حوار الانترو يبدأ تلقائياً من سكريبت البوس نفسه
-	else:
+	# إذا كان التشك بوينت أعلى من 1، نضبط البوس على الفيز المطلوب مباشرة
+	if checkpoint > 1:
 		boss.reset_for_checkpoint(checkpoint, boss_spawn.global_position)
 
 func _deny_entry() -> void:

@@ -1,123 +1,278 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene format=3 uid="uid://cf3ke31bu7jtm"]
 
-[ext_resource type="Script" path="res://scripts/enemies/final_boss.gd" id="1_boss"]
+[ext_resource type="Script" uid="uid://bit45xto4gcsq" path="res://scripts/enemies/final_boss.gd" id="1_boss"]
 [ext_resource type="PackedScene" uid="uid://be3c7djdeomsq" path="res://scenes/enemies/virus_projectile2.tscn" id="2_proj"]
-[ext_resource type="Texture2D" uid="uid://bc7kri7oiw7j7" path="res://assets/art/enemies/test.png" id="3_tex"]
 [ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="4_snd"]
+[ext_resource type="Texture2D" uid="uid://botb0rg6irjky" path="res://assets/art/characters/V. 0.9.9.png" id="5_s8evt"]
 [ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="5_summon1"]
+[ext_resource type="Texture2D" uid="uid://ct56l4gxdd6cq" path="res://assets/art/characters/boss343.png" id="6_3uqse"]
 [ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="6_summon2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
-size = Vector2(148, 174)
+size = Vector2(82, 98)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1"]
-atlas = ExtResource("3_tex")
-region = Rect2(0, 0, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uqse"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(0, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2"]
-atlas = ExtResource("3_tex")
-region = Rect2(166, 0, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhnfq"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(64, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3"]
-atlas = ExtResource("3_tex")
-region = Rect2(332, 0, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2w1p"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(0, 715, 62, 65)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4"]
-atlas = ExtResource("3_tex")
-region = Rect2(498, 0, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_unvtr"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(128, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5"]
-atlas = ExtResource("3_tex")
-region = Rect2(0, 182, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoomr"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(192, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6"]
-atlas = ExtResource("3_tex")
-region = Rect2(166, 182, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_40l6p"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(256, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7"]
-atlas = ExtResource("3_tex")
-region = Rect2(332, 364, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5gwa"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(320, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8"]
-atlas = ExtResource("3_tex")
-region = Rect2(498, 364, 166, 91)
+[sub_resource type="AtlasTexture" id="AtlasTexture_naoi1"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(384, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_piiye"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(448, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pef3d"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(512, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uhnx"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(0, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6we0"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(64, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdmsc"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(128, 896, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfxnv"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(63, 455, 63, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjxab"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(126, 455, 63, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7ejb"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(189, 455, 63, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrbfa"]
+atlas = ExtResource("5_s8evt")
+region = Rect2(252, 455, 63, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o11m8"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(0, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygp2s"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(62, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_843bc"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(124, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sivov"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(186, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3hcp"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(248, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp2bv"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(310, 192, 62, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66loy"]
+atlas = ExtResource("6_3uqse")
+region = Rect2(372, 192, 62, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_boss"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1")
+"texture": SubResource("AtlasTexture_3uqse")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2")
+"texture": SubResource("AtlasTexture_bhnfq")
+}],
+"loop": true,
+"name": &"dash",
+"speed": 2.0
 }, {
+"frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4")
+"texture": SubResource("AtlasTexture_h2w1p")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5")
+"texture": SubResource("AtlasTexture_3uqse")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6")
+"texture": SubResource("AtlasTexture_bhnfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unvtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoomr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40l6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5gwa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naoi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_piiye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pef3d")
 }],
 "loop": true,
 "name": &"run",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uhnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6we0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdmsc")
+}],
+"loop": true,
+"name": &"slam",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7")
+"texture": SubResource("AtlasTexture_vfxnv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8")
+"texture": SubResource("AtlasTexture_sjxab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7ejb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrbfa")
+}],
+"loop": true,
+"name": &"telegraph",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o11m8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygp2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_843bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sivov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3hcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp2bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66loy")
 }],
 "loop": true,
 "name": &"throw",
 "speed": 5.0
 }]
 
-[node name="FinalBoss" type="CharacterBody2D"]
+[node name="FinalBoss" type="CharacterBody2D" unique_id=1255698282]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_boss")
+summon_pool = Array[PackedScene]([ExtResource("5_summon1"), ExtResource("6_summon2")])
 max_health = 60
 speed = 90.0
 chase_range = 260.0
 melee_range = 20.0
 knockback_resistance = 0.15
 teleport_cooldown = 3.5
-teleport_min_distance = 200.0
 teleport_max_distance = 300.0
 decoy_count = 3
 decoy_spawn_offset = 90.0
 projectile_scene = ExtResource("2_proj")
-ranged_damage = 1
 fire_range = 260.0
-boss_max_health = 60
-phase_2_threshold = 0.8
-phase_3_threshold = 0.4
-summon_pool = Array[PackedScene]([ExtResource("5_summon1"), ExtResource("6_summon2")])
-max_active_summons = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 25)
+[node name="idle" type="CollisionShape2D" parent="." unique_id=1662210593]
+visible = false
+position = Vector2(9, 3.5)
+shape = SubResource("RectangleShape2D_boss")
+debug_color = Color(0.8699101, 0.00051365135, 0.85176885, 0.41960785)
+
+[node name="run" type="CollisionShape2D" parent="." unique_id=213033009]
+visible = false
+position = Vector2(9, 25.5)
 shape = SubResource("RectangleShape2D_boss")
 
-[node name="Visual" type="AnimatedSprite2D" parent="."]
+[node name="dash" type="CollisionShape2D" parent="." unique_id=406474998]
+visible = false
+position = Vector2(9, 25.5)
+shape = SubResource("RectangleShape2D_boss")
+
+[node name="throw" type="CollisionShape2D" parent="." unique_id=5129052]
+position = Vector2(9, 25.5)
+shape = SubResource("RectangleShape2D_boss")
+
+[node name="slam" type="CollisionShape2D" parent="." unique_id=112661608]
+visible = false
+position = Vector2(9, 25.5)
+shape = SubResource("RectangleShape2D_boss")
+
+[node name="telegraph" type="CollisionShape2D" parent="." unique_id=365970974]
+visible = false
+position = Vector2(9, 10)
+shape = SubResource("RectangleShape2D_boss")
+
+[node name="Visual" type="AnimatedSprite2D" parent="." unique_id=28161637]
 position = Vector2(4, 14)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_boss")
-animation = &"idle"
+animation = &"throw"
+frame_progress = 0.025692398
 
-[node name="TeleportSound" type="AudioStreamPlayer2D" parent="."]
+[node name="TeleportSound" type="AudioStreamPlayer2D" parent="." unique_id=1687047980]
 stream = ExtResource("4_snd")
 volume_db = 5.841
 pitch_scale = 0.65

@@ -350,7 +350,7 @@ size = Vector2(18, 12)
 [node name="Player" type="CharacterBody2D" unique_id=1447993816]
 collision_mask = 6
 script = ExtResource("1_player")
-unarmed_damage = 20
+unarmed_damage = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=906220922]
 position = Vector2(0, 5)
@@ -358,9 +358,7 @@ shape = SubResource("PlayerShape")
 
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=59882741]
 sprite_frames = SubResource("SpriteFrames_y4wgv")
-animation = &"sit"
-frame = 2
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=134206205]
 collision_layer = 0

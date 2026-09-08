@@ -40,6 +40,9 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export_category("Double Jump")
 @export var double_jump_velocity: float = -360.0
 
+# --- متغير تعطيل التحكم (وقت الحوار) ---
+var controls_disabled: bool = false
+
 var has_sword: bool = false
 var has_dash: bool = false
 var has_double_jump: bool = false
@@ -100,6 +103,20 @@ func _physics_process(delta: float) -> void:
 			_end_attack()
 
 	_update_jump_timers(delta)
+
+	# --- عند تعطيل التحكم (أثناء حوار البوس) ---
+	if controls_disabled:
+		_apply_gravity(delta)
+		velocity.x = move_toward(velocity.x, 0.0, acceleration * delta)
+		if visual is AnimatedSprite2D:
+			if not is_on_floor():
+				visual.play("jumping")
+			else:
+				visual.play("idle")
+		move_and_slide()
+		return
+	# ----------------------------------------
+
 	_handle_dash(delta)
 	
 	if _dash_timer <= 0.0:
@@ -116,6 +133,13 @@ func _physics_process(delta: float) -> void:
 
 	if global_position.y > 520.0:
 		respawn(false)
+
+## دالة لتعطيل أو تفعيل التحكم باللاعب بسهولة من الكود الخارجي
+func set_controls_disabled(value: bool) -> void:
+	controls_disabled = value
+	if value:
+		_end_attack()
+		velocity.x = 0.0
 
 func _update_jump_timers(delta: float) -> void:
 	if is_on_floor():
@@ -202,7 +226,6 @@ func _handle_horizontal_movement(delta: float) -> void:
 		var deceleration := acceleration * (1.0 if is_on_floor() else 0.65)
 		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-	# --- Animation Logic for Levels (Idle, Running, Jumping) ---
 	if visual is AnimatedSprite2D:
 		visual.flip_h = (facing == -1)
 		
@@ -286,19 +309,15 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	velocity.y = knockback_y
 	health_changed.emit(health, max_health)
 	
-	# --- التعديل هنا: ضمان تطبيق الوميض الأحمر بشكل قاطع ---
 	if visual:
-		visual.modulate = Color(1.0, 0.2, 0.2, 1.0) # لون أحمر صريح وقوي
-		
+		visual.modulate = Color(1.0, 0.2, 0.2, 1.0)
 		var tween = create_tween()
-		tween.tween_property(visual, "modulate", Color.WHITE, 0.3) # جعل المدة أطول قليلاً (0.3 ثانية) ليكون الوميض واضحاً للعين
-	# ----------------------------------------------------
+		tween.tween_property(visual, "modulate", Color.WHITE, 0.3)
 
 	if health <= 0:
 		respawn(true)
 
 func respawn(reload_scene: bool = false) -> void:
-	# ---> HERE is the new line that resets the scrollbar elevator <---
 	get_tree().call_group("reset_on_death", "reset_state")
 
 	if reload_scene:
@@ -326,13 +345,10 @@ func on_mouse_hold() -> void:
  
 func on_mouse_release() -> void:
 	if visual is AnimatedSprite2D:
-		# المرحلة 1: يقع للأمام (فريمات 0 لـ 4)
 		_falling_phase = true
 		visual.animation = "stand_up"
 		visual.play()
 
-## بعد ما مرحلة من الأنيميشن تخلص: لو كان بيقع، نشغّل "بيقوم" بالعكس.
-## ولو كان بيقوم، نوقف ونرجع نقف عادي على أول فريم.
 func _on_stand_up_finished() -> void:
 	if not (visual is AnimatedSprite2D) or visual.animation != "stand_up":
 		return
@@ -345,7 +361,6 @@ func _on_stand_up_finished() -> void:
 
 func _handle_desktop_actions() -> void:
 	if visual is AnimatedSprite2D:
-		# Do not interrupt the mouse grab or the drop/stand-up sequence
 		if _falling_phase or visual.animation == "grabbed" or (visual.animation == "stand_up" and visual.is_playing()):
 			return
 	 

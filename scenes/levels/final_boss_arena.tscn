@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://dytul6ljebm48" path="res://scripts/levels/final_boss_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/final_boss.tscn" id="3_boss"]
+[ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="4_0gh4m"]
 [ext_resource type="PackedScene" path="res://scenes/ui/boss_health_bar.tscn" id="4_hbar"]
 [ext_resource type="PackedScene" path="res://scenes/ui/boss_dialogue_box.tscn" id="5_dbox"]
 
-[sub_resource type="RectangleShape2D" id="GroundShape_arena"]
-size = Vector2(900, 40)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prix1"]
+size = Vector2(899, 25.5)
 
 [sub_resource type="RectangleShape2D" id="WallShape_arena"]
 size = Vector2(20, 400)
@@ -33,12 +34,21 @@ position = Vector2(720, 360)
 [node name="FinalBoss" parent="." unique_id=544769113 instance=ExtResource("3_boss")]
 position = Vector2(720, 360)
 
-[node name="Ground" type="StaticBody2D" parent="." unique_id=224606319]
-position = Vector2(450, 420)
-collision_layer = 2
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1785684930]
+position = Vector2(87, -56)
+collision_layer = 7
+collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1638445400]
-shape = SubResource("GroundShape_arena")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1656144959]
+position = Vector2(361.5, 493.75)
+shape = SubResource("RectangleShape2D_prix1")
+
+[node name="TextureRect" type="TextureRect" parent="Ground" unique_id=2141229310]
+offset_left = -316.0
+offset_top = 475.0
+offset_right = 1165.0
+offset_bottom = 515.0
+texture = ExtResource("4_0gh4m")
 
 [node name="ArenaWalls" type="Node2D" parent="." unique_id=1941020894]
 

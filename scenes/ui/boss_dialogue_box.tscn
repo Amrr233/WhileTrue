@@ -1,21 +1,23 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://bh0v2tptecdng"]
 
-[ext_resource type="Script" path="res://scripts/ui/boss_dialogue_box.gd" id="1_bdb"]
+[ext_resource type="Script" uid="uid://cgbsserg8u324" path="res://scripts/ui/boss_dialogue_box.gd" id="1_bdb"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_font"]
+[ext_resource type="AudioStream" uid="uid://btlmaea0el7t1" path="res://assets/audio/sfx/Windows Pop-up Blocked.wav" id="3_tn5ln"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_note"]
-bg_color = Color(0.05, 0.05, 0.07, 0.92)
+bg_color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.9, 0.9, 0.95, 1)
+border_color = Color(0.05301719, 0.009408138, 0.017256223, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
-corner_radius_bottom_left = 3
 corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
-[node name="BossDialogueBox" type="Control"]
+[node name="BossDialogueBox" type="Control" unique_id=292998612]
+layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 54.0
@@ -24,22 +26,29 @@ grow_horizontal = 2
 mouse_filter = 2
 script = ExtResource("1_bdb")
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=682836977]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -220.0
-offset_top = 0.0
 offset_right = 220.0
 offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_note")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=178796778]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_font")
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 16
 text = "[BOSS QUOTE]"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="TypingSound" type="AudioStreamPlayer" parent="." unique_id=1456500733]
+stream = ExtResource("3_tn5ln")

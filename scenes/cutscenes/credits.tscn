@@ -31,3 +31,4 @@ text = "~ConcernedApes"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=219197042]
 stream = ExtResource("2_ckkgk")
+autoplay = true

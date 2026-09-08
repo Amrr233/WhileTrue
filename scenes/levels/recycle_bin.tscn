@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://uxh7qhfek8ye" path="res://scripts/levels/recycle_bin.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://v5k031eiy686" path="res://scenes/enemies/virus_small.tscn" id="2_h5xix"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="3_0jwjl"]
 [ext_resource type="AudioStream" uid="uid://fog0m7eggfap" path="res://assets/audio/sfx/Windows XP Hardware Remove.wav" id="3_hrp3q"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_14nmw"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
@@ -172,12 +171,6 @@ small_virus_scene = ExtResource("2_h5xix")
 basic_virus_scene = ExtResource("2_h5xix")
 ranged_virus_scene = ExtResource("2_h5xix")
 hunter_virus_scene = ExtResource("2_h5xix")
-
-[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1935453848]
-layer = 3
-
-[node name="cursor" parent="CanvasLayer3" unique_id=1380842287 instance=ExtResource("3_0jwjl")]
-position = Vector2(210, 114)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=983451721]
 layer = 5
@@ -430,7 +423,7 @@ theme_override_fonts/font = ExtResource("4_14nmw")
 theme_override_font_sizes/font_size = 10
 text = "CLOSE"
 
-[node name="Startmenu" type="TextureButton" parent="taskbar/Taskbar" unique_id=227811691 node_paths=PackedStringArray("start_menu")]
+[node name="Startmenu" type="TextureButton" parent="taskbar/Taskbar" unique_id=227811691]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -442,7 +435,6 @@ texture_normal = ExtResource("13_8j3he")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("14_58e74")
-start_menu = NodePath("../startmenupanel")
 
 [node name="Platform" type="Node2D" parent="." unique_id=618369800]
 

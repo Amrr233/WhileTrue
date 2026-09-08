@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="2_qlpte"]
 
 [sub_resource type="RectangleShape2D" id="ExitShape"]
-size = Vector2(31, 35)
+size = Vector2(58, 63)
 
 [node name="LevelExit" type="Area2D" unique_id=1228670635]
 collision_layer = 7
@@ -22,7 +22,7 @@ theme_override_fonts/font = ExtResource("2_qhq22")
 text = "[E] Exit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1958518270]
-position = Vector2(0, 3)
+position = Vector2(1, 2.5)
 shape = SubResource("ExitShape")
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=1321052647]

@@ -88,7 +88,7 @@ completed_flag = "antivirus_scan_completed"
 unlock_flag = "has_double_jump"
 reward_text = "DOUBLE JUMP UNLOCKED— SPACEEE"
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=2057374608]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=971625379]
 layer = 4
 
 [node name="cursor" parent="CanvasLayer2" unique_id=1380842287 instance=ExtResource("17_nhv2c")]
@@ -559,9 +559,6 @@ texture = ExtResource("26_6h6dt")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
-
-[node name="cursor" parent="." unique_id=907262336 instance=ExtResource("17_nhv2c")]
-position = Vector2(210, 114)
 
 [node name="taskbar" type="CanvasLayer" parent="." unique_id=677315587]
 layer = 2

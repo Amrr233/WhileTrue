@@ -1,6 +1,6 @@
 extends TextureButton # لو النود عندك من نوع Button عادي غيّر الكلمة لـ extends Button
 
-@onready var start_menu_panel: TextureRect = $"../startmenupanel"
+@onready var start_menu_panel: = $"../startmenupanel"
 
 func _ready() -> void:
 	focus_mode = Control.FOCUS_NONE

@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="22_wjt0n"]
 [ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="28_t01s5"]
 [ext_resource type="Script" uid="uid://clfb1b16ao5yo" path="res://scripts/core/hint_button.gd" id="29_n8cn1"]
+[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="30_n8cn1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlij"]
 bg_color = Color(0.8117647, 0.8117647, 0.8117647, 1)
@@ -651,5 +652,8 @@ theme_override_fonts/font = ExtResource("2_7lyvm")
 text = "Beat All the antivirus stages
 you have to kill every virus "
 autowrap_mode = 2
+
+[node name="LevelExit" parent="." unique_id=1228670635 instance=ExtResource("30_n8cn1")]
+position = Vector2(50, 231)
 
 [connection signal="pressed" from="hint/HintButton" to="hint/HintButton" method="_on_hint_button_pressed"]

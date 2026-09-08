@@ -7,6 +7,12 @@ var _loading := false
 @onready var enter_sound: AudioStreamPlayer = $EnterSound
 @onready var locked_label: Label = $Label
 
+func _ready() -> void:
+	if locked_label:
+		locked_label.text = "Get the sword first"
+		locked_label.visible = false
+		locked_label.modulate.a = 0.0
+
 func _flash_no_sword() -> void:
 	if not locked_label:
 		return
@@ -24,7 +30,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 		
 	if body is Player:
-		if GameState.has_key:
+		if GameState.has_sword:
 			if body._falling_phase:
 				_loading = true
 			
@@ -39,5 +45,3 @@ func _on_body_entered(body: Node2D) -> void:
 				TransitionManager.fade_to_scene(anti_virus_scene)
 		else:
 			_flash_no_sword()
-			
-			

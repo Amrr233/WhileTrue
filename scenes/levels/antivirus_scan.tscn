@@ -13,8 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="9_nhv2c"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_f31id"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="11_eiqjd"]
+[ext_resource type="Script" uid="uid://cj5s2p7jkwk3p" path="res://scripts/core/battery_icon.gd" id="11_ssgea"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="12_fy4if"]
+[ext_resource type="Texture2D" uid="uid://djhi0xnhofl87" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item85.png" id="12_y12a5"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="13_k525t"]
+[ext_resource type="Texture2D" uid="uid://ddcibmut7mily" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item87.png" id="13_qufom"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="14_43dg2"]
 [ext_resource type="Texture2D" uid="uid://7hdg3s7d0yme" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item5.png" id="16_ibdd8"]
 [ext_resource type="Texture2D" uid="uid://dc1l8i3mwhhhf" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item2.png" id="16_wvq8v"]
@@ -51,7 +54,6 @@ size = Vector2(598, 53)
 size = Vector2(32, 88.75)
 
 [node name="AntivirusScan" type="Node2D" unique_id=1589291216]
-position = Vector2(7, 36)
 script = ExtResource("1_arena")
 arena_type = "scan"
 enemy_scene = ExtResource("2_n5wal")
@@ -278,6 +280,10 @@ mouse_filter = 0
 texture = ExtResource("8_wvq8v")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("11_ssgea")
+battery_full = ExtResource("12_y12a5")
+battery_half = ExtResource("8_wvq8v")
+battery_empty = ExtResource("13_qufom")
 
 [node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=659441799]
 custom_minimum_size = Vector2(32, 32)

@@ -105,6 +105,9 @@ func _ready() -> void:
 		visual.animation_finished.connect(_on_stand_up_finished)
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("heal"):
+		_attempt_heal()
+		
 	if _invulnerability_timer > 0.0:
 		_invulnerability_timer -= delta
 	if _attack_timer > 0.0:
@@ -323,8 +326,6 @@ func _start_attack() -> void:
 	_attack_hit_ids.clear()
 	attack_shape.disabled = false
 	
-	# تم إخفاء المربع الأصفر بإلغاء/حذف السطر التالي:
-	# attack_visual.visible = true  <-- احذف هذا السطر أو ضع قبله #
 	attack_visual.visible = false
 	
 	attack_area.position.x = 32.0 * facing
@@ -393,10 +394,15 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 		tween.tween_property(visual, "modulate", Color.WHITE, 0.3)
 
 	if health <= 0:
+		# --- FORCE BATTERY RESET THE MILLISECOND WE DIE ---
+		GameState.current_battery_heals = GameState.max_battery_heals
 		respawn(true)
 
 func respawn(reload_scene: bool = false) -> void:
 	get_tree().call_group("reset_on_death", "reset_state")
+	
+	# --- ALSO REFILL BATTERY IF WE FALL OFF THE MAP (Spikes/Pits) ---
+	GameState.current_battery_heals = GameState.max_battery_heals
 
 	if reload_scene:
 		set_physics_process(false)
@@ -452,3 +458,15 @@ func _handle_desktop_actions() -> void:
 			visual.animation = "stand_up"
 			visual.frame = 0
 			visual.stop()
+
+func _attempt_heal() -> void:
+	if GameState.current_battery_heals > 0 and health < max_health:
+		GameState.current_battery_heals -= 1
+		
+		# Now it heals 3 bars instead of 1!
+		health += 3
+		if health > max_health:
+			health = max_health
+			
+		# This tells your UI to update the hearts.
+		health_changed.emit(health, max_health)

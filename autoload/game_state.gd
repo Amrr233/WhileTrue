@@ -25,8 +25,12 @@ var boss_phase_checkpoint: int = 1
 var boss_final_defeated: bool = false
 var boss_intro_played: bool = false
 
-# --- NEW: Tracks whether the desktop boot/startup sound has played this session ---
+# --- Tracks whether the desktop boot/startup sound has played this session ---
 var desktop_startup_played: bool = false
+
+# --- Battery Healing System ---
+var max_battery_heals: int = 2
+var current_battery_heals: int = 2
 
 func reset_progress() -> void:
 	has_sword = false
@@ -35,7 +39,7 @@ func reset_progress() -> void:
 
 	has_dash = true
 	has_double_jump = true
-	has_key = true
+	has_key = false 
 	has_cure = false
 
 	antivirus_check_completed = false
@@ -49,3 +53,6 @@ func reset_progress() -> void:
 	
 	# Reset startup sound flag on a full game reset
 	desktop_startup_played = false
+	
+	# Refill battery on a full game reset
+	current_battery_heals = max_battery_heals

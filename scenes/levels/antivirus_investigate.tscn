@@ -14,9 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="9_0nc7b"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_se3md"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="11_nlgur"]
+[ext_resource type="Script" uid="uid://cj5s2p7jkwk3p" path="res://scripts/core/battery_icon.gd" id="12_ji8e1"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="12_qrxir"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="13_moxm3"]
+[ext_resource type="Texture2D" uid="uid://djhi0xnhofl87" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item85.png" id="13_ttpn0"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="14_71jbh"]
+[ext_resource type="Texture2D" uid="uid://ddcibmut7mily" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item87.png" id="14_x5bl8"]
 [ext_resource type="Texture2D" uid="uid://dc1l8i3mwhhhf" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item2.png" id="15_eli30"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="15_ofryp"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="16_0nc7b"]
@@ -53,6 +56,7 @@ hunter_virus_scene = ExtResource("3_enemy")
 completed_flag = "antivirus_investigate_completed"
 unlock_flag = "has_key"
 reward_text = "INVESTIGATION COMPLETE — KEY OBTAINED"
+next_scene = "res://scenes/levels/desktob.tscn"
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1393090974]
 position = Vector2(52, 259)
@@ -261,6 +265,10 @@ mouse_filter = 0
 texture = ExtResource("8_eli30")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("12_ji8e1")
+battery_full = ExtResource("13_ttpn0")
+battery_half = ExtResource("8_eli30")
+battery_empty = ExtResource("14_x5bl8")
 
 [node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=439298576]
 custom_minimum_size = Vector2(32, 32)

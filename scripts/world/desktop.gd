@@ -3,6 +3,7 @@ extends Node2D
 @onready var desktop_startup_sound: AudioStreamPlayer = $"desktob starting"
 
 func _ready() -> void:
+	GameState.current_battery_heals = GameState.max_battery_heals
 	if not GameState.desktop_startup_played:
 		GameState.desktop_startup_played = true
 		if desktop_startup_sound != null:
@@ -26,6 +27,5 @@ func _ready() -> void:
 #func _on_start_menu_pressed() -> void:
 	#PauseMenu.toggle_pause()
 
-
-func _on_ie_icon_body_exited(body: Node2D) -> void:
+func _on_ie_icon_body_exited(_body: Node2D) -> void:
 	pass # Replace with function body.

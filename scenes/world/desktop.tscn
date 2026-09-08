@@ -10,13 +10,18 @@
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="4_7gd84"]
 [ext_resource type="Script" uid="uid://xhuqmsnk362d" path="res://scripts/world/recycle_bin.gd" id="4_bin_script"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="5_1y8lu"]
+[ext_resource type="Script" uid="uid://cj5s2p7jkwk3p" path="res://scripts/core/battery_icon.gd" id="5_orp0b"]
+[ext_resource type="Texture2D" uid="uid://djhi0xnhofl87" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item85.png" id="6_2vvwo"]
 [ext_resource type="Script" uid="uid://cjwc14nqh0qi2" path="res://scripts/world/antivirusIcon.gd" id="6_ujlt8"]
+[ext_resource type="Texture2D" uid="uid://ddcibmut7mily" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item87.png" id="7_pqc10"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="9_ikds4"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="9_player"]
 [ext_resource type="Texture2D" uid="uid://chg7k7n250t7j" path="res://assets/art/ui/pause menu.png" id="9_v8i6v"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="10_audio"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="11_clock"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="14_yn8t8"]
+[ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="15_6uq1i"]
+[ext_resource type="Script" uid="uid://clfb1b16ao5yo" path="res://scripts/core/hint_button.gd" id="16_orp0b"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="17_1guff"]
 [ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="17_3265r"]
 [ext_resource type="AudioStream" uid="uid://d3p16pgfgabir" path="res://assets/audio/sfx/Windows XP Error.wav" id="17_n22mp"]
@@ -89,6 +94,10 @@ mouse_filter = 0
 texture = ExtResource("3_b7fx7")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("5_orp0b")
+battery_full = ExtResource("6_2vvwo")
+battery_half = ExtResource("3_b7fx7")
+battery_empty = ExtResource("7_pqc10")
 
 [node name="audiotoggle" type="TextureButton" parent="Ui/Taskbar/SystemTray" unique_id=291505182]
 custom_minimum_size = Vector2(32, 32)
@@ -108,6 +117,7 @@ stretch_mode = 5
 script = ExtResource("11_clock")
 
 [node name="startmenupanel" type="TextureRect" parent="Ui/Taskbar" unique_id=5385707]
+visible = false
 layout_mode = 0
 offset_left = -65.0
 offset_top = -205.0
@@ -175,6 +185,26 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/Ground" unique_id=1942912017]
 position = Vector2(232, 269)
 shape = SubResource("GroundShape")
+
+[node name="HintButton" type="TextureButton" parent="Ui" unique_id=732435276]
+texture_filter = 1
+offset_left = 754.0
+offset_top = 27.0
+offset_right = 762.0
+offset_bottom = 35.0
+texture_normal = ExtResource("15_6uq1i")
+script = ExtResource("16_orp0b")
+
+[node name="HintLabel" type="Label" parent="Ui/HintButton" unique_id=142929524]
+visible = false
+layout_mode = 0
+offset_left = -243.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_yn8t8")
+text = "Cant Move? try the cursor!"
 
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("9_ikds4")]
 position = Vector2(210, 114)
@@ -251,6 +281,15 @@ offset_right = 481.0
 offset_bottom = 246.0
 text = "Get the sword first"
 
+[node name="Label2" type="Label" parent="antivirusIcon" unique_id=741670005]
+offset_left = 49.0
+offset_top = 162.0
+offset_right = 143.0
+offset_bottom = 181.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 12
+text = "anti_virus"
+
 [node name="desktob starting" type="AudioStreamPlayer" parent="." unique_id=1544037763]
 stream = ExtResource("17_3265r")
 
@@ -274,6 +313,16 @@ offset_right = 481.0
 offset_bottom = 246.0
 text = "access denied"
 
+[node name="Label2" type="Label" parent="IEIcon" unique_id=477529876]
+offset_left = 19.0
+offset_top = 360.0
+offset_right = 139.0
+offset_bottom = 383.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 12
+text = "internet_explorer"
+
+[connection signal="pressed" from="Ui/HintButton" to="Ui/HintButton" method="_on_hint_button_pressed"]
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]
 [connection signal="body_entered" from="antivirusIcon" to="antivirusIcon" method="_on_body_entered"]
 [connection signal="body_entered" from="IEIcon" to="IEIcon" method="_on_body_entered"]

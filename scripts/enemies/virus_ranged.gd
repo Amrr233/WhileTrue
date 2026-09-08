@@ -6,18 +6,18 @@ class_name VirusRanged
 signal died
 signal took_damage
 
-@export var max_health: int = 3
+@export var max_health: int = 10
 @export var speed: float = 48.0
-@export var chase_range: float = 150.0
-@export var attack_range: float = 16.0
+@export var chase_range: float = 200.0
+@export var attack_range: float = 20.0
 @export var contact_damage: int = 1
 @export var attack_cooldown: float = 0.7
 @export var knockback_resistance: float = 0.4
 
 @export_category("Ranged")
 @export var projectile_scene: PackedScene
-@export var fire_range: float = 130.0
-@export var fire_cooldown: float = 1.6 # الكول داون بين كل رمية والتانية
+@export var fire_range: float = 330.0
+@export var fire_cooldown: float = 1.3
 
 var health: int
 var _attack_timer := 0.0
@@ -25,7 +25,7 @@ var _fire_timer := 0.0
 var _target: Player
 var _spawn_y := 0.0
 var _spawn_y_set := false
-var _is_throwing := false # متغير لتعقب هل هو في حالة رمي حالياً
+var _is_throwing := false
 
 @onready var visual: AnimatedSprite2D = $Visual
 
@@ -37,7 +37,6 @@ func _ready() -> void:
 	
 	if visual:
 		visual.play("idle")
-		# نربط إشارة انتهاء الأنيميشن وإشارة تغيير الفريم
 		if not visual.animation_finished.is_connected(_on_animation_finished):
 			visual.animation_finished.connect(_on_animation_finished)
 		if not visual.frame_changed.is_connected(_on_frame_changed):
@@ -67,7 +66,6 @@ func _physics_process(delta: float) -> void:
 
 	var distance := global_position.distance_to(_target.global_position)
 	
-	# لو بينفذ أنيميشن الرمي، نثبته مكانه عشان يركز في الرمية
 	if _is_throwing:
 		velocity.x = move_toward(velocity.x, 0.0, 300.0 * delta)
 		if not is_on_floor():
@@ -85,7 +83,7 @@ func _physics_process(delta: float) -> void:
 			edge_check.force_raycast_update()
 			
 			if not edge_check.is_colliding():
-				direction = 0.0 
+				direction = 0.0
 		
 		velocity.x = move_toward(velocity.x, direction * speed, 220.0 * delta)
 	else:
@@ -104,7 +102,6 @@ func _physics_process(delta: float) -> void:
 		_fire_timer = fire_cooldown
 		_start_throw_action()
 
-# تبدأ عملية الرمي وتشغيل الأنيميشن
 func _start_throw_action() -> void:
 	if not is_instance_valid(_target):
 		return
@@ -112,14 +109,11 @@ func _start_throw_action() -> void:
 	if visual:
 		visual.play("throw")
 
-# يتم استدعاء هذه الدالة مع كل فريم يتحرك فيه الأنيميشن
 func _on_frame_changed() -> void:
 	if visual and visual.animation == "throw":
-		# عندما يصل الفريم إلى رقم 3 (حيث يفتح فمه للرمي)، تخرج القذيفة في التوقيت المثالي
 		if visual.frame == 3:
 			_spawn_projectile()
 
-# إطلاق القذيفة الفعلي
 func _spawn_projectile() -> void:
 	if not is_instance_valid(_target) or not projectile_scene:
 		return
@@ -128,7 +122,6 @@ func _spawn_projectile() -> void:
 	projectile.global_position = global_position
 	projectile.direction = (_target.global_position - global_position).normalized()
 
-# عند انتهاء أنيميشن الرمي، نرجع لحالة الـ idle الطبيعية
 func _on_animation_finished() -> void:
 	if visual and visual.animation == "throw":
 		_is_throwing = false
@@ -155,7 +148,7 @@ func _update_visuals() -> void:
 
 	if is_instance_valid(_target):
 		visual.flip_h = (_target.global_position.x < global_position.x)
-
+res://autoload/game_state.gd
 	if abs(velocity.x) > 1.0:
 		if visual.animation != "idle":
 			visual.play("idle")

@@ -15,9 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="10_te8ey"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="11_750d8"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="12_03h55"]
+[ext_resource type="Script" uid="uid://cj5s2p7jkwk3p" path="res://scripts/core/battery_icon.gd" id="13_e2jbx"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="13_wb1u8"]
+[ext_resource type="Texture2D" uid="uid://djhi0xnhofl87" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item85.png" id="14_74l08"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="14_cdjtt"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="15_gw4w0"]
+[ext_resource type="Texture2D" uid="uid://ddcibmut7mily" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item87.png" id="15_h0m37"]
 [ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="16_cbpmr"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="17_540j4"]
 [ext_resource type="Texture2D" uid="uid://7tdnhg3qrjyn" path="res://assets/art/ui/antivirus_check_new_sittings.png" id="17_750d8"]
@@ -288,6 +291,10 @@ mouse_filter = 0
 texture = ExtResource("9_540j4")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("13_e2jbx")
+battery_full = ExtResource("14_74l08")
+battery_half = ExtResource("9_540j4")
+battery_empty = ExtResource("15_h0m37")
 
 [node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1418098915]
 custom_minimum_size = Vector2(32, 32)

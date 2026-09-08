@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://dk2tp2226aerv" path="res://scenes/interactables/long_1.gd" id="30_e2jbx"]
 [ext_resource type="Texture2D" uid="uid://chg7k7n250t7j" path="res://assets/art/ui/pause menu.png" id="34_qbu02"]
 [ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="35_ata86"]
+[ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="39_j8k6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_540j4"]
 size = Vector2(48, 30)
@@ -707,3 +708,6 @@ texture_normal = ExtResource("14_cdjtt")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("15_gw4w0")
+
+[node name="LevelExit" parent="." unique_id=1228670635 instance=ExtResource("39_j8k6h")]
+position = Vector2(42, 251)

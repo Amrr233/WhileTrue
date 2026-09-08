@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cn41dwdcugo3"]
 
 [ext_resource type="Script" uid="uid://dtm5wma1q8281" path="res://scripts/interactables/level_exit.gd" id="1_exit"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_qhq22"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="2_qlpte"]
 
 [sub_resource type="RectangleShape2D" id="ExitShape"]
@@ -12,11 +13,12 @@ collision_mask = 7
 script = ExtResource("1_exit")
 
 [node name="Prompt" type="Label" parent="." unique_id=726981461]
-visible = false
-offset_left = -9.0
-offset_top = -25.0
-offset_right = 18.0
-offset_bottom = -8.0
+offset_left = -30.0
+offset_top = -43.0
+offset_right = 45.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qhq22")
 text = "[E] Exit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1958518270]

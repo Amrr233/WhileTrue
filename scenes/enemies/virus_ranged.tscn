@@ -96,8 +96,11 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_ranged")
 max_health = 10
+chase_range = 400.0
 attack_cooldown = 2.0
 projectile_scene = ExtResource("2_ndd6p")
+fire_range = 400.0
+fire_cooldown = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=188901034]
 position = Vector2(14.4444475, 10.555556)

@@ -16,7 +16,7 @@ signal took_damage
 
 @export_category("Ranged")
 @export var projectile_scene: PackedScene
-@export var fire_range: float = 130.0
+@export var fire_range: float = 200.0
 @export var fire_cooldown: float = 1.6 # الكول داون بين كل رمية والتانية
 
 var health: int

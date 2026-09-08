@@ -2,15 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dkhojijllkjx2" path="res://scripts/levels/final_boss_lead_in.gd" id="1_lead"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://v5k031eiy686" path="res://scenes/enemies/virus_small.tscn" id="2_tb2va"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="3_font"]
+[ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="3_svilo"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="4_atbt3"]
 [ext_resource type="Texture2D" uid="uid://k1myp3afpnrr" path="res://assets/art/ui/internet broke.jpg" id="4_pge73"]
 [ext_resource type="AudioStream" uid="uid://fog0m7eggfap" path="res://assets/audio/sfx/Windows XP Hardware Remove.wav" id="5_e5u7u"]
+[ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="5_myuf0"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="5_pu06j"]
 [ext_resource type="Texture2D" uid="uid://b6raduchi67k5" path="res://assets/art/ui/internet_explorer.png" id="6_lxxj1"]
 [ext_resource type="Texture2D" uid="uid://be1s7m5vfmlw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item86.png" id="6_ob0pr"]
 [ext_resource type="Texture2D" uid="uid://g5ayrulmlux5" path="res://assets/art/ui/Small (24x24) PNG/Google Launcher.png" id="6_tb2va"]
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="7_12gp0"]
+[ext_resource type="Texture2D" uid="uid://5u0jp30e5rhc" path="res://assets/art/ui/door_asset.png" id="7_cskp8"]
 [ext_resource type="Texture2D" uid="uid://bo1prsghcswsp" path="res://assets/art/ui/go_back.png" id="7_svilo"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="8_6pbs3"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="9_vumus"]
@@ -27,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://ub1kfpodfq1i" path="res://assets/art/ui/antivirus_check_MALEWARE.png" id="25_v0m77"]
 [ext_resource type="Texture2D" uid="uid://c5awalw0lx7am" path="res://assets/art/ui/antivirus_check_PROCESS.png" id="26_2pf7u"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="27_eu0cp"]
+[ext_resource type="Texture2D" uid="uid://debogdwe7dbsm" path="res://assets/art/ui/antivirus_check_new_RAM.png" id="32_myuf0"]
 
 [sub_resource type="RectangleShape2D" id="GateShape_lead"]
 size = Vector2(28, 60)
@@ -46,8 +51,19 @@ size = Vector2(56, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pge73"]
 size = Vector2(56, 27)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52vrw"]
+size = Vector2(180, 82.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5u7u"]
+size = Vector2(265, 18)
+
 [node name="FinalBossLeadIn" type="Node2D" unique_id=703723199]
 script = ExtResource("1_lead")
+enemy_scene = ExtResource("2_tb2va")
+small_virus_scene = ExtResource("3_svilo")
+basic_virus_scene = ExtResource("3_svilo")
+ranged_virus_scene = ExtResource("5_myuf0")
+hunter_virus_scene = ExtResource("3_svilo")
 
 [node name="Player" parent="." unique_id=1447993816 instance=ExtResource("2_player")]
 texture_filter = 1
@@ -68,12 +84,21 @@ position_smoothing_speed = 8.0
 position = Vector2(64, 301)
 
 [node name="EntranceGate" type="Area2D" parent="." unique_id=2117466664]
-visible = false
-position = Vector2(740, 380)
+position = Vector2(1939, 294)
 collision_layer = 7
 collision_mask = 7
 
+[node name="TextureRect" type="TextureRect" parent="EntranceGate" unique_id=667998319]
+offset_left = -22.0
+offset_top = 4.0
+offset_right = 18.0
+offset_bottom = 44.0
+texture = ExtResource("7_cskp8")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceGate" unique_id=911665585]
+position = Vector2(-2, 11)
 shape = SubResource("GateShape_lead")
 
 [node name="Prompt" type="Label" parent="EntranceGate" unique_id=1748184602]
@@ -121,16 +146,16 @@ position = Vector2(47, 282)
 [node name="Spawns" type="Node2D" parent="." unique_id=1401444670]
 position = Vector2(36, -123)
 
-[node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=1630887]
+[node name="small" type="Marker2D" parent="Spawns" unique_id=1630887]
 position = Vector2(540, 345)
 
-[node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=758698161]
+[node name="basic" type="Marker2D" parent="Spawns" unique_id=758698161]
 position = Vector2(1326, 365)
 
-[node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=1393704837]
+[node name="hunter" type="Marker2D" parent="Spawns" unique_id=1393704837]
 position = Vector2(1212, 348)
 
-[node name="Spawn4" type="Marker2D" parent="Spawns" unique_id=943284279]
+[node name="small2" type="Marker2D" parent="Spawns" unique_id=943284279]
 position = Vector2(1856, 261)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1817648095]
@@ -414,7 +439,6 @@ start_menu = NodePath("../startmenupanel")
 [node name="Platform" type="Node2D" parent="." unique_id=1131514819]
 
 [node name="Platform7" type="AnimatableBody2D" parent="Platform" unique_id=70456565]
-visible = false
 position = Vector2(838, -126)
 collision_layer = 7
 collision_mask = 7
@@ -451,7 +475,6 @@ position = Vector2(-814, 378)
 shape = SubResource("RectangleShape2D_cy1ni")
 
 [node name="LONG1" type="StaticBody2D" parent="Platform" unique_id=1336022685]
-visible = false
 collision_layer = 3
 
 [node name="TextureRect" type="TextureRect" parent="Platform/LONG1" unique_id=1466366745]
@@ -472,7 +495,6 @@ position = Vector2(574, 289)
 shape = SubResource("RectangleShape2D_rtjrn")
 
 [node name="LONG2" type="StaticBody2D" parent="Platform" unique_id=936690514]
-visible = false
 collision_layer = 3
 
 [node name="TextureRect" type="TextureRect" parent="Platform/LONG2" unique_id=747048203]
@@ -531,105 +553,158 @@ texture = ExtResource("19_myuf0")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="StaticBody2D3" type="StaticBody2D" parent="Platform" unique_id=1928963335]
+collision_layer = 7
+collision_mask = 7
+
+[node name="TextureRect" type="TextureRect" parent="Platform/StaticBody2D3" unique_id=578869101]
+offset_left = 1752.0
+offset_top = 300.0
+offset_right = 1976.0
+offset_bottom = 430.0
+texture = ExtResource("32_myuf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D3" unique_id=1093673103]
+position = Vector2(1865, 375.75)
+shape = SubResource("RectangleShape2D_52vrw")
+
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("27_eu0cp")]
 visible = false
 position = Vector2(210, 114)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=912638914]
-offset_left = 2.0
-offset_top = 102.0
-offset_right = 267.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="dark_blue" type="Node2D" parent="." unique_id=2016100594]
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=380950608]
-offset_left = 266.0
-offset_top = 102.0
-offset_right = 531.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="StaticBody2D" type="StaticBody2D" parent="dark_blue" unique_id=1433071491]
+position = Vector2(2, 102)
 
-[node name="TextureRect3" type="TextureRect" parent="." unique_id=1056502380]
-offset_left = 530.0
-offset_top = 102.0
-offset_right = 795.0
-offset_bottom = 148.0
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D" unique_id=912638914]
+offset_right = 265.0
+offset_bottom = 46.0
 texture = ExtResource("25_52vrw")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect4" type="TextureRect" parent="." unique_id=187714912]
-offset_left = 794.0
-offset_top = 102.0
-offset_right = 1059.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D" unique_id=956651359]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
 
-[node name="TextureRect5" type="TextureRect" parent="." unique_id=1655371310]
-offset_left = 1057.0
-offset_top = 102.0
-offset_right = 1322.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="StaticBody2D2" type="StaticBody2D" parent="dark_blue" unique_id=311114586]
+position = Vector2(264, 102)
 
-[node name="TextureRect6" type="TextureRect" parent="." unique_id=236141308]
-offset_left = 1320.0
-offset_top = 102.0
-offset_right = 1585.0
-offset_bottom = 148.0
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D2" unique_id=656507789]
+offset_right = 265.0
+offset_bottom = 46.0
 texture = ExtResource("25_52vrw")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect7" type="TextureRect" parent="." unique_id=30053582]
-offset_left = 1583.0
-offset_top = 102.0
-offset_right = 1848.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D2" unique_id=1133772850]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
 
-[node name="TextureRect8" type="TextureRect" parent="." unique_id=1681062169]
-offset_left = 1846.0
-offset_top = 102.0
-offset_right = 2111.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="StaticBody2D3" type="StaticBody2D" parent="dark_blue" unique_id=1801991962]
+position = Vector2(529, 102)
 
-[node name="TextureRect9" type="TextureRect" parent="." unique_id=724645399]
-offset_left = 2109.0
-offset_top = 102.0
-offset_right = 2374.0
-offset_bottom = 148.0
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D3" unique_id=1731214376]
+offset_right = 265.0
+offset_bottom = 46.0
 texture = ExtResource("25_52vrw")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect10" type="TextureRect" parent="." unique_id=1320102821]
-offset_left = 2372.0
-offset_top = 102.0
-offset_right = 2637.0
-offset_bottom = 148.0
-texture = ExtResource("25_52vrw")
-expand_mode = 1
-stretch_mode = 5
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D3" unique_id=1480491329]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
 
-[node name="TextureRect11" type="TextureRect" parent="." unique_id=1627212146]
-offset_left = 2634.0
-offset_top = 102.0
-offset_right = 2899.0
-offset_bottom = 148.0
+[node name="StaticBody2D4" type="StaticBody2D" parent="dark_blue" unique_id=817163554]
+position = Vector2(794, 102)
+
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D4" unique_id=966759857]
+offset_right = 265.0
+offset_bottom = 46.0
 texture = ExtResource("25_52vrw")
 expand_mode = 1
 stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D4" unique_id=2080936546]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="dark_blue" unique_id=1809900955]
+position = Vector2(1059, 102)
+
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D5" unique_id=1929347814]
+offset_right = 265.0
+offset_bottom = 46.0
+texture = ExtResource("25_52vrw")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D5" unique_id=881781441]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="dark_blue" unique_id=883664093]
+position = Vector2(1323, 102)
+
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D6" unique_id=1391337498]
+offset_right = 265.0
+offset_bottom = 46.0
+texture = ExtResource("25_52vrw")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D6" unique_id=742311668]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="dark_blue" unique_id=1928668014]
+position = Vector2(1589, 102)
+
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D7" unique_id=472577736]
+offset_right = 265.0
+offset_bottom = 46.0
+texture = ExtResource("25_52vrw")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D7" unique_id=821435108]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="dark_blue" unique_id=1766159156]
+position = Vector2(1856, 102)
+
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D8" unique_id=936160770]
+offset_right = 265.0
+offset_bottom = 46.0
+texture = ExtResource("25_52vrw")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D8" unique_id=1041082389]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="dark_blue" unique_id=564048423]
+position = Vector2(2121, 104)
+
+[node name="TextureRect" type="TextureRect" parent="dark_blue/StaticBody2D9" unique_id=911316905]
+offset_right = 265.0
+offset_bottom = 46.0
+texture = ExtResource("25_52vrw")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D9" unique_id=2110863288]
+position = Vector2(135.5, 21)
+shape = SubResource("RectangleShape2D_e5u7u")

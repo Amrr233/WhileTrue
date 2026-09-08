@@ -19,7 +19,6 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export var max_fall_speed: float = 600.0
 @export var apex_threshold: float = 50.0
 @export var apex_gravity_multiplier: float = 0.5
-# --------------------------
 
 @export_category("Combat")
 @export var attack_cooldown: float = 0.28
@@ -40,9 +39,15 @@ signal double_jump_state_changed(has_double_jump: bool)
 @export_category("Double Jump")
 @export var double_jump_velocity: float = -360.0
 
-# --- متغير تعطيل التحكم (وقت الحوار) ---
-var controls_disabled: bool = false
+# --- إضافات التأرجح (Spider-Man) ---
+@export_category("Swing")
+@export var swing_push_force: float = 600.0
+var is_swinging: bool = false
+var swing_anchor: Vector2 = Vector2.ZERO
+var rope_length: float = 0.0
+# -----------------------------------
 
+var controls_disabled: bool = false
 var has_sword: bool = false
 var has_dash: bool = false
 var has_double_jump: bool = false
@@ -73,6 +78,10 @@ var _checkpoint_set := false
 @onready var attack_visual: Polygon2D = $AttackArea/AttackVisual
 @onready var visual: CanvasItem = $Visual
 
+# Nodes for swinging (Ensure these exist in your scene!)
+@onready var raycast: RayCast2D = get_node_or_null("RayCast2D")
+@onready var web_line: Line2D = get_node_or_null("WebLine")
+
 func _ready() -> void:
 	add_to_group("player")
 	health = max_health
@@ -85,6 +94,9 @@ func _ready() -> void:
 	attack_shape.disabled = true
 	attack_visual.visible = false
 	health_changed.emit(health, max_health)
+
+	if web_line:
+		web_line.visible = false
 
 	if visual is AnimatedSprite2D:
 		visual.animation = "stand_up"
@@ -104,7 +116,6 @@ func _physics_process(delta: float) -> void:
 
 	_update_jump_timers(delta)
 
-	# --- عند تعطيل التحكم (أثناء حوار البوس) ---
 	if controls_disabled:
 		_apply_gravity(delta)
 		velocity.x = move_toward(velocity.x, 0.0, acceleration * delta)
@@ -115,14 +126,14 @@ func _physics_process(delta: float) -> void:
 				visual.play("idle")
 		move_and_slide()
 		return
-	# ----------------------------------------
 
 	_handle_dash(delta)
 	
 	if _dash_timer <= 0.0:
 		_apply_gravity(delta)
-		_handle_jump()
+		_handle_swing(delta)
 		_handle_horizontal_movement(delta)
+		_handle_jump()
 		
 	_handle_attack()
 	
@@ -134,12 +145,13 @@ func _physics_process(delta: float) -> void:
 	if global_position.y > 520.0:
 		respawn(false)
 
-## دالة لتعطيل أو تفعيل التحكم باللاعب بسهولة من الكود الخارجي
 func set_controls_disabled(value: bool) -> void:
 	controls_disabled = value
 	if value:
 		_end_attack()
 		velocity.x = 0.0
+		is_swinging = false
+		if web_line: web_line.visible = false
 
 func _update_jump_timers(delta: float) -> void:
 	if is_on_floor():
@@ -158,16 +170,62 @@ func _apply_gravity(delta: float) -> void:
 		var grav = get_gravity()
 		
 		if velocity.y > 0.0:
-			velocity += grav * fall_gravity_multiplier * delta 
+			velocity += grav * fall_gravity_multiplier * delta
 		elif abs(velocity.y) < apex_threshold:
-			velocity += grav * apex_gravity_multiplier * delta  
+			velocity += grav * apex_gravity_multiplier * delta
 		else:
 			velocity += grav * delta
-			 
+			
 		velocity.y = minf(velocity.y, max_fall_speed)
+
+func _handle_swing(delta: float) -> void:
+	if get_tree().current_scene.name == "Desktop" or not raycast or not web_line:
+		return
+
+	# Flip the RayCast and FORCE the physics to update instantly
+	raycast.target_position = Vector2(300 * facing, -300)
+	raycast.force_raycast_update()
+
+	# Shoot the web
+	if Input.is_action_just_pressed("swing") and raycast.is_colliding():
+		is_swinging = true
+		swing_anchor = raycast.get_collision_point()
+		rope_length = global_position.distance_to(swing_anchor)
+		web_line.visible = true
+
+	# Release the web
+	if Input.is_action_just_released("swing"):
+		is_swinging = false
+		web_line.visible = false
+
+	# Pendulum physics
+	if is_swinging:
+		web_line.points = [Vector2.ZERO, to_local(swing_anchor)]
+		
+		# Allow player to pump their momentum back and forth while swinging
+		var direction := Input.get_axis("left", "right")
+		if direction != 0.0:
+			velocity.x += direction * swing_push_force * delta
+
+		var distance_to_anchor = global_position.distance_to(swing_anchor)
+		var direction_to_anchor = (swing_anchor - global_position).normalized()
+		
+		# Snapping to the arc
+		if distance_to_anchor > rope_length:
+			global_position = swing_anchor - (direction_to_anchor * rope_length)
+			velocity -= velocity.project(direction_to_anchor)
 
 func _handle_jump() -> void:
 	if get_tree().current_scene.name == "Desktop":
+		return
+
+	# Break out of a swing with a jump
+	if is_swinging and (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("ui_accept")):
+		is_swinging = false
+		if web_line: web_line.visible = false
+		velocity.y = jump_velocity
+		jump_sound.pitch_scale = randf_range(0.9, 1.2)
+		jump_sound.play()
 		return
 
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -180,14 +238,14 @@ func _handle_jump() -> void:
 		_jump_buffer_timer = 0.0
 		_coyote_timer = 0.0
 		jump_sound.pitch_scale = randf_range(0.9, 1.2)
-		jump_sound.play() 
+		jump_sound.play()
 		
 	elif _jump_buffer_timer > 0.0 and has_double_jump and _double_jump_available and not is_on_floor():
 		velocity.y = double_jump_velocity
 		_jump_buffer_timer = 0.0
 		_double_jump_available = false
 		jump_sound.pitch_scale = randf_range(0.6, 1.5)
-		jump_sound.play() 
+		jump_sound.play()
 		
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= 0.5
@@ -206,6 +264,10 @@ func _handle_dash(delta: float) -> void:
 		return
 
 	if has_dash and Input.is_action_just_pressed("dash") and _dash_cooldown_timer <= 0.0:
+		# Break swing if dashing
+		is_swinging = false
+		if web_line: web_line.visible = false
+		
 		_dash_timer = dash_duration
 		_dash_cooldown_timer = dash_cooldown
 		_dash_direction = facing
@@ -217,22 +279,30 @@ func _handle_horizontal_movement(delta: float) -> void:
 		return
 
 	var direction := Input.get_axis("left", "right")
+	
+	# Update facing direction visually even while swinging
 	if direction != 0.0:
 		facing = 1 if direction > 0.0 else -1
-		var target_speed := direction * speed
-		var control := 1.0 if is_on_floor() else air_control
-		velocity.x = move_toward(velocity.x, target_speed, acceleration * control * delta)
-	else:
-		var deceleration := acceleration * (1.0 if is_on_floor() else 0.65)
-		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+		if visual is AnimatedSprite2D:
+			visual.flip_h = (facing == -1)
 
+	# Only apply standard run physics if NOT swinging
+	if not is_swinging:
+		if direction != 0.0:
+			var target_speed := direction * speed
+			var control := 1.0 if is_on_floor() else air_control
+			velocity.x = move_toward(velocity.x, target_speed, acceleration * control * delta)
+		else:
+			var deceleration := acceleration * (1.0 if is_on_floor() else 0.65)
+			velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+
+	# Handle visual animations
 	if visual is AnimatedSprite2D:
-		visual.flip_h = (facing == -1)
-		
 		var is_attacking = (visual.animation == "hit_sword" or visual.animation == "hit_hand") and visual.is_playing()
-		
 		if not is_attacking:
-			if not is_on_floor():
+			if is_swinging:
+				visual.play("jumping")
+			elif not is_on_floor():
 				visual.play("jumping")
 			elif direction != 0.0:
 				visual.play("running")
@@ -307,6 +377,11 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	_invulnerability_timer = contact_invulnerability
 	velocity.x = knockback_x
 	velocity.y = knockback_y
+	
+	# Break swing when hit
+	is_swinging = false
+	if web_line: web_line.visible = false
+	
 	health_changed.emit(health, max_health)
 	
 	if visual:
@@ -329,6 +404,8 @@ func respawn(reload_scene: bool = false) -> void:
 		velocity = Vector2.ZERO
 		health = max_health
 		_invulnerability_timer = 1.0
+		is_swinging = false
+		if web_line: web_line.visible = false
 		health_changed.emit(health, max_health)
 
 func set_checkpoint(new_position: Vector2) -> void:
@@ -342,7 +419,7 @@ func on_mouse_hold() -> void:
 		visual.animation = "grabbed"
 		visual.frame = 0
 		visual.stop()
- 
+
 func on_mouse_release() -> void:
 	if visual is AnimatedSprite2D:
 		_falling_phase = true
@@ -354,7 +431,7 @@ func _on_stand_up_finished() -> void:
 		return
 	if _falling_phase:
 		_falling_phase = false
-		visual.play_backwards("stand_up") 
+		visual.play_backwards("stand_up")
 	else:
 		visual.frame = 0
 		visual.stop()
@@ -363,11 +440,11 @@ func _handle_desktop_actions() -> void:
 	if visual is AnimatedSprite2D:
 		if _falling_phase or visual.animation == "grabbed" or (visual.animation == "stand_up" and visual.is_playing()):
 			return
-	 
+	
 		if Input.is_physical_key_pressed(KEY_S):
 			if visual.animation != "sit":
 				visual.play("sit")
-		 
+		
 		elif visual.animation == "sit":
 			visual.animation = "stand_up"
 			visual.frame = 0

@@ -16,6 +16,10 @@ class_name AntivirusArena
 @export var reward_text: String = "ROUND COMPLETE"
 @export var next_scene: String = "res://scenes/levels/antivirus.tscn"
 
+@export_category("Hunter Intro Dialogue")
+## أسطر الكلام الخاصة بالـ Hunter (اكتبها في سين Investigate فقط، واتركها فارغة في الباقي)
+@export var hunter_intro_lines: Array[String] = []
+
 @onready var player: Player = $Player
 @onready var player_spawn: Marker2D = $PlayerSpawn
 @onready var spawns: Node2D = $Spawns
@@ -63,14 +67,18 @@ func _spawn_enemies() -> void:
 		enemy.global_position = (spawn_point as Node2D).global_position
 		enemy.died.connect(_on_enemy_died)
 		
-		# Platform 1 Logic (أي سباون يحتوي اسمه على 1 أو small)
+		# تمرير أسطر الحوار للهنتر إذا كانت متوفرة في هذه الساحة
+		if enemy is VirusHunter and hunter_intro_lines.size() > 0:
+			enemy.intro_lines = hunter_intro_lines
+		
+		# Platform 1 Logic
 		if "1" in spawn_point.name or "small" in spawn_point.name.to_lower():
 			_platform_1_remaining += 1
 			if enemy.has_signal("took_damage"):
 				enemy.took_damage.connect(_on_platform_virus_hurt)
 			enemy.died.connect(_on_platform_virus_died)
 			
-		# Platform 2 Logic (أي سباون يحتوي اسمه على 2 أو أي اسم آخر)
+		# Platform 2 Logic
 		else:
 			_platform_2_remaining += 1
 			if enemy.has_signal("took_damage"):
@@ -90,7 +98,6 @@ func _get_scene_for_spawn(spawn_name: String) -> PackedScene:
 		
 	return enemy_scene
 
-# --- Platform 1 Status Logic ---
 func _on_platform_virus_hurt() -> void:
 	if scan_bar:
 		scan_bar.set_status(ScanStatusBar.State.PROCESS)
@@ -100,7 +107,6 @@ func _on_platform_virus_died() -> void:
 	if _platform_1_remaining <= 0 and scan_bar:
 		scan_bar.set_status(ScanStatusBar.State.CLEAN)
 
-# --- Platform 2 Status Logic ---
 func _on_platform_2_virus_hurt() -> void:
 	if scan_bar_2:
 		scan_bar_2.set_status(ScanStatusBar.State.PROCESS)
@@ -110,7 +116,6 @@ func _on_platform_2_virus_died() -> void:
 	if _platform_2_remaining <= 0 and scan_bar_2:
 		scan_bar_2.set_status(ScanStatusBar.State.CLEAN)
 
-# --- Global Round Logic ---
 func _on_enemy_died() -> void:
 	_remaining -= 1
 	if _remaining <= 0 and not _completed:

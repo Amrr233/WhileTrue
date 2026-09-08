@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="3_nlgur"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_g1f4f"]
 [ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="4_qrxir"]
+[ext_resource type="PackedScene" uid="uid://bh0v2tptecdng" path="res://scenes/ui/boss_dialogue_box.tscn" id="5_42e5l"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="5_bjf84"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="6_mbssk"]
 [ext_resource type="Texture2D" uid="uid://880bw65tfguy" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item100.png" id="7_ofryp"]
@@ -54,10 +55,12 @@ unlock_flag = "has_key"
 reward_text = "INVESTIGATION COMPLETE — KEY OBTAINED"
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1393090974]
-position = Vector2(46, 295)
+position = Vector2(52, 259)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1017970974]
 layer = 5
+
+[node name="BossDialogueBox" parent="HUD" unique_id=292998612 instance=ExtResource("5_42e5l")]
 
 [node name="RewardLabel" type="Label" parent="HUD" unique_id=807522322]
 visible = false
@@ -78,13 +81,19 @@ horizontal_alignment = 1
 position = Vector2(1026, -392)
 
 [node name="basic" type="Marker2D" parent="Spawns" unique_id=1081111755]
-position = Vector2(214, 482)
+position = Vector2(207, 524)
+
+[node name="basic3" type="Marker2D" parent="Spawns" unique_id=206632149]
+position = Vector2(-69, 503)
+
+[node name="basic2" type="Marker2D" parent="Spawns" unique_id=1251127727]
+position = Vector2(476, 517)
 
 [node name="ranged" type="Marker2D" parent="Spawns" unique_id=161952604]
-position = Vector2(214, 482)
+position = Vector2(2333, 593)
 
 [node name="hunter" type="Marker2D" parent="Spawns" unique_id=511063391]
-position = Vector2(41, 488)
+position = Vector2(4270, 618)
 
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("15_ofryp")]
 visible = false
@@ -96,8 +105,8 @@ layer = -2
 [node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1282710294]
 offset_left = -175.0
 offset_top = -154.0
-offset_right = 4169.0
-offset_bottom = 783.0
+offset_right = 5806.0
+offset_bottom = 984.0
 color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
 [node name="top_bar" type="CanvasLayer" parent="." unique_id=892722764]

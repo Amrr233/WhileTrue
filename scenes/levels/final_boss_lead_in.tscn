@@ -441,7 +441,7 @@ offset_right = 164.0
 offset_bottom = 1.0
 mouse_filter = 2
 
-[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1082901538 node_paths=PackedStringArray("start_menu")]
+[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=1082901538]
 texture_filter = 1
 layout_mode = 1
 offset_left = -4.0
@@ -452,7 +452,6 @@ texture_normal = ExtResource("11_loget")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("12_txdd2")
-start_menu = NodePath("../startmenupanel")
 
 [node name="Platform" type="Node2D" parent="." unique_id=1131514819]
 

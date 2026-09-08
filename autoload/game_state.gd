@@ -2,7 +2,7 @@ extends Node
 ## Runtime-persistent progression for the whole game.
 ## This survives scene changes because GameState is an Autoload singleton.
 
-var has_sword: bool = true
+var has_sword: bool = false
 var recycle_bin_boss_defeated: bool = false
 var recycle_bin_completed: bool = false
 
@@ -37,8 +37,8 @@ func reset_progress() -> void:
 	recycle_bin_boss_defeated = false
 	recycle_bin_completed = false
 
-	has_dash = true
-	has_double_jump = true
+	has_dash = false
+	has_double_jump = false
 	has_key = false 
 	has_cure = false
 

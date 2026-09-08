@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c86r3qhkq3be5" path="res://scripts/levels/antivirus_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://v5k031eiy686" path="res://scenes/enemies/virus_small.tscn" id="3_ata86"]
 [ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="3_enemy"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="3_k6phv"]
 [ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="3_kunwu"]
@@ -68,6 +69,7 @@ size = Vector2(235, 20)
 [node name="AntivirusCheck" type="Node2D" unique_id=1197594841 node_paths=PackedStringArray("scan_bar", "scan_bar_2")]
 script = ExtResource("1_arena")
 enemy_scene = ExtResource("3_enemy")
+small_virus_scene = ExtResource("3_ata86")
 basic_virus_scene = ExtResource("3_enemy")
 ranged_virus_scene = ExtResource("3_kunwu")
 hunter_virus_scene = ExtResource("4_sbofu")
@@ -111,7 +113,25 @@ position = Vector2(47, 282)
 position = Vector2(36, -123)
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=725308070]
-position = Vector2(552, 347)
+position = Vector2(541, 360)
+
+[node name="smallw" type="Marker2D" parent="Spawns" unique_id=1020307811]
+position = Vector2(609, 356)
+
+[node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=654885453]
+position = Vector2(1198, 359)
+
+[node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=236895089]
+position = Vector2(1340, 357)
+
+[node name="Spawn4" type="Marker2D" parent="Spawns" unique_id=1127011311]
+position = Vector2(1919, 272)
+
+[node name="Spawn5" type="Marker2D" parent="Spawns" unique_id=1003584435]
+position = Vector2(1785, 271)
+
+[node name="small" type="Marker2D" parent="Spawns" unique_id=736778528]
+position = Vector2(964, 372)
 
 [node name="Player" parent="." unique_id=1297168465 instance=ExtResource("2_player")]
 texture_filter = 1

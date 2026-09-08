@@ -649,7 +649,7 @@ offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_7lyvm")
 text = "Beat All the antivirus stages
-to get dash Doublejump and the KEY!"
+you have to kill every virus "
 autowrap_mode = 2
 
 [connection signal="pressed" from="hint/HintButton" to="hint/HintButton" method="_on_hint_button_pressed"]

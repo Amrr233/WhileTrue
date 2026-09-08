@@ -78,7 +78,7 @@ var _checkpoint_set := false
 @onready var attack_visual: Polygon2D = $AttackArea/AttackVisual
 @onready var visual: CanvasItem = $Visual
 
-# Nodes for swinging (Ensure these exist in your scene!)
+# Nodes for swinging
 @onready var raycast: RayCast2D = get_node_or_null("RayCast2D")
 @onready var web_line: Line2D = get_node_or_null("WebLine")
 
@@ -185,27 +185,22 @@ func _handle_swing(delta: float) -> void:
 	if get_tree().current_scene.name == "Desktop" or not raycast or not web_line:
 		return
 
-	# Flip the RayCast and FORCE the physics to update instantly
 	raycast.target_position = Vector2(300 * facing, -300)
 	raycast.force_raycast_update()
 
-	# Shoot the web
 	if Input.is_action_just_pressed("swing") and raycast.is_colliding():
 		is_swinging = true
 		swing_anchor = raycast.get_collision_point()
 		rope_length = global_position.distance_to(swing_anchor)
 		web_line.visible = true
 
-	# Release the web
 	if Input.is_action_just_released("swing"):
 		is_swinging = false
 		web_line.visible = false
 
-	# Pendulum physics
 	if is_swinging:
 		web_line.points = [Vector2.ZERO, to_local(swing_anchor)]
 		
-		# Allow player to pump their momentum back and forth while swinging
 		var direction := Input.get_axis("left", "right")
 		if direction != 0.0:
 			velocity.x += direction * swing_push_force * delta
@@ -213,7 +208,6 @@ func _handle_swing(delta: float) -> void:
 		var distance_to_anchor = global_position.distance_to(swing_anchor)
 		var direction_to_anchor = (swing_anchor - global_position).normalized()
 		
-		# Snapping to the arc
 		if distance_to_anchor > rope_length:
 			global_position = swing_anchor - (direction_to_anchor * rope_length)
 			velocity -= velocity.project(direction_to_anchor)
@@ -222,7 +216,6 @@ func _handle_jump() -> void:
 	if get_tree().current_scene.name == "Desktop":
 		return
 
-	# Break out of a swing with a jump
 	if is_swinging and (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("ui_accept")):
 		is_swinging = false
 		if web_line: web_line.visible = false
@@ -267,7 +260,6 @@ func _handle_dash(delta: float) -> void:
 		return
 
 	if has_dash and Input.is_action_just_pressed("dash") and _dash_cooldown_timer <= 0.0:
-		# Break swing if dashing
 		is_swinging = false
 		if web_line: web_line.visible = false
 		
@@ -283,13 +275,11 @@ func _handle_horizontal_movement(delta: float) -> void:
 
 	var direction := Input.get_axis("left", "right")
 	
-	# Update facing direction visually even while swinging
 	if direction != 0.0:
 		facing = 1 if direction > 0.0 else -1
 		if visual is AnimatedSprite2D:
 			visual.flip_h = (facing == -1)
 
-	# Only apply standard run physics if NOT swinging
 	if not is_swinging:
 		if direction != 0.0:
 			var target_speed := direction * speed
@@ -299,7 +289,6 @@ func _handle_horizontal_movement(delta: float) -> void:
 			var deceleration := acceleration * (1.0 if is_on_floor() else 0.65)
 			velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
 
-	# Handle visual animations
 	if visual is AnimatedSprite2D:
 		var is_attacking = (visual.animation == "hit_sword" or visual.animation == "hit_hand") and visual.is_playing()
 		if not is_attacking:
@@ -327,7 +316,6 @@ func _start_attack() -> void:
 	attack_shape.disabled = false
 	
 	attack_visual.visible = false
-	
 	attack_area.position.x = 32.0 * facing
 
 	if visual is AnimatedSprite2D:
@@ -382,7 +370,6 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 	velocity.x = knockback_x
 	velocity.y = knockback_y
 	
-	# Break swing when hit
 	is_swinging = false
 	if web_line: web_line.visible = false
 	
@@ -394,14 +381,12 @@ func take_damage(amount: int, knockback_x: float = 0.0, knockback_y: float = -90
 		tween.tween_property(visual, "modulate", Color.WHITE, 0.3)
 
 	if health <= 0:
-		# --- FORCE BATTERY RESET THE MILLISECOND WE DIE ---
 		GameState.current_battery_heals = GameState.max_battery_heals
 		respawn(true)
 
 func respawn(reload_scene: bool = false) -> void:
 	get_tree().call_group("reset_on_death", "reset_state")
 	
-	# --- ALSO REFILL BATTERY IF WE FALL OFF THE MAP (Spikes/Pits) ---
 	GameState.current_battery_heals = GameState.max_battery_heals
 
 	if reload_scene:
@@ -411,7 +396,7 @@ func respawn(reload_scene: bool = false) -> void:
 	else:
 		global_position = respawn_position
 		velocity = Vector2.ZERO
-		health = max_health
+		# تم إزالة تعيين الصحة للكامل لكي تظل كما كانت قبل السقوط
 		_invulnerability_timer = 1.0
 		is_swinging = false
 		if web_line: web_line.visible = false
@@ -462,11 +447,8 @@ func _handle_desktop_actions() -> void:
 func _attempt_heal() -> void:
 	if GameState.current_battery_heals > 0 and health < max_health:
 		GameState.current_battery_heals -= 1
-		
-		# Now it heals 3 bars instead of 1!
-		health += 3
+		health += 2
 		if health > max_health:
 			health = max_health
 			
-		# This tells your UI to update the hearts.
 		health_changed.emit(health, max_health)

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ct56l4gxdd6cq" path="res://assets/art/characters/boss343.png" id="6_3uqse"]
 [ext_resource type="Texture2D" uid="uid://dllmiabgqtq7d" path="res://assets/art/characters/death.png" id="6_bhnfq"]
 [ext_resource type="AudioStream" uid="uid://bvfb8y4pwyf1" path="res://assets/audio/sfx/Windows XP Notify.wav" id="7_bhnfq"]
-[ext_resource type="AudioStream" uid="uid://yfjwqchb3evw" path="res://assets/audio/sfx/Windows XP Balloon.wav" id="8_unvtr"]
+[ext_resource type="AudioStream" uid="uid://liw0jxbi513n" path="res://assets/audio/sfx/dash.wav" id="8_bhnfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
 size = Vector2(124, 86)
@@ -270,6 +270,8 @@ animations = [{
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_boss")
+intro_dialogue = Array[String](["I waited for you so long", "You have no idea what are you fighting against"])
+outro_dialogue = Array[String](["You really thought i was just another monester ?", "Take a good look at me", "I'm you", "The loop never ends."])
 boss_max_health = 90
 dash_h_speed = 550.0
 dash_h_duration = 0.9
@@ -278,7 +280,6 @@ dash_v_slam_speed = 850.0
 summon_pool = Array[PackedScene]([ExtResource("5_summon1"), ExtResource("5_summon1"), ExtResource("5_summon1")])
 max_health = 60
 speed = 90.0
-chase_range = 260.0
 melee_range = 20.0
 knockback_resistance = 0.15
 teleport_cooldown = 3.5
@@ -337,6 +338,6 @@ volume_db = 5.841
 pitch_scale = 0.65
 
 [node name="SummonSound" type="AudioStreamPlayer" parent="." unique_id=1885261252]
-stream = ExtResource("8_unvtr")
-volume_db = 5.841
+stream = ExtResource("8_bhnfq")
+volume_db = 5.515
 pitch_scale = 0.65

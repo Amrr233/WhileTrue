@@ -10,6 +10,11 @@ signal boss_defeated
 enum State { INTRO, PHASE_1, PHASE_2, PHASE_3, DEFEATED, ENDING }
 enum SubState { IDLE, TELEGRAPH, EXECUTE, RECOVER }
 
+@export_category("Dialogues")
+@export var dialogue_box: BossDialogueBox
+@export_multiline var intro_dialogue: Array[String] = []
+@export_multiline var outro_dialogue: Array[String] = []
+
 @export_category("Boss")
 @export var boss_max_health: int = 60
 @export var phase_2_threshold: float = 0.80
@@ -95,6 +100,23 @@ func _ready() -> void:
 		_base_sprite_frames = visual.sprite_frames
 	_build_telegraph_indicator()
 	set_state(State.INTRO)
+	
+	# تشغيل الإنترو مؤجلاً لضمان اكتمال تحميل عناصر الـ UI
+	call_deferred("_play_intro_dialogue")
+
+func _get_dialogue_box() -> BossDialogueBox:
+	if dialogue_box:
+		return dialogue_box
+	var box := get_tree().get_first_node_in_group("boss_dialogue_box") as BossDialogueBox
+	if not box:
+		box = get_parent().find_child("BossDialogueBox", true, false) as BossDialogueBox
+	return box
+
+func _play_intro_dialogue() -> void:
+	var box := _get_dialogue_box()
+	if box and not intro_dialogue.is_empty():
+		await box.play_sequence(intro_dialogue)
+	begin_fight()
 
 func _build_telegraph_indicator() -> void:
 	_telegraph_indicator = Node2D.new()
@@ -538,8 +560,18 @@ func _update_animations() -> void:
 	if is_instance_valid(_target):
 		visual.flip_h = (_target.global_position.x < global_position.x)
 
-	if _is_phase_transitioning or state == State.DEFEATED:
+	if _is_phase_transitioning:
 		_change_animation("defeated")
+		_update_collision_for_animation()
+		return
+
+	if state == State.DEFEATED:
+		_change_animation("defeated")
+		_update_collision_for_animation()
+		return
+
+	if state == State.ENDING:
+		_change_animation("idle")
 		_update_collision_for_animation()
 		return
 
@@ -640,5 +672,25 @@ func _start_phase_transition(next_phase: int) -> void:
 
 func _on_boss_zero_health() -> void:
 	_cleanup_transient()
+	
+	# 1. الدخول أولاً في حالة DEFEATED (أنيميشن الهزيمة والسقوط)
 	set_state(State.DEFEATED)
+	
+	# 2. الانتظار ثانيتين والبوس مطروح أرضاً (مثل انتقالات الفيز)
+	await get_tree().create_timer(2.0).timeout
+	if not is_instance_valid(self):
+		return
+		
+	# 3. التحول لحالة ENDING (يقف، يبص للاعب، وياخد وضعية الديالوج idle)
+	set_state(State.ENDING)
+	await get_tree().create_timer(0.5).timeoutشي
+	if not is_instance_valid(self):
+		return
+	
+	# 4. تشغيل حوار الأوترو للبوس
+	var box := _get_dialogue_box()
+	if box and not outro_dialogue.is_empty():
+		await box.play_sequence(outro_dialogue)
+		
+	# 5. إرسال إشارة الهزيمة للـ Arena
 	boss_defeated.emit()

@@ -148,7 +148,7 @@ func _update_visuals() -> void:
 
 	if is_instance_valid(_target):
 		visual.flip_h = (_target.global_position.x < global_position.x)
-res://autoload/game_state.gd
+
 	if abs(velocity.x) > 1.0:
 		if visual.animation != "idle":
 			visual.play("idle")

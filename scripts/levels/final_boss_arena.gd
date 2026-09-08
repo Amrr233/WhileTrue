@@ -1,15 +1,8 @@
 extends Node2D
 class_name FinalBossArena
-## Controls the Final Boss encounter flow: arena lock/unlock, per-phase
-## checkpoints, the persistent boss health bar, and the intro/ending
-## notification dialogues. The boss's own phase state machine lives on the
-## FinalBoss node itself (scripts/enemies/final_boss.gd); this script is the
-## level-side glue around it.
 
 @export_file("*.tscn") var locked_out_scene: String = "res://scenes/world/desktop.tscn"
 @export_file("*.tscn") var next_scene_after_defeat: String = "res://scenes/world/desktop.tscn"
-@export var intro_lines: Array[String] = ["[BOSS QUOTE]", "[BOSS QUOTE]"]
-@export var ending_lines: Array[String] = ["[BOSS QUOTE]", "[BOSS QUOTE]"]
 @export var locked_message: String = "[LOCKED - THE KEY IS REQUIRED]"
 
 @onready var player: Player = $Player
@@ -38,8 +31,6 @@ func _ready() -> void:
 	_lock_arena()
 
 	if GameState.boss_final_defeated:
-		# Already beaten previously (e.g. re-entering the level); skip
-		# straight past the fight so it can't be replayed accidentally.
 		_unlock_arena()
 		boss.set_state(boss.State.DEFEATED)
 		return
@@ -47,9 +38,8 @@ func _ready() -> void:
 	var checkpoint: int = GameState.boss_phase_checkpoint
 
 	if checkpoint <= 1 and not GameState.boss_intro_played:
-		await _play_intro()
 		GameState.boss_intro_played = true
-		boss.reset_for_checkpoint(1, boss_spawn.global_position)
+		# حوار الانترو يبدأ تلقائياً من سكريبت البوس نفسه
 	else:
 		boss.reset_for_checkpoint(checkpoint, boss_spawn.global_position)
 
@@ -61,12 +51,7 @@ func _deny_entry() -> void:
 		TransitionManager.fade_to_scene(locked_out_scene)
 
 func _lock_arena_visuals_only() -> void:
-	pass # no gameplay lock needed if the fight never starts
-
-func _play_intro() -> void:
-	boss.set_state(boss.State.INTRO)
-	if dialogue_box:
-		await dialogue_box.play_sequence(intro_lines, 2.0)
+	pass
 
 func _on_boss_state_changed(new_state: int) -> void:
 	match new_state:
@@ -76,15 +61,15 @@ func _on_boss_state_changed(new_state: int) -> void:
 			_unlock_arena()
 
 func _lock_arena() -> void:
-	if wall_left:
+	if wall_left and wall_left.has_node("CollisionShape2D"):
 		wall_left.get_node("CollisionShape2D").disabled = false
-	if wall_right:
+	if wall_right and wall_right.has_node("CollisionShape2D"):
 		wall_right.get_node("CollisionShape2D").disabled = false
 
 func _unlock_arena() -> void:
-	if wall_left:
+	if wall_left and wall_left.has_node("CollisionShape2D"):
 		wall_left.get_node("CollisionShape2D").disabled = true
-	if wall_right:
+	if wall_right and wall_right.has_node("CollisionShape2D"):
 		wall_right.get_node("CollisionShape2D").disabled = true
 
 func _on_boss_defeated() -> void:
@@ -92,18 +77,8 @@ func _on_boss_defeated() -> void:
 	GameState.has_cure = true
 	_unlock_arena()
 
-	# 1. يفضل مطروح أرضاً في حالة DEFEATED لمدة ثانيتين
-	await get_tree().create_timer(2.0).timeout
-
-	# 2. تغيير الحالة إلى ENDING ليقوم وينظر للاعب (يرجع لوضع الوقوف idle)
-	boss.set_state(boss.State.ENDING)
-
-	# مهلة نصف ثانية بعد ما يقوم مباشرةً قبل بدء الكلام
-	await get_tree().create_timer(0.5).timeout
-
-	# 3. بدء عرض حوار النهاية بعد الوقوف
-	if dialogue_box:
-		await dialogue_box.play_sequence(ending_lines, 2.2)
+	# مهلة ثانية واحدة بعد اكتمال حوار الأوترو المدار من البوس قبل الانتقال
+	await get_tree().create_timer(1.0).timeout
 
 	if is_instance_valid(self):
 		TransitionManager.fade_to_scene(next_scene_after_defeat)

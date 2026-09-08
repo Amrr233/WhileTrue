@@ -39,13 +39,13 @@ size = Vector2(76.5625, 68)
 size = Vector2(77.75, 67.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4wgv"]
-size = Vector2(77.75, 78)
+size = Vector2(55, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikds4"]
 size = Vector2(79.375, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eojca"]
-size = Vector2(57, 56)
+size = Vector2(58, 61)
 
 [node name="Desktop" type="Node2D" unique_id=1245239160]
 script = ExtResource("1_1guff")
@@ -167,7 +167,7 @@ theme_override_fonts/font = ExtResource("14_yn8t8")
 theme_override_font_sizes/font_size = 10
 text = "CLOSE"
 
-[node name="Startmenu" type="TextureButton" parent="Ui/CanvasLayer/Taskbar" unique_id=1878148747 node_paths=PackedStringArray("start_menu")]
+[node name="Startmenu" type="TextureButton" parent="Ui/CanvasLayer/Taskbar" unique_id=1878148747]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -179,7 +179,6 @@ texture_normal = ExtResource("2_boens")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_ml5y0")
-start_menu = NodePath("../startmenupanel")
 
 [node name="World" type="Node2D" parent="Ui" unique_id=607767437]
 
@@ -250,13 +249,23 @@ position = Vector2(49.125, 123.125)
 shape = SubResource("RectangleShape2D_n22mp")
 debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
 
-[node name="Collider for antivirus icon" type="StaticBody2D" parent="." unique_id=1368015297]
+[node name="Collider for IE icon" type="StaticBody2D" parent="." unique_id=1368015297]
 position = Vector2(1, 120)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider for antivirus icon" unique_id=955027381]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider for IE icon" unique_id=955027381]
 position = Vector2(49.125, 118)
+shape = SubResource("RectangleShape2D_y4wgv")
+debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
+
+[node name="Collider for IE icon2" type="StaticBody2D" parent="." unique_id=1583400880]
+position = Vector2(1, 120)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider for IE icon2" unique_id=1556780891]
+position = Vector2(45.5, 240.5)
 shape = SubResource("RectangleShape2D_y4wgv")
 debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
 
@@ -266,7 +275,7 @@ collision_layer = 2
 script = ExtResource("6_ujlt8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="antivirusIcon" unique_id=1791655265]
-position = Vector2(87.3125, 140.5)
+position = Vector2(86, 138)
 shape = SubResource("RectangleShape2D_ikds4")
 
 [node name="EnterSound" type="AudioStreamPlayer" parent="antivirusIcon" unique_id=1668451596]
@@ -309,7 +318,7 @@ scale = Vector2(0.1663975, 0.16398193)
 texture = ExtResource("22_y4wgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IEIcon" unique_id=1862253587]
-position = Vector2(63.5, 334)
+position = Vector2(64, 331.5)
 shape = SubResource("RectangleShape2D_eojca")
 
 [node name="Label" type="Label" parent="IEIcon" unique_id=1973650027]

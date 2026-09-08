@@ -1217,4 +1217,7 @@ autowrap_mode = 2
 position = Vector2(2133, 143)
 display_duration = 2.0
 
+[node name="LevelExit" parent="." unique_id=95187104 instance=ExtResource("30_ajdkx")]
+position = Vector2(24, 130)
+
 [connection signal="pressed" from="hint/HintButton" to="hint/HintButton" method="_on_hint_button_pressed"]

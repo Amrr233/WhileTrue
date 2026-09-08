@@ -17,7 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://5u0jp30e5rhc" path="res://assets/art/ui/door_asset.png" id="7_cskp8"]
 [ext_resource type="Texture2D" uid="uid://bo1prsghcswsp" path="res://assets/art/ui/go_back.png" id="7_svilo"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="8_6pbs3"]
+[ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="9_52vrw"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="9_vumus"]
+[ext_resource type="Script" uid="uid://clfb1b16ao5yo" path="res://scripts/core/hint_button.gd" id="10_cy1ni"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="10_kdj6e"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="11_loget"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="12_txdd2"]
@@ -197,6 +199,40 @@ grow_vertical = 2
 texture = ExtResource("4_pge73")
 expand_mode = 1
 stretch_mode = 6
+
+[node name="hint" type="CanvasLayer" parent="CanvasLayer/background/TextureRect" unique_id=1484804061]
+
+[node name="HintButton" type="TextureButton" parent="CanvasLayer/background/TextureRect/hint" unique_id=1898571310]
+texture_filter = 1
+offset_left = 698.0
+offset_top = 10.0
+offset_right = 730.0
+offset_bottom = 42.0
+texture_normal = ExtResource("9_52vrw")
+script = ExtResource("10_cy1ni")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/background/TextureRect/hint/HintButton" unique_id=1786008648]
+visible = false
+layout_mode = 0
+offset_left = -251.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = 63.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="HintLabel" type="Label" parent="CanvasLayer/background/TextureRect/hint/HintButton" unique_id=1944467843]
+visible = false
+layout_mode = 0
+offset_left = -243.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_font")
+text = "right click to swing
+"
+autowrap_mode = 2
 
 [node name="CheckStartSound" type="AudioStreamPlayer" parent="." unique_id=1221365012]
 stream = ExtResource("5_e5u7u")
@@ -546,7 +582,6 @@ position = Vector2(1865, 375.75)
 shape = SubResource("RectangleShape2D_52vrw")
 
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("27_eu0cp")]
-visible = false
 position = Vector2(210, 114)
 
 [node name="dark_blue" type="Node2D" parent="." unique_id=2016100594]
@@ -750,6 +785,7 @@ shape = SubResource("RectangleShape2D_vc3js")
 position = Vector2(579.5, 276)
 shape = SubResource("RectangleShape2D_utmyo")
 
+[connection signal="pressed" from="CanvasLayer/background/TextureRect/hint/HintButton" to="CanvasLayer/background/TextureRect/hint/HintButton" method="_on_hint_button_pressed"]
 [connection signal="body_entered" from="LONG2/EnemyZone" to="." method="_on_enemy_entered"]
 [connection signal="body_exited" from="LONG2/EnemyZone" to="." method="_on_enemy_exited"]
 [connection signal="body_entered" from="LONG2/PlayerDetector" to="." method="_on_player_entered"]

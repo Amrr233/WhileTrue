@@ -7,6 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://dshsaiexx7too" path="res://assets/audio/music/SeeingDouble.wav" id="5_rvq2l"]
 [ext_resource type="AudioStream" uid="uid://b07lscg7emg38" path="res://assets/audio/music/BreakbeatChips.wav" id="6_aqb66"]
 [ext_resource type="AudioStream" uid="uid://dxuj3vjddsbu4" path="res://assets/audio/music/CriticalTheme.wav" id="7_bprnk"]
+[ext_resource type="AudioStream" uid="uid://bcdbyls1as3kq" path="res://assets/audio/music/lead in.wav" id="8_bprnk"]
+[ext_resource type="AudioStream" uid="uid://bsfdj5na1buf6" path="res://assets/audio/music/final boss music.wav" id="9_ej04p"]
 
 [node name="BackgroundMusicManager" type="Node" unique_id=2040572770]
 process_mode = 3
@@ -34,4 +36,12 @@ volume_db = -10.0
 
 [node name="InvestigateMusic" type="AudioStreamPlayer" parent="." unique_id=1651967159]
 stream = ExtResource("7_bprnk")
+volume_db = -10.0
+
+[node name="LeadInMusic" type="AudioStreamPlayer" parent="." unique_id=971286733]
+stream = ExtResource("8_bprnk")
+volume_db = -10.0
+
+[node name="FinalBossMusic" type="AudioStreamPlayer" parent="." unique_id=337048643]
+stream = ExtResource("9_ej04p")
 volume_db = -10.0

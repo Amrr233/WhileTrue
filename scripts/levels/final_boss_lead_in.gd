@@ -19,6 +19,9 @@ class_name FinalBossLeadIn
 var _player_nearby := false
 
 func _ready() -> void:
+	# Play the lead-in music automatically the moment this scene starts
+	BackgroundMusicManager.play_lead_in_music()
+	
 	player.global_position = player_spawn.global_position
 	player.velocity = Vector2.ZERO
 	player.set_checkpoint(player_spawn.global_position)
@@ -71,3 +74,7 @@ func _get_scene_for_spawn(spawn_name: String) -> PackedScene:
 		return hunter_virus_scene
 	
 	return enemy_scene
+
+
+func _on_player_exited(body: Node2D) -> void:
+	pass # Replace with function body.

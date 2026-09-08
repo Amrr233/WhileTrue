@@ -204,15 +204,13 @@ texture_normal = ExtResource("15_6uq1i")
 script = ExtResource("16_orp0b")
 
 [node name="HintLabel" type="Label" parent="Ui/HintButton" unique_id=142929524]
-visible = false
 layout_mode = 0
-offset_left = -243.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 25.0
+offset_left = -543.0
+offset_right = -5.0
+offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_yn8t8")
-text = "Cant Move? try the cursr! and let him fall to go inw"
+text = "Cant Move? try the cursor! and let him fall and go inside!"
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
 position = Vector2(93, 55)
@@ -281,9 +279,9 @@ texture = ExtResource("17_1guff")
 
 [node name="Label" type="Label" parent="antivirusIcon" unique_id=925878102]
 offset_left = 276.0
-offset_top = -66.0
-offset_right = 575.0
-offset_bottom = -2.0
+offset_top = -4.0
+offset_right = 599.0
+offset_bottom = 60.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_yn8t8")
 theme_override_font_sizes/font_size = 29
@@ -316,9 +314,9 @@ shape = SubResource("RectangleShape2D_eojca")
 
 [node name="Label" type="Label" parent="IEIcon" unique_id=1973650027]
 offset_left = 254.0
-offset_top = 6.0
+offset_top = 66.0
 offset_right = 475.0
-offset_bottom = 32.0
+offset_bottom = 92.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_yn8t8")
 theme_override_font_sizes/font_size = 29

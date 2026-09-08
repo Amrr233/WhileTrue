@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c85if8brcwo6s"]
+
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="1_uwpss"]
+[ext_resource type="AudioStream" uid="uid://xwvh2nv1556l" path="res://assets/audio/music/pupsies - misery. (Lyrics).wav" id="2_ckkgk"]
+
+[node name="credit" type="Node2D" unique_id=1631985698]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1526845883]
+offset_right = 801.0
+offset_bottom = 451.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=2054503962]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_uwpss")
+theme_override_font_sizes/font_size = 60
+text = "~ConcernedApes"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1010774537]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=219197042]
+stream = ExtResource("2_ckkgk")

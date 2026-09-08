@@ -61,6 +61,9 @@ size = Vector2(225, 30)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myuf0"]
 size = Vector2(235, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0m77"]
+size = Vector2(264, 40)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cskp8"]
 load_path = "res://.godot/imported/antivirus_check_MALEWARE.png-4655b54b659542b8ed04ae7442a46bd4.ctex"
 
@@ -81,6 +84,8 @@ hunter_virus_scene = ExtResource("3_svilo")
 [node name="Player" parent="." unique_id=1447993816 instance=ExtResource("2_player")]
 texture_filter = 1
 position = Vector2(80, 304)
+collision_layer = 7
+collision_mask = 7
 jump_velocity = -360.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=931627153]
@@ -703,11 +708,21 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(1306, 293)
 shape = SubResource("RectangleShape2D_cskp8")
 
-[node name="PlayerDetector" type="Area2D" parent="LONG2" unique_id=1282427491]
+[node name="EnemyZone" type="Area2D" parent="LONG2" unique_id=1282427491]
+collision_layer = 7
+collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG2/PlayerDetector" unique_id=1140569686]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG2/EnemyZone" unique_id=1140569686]
 position = Vector2(1305, 281)
 shape = SubResource("RectangleShape2D_myuf0")
+
+[node name="PlayerDetector" type="Area2D" parent="LONG2" unique_id=30294409]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG2/PlayerDetector" unique_id=123327304]
+position = Vector2(580, 281)
+shape = SubResource("RectangleShape2D_v0m77")
 
 [node name="LONG1" type="StaticBody2D" parent="." unique_id=847971244]
 collision_layer = 3
@@ -730,8 +745,13 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(574, 289)
 shape = SubResource("RectangleShape2D_vc3js")
 
-[node name="PlayerDetector" type="Area2D" parent="LONG1" unique_id=699305759]
+[node name="EnemyZone" type="Area2D" parent="LONG1" unique_id=699305759]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG1/PlayerDetector" unique_id=371406089]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG1/EnemyZone" unique_id=371406089]
 position = Vector2(579.5, 276)
 shape = SubResource("RectangleShape2D_utmyo")
+
+[connection signal="body_entered" from="LONG2/EnemyZone" to="." method="_on_enemy_entered"]
+[connection signal="body_exited" from="LONG2/EnemyZone" to="." method="_on_enemy_exited"]
+[connection signal="body_entered" from="LONG2/PlayerDetector" to="." method="_on_player_entered"]
+[connection signal="body_exited" from="LONG2/PlayerDetector" to="." method="_on_player_entered"]

@@ -163,6 +163,7 @@ func set_state(new_state: int) -> void:
 			_update_collision_for_animation()
 
 func begin_fight() -> void:
+	BackgroundMusicManager.play_final_boss_music() # Replace 'AudioManager' with your autoload name if different (e.g., Audio or SoundManager)
 	set_state(State.PHASE_1)
 
 func _cleanup_transient() -> void:
@@ -683,7 +684,7 @@ func _on_boss_zero_health() -> void:
 		
 	# 3. التحول لحالة ENDING (يقف، يبص للاعب، وياخد وضعية الديالوج idle)
 	set_state(State.ENDING)
-	await get_tree().create_timer(0.5).timeoutشي
+	await get_tree().create_timer(0.5).timeout
 	if not is_instance_valid(self):
 		return
 	

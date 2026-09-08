@@ -15,6 +15,7 @@ size = Vector2(20, 400)
 
 [node name="FinalBossArena" type="Node2D" unique_id=665553925]
 script = ExtResource("1_arena")
+next_scene_after_defeat = "uid://c85if8brcwo6s"
 
 [node name="Background" type="ColorRect" parent="." unique_id=78662718]
 offset_right = 900.0

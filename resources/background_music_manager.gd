@@ -6,6 +6,8 @@ extends Node
 @onready var check_music: AudioStreamPlayer = $CheckMusic
 @onready var scan_music: AudioStreamPlayer = $ScanMusic
 @onready var investigate_music: AudioStreamPlayer = $InvestigateMusic
+@onready var lead_in: AudioStreamPlayer = $LeadInMusic
+@onready var final_boss_music: AudioStreamPlayer = $FinalBossMusic
 
 func _ready() -> void:
 	# Bus index 0 is the default "Master" audio bus. 
@@ -19,6 +21,8 @@ func stop_all() -> void:
 	check_music.stop()
 	scan_music.stop()
 	investigate_music.stop()
+	lead_in.stop()
+	final_boss_music.stop()
 
 func play_desktop_music() -> void:
 	if not desktop_music.playing:
@@ -49,3 +53,13 @@ func play_investigate_music() -> void:
 	if not investigate_music.playing:
 		stop_all()
 		investigate_music.play()
+
+func play_lead_in_music() -> void:
+	if not lead_in.playing:
+		stop_all()
+		lead_in.play()
+
+func play_final_boss_music() -> void:
+	if not final_boss_music.playing:
+		stop_all()
+		final_boss_music.play()

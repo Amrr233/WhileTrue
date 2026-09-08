@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="30_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://if3hs7gua86k" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item60.png" id="30_pspfu"]
 [ext_resource type="Script" uid="uid://d1djmwkxrfsmh" path="res://scripts/interactables/platform_8.gd" id="35_aildm"]
+[ext_resource type="Texture2D" uid="uid://cdgfmbdrh5xww" path="res://assets/art/environments/recycle bin.jpg" id="47_cxqbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmt1"]
 size = Vector2(39, 35)
@@ -197,16 +198,6 @@ limit_right = 1410065408
 limit_bottom = 453
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=127056777]
-layer = -2
-
-[node name="background" type="ColorRect" parent="CanvasLayer" unique_id=895801805]
-offset_left = -910.0
-offset_top = -15.0
-offset_right = 2597.0
-offset_bottom = 668.0
-color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
 [node name="CheckStartSound" type="AudioStreamPlayer" parent="." unique_id=147040923]
 stream = ExtResource("3_hrp3q")
@@ -1117,9 +1108,33 @@ position = Vector2(942, 307)
 position = Vector2(1065, 305)
 
 [node name="hunter" type="Marker2D" parent="Spawns" unique_id=1009914647]
-position = Vector2(1542, 255)
+position = Vector2(1918, 277)
 
 [node name="small2" type="Marker2D" parent="Spawns" unique_id=1247157621]
 position = Vector2(1856, 261)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=213490604]
+layer = -2
+
+[node name="background" type="ColorRect" parent="CanvasLayer2" unique_id=1584808433]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23753485, 0.23751509, 0.24531904, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2/background" unique_id=869338317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("47_cxqbr")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
 
 [connection signal="toggled" from="top_bar/Taskbar/SystemTray/audiotoggle" to="." method="_on_audiotoggle_toggled"]

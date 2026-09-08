@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ri5s2wesr6am"]
+
+[ext_resource type="Script" uid="uid://dytul6ljebm48" path="res://scripts/levels/final_boss_arena.gd" id="1_arena"]
+[ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/final_boss.tscn" id="3_boss"]
+[ext_resource type="PackedScene" path="res://scenes/ui/boss_health_bar.tscn" id="4_hbar"]
+[ext_resource type="PackedScene" path="res://scenes/ui/boss_dialogue_box.tscn" id="5_dbox"]
+
+[sub_resource type="RectangleShape2D" id="GroundShape_arena"]
+size = Vector2(900, 40)
+
+[sub_resource type="RectangleShape2D" id="WallShape_arena"]
+size = Vector2(20, 400)
+
+[node name="FinalBossArena" type="Node2D" unique_id=665553925]
+script = ExtResource("1_arena")
+
+[node name="Background" type="ColorRect" parent="." unique_id=78662718]
+offset_right = 900.0
+offset_bottom = 452.0
+mouse_filter = 2
+color = Color(0.08, 0.03, 0.05, 1)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1746740518]
+position = Vector2(90, 380)
+
+[node name="Player" parent="." unique_id=103498522 instance=ExtResource("2_player")]
+position = Vector2(90, 380)
+
+[node name="BossSpawn" type="Marker2D" parent="." unique_id=431728387]
+position = Vector2(720, 360)
+
+[node name="FinalBoss" parent="." unique_id=544769113 instance=ExtResource("3_boss")]
+position = Vector2(720, 360)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=224606319]
+position = Vector2(450, 420)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1638445400]
+shape = SubResource("GroundShape_arena")
+
+[node name="ArenaWalls" type="Node2D" parent="." unique_id=1941020894]
+
+[node name="Left" type="StaticBody2D" parent="ArenaWalls" unique_id=661448558]
+position = Vector2(-10, 300)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWalls/Left" unique_id=1921628564]
+shape = SubResource("WallShape_arena")
+disabled = true
+
+[node name="Right" type="StaticBody2D" parent="ArenaWalls" unique_id=1310174423]
+position = Vector2(910, 300)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWalls/Right" unique_id=1957008936]
+shape = SubResource("WallShape_arena")
+disabled = true
+
+[node name="SummonPoints" type="Node2D" parent="." unique_id=715019029]
+
+[node name="Point1" type="Marker2D" parent="SummonPoints" unique_id=1025278926 groups=["boss_summon_point"]]
+position = Vector2(250, 390)
+
+[node name="Point2" type="Marker2D" parent="SummonPoints" unique_id=1334200317 groups=["boss_summon_point"]]
+position = Vector2(450, 390)
+
+[node name="Point3" type="Marker2D" parent="SummonPoints" unique_id=7200804 groups=["boss_summon_point"]]
+position = Vector2(600, 390)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=261471014]
+layer = 5
+
+[node name="BossHealthBar" parent="HUD" unique_id=1412356063 instance=ExtResource("4_hbar")]
+layout_mode = 3
+
+[node name="BossDialogueBox" parent="HUD" unique_id=1235871716 instance=ExtResource("5_dbox")]
+layout_mode = 3

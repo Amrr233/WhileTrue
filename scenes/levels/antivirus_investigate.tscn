@@ -331,14 +331,14 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=624546923]
-position = Vector2(93, 365)
+position = Vector2(113, 393)
 shape = SubResource("RectangleShape2D_0nc7b")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform3" unique_id=1906689409]
-offset_left = 52.0
-offset_top = 343.0
-offset_right = 133.0
-offset_bottom = 385.0
+offset_left = 72.0
+offset_top = 371.0
+offset_right = 153.0
+offset_bottom = 413.0
 texture = ExtResource("19_42e5l")
 
 [node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=1300190004]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/boss_dialogue_box.gd" id="1_bdb"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_note"]
+bg_color = Color(0.05, 0.05, 0.07, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.9, 0.95, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+[node name="BossDialogueBox" type="Control"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 54.0
+offset_bottom = 100.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("1_bdb")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -220.0
+offset_top = 0.0
+offset_right = 220.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_note")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 11
+text = "[BOSS QUOTE]"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

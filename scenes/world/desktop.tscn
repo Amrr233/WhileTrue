@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="17_3265r"]
 [ext_resource type="AudioStream" uid="uid://d3p16pgfgabir" path="res://assets/audio/sfx/Windows XP Error.wav" id="17_n22mp"]
 [ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="20_pause"]
+[ext_resource type="Script" uid="uid://cilrm1eiylkpm" path="res://scripts/world/ie_icon.gd" id="30_ie"]
 
 [sub_resource type="RectangleShape2D" id="GroundShape"]
 size = Vector2(801, 40)
@@ -167,6 +168,40 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ui/World/Ground" unique_id=1942912017]
 position = Vector2(232, 269)
 shape = SubResource("GroundShape")
+
+[node name="IEIcon" type="TextureButton" parent="Ui" unique_id=2000000001]
+offset_left = 680.0
+offset_top = 56.0
+offset_right = 744.0
+offset_bottom = 120.0
+texture_normal = ExtResource("5_1y8lu")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("30_ie")
+
+[node name="Label" type="Label" parent="Ui/IEIcon" unique_id=2000000002]
+layout_mode = 0
+offset_left = -20.0
+offset_top = 64.0
+offset_right = 84.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 10
+text = "Internet Explorer"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LockedLabel" type="Label" parent="Ui/IEIcon" unique_id=2000000003]
+visible = false
+layout_mode = 0
+offset_left = -20.0
+offset_top = -18.0
+offset_right = 84.0
+offset_bottom = 2.0
+theme_override_fonts/font = ExtResource("14_yn8t8")
+theme_override_font_sizes/font_size = 10
+text = "[LOCKED - NEED KEY]"
+horizontal_alignment = 1
 
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("9_ikds4")]
 position = Vector2(210, 114)

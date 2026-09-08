@@ -9,19 +9,26 @@
 [ext_resource type="Texture2D" uid="uid://c4dc7vbjy400t" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/muted_speaker.png" id="11_amlij"]
 [ext_resource type="Texture2D" uid="uid://bfchhfdsbm5s1" path="res://assets/art/ui/antiviru.png" id="11_jwbkc"]
 [ext_resource type="Script" uid="uid://dnfbuevlla0cd" path="res://scripts/ui/audio_toggle.gd" id="12_jwbkc"]
+[ext_resource type="Script" uid="uid://cj5s2p7jkwk3p" path="res://scripts/core/battery_icon.gd" id="13_nw047"]
 [ext_resource type="Texture2D" uid="uid://bfl8vj4bb7ea2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item58.png" id="13_p42ld"]
 [ext_resource type="Texture2D" uid="uid://kfflld0fxq41" path="res://assets/art/ui/exit.png" id="13_wjt0n"]
+[ext_resource type="Texture2D" uid="uid://djhi0xnhofl87" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item85.png" id="14_kenue"]
 [ext_resource type="AudioStream" uid="uid://c6qhpixjnp8ps" path="res://assets/audio/sfx/Windows XP Battery Low.wav" id="14_p42ld"]
 [ext_resource type="Script" uid="uid://bualmmeg2t8ht" path="res://scripts/ui/system_clock.gd" id="14_wjt0n"]
 [ext_resource type="Texture2D" uid="uid://cqy14cq2iet3p" path="res://assets/art/ui/checkIcon.PNG" id="15_3hcds"]
 [ext_resource type="Texture2D" uid="uid://ccv0j3k4ujdlm" path="res://assets/art/ui/start menu.png" id="15_kp4bk"]
+[ext_resource type="Texture2D" uid="uid://ddcibmut7mily" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item87.png" id="15_t01s5"]
 [ext_resource type="Script" uid="uid://cggvthrgf0m53" path="res://scripts/ui/antivirus/title1.gd" id="16_amlij"]
 [ext_resource type="Script" uid="uid://b1rulqrm2q4sd" path="res://scripts/ui/start_button.gd" id="16_hso3t"]
 [ext_resource type="Texture2D" uid="uid://cxltk2ax5cy67" path="res://assets/art/ui/scanIcon.png" id="16_mht4f"]
 [ext_resource type="Texture2D" uid="uid://37g7e11hhnu3" path="res://assets/art/ui/InvestigateIcon.png" id="17_p5ovw"]
 [ext_resource type="Script" uid="uid://5j0pf4gkuano" path="res://scenes/levels/title2.gd" id="18_jwbkc"]
+[ext_resource type="Texture2D" uid="uid://chg7k7n250t7j" path="res://assets/art/ui/pause menu.png" id="20_n8cn1"]
 [ext_resource type="Script" uid="uid://45hr57ipd8od" path="res://scenes/levels/title3.gd" id="20_p42ld"]
+[ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="21_arssh"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="22_wjt0n"]
+[ext_resource type="Texture2D" uid="uid://dxeskenyjifnn" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item69.png" id="28_t01s5"]
+[ext_resource type="Script" uid="uid://clfb1b16ao5yo" path="res://scripts/core/hint_button.gd" id="29_n8cn1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlij"]
 bg_color = Color(0.8117647, 0.8117647, 0.8117647, 1)
@@ -365,11 +372,7 @@ position = Vector2(-108, -1)
 [node name="Spawn1" type="Marker2D" parent="FinalArena/Spawns" unique_id=1642951126]
 position = Vector2(6899, 718)
 
-[node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
-texture_filter = 1
-position = Vector2(133, 238)
-
-[node name="Taskbar" type="ColorRect" parent="." unique_id=259733512]
+[node name="Taskbar" type="ColorRect" parent="." unique_id=1798891111]
 offset_left = -2.0
 offset_top = 409.0
 offset_right = 804.0
@@ -377,7 +380,7 @@ offset_bottom = 449.0
 mouse_filter = 2
 color = Color(0.14117648, 0.36862746, 0.8627451, 1)
 
-[node name="SystemTray" type="HBoxContainer" parent="Taskbar" unique_id=309915720]
+[node name="SystemTray" type="HBoxContainer" parent="Taskbar" unique_id=744782983]
 layout_mode = 0
 offset_left = 425.0
 offset_top = -4.0
@@ -387,7 +390,7 @@ mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 2
 
-[node name="wifiicon" type="TextureRect" parent="Taskbar/SystemTray" unique_id=1131704141]
+[node name="wifiicon" type="TextureRect" parent="Taskbar/SystemTray" unique_id=279980235]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -396,7 +399,7 @@ texture = ExtResource("9_mht4f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="batteryicon" type="TextureRect" parent="Taskbar/SystemTray" unique_id=170369567]
+[node name="batteryicon" type="TextureRect" parent="Taskbar/SystemTray" unique_id=1658545882]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -404,8 +407,12 @@ mouse_filter = 0
 texture = ExtResource("10_p5ovw")
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("13_nw047")
+battery_full = ExtResource("14_kenue")
+battery_half = ExtResource("10_p5ovw")
+battery_empty = ExtResource("15_t01s5")
 
-[node name="audiotoggle" type="TextureButton" parent="Taskbar/SystemTray" unique_id=1367260734]
+[node name="audiotoggle" type="TextureButton" parent="Taskbar/SystemTray" unique_id=1944426668]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -414,7 +421,7 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("12_jwbkc")
 
-[node name="clocklabel" type="TextureButton" parent="Taskbar/SystemTray" unique_id=813552074]
+[node name="clocklabel" type="TextureButton" parent="Taskbar/SystemTray" unique_id=1918175630]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("13_p42ld")
@@ -422,17 +429,52 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("14_wjt0n")
 
-[node name="startmenupanel" type="Panel" parent="Taskbar" unique_id=2106863147]
+[node name="startmenupanel" type="TextureRect" parent="Taskbar" unique_id=319248756]
 visible = false
 layout_mode = 0
-offset_left = 2.0
-offset_top = -193.0
-offset_right = 164.0
-offset_bottom = 1.0
+offset_left = -65.0
+offset_top = -205.0
+offset_right = 185.0
+offset_bottom = 68.0
 mouse_filter = 2
+texture = ExtResource("20_n8cn1")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("21_arssh")
 
-[node name="Startmenu" type="TextureButton" parent="Taskbar" unique_id=1178704530 node_paths=PackedStringArray("start_menu")]
+[node name="PlayButton" type="Button" parent="Taskbar/startmenupanel" unique_id=260634539]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 108.0
+offset_right = 184.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 10
+text = "PLAY"
+
+[node name="ResetButton" type="Button" parent="Taskbar/startmenupanel" unique_id=472347981]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 136.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 10
+text = "RESET"
+
+[node name="CloseButton" type="Button" parent="Taskbar/startmenupanel" unique_id=521690727]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 164.0
+offset_right = 185.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("2_7lyvm")
+theme_override_font_sizes/font_size = 10
+text = "CLOSE"
+
+[node name="Startmenu" type="TextureButton" parent="Taskbar" unique_id=1820918247]
 texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_left = -4.0
 offset_top = -7.0
@@ -442,7 +484,10 @@ texture_normal = ExtResource("15_kp4bk")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("16_hso3t")
-start_menu = NodePath("../startmenupanel")
+
+[node name="Player" parent="." unique_id=2116634475 instance=ExtResource("2_player")]
+texture_filter = 1
+position = Vector2(133, 238)
 
 [node name="top_bar" type="CanvasLayer" parent="." unique_id=1186141951]
 layer = -1
@@ -571,15 +616,40 @@ offset_right = 822.0
 offset_bottom = 478.0
 color = Color(0.8039216, 0.8039216, 0.8117647, 1)
 
-[node name="Label" type="Label" parent="." unique_id=267487082]
-offset_left = 25.0
-offset_top = 369.0
-offset_right = 302.0
-offset_bottom = 392.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_7lyvm")
-theme_override_font_sizes/font_size = 22
-text = "YOU HAVE TO REMOVE EVERY VIRUS!!"
-
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("22_wjt0n")]
 position = Vector2(210, 114)
+
+[node name="hint" type="CanvasLayer" parent="." unique_id=1778415084]
+
+[node name="HintButton" type="TextureButton" parent="hint" unique_id=494917986]
+texture_filter = 1
+offset_left = 698.0
+offset_top = 10.0
+offset_right = 730.0
+offset_bottom = 42.0
+texture_normal = ExtResource("28_t01s5")
+script = ExtResource("29_n8cn1")
+
+[node name="ColorRect" type="ColorRect" parent="hint/HintButton" unique_id=624121095]
+visible = false
+layout_mode = 0
+offset_left = -251.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = 63.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="HintLabel" type="Label" parent="hint/HintButton" unique_id=19517488]
+visible = false
+layout_mode = 0
+offset_left = -243.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_7lyvm")
+text = "Beat All the antivirus stages
+to get dash Doublejump and the KEY!"
+autowrap_mode = 2
+
+[connection signal="pressed" from="hint/HintButton" to="hint/HintButton" method="_on_hint_button_pressed"]

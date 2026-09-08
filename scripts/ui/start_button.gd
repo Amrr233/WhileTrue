@@ -1,27 +1,18 @@
-extends TextureButton
+extends TextureButton # لو النود عندك من نوع Button عادي غيّر الكلمة لـ extends Button
 
-@export var start_menu: Control
+@onready var start_menu_panel: TextureRect = $"../startmenupanel"
 
 func _ready() -> void:
-	# ربط الإشارات (Signals) برمجياً لضمان إنها شغالة دايماً
+	focus_mode = Control.FOCUS_NONE
+	# إجباره على رفض الـ Focus أول ما يدخله
+	focus_entered.connect(func(): release_focus())
 	pressed.connect(_on_pressed)
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
-
-	# إخفاء القائمة في بداية اللعبة
-	if start_menu:
-		start_menu.hide()
 
 func _on_pressed() -> void:
-	if start_menu:
-		start_menu.visible = not start_menu.visible
-	else:
-		push_warning("StartButton: no start_menu assigned in the Inspector.")
+	if start_menu_panel:
+		start_menu_panel.visible = not start_menu_panel.visible
+	call_deferred("_clear_focus")
 
-func _on_mouse_entered() -> void:
-	# تفتيح لون الزرار لما الماوس يقف عليه
-	modulate = Color(1.3, 1.3, 1.3)
-
-func _on_mouse_exited() -> void:
-	# إرجاع اللون الطبيعي للزرار
-	modulate = Color(1, 1, 1)
+func _clear_focus() -> void:
+	release_focus()
+	get_viewport().gui_release_focus()

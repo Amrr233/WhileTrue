@@ -34,6 +34,9 @@ var _platform_1_remaining := 0
 var _platform_2_remaining := 0
 
 func _ready() -> void:
+	# 1. إلغاء التركيز (Focus) عن أي عناصر UI لمنع زِر Space من ضغط أزرار التاسك بار
+	get_viewport().gui_release_focus()
+
 	if arena_type == "check":
 		BackgroundMusicManager.play_check_music()
 	elif arena_type == "scan":

@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://c5awalw0lx7am" path="res://assets/art/ui/antivirus_check_PROCESS.png" id="23_ou3e4"]
 [ext_resource type="Texture2D" uid="uid://multsb7sragx" path="res://assets/art/ui/antivirus_check_CLEAN.png" id="24_hi11t"]
 [ext_resource type="Script" uid="uid://dk2tp2226aerv" path="res://scenes/interactables/long_1.gd" id="30_e2jbx"]
+[ext_resource type="Texture2D" uid="uid://chg7k7n250t7j" path="res://assets/art/ui/pause menu.png" id="34_qbu02"]
+[ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="35_ata86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_540j4"]
 size = Vector2(48, 30)
@@ -71,25 +73,34 @@ ranged_virus_scene = ExtResource("3_kunwu")
 hunter_virus_scene = ExtResource("4_sbofu")
 completed_flag = "antivirus_check_completed"
 unlock_flag = "has_dash"
-reward_text = "THREAT NEUTRALIZED — DASH UNLOCKED"
+reward_text = "DASH UNLOCKED — Press 'Shift'"
 scan_bar = NodePath("Platform/LONG1/TextureRect")
 scan_bar_2 = NodePath("Platform/LONG2/TextureRect")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=754320546]
+layer = 4
+
+[node name="cursor" parent="CanvasLayer2" unique_id=1380842287 instance=ExtResource("17_540j4")]
+position = Vector2(210, 114)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1260401068]
 layer = 5
 
 [node name="RewardLabel" type="Label" parent="HUD" unique_id=267593744]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -60.0
-offset_right = 160.0
-offset_bottom = -30.0
-theme_override_font_sizes/font_size = 14
+offset_left = -169.0
+offset_top = -157.0
+offset_right = 151.0
+offset_bottom = -114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 39
 text = "REWARD"
 horizontal_alignment = 1
 
@@ -101,15 +112,6 @@ position = Vector2(36, -123)
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=725308070]
 position = Vector2(552, 347)
-
-[node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1095502375]
-position = Vector2(1326, 365)
-
-[node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=1965097890]
-position = Vector2(1212, 348)
-
-[node name="Spawn4" type="Marker2D" parent="Spawns" unique_id=463058558]
-position = Vector2(1856, 261)
 
 [node name="Player" parent="." unique_id=1297168465 instance=ExtResource("2_player")]
 texture_filter = 1
@@ -267,84 +269,6 @@ texture_filter = 1
 position = Vector2(772.5, 14.937497)
 scale = Vector2(0.08984388, 0.0864258)
 texture = ExtResource("5_81xju")
-
-[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=923478011]
-offset_top = 409.0
-offset_right = 804.0
-offset_bottom = 449.0
-mouse_filter = 2
-color = Color(0.14117648, 0.36862746, 0.8627451, 1)
-
-[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=1626271003]
-layout_mode = 0
-offset_left = 425.0
-offset_top = -4.0
-offset_right = 790.0
-offset_bottom = 46.0
-mouse_filter = 2
-theme_override_constants/separation = 12
-alignment = 2
-
-[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1623803066]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 0
-texture = ExtResource("8_cbpmr")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=756723501]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 0
-texture = ExtResource("9_540j4")
-expand_mode = 1
-stretch_mode = 5
-script = ExtResource("13_e2jbx")
-battery_full = ExtResource("14_74l08")
-battery_half = ExtResource("9_540j4")
-battery_empty = ExtResource("15_h0m37")
-
-[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1418098915]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("10_te8ey")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("11_750d8")
-
-[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=972389976]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture_normal = ExtResource("12_03h55")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("13_wb1u8")
-
-[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=1529990223]
-visible = false
-layout_mode = 0
-offset_left = 2.0
-offset_top = -193.0
-offset_right = 164.0
-offset_bottom = 1.0
-mouse_filter = 2
-
-[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=2095370261 node_paths=PackedStringArray("start_menu")]
-texture_filter = 1
-layout_mode = 1
-offset_left = -4.0
-offset_top = -7.0
-offset_right = 104.0
-offset_bottom = 48.0
-texture_normal = ExtResource("14_cdjtt")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("15_gw4w0")
-start_menu = NodePath("../startmenupanel")
 
 [node name="Platform" type="Node2D" parent="." unique_id=1791158231]
 
@@ -648,6 +572,118 @@ shape = SubResource("RectangleShape2D_u01jt")
 position = Vector2(1305, 281)
 shape = SubResource("RectangleShape2D_74l08")
 
-[node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("17_540j4")]
+[node name="taskbar" type="CanvasLayer" parent="." unique_id=298795335]
+layer = 2
+
+[node name="Taskbar" type="ColorRect" parent="taskbar" unique_id=188674865]
+offset_left = -2.0
+offset_top = 409.0
+offset_right = 804.0
+offset_bottom = 449.0
+mouse_filter = 2
+color = Color(0.14117648, 0.36862746, 0.8627451, 1)
+
+[node name="SystemTray" type="HBoxContainer" parent="taskbar/Taskbar" unique_id=714599625]
+layout_mode = 0
+offset_left = 425.0
+offset_top = -4.0
+offset_right = 790.0
+offset_bottom = 46.0
+mouse_filter = 2
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="wifiicon" type="TextureRect" parent="taskbar/Taskbar/SystemTray" unique_id=320408590]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("8_cbpmr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="batteryicon" type="TextureRect" parent="taskbar/Taskbar/SystemTray" unique_id=1253333959]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("9_540j4")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("13_e2jbx")
+battery_full = ExtResource("14_74l08")
+battery_half = ExtResource("9_540j4")
+battery_empty = ExtResource("15_h0m37")
+
+[node name="audiotoggle" type="TextureButton" parent="taskbar/Taskbar/SystemTray" unique_id=897417950]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("10_te8ey")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("11_750d8")
+
+[node name="clocklabel" type="TextureButton" parent="taskbar/Taskbar/SystemTray" unique_id=1283875172]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture_normal = ExtResource("12_03h55")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("13_wb1u8")
+
+[node name="startmenupanel" type="TextureRect" parent="taskbar/Taskbar" unique_id=1084371080]
 visible = false
-position = Vector2(210, 114)
+layout_mode = 0
+offset_left = -65.0
+offset_top = -205.0
+offset_right = 185.0
+offset_bottom = 68.0
+mouse_filter = 2
+texture = ExtResource("34_qbu02")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("35_ata86")
+
+[node name="PlayButton" type="Button" parent="taskbar/Taskbar/startmenupanel" unique_id=1177344026]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 108.0
+offset_right = 184.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 10
+text = "PLAY"
+
+[node name="ResetButton" type="Button" parent="taskbar/Taskbar/startmenupanel" unique_id=1429951860]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 136.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 10
+text = "RESET"
+
+[node name="CloseButton" type="Button" parent="taskbar/Taskbar/startmenupanel" unique_id=179337728]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 164.0
+offset_right = 185.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("3_k6phv")
+theme_override_font_sizes/font_size = 10
+text = "CLOSE"
+
+[node name="Startmenu" type="TextureButton" parent="taskbar/Taskbar" unique_id=1354684094]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+offset_left = -4.0
+offset_top = -7.0
+offset_right = 104.0
+offset_bottom = 48.0
+texture_normal = ExtResource("14_cdjtt")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("15_gw4w0")

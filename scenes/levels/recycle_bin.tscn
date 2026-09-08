@@ -1218,7 +1218,7 @@ offset_right = 2.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_14nmw")
-text = "Move from WASD jump from SPACE and hit with right click"
+text = "Move from WASD jump from SPACE , hit with 'right click', 'Q' to heal"
 autowrap_mode = 2
 
 [node name="SwordPickup" parent="." unique_id=1936826746 instance=ExtResource("29_mjela")]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyw2u0n5x0i41"]
 
 [ext_resource type="Script" uid="uid://uxh7qhfek8ye" path="res://scripts/levels/recycle_bin.gd" id="1_level"]
+[ext_resource type="PackedScene" uid="uid://v5k031eiy686" path="res://scenes/enemies/virus_small.tscn" id="2_h5xix"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
 [ext_resource type="AudioStream" uid="uid://fog0m7eggfap" path="res://assets/audio/sfx/Windows XP Hardware Remove.wav" id="3_hrp3q"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_14nmw"]
@@ -92,7 +93,7 @@ size = Vector2(58, 20)
 size = Vector2(59, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_auj4k"]
-size = Vector2(256, 21)
+size = Vector2(256, 26.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlswu"]
 size = Vector2(27, 20.375)
@@ -158,6 +159,11 @@ _data = {
 
 [node name="RecycleBin" type="Node2D" unique_id=761169033]
 script = ExtResource("1_level")
+enemy_scene = ExtResource("2_h5xix")
+small_virus_scene = ExtResource("2_h5xix")
+basic_virus_scene = ExtResource("2_h5xix")
+ranged_virus_scene = ExtResource("2_h5xix")
+hunter_virus_scene = ExtResource("2_h5xix")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=983451721]
 layer = 5
@@ -729,7 +735,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=1104622786]
-position = Vector2(170, 359)
+position = Vector2(170, 356.25)
 shape = SubResource("RectangleShape2D_auj4k")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform7" unique_id=1250267705]
@@ -1100,5 +1106,20 @@ position = Vector2(1468, 306)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1755715894]
 libraries/ = SubResource("AnimationLibrary_aildm")
 autoplay = &"move_platform"
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1732047291]
+position = Vector2(36, -123)
+
+[node name="small" type="Marker2D" parent="Spawns" unique_id=831660346]
+position = Vector2(942, 307)
+
+[node name="basic" type="Marker2D" parent="Spawns" unique_id=1047547509]
+position = Vector2(1065, 305)
+
+[node name="hunter" type="Marker2D" parent="Spawns" unique_id=1009914647]
+position = Vector2(1542, 255)
+
+[node name="small2" type="Marker2D" parent="Spawns" unique_id=1247157621]
+position = Vector2(1856, 261)
 
 [connection signal="toggled" from="top_bar/Taskbar/SystemTray/audiotoggle" to="." method="_on_audiotoggle_toggled"]

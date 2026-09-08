@@ -89,10 +89,10 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="TextureRect" type="TextureRect" parent="EntranceGate" unique_id=667998319]
-offset_left = -22.0
-offset_top = 4.0
-offset_right = 18.0
-offset_bottom = 44.0
+offset_left = -25.0
+offset_top = -10.0
+offset_right = 22.0
+offset_bottom = 47.0
 texture = ExtResource("7_cskp8")
 expand_mode = 1
 stretch_mode = 5

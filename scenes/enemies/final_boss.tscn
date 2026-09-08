@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bit45xto4gcsq" path="res://scripts/enemies/final_boss.gd" id="1_boss"]
 [ext_resource type="PackedScene" uid="uid://be3c7djdeomsq" path="res://scenes/enemies/virus_projectile2.tscn" id="2_proj"]
-[ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="4_snd"]
 [ext_resource type="Texture2D" uid="uid://botb0rg6irjky" path="res://assets/art/characters/V. 0.9.9.png" id="5_s8evt"]
 [ext_resource type="PackedScene" uid="uid://b7lax1cf5cckh" path="res://scenes/enemies/virus_basic.tscn" id="5_summon1"]
 [ext_resource type="Texture2D" uid="uid://ct56l4gxdd6cq" path="res://assets/art/characters/boss343.png" id="6_3uqse"]
-[ext_resource type="PackedScene" uid="uid://dxhtg0yxo74v5" path="res://scenes/enemies/virus_ranged.tscn" id="6_summon2"]
+[ext_resource type="Texture2D" uid="uid://dllmiabgqtq7d" path="res://assets/art/characters/death.png" id="6_bhnfq"]
+[ext_resource type="AudioStream" uid="uid://bvfb8y4pwyf1" path="res://assets/audio/sfx/Windows XP Notify.wav" id="7_bhnfq"]
+[ext_resource type="AudioStream" uid="uid://yfjwqchb3evw" path="res://assets/audio/sfx/Windows XP Balloon.wav" id="8_unvtr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
-size = Vector2(82, 98)
+size = Vector2(124, 86)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3uqse"]
 atlas = ExtResource("5_s8evt")
@@ -18,6 +19,30 @@ region = Rect2(0, 704, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhnfq"]
 atlas = ExtResource("5_s8evt")
 region = Rect2(64, 704, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp4ob"]
+atlas = ExtResource("6_bhnfq")
+region = Rect2(0, 1280, 65, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yroi"]
+atlas = ExtResource("6_bhnfq")
+region = Rect2(65, 1280, 65, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhrrg"]
+atlas = ExtResource("6_bhnfq")
+region = Rect2(130, 1280, 65, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0g3h"]
+atlas = ExtResource("6_bhnfq")
+region = Rect2(195, 1280, 65, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10uxu"]
+atlas = ExtResource("6_bhnfq")
+region = Rect2(260, 1280, 65, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br8gj"]
+atlas = ExtResource("6_bhnfq")
+region = Rect2(325, 1280, 65, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2w1p"]
 atlas = ExtResource("5_s8evt")
@@ -122,6 +147,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xp4ob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yroi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhrrg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0g3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10uxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br8gj")
+}],
+"loop": false,
+"name": &"defeated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_h2w1p")
 }],
 "loop": true,
@@ -222,7 +270,12 @@ animations = [{
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_boss")
-summon_pool = Array[PackedScene]([ExtResource("5_summon1"), ExtResource("6_summon2")])
+boss_max_health = 200
+dash_h_speed = 550.0
+dash_h_duration = 0.9
+dash_v_rise_speed = -1000.0
+dash_v_slam_speed = 850.0
+summon_pool = Array[PackedScene]([ExtResource("5_summon1"), ExtResource("5_summon1"), ExtResource("5_summon1")])
 max_health = 60
 speed = 90.0
 chase_range = 260.0
@@ -252,6 +305,7 @@ position = Vector2(9, 25.5)
 shape = SubResource("RectangleShape2D_boss")
 
 [node name="throw" type="CollisionShape2D" parent="." unique_id=5129052]
+visible = false
 position = Vector2(9, 25.5)
 shape = SubResource("RectangleShape2D_boss")
 
@@ -265,14 +319,24 @@ visible = false
 position = Vector2(9, 10)
 shape = SubResource("RectangleShape2D_boss")
 
+[node name="defeated" type="CollisionShape2D" parent="." unique_id=7217426]
+position = Vector2(0, 36)
+shape = SubResource("RectangleShape2D_boss")
+
 [node name="Visual" type="AnimatedSprite2D" parent="." unique_id=28161637]
 position = Vector2(4, 14)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_boss")
-animation = &"throw"
-frame_progress = 0.025692398
+animation = &"defeated"
+frame = 5
+frame_progress = 1.0
 
 [node name="TeleportSound" type="AudioStreamPlayer2D" parent="." unique_id=1687047980]
-stream = ExtResource("4_snd")
+stream = ExtResource("7_bhnfq")
+volume_db = 5.841
+pitch_scale = 0.65
+
+[node name="SummonSound" type="AudioStreamPlayer" parent="." unique_id=1885261252]
+stream = ExtResource("8_unvtr")
 volume_db = 5.841
 pitch_scale = 0.65

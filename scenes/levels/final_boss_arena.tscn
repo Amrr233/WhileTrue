@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dytul6ljebm48" path="res://scripts/levels/final_boss_arena.gd" id="1_arena"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/final_boss.tscn" id="3_boss"]
+[ext_resource type="PackedScene" uid="uid://cf3ke31bu7jtm" path="res://scenes/enemies/final_boss.tscn" id="3_boss"]
 [ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="4_0gh4m"]
 [ext_resource type="PackedScene" path="res://scenes/ui/boss_health_bar.tscn" id="4_hbar"]
-[ext_resource type="PackedScene" path="res://scenes/ui/boss_dialogue_box.tscn" id="5_dbox"]
+[ext_resource type="PackedScene" uid="uid://bh0v2tptecdng" path="res://scenes/ui/boss_dialogue_box.tscn" id="5_dbox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_prix1"]
 size = Vector2(899, 25.5)
@@ -86,4 +86,3 @@ layer = 5
 layout_mode = 3
 
 [node name="BossDialogueBox" parent="HUD" unique_id=1235871716 instance=ExtResource("5_dbox")]
-layout_mode = 3

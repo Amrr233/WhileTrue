@@ -14,24 +14,35 @@ enum SubState { IDLE, TELEGRAPH, EXECUTE, RECOVER }
 @export var boss_max_health: int = 60
 @export var phase_2_threshold: float = 0.80
 @export var phase_3_threshold: float = 0.40
+@export var phase_transition_time: float = 6.0
 
 @export_category("Attack Timing")
 @export var telegraph_time: float = 0.6
 @export var recover_time: float = 0.55
 
-@export_category("Dash Attack")
-@export var dash_charge_speed: float = 300.0
-@export var dash_charge_duration: float = 0.35
-@export var dash_v_rise_speed: float = -420.0
+@export_category("Dash Horizontal Settings")
+@export var dash_h_speed: float = 350.0
+@export var dash_h_duration: float = 0.4
+@export var dash_h_damage: int = 1
+@export var dash_h_hit_width: float = 100.0
+@export var dash_h_hit_height: float = 80.0
+
+@export_category("Dash Vertical / Slam Settings")
+@export var dash_v_rise_speed: float = -600.0
 @export var dash_v_rise_time: float = 0.35
+@export var dash_v_hover_time: float = 0.35
+@export var dash_v_slam_speed: float = 750.0
 @export var slam_radius: float = 70.0
 @export var slam_damage: int = 2
+@export var slam_hit_width: float = 80.0
+@export var slam_hit_height: float = 120.0
 
 @export_category("Projectile Attack")
 @export var boss_ranged_damage: int = 1
 @export var side_throw_angle_deg: float = 18.0
 
 @export_category("Phase 2 - Summons")
+## ضع هنا مشاهد الوحوش الصغيرة والعادية فقط (Small & Basic Enemies)
 @export var summon_pool: Array[PackedScene] = []
 @export var max_active_summons: int = 2
 @export var summon_group_name: String = "boss_summon_point"
@@ -50,7 +61,11 @@ var _active_summons: Array = []
 var _active_tweens: Array = []
 var _telegraph_indicator: Node2D
 var _fight_active := false
+var _is_phase_transitioning := false
 var _base_sprite_frames: SpriteFrames
+var _dash_h_dir: float = 1.0
+var _has_hit_player_this_dash := false
+var _prev_pos_x: float = 0.0
 
 # --- قاموس ربط الكوليجن بأسماء الأنيميشنات ---
 @onready var _collisions: Dictionary = {
@@ -62,6 +77,8 @@ var _base_sprite_frames: SpriteFrames
 	"throw": $throw if has_node("throw") else null,
 	"defeated": $defeated if has_node("defeated") else null,
 }
+
+@onready var summon_sound: AudioStreamPlayer = $SummonSound if has_node("SummonSound") else null
 
 const PHASE_1_PATTERN := ["projectile", "dash_h", "projectile", "dash_v"]
 const PHASE_2_PATTERN := ["projectile", "dash_h", "summon", "dash_v", "projectile", "summon"]
@@ -142,7 +159,12 @@ func _cleanup_transient() -> void:
 	if _telegraph_indicator:
 		_telegraph_indicator.visible = false
 
+	if visual:
+		var base_color := phase3_tint if state == State.PHASE_3 and not phase3_sprite_frames else Color.WHITE
+		visual.modulate = base_color
+
 func reset_for_checkpoint(phase: int, spawn_position: Vector2) -> void:
+	_is_phase_transitioning = false
 	_cleanup_transient()
 	global_position = spawn_position
 	velocity = Vector2.ZERO
@@ -172,10 +194,10 @@ func _physics_process(delta: float) -> void:
 		_target = get_tree().get_first_node_in_group("player") as Node2D
 		_boss_target = _target
 
-	if not is_on_floor():
+	if not is_on_floor() and _current_attack != "dash_v":
 		velocity += get_gravity() * delta
 
-	if not _fight_active or _is_teleporting:
+	if not _fight_active or _is_phase_transitioning or _is_teleporting:
 		velocity.x = move_toward(velocity.x, 0.0, 320.0 * delta)
 		move_and_slide()
 		_update_animations()
@@ -200,6 +222,11 @@ func _physics_process(delta: float) -> void:
 				_sub_state = SubState.IDLE
 
 	move_and_slide()
+
+	if _sub_state == SubState.EXECUTE and _current_attack in ["dash_h", "dash_v"]:
+		_check_physics_collisions()
+		_check_dash_contact_damage()
+
 	_update_animations()
 
 func _face_target() -> void:
@@ -237,6 +264,8 @@ func _start_telegraph(attack_name: String) -> void:
 
 func _execute_current_attack() -> void:
 	_sub_state = SubState.EXECUTE
+	_has_hit_player_this_dash = false
+	_prev_pos_x = global_position.x
 	if _telegraph_indicator:
 		_telegraph_indicator.visible = false
 
@@ -255,16 +284,62 @@ func _process_execute(delta: float) -> void:
 	match _current_attack:
 		"dash_h":
 			_cycle_timer -= delta
-			var dir := signf((_target.global_position.x - global_position.x)) if is_instance_valid(_target) else 1.0
-			velocity.x = dash_charge_speed * dir
+			_prev_pos_x = global_position.x
+			velocity.x = dash_h_speed * _dash_h_dir
 			if _cycle_timer <= 0.0:
 				_finish_attack()
+		"dash_v":
+			pass
+
+func _check_physics_collisions() -> void:
+	if _has_hit_player_this_dash or _sub_state != SubState.EXECUTE or not is_instance_valid(_target):
+		return
+
+	for i in range(get_slide_collision_count()):
+		var col := get_slide_collision(i)
+		var collider := col.get_collider()
+		if collider and (collider == _target or collider.is_in_group("player")):
+			_apply_dash_damage_to_player()
+			return
+
+func _check_dash_contact_damage() -> void:
+	if _has_hit_player_this_dash or not is_instance_valid(_target):
+		return
+
+	var px := _target.global_position.x
+	var py := _target.global_position.y
+	var bx := global_position.x
+	var by := global_position.y
+	var diff_y := absf(by - py)
+
+	if _current_attack == "dash_h":
+		var min_x := minf(_prev_pos_x, bx) - (dash_h_hit_width * 0.5)
+		var max_x := maxf(_prev_pos_x, bx) + (dash_h_hit_width * 0.5)
+
+		if px >= min_x and px <= max_x and diff_y <= dash_h_hit_height:
+			_apply_dash_damage_to_player()
+
+	elif _current_attack == "dash_v":
+		var diff_x := absf(bx - px)
+		if diff_x <= (slam_hit_width * 0.5) and diff_y <= (slam_hit_height * 0.5):
+			_apply_dash_damage_to_player()
+
+func _apply_dash_damage_to_player() -> void:
+	if _has_hit_player_this_dash or not is_instance_valid(_target):
+		return
+	_has_hit_player_this_dash = true
+	if _target.has_method("take_damage"):
+		var dir := signf(_target.global_position.x - global_position.x)
+		if dir == 0.0: dir = 1.0
+		var dmg := slam_damage if _current_attack == "dash_v" else dash_h_damage
+		_target.take_damage(dmg, dir * 180.0, -100.0)
 
 func _finish_attack() -> void:
 	_sub_state = SubState.RECOVER
 	_cycle_timer = recover_time
 
 func _attack_projectile() -> void:
+	_change_animation("throw")
 	if is_instance_valid(_target) and projectile_scene:
 		var proj: VirusProjectile = projectile_scene.instantiate()
 		if "damage" in proj:
@@ -273,32 +348,41 @@ func _attack_projectile() -> void:
 		proj.global_position = global_position
 		if "direction" in proj:
 			proj.direction = (_target.global_position - global_position).normalized()
-	if visual and visual.sprite_frames and visual.sprite_frames.has_animation("throw"):
-		visual.play("throw")
 	_finish_attack()
 
 func _attack_dash_horizontal() -> void:
-	_cycle_timer = dash_charge_duration
-	if visual and visual.sprite_frames and visual.sprite_frames.has_animation("dash"):
-		visual.play("dash")
-	elif visual:
-		visual.play("run")
+	_cycle_timer = dash_h_duration
+	if is_instance_valid(_target):
+		_dash_h_dir = signf(_target.global_position.x - global_position.x)
+		if _dash_h_dir == 0.0: _dash_h_dir = 1.0
+	else:
+		_dash_h_dir = 1.0
 
 func _attack_dash_vertical() -> void:
-	_cycle_timer = dash_v_rise_time
+	velocity.x = 0.0
 	velocity.y = dash_v_rise_speed
-	if visual and visual.sprite_frames and visual.sprite_frames.has_animation("slam"):
-		visual.play("slam")
+
 	await get_tree().create_timer(dash_v_rise_time).timeout
 	if not is_instance_valid(self) or _current_attack != "dash_v":
 		return
+
+	velocity = Vector2.ZERO
+	if is_instance_valid(_target):
+		global_position.x = _target.global_position.x
+		global_position.y = minf(global_position.y, _target.global_position.y - 220.0)
+
+	await get_tree().create_timer(dash_v_hover_time).timeout
+	if not is_instance_valid(self) or _current_attack != "dash_v":
+		return
+
 	_slam_down()
 
 func _slam_down() -> void:
-	velocity.y = 500.0
+	velocity.y = dash_v_slam_speed
 	await get_tree().physics_frame
 	var attempts := 0
-	while not is_on_floor() and attempts < 90 and is_instance_valid(self):
+	while not is_on_floor() and attempts < 120 and is_instance_valid(self):
+		_check_dash_contact_damage()
 		await get_tree().physics_frame
 		attempts += 1
 	if not is_instance_valid(self):
@@ -308,16 +392,26 @@ func _slam_down() -> void:
 
 func _deal_area_damage(radius: float, damage: int) -> void:
 	if is_instance_valid(_target):
-		var d := global_position.distance_to(_target.global_position)
-		if d <= radius and _target.has_method("take_damage"):
+		var diff_x := absf(global_position.x - _target.global_position.x)
+		var diff_y := absf(global_position.y - _target.global_position.y)
+		if diff_x <= radius and diff_y <= (radius + 50.0) and _target.has_method("take_damage"):
 			var dir := signf(_target.global_position.x - global_position.x)
+			if dir == 0.0: dir = 1.0
 			_target.take_damage(damage, dir * 160.0, -120.0)
 
+# --- استدعاء الوحوش مع أنيميشن القذف والتكبير التدريجي ---
 func _attack_summon() -> void:
 	_prune_summons()
 	if _active_summons.size() >= max_active_summons or summon_pool.is_empty():
 		_attack_projectile()
 		return
+
+	_change_animation("throw")
+
+	# تشغيل صوت الاستدعاء مع تغيير بسيط في طبقة الصوت تنويعاً
+	if summon_sound and summon_sound.stream:
+		summon_sound.pitch_scale = randf_range(0.95, 1.1)
+		summon_sound.play()
 
 	var spawn_points := get_tree().get_nodes_in_group(summon_group_name)
 	var chosen_scene: PackedScene = summon_pool[randi() % summon_pool.size()]
@@ -332,15 +426,29 @@ func _attack_summon() -> void:
 	else:
 		spawn_pos = _find_safe_teleport_position()
 
-	var enemy := chosen_scene.instantiate()
+	var enemy := chosen_scene.instantiate() as Node2D
 	get_tree().current_scene.add_child(enemy)
-	enemy.global_position = spawn_pos
+
+	enemy.global_position = global_position
+	enemy.scale = Vector2(0.1, 0.1)
+
+	var mid_pos := (global_position + spawn_pos) * 0.5 + Vector2(0.0, -80.0)
+	var tw := create_tween()
+	tw.set_parallel(true)
+	tw.tween_property(enemy, "global_position", mid_pos, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tw.tween_property(enemy, "scale", Vector2(0.5, 0.5), 0.2)
+	await tw.finished
+
+	if is_instance_valid(enemy):
+		var tw2 := create_tween()
+		tw2.set_parallel(true)
+		tw2.tween_property(enemy, "global_position", spawn_pos, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+		tw2.tween_property(enemy, "scale", Vector2.ONE, 0.2)
+
 	_active_summons.append(enemy)
 	if enemy.has_signal("died"):
 		enemy.died.connect(_on_summon_died.bind(enemy))
 
-	if visual and visual.sprite_frames and visual.sprite_frames.has_animation("throw"):
-		visual.play("throw")
 	_finish_attack()
 
 func _is_spawn_point_free(pos: Vector2) -> bool:
@@ -357,12 +465,29 @@ func _prune_summons() -> void:
 func _on_summon_died(enemy: Node) -> void:
 	_active_summons.erase(enemy)
 
+# --- التيلبورت مع تأثير الشفافية (Ghost Effect) ---
+func _start_teleport_sequence() -> void:
+	if visual:
+		var tw := create_tween()
+		_active_tweens.append(tw)
+		tw.tween_property(visual, "modulate:a", 0.15, 0.2)
+		await tw.finished
+
+	await super._start_teleport_sequence()
+
+	if is_instance_valid(self) and visual:
+		var tw2 := create_tween()
+		_active_tweens.append(tw2)
+		tw2.tween_property(visual, "modulate:a", 1.0, 0.2)
+		await tw2.finished
+
 func _attack_decoy_teleport() -> void:
 	await _start_teleport_sequence()
 	if is_instance_valid(self) and _fight_active:
 		_finish_attack()
 
 func _attack_double_throw() -> void:
+	_change_animation("throw")
 	if is_instance_valid(_target) and projectile_scene:
 		var base_dir: Vector2 = (_target.global_position - global_position).normalized()
 		for sign_dir in [1.0, -1.0]:
@@ -373,8 +498,6 @@ func _attack_double_throw() -> void:
 			proj.global_position = global_position
 			if "direction" in proj:
 				proj.direction = base_dir.rotated(deg_to_rad(side_throw_angle_deg) * sign_dir)
-	if visual and visual.sprite_frames and visual.sprite_frames.has_animation("throw"):
-		visual.play("throw")
 	_finish_attack()
 
 func _apply_phase3_visuals() -> void:
@@ -393,45 +516,55 @@ func _apply_phase3_visuals() -> void:
 	)
 	tw.tween_property(visual, "modulate:a", 1.0, 0.25)
 
-# --- إدارة الأنيميشن والتحكم في الكوليجن التلقائي ---
+func _change_animation(anim_name: String) -> void:
+	if visual == null or visual.sprite_frames == null:
+		return
+
+	var target_anim := anim_name
+	if not visual.sprite_frames.has_animation(target_anim):
+		target_anim = "idle"
+
+	if visual.animation != target_anim:
+		visual.play(target_anim)
+
 func _update_animations() -> void:
 	if visual == null or visual.sprite_frames == null:
 		return
 
-	if is_instance_valid(_target) and abs(velocity.x) > 5.0:
+	if is_instance_valid(_target):
 		visual.flip_h = (_target.global_position.x < global_position.x)
 
-	if state == State.DEFEATED:
-		if visual.sprite_frames.has_animation("defeated"):
-			visual.play("defeated")
-		else:
-			visual.play("idle")
+	if _is_phase_transitioning or state == State.DEFEATED:
+		_change_animation("defeated")
 		_update_collision_for_animation()
 		return
 
 	if _sub_state == SubState.TELEGRAPH:
-		if visual.sprite_frames.has_animation("telegraph"):
-			visual.play("telegraph")
-		else:
-			visual.play("idle")
+		_change_animation("telegraph")
 		_update_collision_for_animation()
 		return
 
-	if visual.is_playing() and visual.animation in ["throw", "slam"]:
-		_update_collision_for_animation()
-		return
+	if _sub_state == SubState.EXECUTE:
+		if _current_attack in ["projectile", "double_throw", "summon"]:
+			_change_animation("throw")
+			_update_collision_for_animation()
+			return
+		elif _current_attack == "dash_h":
+			_change_animation("dash")
+			_update_collision_for_animation()
+			return
+		elif _current_attack == "dash_v":
+			_change_animation("slam")
+			_update_collision_for_animation()
+			return
 
 	if abs(velocity.x) > 10.0:
-		if visual.sprite_frames.has_animation("dash") and _current_attack == "dash_h" and _sub_state == SubState.EXECUTE:
-			visual.play("dash")
-		else:
-			visual.play("run")
+		_change_animation("run")
 	else:
-		visual.play("idle")
+		_change_animation("idle")
 
 	_update_collision_for_animation()
 
-# --- دالة تفعيل الكوليجن المطابق للأنيميشن وقفل الباقي ---
 func _update_collision_for_animation() -> void:
 	if not visual:
 		return
@@ -448,12 +581,11 @@ func _update_collision_for_animation() -> void:
 			else:
 				shape.set_deferred("disabled", true)
 
-	# احتياطي: لو الأنيميشن الحالي ملوش كوليجن بنفس الاسم، يرجع لكوليجن idle
 	if not matched_any and _collisions.get("idle"):
 		_collisions["idle"].set_deferred("disabled", false)
 
 func take_damage(amount: int, knockback_x: float = 0.0, _knockback_y: float = 0.0) -> void:
-	if not _fight_active:
+	if not _fight_active or _is_phase_transitioning:
 		return
 
 	health = maxi(health - amount, 0)
@@ -476,12 +608,33 @@ func take_damage(amount: int, knockback_x: float = 0.0, _knockback_y: float = 0.
 		return
 
 	if state == State.PHASE_1 and fraction <= phase_2_threshold:
-		GameState.boss_phase_checkpoint = 2
-		set_state(State.PHASE_2)
+		_start_phase_transition(2)
 	elif state == State.PHASE_2 and fraction <= phase_3_threshold:
-		GameState.boss_phase_checkpoint = 3
+		_start_phase_transition(3)
+
+func _start_phase_transition(next_phase: int) -> void:
+	_is_phase_transitioning = true
+	_fight_active = false
+	velocity = Vector2.ZERO
+	_cleanup_transient()
+
+	_change_animation("defeated")
+	_update_collision_for_animation()
+
+	await get_tree().create_timer(phase_transition_time).timeout
+
+	if not is_instance_valid(self):
+		return
+
+	_is_phase_transitioning = false
+	GameState.boss_phase_checkpoint = next_phase
+
+	if next_phase == 2:
+		set_state(State.PHASE_2)
+	elif next_phase == 3:
 		set_state(State.PHASE_3)
 
 func _on_boss_zero_health() -> void:
+	_cleanup_transient()
 	set_state(State.DEFEATED)
 	boss_defeated.emit()

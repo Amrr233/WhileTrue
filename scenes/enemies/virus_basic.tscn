@@ -108,7 +108,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so5o7"]
 size = Vector2(49, 59)
 
-[node name="VirusBasic" type="CharacterBody2D" unique_id=183869775]
+[node name="VirusBasic" type="CharacterBody2D" unique_id=183869775 groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_basic")

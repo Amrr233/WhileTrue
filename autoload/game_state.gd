@@ -39,7 +39,7 @@ func reset_progress() -> void:
 
 	has_dash = true
 	has_double_jump = true
-	has_key = true
+	has_key = true 
 	has_cure = false
 
 	antivirus_check_completed = false

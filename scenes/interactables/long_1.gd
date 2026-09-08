@@ -1,4 +1,4 @@
-extends StaticBody2D # Or whatever node type your Platform13 root is
+extends StaticBody2D
 
 var is_fighting: bool = false
 
@@ -8,23 +8,30 @@ var is_fighting: bool = false
 func _ready() -> void:
 	if trigger:
 		trigger.body_entered.connect(_on_player_touched)
-		
-	# Check at start: if viruses exist, set it to Malware (DETECTED)
-	if get_tree().get_nodes_in_group("enemies").size() > 0:
-		status_bar.set_status(ScanStatusBar.State.DETECTED)
-	else:
-		status_bar.set_status(ScanStatusBar.State.CLEAN)
 
 func _process(_delta: float) -> void:
-	# If we are fighting, check when the enemies finally hit 0
+	var enemy_count = get_tree().get_nodes_in_group("enemies").size()
+	
 	if is_fighting:
-		if get_tree().get_nodes_in_group("enemies").size() == 0:
+		# We are fighting, wait for enemies to hit 0 to clear
+		if enemy_count == 0:
 			is_fighting = false
+			status_bar.set_status(ScanStatusBar.State.CLEAN)
+	else:
+		# We haven't touched the platform yet. Constantly watch for spawns!
+		if enemy_count > 0:
+			status_bar.set_status(ScanStatusBar.State.DETECTED)
+		else:
 			status_bar.set_status(ScanStatusBar.State.CLEAN)
 
 func _on_player_touched(body: Node2D) -> void:
 	if body is Player:
-		# If player touches platform and enemies are alive, switch to PROGRESS
-		if not is_fighting and get_tree().get_nodes_in_group("enemies").size() > 0:
+		var enemies_list = get_tree().get_nodes_in_group("enemies")
+		print("Player touched the detector! Enemies count: ", enemies_list.size())
+		
+		# THIS IS THE MAGIC LINE: It will print their exact names!
+		print("The hidden enemies are: ", enemies_list) 
+		
+		if not is_fighting and enemies_list.size() > 0:
 			is_fighting = true
 			status_bar.set_status(ScanStatusBar.State.PROCESS)

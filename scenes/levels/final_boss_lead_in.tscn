@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://multsb7sragx" path="res://assets/art/ui/antivirus_check_CLEAN.png" id="23_vc3js"]
 [ext_resource type="Script" uid="uid://src60fsbpwsp" path="res://scripts/ui/scan_status.gd" id="24_utmyo"]
 [ext_resource type="Texture2D" uid="uid://ckxx4va00covo" path="res://assets/art/ui/dark_blue_LONG.png" id="25_52vrw"]
+[ext_resource type="Script" uid="uid://dk2tp2226aerv" path="res://scenes/interactables/long_1.gd" id="25_cskp8"]
 [ext_resource type="Texture2D" uid="uid://ub1kfpodfq1i" path="res://assets/art/ui/antivirus_check_MALEWARE.png" id="25_v0m77"]
 [ext_resource type="Texture2D" uid="uid://c5awalw0lx7am" path="res://assets/art/ui/antivirus_check_PROCESS.png" id="26_2pf7u"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="27_eu0cp"]
@@ -42,9 +43,6 @@ size = Vector2(86, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy1ni"]
 size = Vector2(264, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rtjrn"]
-size = Vector2(225, 30)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igd0w"]
 size = Vector2(56, 56)
 
@@ -56,6 +54,21 @@ size = Vector2(180, 82.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5u7u"]
 size = Vector2(265, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cskp8"]
+size = Vector2(225, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myuf0"]
+size = Vector2(235, 20)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cskp8"]
+load_path = "res://.godot/imported/antivirus_check_MALEWARE.png-4655b54b659542b8ed04ae7442a46bd4.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc3js"]
+size = Vector2(225, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utmyo"]
+size = Vector2(265, 30)
 
 [node name="FinalBossLeadIn" type="Node2D" unique_id=703723199]
 script = ExtResource("1_lead")
@@ -474,46 +487,6 @@ stretch_mode = 5
 position = Vector2(-814, 378)
 shape = SubResource("RectangleShape2D_cy1ni")
 
-[node name="LONG1" type="StaticBody2D" parent="Platform" unique_id=1336022685]
-collision_layer = 3
-
-[node name="TextureRect" type="TextureRect" parent="Platform/LONG1" unique_id=1466366745]
-offset_left = 457.0
-offset_top = 258.0
-offset_right = 691.0
-offset_bottom = 335.0
-texture = ExtResource("23_vc3js")
-expand_mode = 1
-script = ExtResource("24_utmyo")
-texture_detected = ExtResource("25_v0m77")
-texture_process = ExtResource("26_2pf7u")
-texture_clean = ExtResource("23_vc3js")
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/LONG1" unique_id=1934283272]
-position = Vector2(574, 289)
-shape = SubResource("RectangleShape2D_rtjrn")
-
-[node name="LONG2" type="StaticBody2D" parent="Platform" unique_id=936690514]
-collision_layer = 3
-
-[node name="TextureRect" type="TextureRect" parent="Platform/LONG2" unique_id=747048203]
-offset_left = 1187.0
-offset_top = 258.0
-offset_right = 1421.0
-offset_bottom = 335.0
-texture = ExtResource("23_vc3js")
-expand_mode = 1
-script = ExtResource("24_utmyo")
-texture_detected = ExtResource("25_v0m77")
-texture_process = ExtResource("26_2pf7u")
-texture_clean = ExtResource("23_vc3js")
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/LONG2" unique_id=1378278327]
-position = Vector2(1306, 293)
-shape = SubResource("RectangleShape2D_rtjrn")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform" unique_id=635537889]
 position = Vector2(2, 4)
 collision_layer = 7
@@ -708,3 +681,57 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dark_blue/StaticBody2D9" unique_id=2110863288]
 position = Vector2(135.5, 21)
 shape = SubResource("RectangleShape2D_e5u7u")
+
+[node name="LONG2" type="StaticBody2D" parent="." unique_id=476672775]
+collision_layer = 3
+script = ExtResource("25_cskp8")
+
+[node name="TextureRect" type="TextureRect" parent="LONG2" unique_id=1390573304]
+offset_left = 1187.0
+offset_top = 258.0
+offset_right = 1421.0
+offset_bottom = 335.0
+texture = ExtResource("23_vc3js")
+expand_mode = 1
+script = ExtResource("24_utmyo")
+texture_detected = ExtResource("25_v0m77")
+texture_process = ExtResource("26_2pf7u")
+texture_clean = ExtResource("23_vc3js")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG2" unique_id=1948837444]
+position = Vector2(1306, 293)
+shape = SubResource("RectangleShape2D_cskp8")
+
+[node name="PlayerDetector" type="Area2D" parent="LONG2" unique_id=1282427491]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG2/PlayerDetector" unique_id=1140569686]
+position = Vector2(1305, 281)
+shape = SubResource("RectangleShape2D_myuf0")
+
+[node name="LONG1" type="StaticBody2D" parent="." unique_id=847971244]
+collision_layer = 3
+script = ExtResource("25_cskp8")
+
+[node name="TextureRect" type="TextureRect" parent="LONG1" unique_id=930226934]
+offset_left = 457.0
+offset_top = 258.0
+offset_right = 691.0
+offset_bottom = 335.0
+texture = ExtResource("23_vc3js")
+expand_mode = 1
+script = ExtResource("24_utmyo")
+texture_detected = SubResource("CompressedTexture2D_cskp8")
+texture_process = ExtResource("26_2pf7u")
+texture_clean = ExtResource("23_vc3js")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG1" unique_id=36172803]
+position = Vector2(574, 289)
+shape = SubResource("RectangleShape2D_vc3js")
+
+[node name="PlayerDetector" type="Area2D" parent="LONG1" unique_id=699305759]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LONG1/PlayerDetector" unique_id=371406089]
+position = Vector2(579.5, 276)
+shape = SubResource("RectangleShape2D_utmyo")

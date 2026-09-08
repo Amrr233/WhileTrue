@@ -90,9 +90,18 @@ func _unlock_arena() -> void:
 func _on_boss_defeated() -> void:
 	GameState.boss_final_defeated = true
 	GameState.has_cure = true
-	boss.set_state(boss.State.ENDING)
 	_unlock_arena()
 
+	# 1. يفضل مطروح أرضاً في حالة DEFEATED لمدة ثانيتين
+	await get_tree().create_timer(2.0).timeout
+
+	# 2. تغيير الحالة إلى ENDING ليقوم وينظر للاعب (يرجع لوضع الوقوف idle)
+	boss.set_state(boss.State.ENDING)
+
+	# مهلة نصف ثانية بعد ما يقوم مباشرةً قبل بدء الكلام
+	await get_tree().create_timer(0.5).timeout
+
+	# 3. بدء عرض حوار النهاية بعد الوقوف
 	if dialogue_box:
 		await dialogue_box.play_sequence(ending_lines, 2.2)
 

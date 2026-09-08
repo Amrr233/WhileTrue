@@ -135,6 +135,10 @@ func set_state(new_state: int) -> void:
 			velocity = Vector2.ZERO
 		State.ENDING:
 			_fight_active = false
+			velocity = Vector2.ZERO
+			_face_target()
+			_change_animation("idle")
+			_update_collision_for_animation()
 
 func begin_fight() -> void:
 	set_state(State.PHASE_1)

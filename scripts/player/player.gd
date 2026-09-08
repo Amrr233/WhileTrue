@@ -323,7 +323,10 @@ func _start_attack() -> void:
 	_attack_hit_ids.clear()
 	attack_shape.disabled = false
 	
-	attack_visual.visible = true
+	# تم إخفاء المربع الأصفر بإلغاء/حذف السطر التالي:
+	# attack_visual.visible = true  <-- احذف هذا السطر أو ضع قبله #
+	attack_visual.visible = false
+	
 	attack_area.position.x = 32.0 * facing
 
 	if visual is AnimatedSprite2D:

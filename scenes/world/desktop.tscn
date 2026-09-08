@@ -60,6 +60,7 @@ texture = ExtResource("1_bg")
 expand_mode = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="Ui" unique_id=1678603380]
+layer = 2
 
 [node name="cursor" parent="Ui/CanvasLayer2" unique_id=1380842287 instance=ExtResource("9_ikds4")]
 position = Vector2(210, 114)
@@ -211,7 +212,7 @@ offset_right = 2.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_yn8t8")
-text = "Cant Move? try the cursor!"
+text = "Cant Move? try the cursr! and let him fall to go inw"
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
 position = Vector2(93, 55)
@@ -252,7 +253,7 @@ shape = SubResource("RectangleShape2D_n22mp")
 debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
 
 [node name="Collider for antivirus icon" type="StaticBody2D" parent="." unique_id=1368015297]
-position = Vector2(1, 107)
+position = Vector2(1, 120)
 collision_layer = 7
 collision_mask = 7
 
@@ -262,7 +263,7 @@ shape = SubResource("RectangleShape2D_y4wgv")
 debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
 
 [node name="antivirusIcon" type="Area2D" parent="." unique_id=793301714]
-position = Vector2(-36, 82)
+position = Vector2(-36, 95)
 collision_layer = 2
 script = ExtResource("6_ujlt8")
 
@@ -301,7 +302,7 @@ text = "anti_virus"
 stream = ExtResource("17_3265r")
 
 [node name="IEIcon" type="Area2D" parent="." unique_id=104766087]
-position = Vector2(-12, 10)
+position = Vector2(-17, 24)
 script = ExtResource("22_eojca")
 
 [node name="Sprite2D" type="Sprite2D" parent="IEIcon" unique_id=169623551]

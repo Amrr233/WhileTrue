@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://uxh7qhfek8ye" path="res://scripts/levels/recycle_bin.gd" id="1_level"]
 [ext_resource type="PackedScene" uid="uid://v5k031eiy686" path="res://scenes/enemies/virus_small.tscn" id="2_h5xix"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="3_0jwjl"]
 [ext_resource type="AudioStream" uid="uid://fog0m7eggfap" path="res://assets/audio/sfx/Windows XP Hardware Remove.wav" id="3_hrp3q"]
 [ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="4_14nmw"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="4_scroll"]
@@ -25,8 +26,10 @@
 [ext_resource type="Script" uid="uid://bdkykjmogih7g" path="res://scripts/interactables/platform_2.gd" id="15_mjela"]
 [ext_resource type="Texture2D" uid="uid://bf3vkf7iqmbh8" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item20.png" id="16_58e74"]
 [ext_resource type="Texture2D" uid="uid://djxnbif7coobw" path="res://assets/art/environments/recycle pin sprite sheet.png" id="16_h864q"]
+[ext_resource type="Texture2D" uid="uid://chg7k7n250t7j" path="res://assets/art/ui/pause menu.png" id="18_4dt4i"]
 [ext_resource type="Texture2D" uid="uid://gnrrdk4ih4w4" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item67.png" id="19_cyrvx"]
 [ext_resource type="Texture2D" uid="uid://5pweojdj7jlc" path="res://assets/art/environments/recycle pin LONG 2.png" id="19_ffx3s"]
+[ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="19_fhux8"]
 [ext_resource type="Script" uid="uid://cn7n10k7dtwks" path="res://scripts/interactables/platform_5.gd" id="19_vr70j"]
 [ext_resource type="Texture2D" uid="uid://bcbmdia4hbjfg" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item40.png" id="20_cyrvx"]
 [ext_resource type="Texture2D" uid="uid://bdwb3l82x37vt" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item19.png" id="21_fkmt1"]
@@ -44,12 +47,11 @@
 [ext_resource type="Texture2D" uid="uid://dc4nhdimg2w1e" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item49.png" id="28_45y5q"]
 [ext_resource type="Texture2D" uid="uid://debmdqoxxef5x" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item81.png" id="28_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://d2mi50dpkpuw1" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item99.png" id="28_aowqg"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/sword_pickup.tscn" id="29_mjela"]
+[ext_resource type="PackedScene" uid="uid://d1uy5q75hn7i5" path="res://scenes/interactables/sword_pickup.tscn" id="29_mjela"]
 [ext_resource type="Texture2D" uid="uid://4i7faq6unjbv" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item15.png" id="29_q7br2"]
 [ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="30_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://if3hs7gua86k" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item60.png" id="30_pspfu"]
 [ext_resource type="Script" uid="uid://d1djmwkxrfsmh" path="res://scripts/interactables/platform_8.gd" id="35_aildm"]
-[ext_resource type="Texture2D" uid="uid://navljammyr2s" path="res://assets/art/ui/Sword_1.png" id="37_m36km"]
 [ext_resource type="Texture2D" uid="uid://cdgfmbdrh5xww" path="res://assets/art/environments/recycle bin.jpg" id="47_cxqbr"]
 [ext_resource type="Script" uid="uid://clfb1b16ao5yo" path="res://scripts/core/hint_button.gd" id="52_0jwjl"]
 
@@ -171,6 +173,12 @@ basic_virus_scene = ExtResource("2_h5xix")
 ranged_virus_scene = ExtResource("2_h5xix")
 hunter_virus_scene = ExtResource("2_h5xix")
 
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1935453848]
+layer = 3
+
+[node name="cursor" parent="CanvasLayer3" unique_id=1380842287 instance=ExtResource("3_0jwjl")]
+position = Vector2(210, 114)
+
 [node name="HUD" type="CanvasLayer" parent="." unique_id=983451721]
 layer = 5
 
@@ -191,7 +199,7 @@ horizontal_alignment = 1
 
 [node name="Player" parent="." unique_id=1447993816 instance=ExtResource("2_player")]
 texture_filter = 1
-position = Vector2(74, 197)
+position = Vector2(48, 138)
 jump_velocity = -360.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1551076545]
@@ -319,14 +327,18 @@ position = Vector2(772.5, 14.937497)
 scale = Vector2(0.08984388, 0.0864258)
 texture = ExtResource("6_63p7e")
 
-[node name="Taskbar" type="ColorRect" parent="top_bar" unique_id=120284529]
+[node name="taskbar" type="CanvasLayer" parent="." unique_id=1471514963]
+layer = 2
+
+[node name="Taskbar" type="ColorRect" parent="taskbar" unique_id=739261974]
+offset_left = -2.0
 offset_top = 409.0
 offset_right = 804.0
 offset_bottom = 449.0
 mouse_filter = 2
 color = Color(0.14117648, 0.36862746, 0.8627451, 1)
 
-[node name="SystemTray" type="HBoxContainer" parent="top_bar/Taskbar" unique_id=1045993878]
+[node name="SystemTray" type="HBoxContainer" parent="taskbar/Taskbar" unique_id=1623599776]
 layout_mode = 0
 offset_left = 425.0
 offset_top = -4.0
@@ -336,7 +348,7 @@ mouse_filter = 2
 theme_override_constants/separation = 12
 alignment = 2
 
-[node name="wifiicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=422317403]
+[node name="wifiicon" type="TextureRect" parent="taskbar/Taskbar/SystemTray" unique_id=1083245954]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -345,7 +357,7 @@ texture = ExtResource("7_i5h8w")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="batteryicon" type="TextureRect" parent="top_bar/Taskbar/SystemTray" unique_id=1495671918]
+[node name="batteryicon" type="TextureRect" parent="taskbar/Taskbar/SystemTray" unique_id=1277983695]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
@@ -358,17 +370,16 @@ battery_full = ExtResource("11_m36km")
 battery_half = ExtResource("8_hgd7y")
 battery_empty = ExtResource("12_0jwjl")
 
-[node name="audiotoggle" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=1846036553]
+[node name="audiotoggle" type="TextureButton" parent="taskbar/Taskbar/SystemTray" unique_id=1584195610]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 4
-toggle_mode = true
 texture_normal = ExtResource("9_a2cc8")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("10_ffx3s")
 
-[node name="clocklabel" type="TextureButton" parent="top_bar/Taskbar/SystemTray" unique_id=67633671]
+[node name="clocklabel" type="TextureButton" parent="taskbar/Taskbar/SystemTray" unique_id=616555691]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture_normal = ExtResource("11_c3ncu")
@@ -376,17 +387,52 @@ ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("12_co7em")
 
-[node name="startmenupanel" type="Panel" parent="top_bar/Taskbar" unique_id=580056152]
+[node name="startmenupanel" type="TextureRect" parent="taskbar/Taskbar" unique_id=113409588]
 visible = false
 layout_mode = 0
-offset_left = 2.0
-offset_top = -193.0
-offset_right = 164.0
-offset_bottom = 1.0
+offset_left = -65.0
+offset_top = -205.0
+offset_right = 185.0
+offset_bottom = 68.0
 mouse_filter = 2
+texture = ExtResource("18_4dt4i")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("19_fhux8")
 
-[node name="Startmenu" type="TextureButton" parent="top_bar/Taskbar" unique_id=757385641 node_paths=PackedStringArray("start_menu")]
+[node name="PlayButton" type="Button" parent="taskbar/Taskbar/startmenupanel" unique_id=1740888702]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 108.0
+offset_right = 184.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 10
+text = "PLAY"
+
+[node name="ResetButton" type="Button" parent="taskbar/Taskbar/startmenupanel" unique_id=897401744]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 136.0
+offset_right = 184.0
+offset_bottom = 164.0
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 10
+text = "RESET"
+
+[node name="CloseButton" type="Button" parent="taskbar/Taskbar/startmenupanel" unique_id=82545724]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 164.0
+offset_right = 185.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("4_14nmw")
+theme_override_font_sizes/font_size = 10
+text = "CLOSE"
+
+[node name="Startmenu" type="TextureButton" parent="taskbar/Taskbar" unique_id=227811691 node_paths=PackedStringArray("start_menu")]
 texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 offset_left = -4.0
 offset_top = -7.0
@@ -703,18 +749,6 @@ offset_top = 321.0
 offset_right = 555.0
 offset_bottom = 361.0
 texture = ExtResource("28_ajdkx")
-
-[node name="SwordPickup" parent="Platform/Platform13" unique_id=235410236 instance=ExtResource("29_mjela")]
-position = Vector2(555, 297)
-
-[node name="TextureRect" type="TextureRect" parent="Platform/Platform13/SwordPickup" unique_id=1341235513]
-offset_left = -23.0
-offset_top = -28.0
-offset_right = 23.0
-offset_bottom = 25.0
-texture = ExtResource("37_m36km")
-expand_mode = 1
-stretch_mode = 5
 
 [node name="LevelExit" parent="Platform/Platform13" unique_id=1228670635 instance=ExtResource("30_ajdkx")]
 position = Vector2(631, 349)
@@ -1154,9 +1188,10 @@ grow_vertical = 2
 texture = ExtResource("47_cxqbr")
 expand_mode = 1
 stretch_mode = 6
-metadata/_edit_use_anchors_ = true
 
-[node name="HintButton" type="TextureButton" parent="." unique_id=806452754]
+[node name="hint" type="CanvasLayer" parent="." unique_id=2006321113]
+
+[node name="HintButton" type="TextureButton" parent="hint" unique_id=806452754]
 texture_filter = 1
 offset_left = 698.0
 offset_top = 10.0
@@ -1165,7 +1200,16 @@ offset_bottom = 42.0
 texture_normal = ExtResource("25_iygvn")
 script = ExtResource("52_0jwjl")
 
-[node name="HintLabel" type="Label" parent="HintButton" unique_id=1564852777]
+[node name="ColorRect" type="ColorRect" parent="hint/HintButton" unique_id=1767431101]
+visible = false
+layout_mode = 0
+offset_left = -251.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = 63.0
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="HintLabel" type="Label" parent="hint/HintButton" unique_id=1564852777]
 visible = false
 layout_mode = 0
 offset_left = -243.0
@@ -1174,7 +1218,11 @@ offset_right = 2.0
 offset_bottom = 25.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_14nmw")
-text = "Cant Move? try the cursor!"
+text = "Move from WASD jump from SPACE and hit with right click"
+autowrap_mode = 2
 
-[connection signal="toggled" from="top_bar/Taskbar/SystemTray/audiotoggle" to="." method="_on_audiotoggle_toggled"]
-[connection signal="pressed" from="HintButton" to="HintButton" method="_on_hint_button_pressed"]
+[node name="SwordPickup" parent="." unique_id=1936826746 instance=ExtResource("29_mjela")]
+position = Vector2(2133, 143)
+display_duration = 2.0
+
+[connection signal="pressed" from="hint/HintButton" to="hint/HintButton" method="_on_hint_button_pressed"]

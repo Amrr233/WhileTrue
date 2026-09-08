@@ -7,8 +7,8 @@ var recycle_bin_boss_defeated: bool = false
 var recycle_bin_completed: bool = false
 
 # --- Antivirus level progression ---
-var has_dash: bool = true
-var has_double_jump: bool = true
+var has_dash: bool = false
+var has_double_jump: bool = false
 var has_key: bool = false
 var has_cure: bool = false
 

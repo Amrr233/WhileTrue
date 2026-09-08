@@ -1,23 +1,48 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://d1uy5q75hn7i5"]
 
-[ext_resource type="Script" path="res://scripts/interactables/sword_pickup.gd" id="1_sword"]
+[ext_resource type="Script" uid="uid://c1lpmdws61dxk" path="res://scripts/interactables/sword_pickup.gd" id="1_sword"]
+[ext_resource type="FontFile" uid="uid://brwcfwr6yyg2i" path="res://assets/fonts/pixel_art_font.ttf" id="2_s0la3"]
+[ext_resource type="Texture2D" uid="uid://navljammyr2s" path="res://assets/art/ui/Sword_1.png" id="3_218by"]
+[ext_resource type="AudioStream" uid="uid://cvi7nmdklds61" path="res://assets/audio/sfx/Windows XP Exclamation.wav" id="4_l2yli"]
 
 [sub_resource type="CircleShape2D" id="SwordShape"]
-radius = 10.0
 
-[node name="SwordPickup" type="Area2D"]
+[node name="SwordPickup" type="Area2D" unique_id=1936826746]
 collision_layer = 0
-collision_mask = 1
-monitoring = true
 script = ExtResource("1_sword")
+pickup_message = "You got the BYTE SWORD ! now you are twice as strong!!"
 
-[node name="Glow" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, -14, 8, 0, 0, 14, -8, 0)
-color = Color(0.85, 0.95, 1, 0.18)
+[node name="Sprite2d" type="Sprite2D" parent="." unique_id=2026537414]
+position = Vector2(-3.8146973e-06, -5)
+scale = Vector2(0.09106445, 0.06289083)
+texture = ExtResource("3_218by")
 
-[node name="Placeholder" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-2, -10, 2, -10, 2, 8, 5, 8, 0, 13, -5, 8, -2, 8)
-color = Color(0.9, 0.95, 1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1524237051]
 shape = SubResource("SwordShape")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1686928902]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1953435310]
+offset_left = 39.0
+offset_top = 157.0
+offset_right = 783.0
+offset_bottom = 254.0
+color = Color(0.133, 0.38, 0.31825, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=991178417]
+offset_left = 61.0
+offset_top = 166.0
+offset_right = 788.0
+offset_bottom = 280.0
+theme_override_colors/font_color = Color(0.07058824, 0.08627451, 0.09019608, 1)
+theme_override_fonts/font = ExtResource("2_s0la3")
+theme_override_font_sizes/font_size = 28
+text = "You got the BYTE SWORD ! now you are twice as strong.
+
+"
+autowrap_mode = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=336169106]
+stream = ExtResource("4_l2yli")
+volume_db = 5.516

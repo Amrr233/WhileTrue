@@ -51,6 +51,7 @@
 [ext_resource type="Script" uid="uid://d1djmwkxrfsmh" path="res://scripts/interactables/platform_8.gd" id="35_aildm"]
 [ext_resource type="Texture2D" uid="uid://navljammyr2s" path="res://assets/art/ui/Sword_1.png" id="37_m36km"]
 [ext_resource type="Texture2D" uid="uid://cdgfmbdrh5xww" path="res://assets/art/environments/recycle bin.jpg" id="47_cxqbr"]
+[ext_resource type="Script" uid="uid://clfb1b16ao5yo" path="res://scripts/core/hint_button.gd" id="52_0jwjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmt1"]
 size = Vector2(31, 35)
@@ -1155,4 +1156,25 @@ expand_mode = 1
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
+[node name="HintButton" type="TextureButton" parent="." unique_id=806452754]
+texture_filter = 1
+offset_left = 698.0
+offset_top = 10.0
+offset_right = 730.0
+offset_bottom = 42.0
+texture_normal = ExtResource("25_iygvn")
+script = ExtResource("52_0jwjl")
+
+[node name="HintLabel" type="Label" parent="HintButton" unique_id=1564852777]
+visible = false
+layout_mode = 0
+offset_left = -243.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 25.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_14nmw")
+text = "Cant Move? try the cursor!"
+
 [connection signal="toggled" from="top_bar/Taskbar/SystemTray/audiotoggle" to="." method="_on_audiotoggle_toggled"]
+[connection signal="pressed" from="HintButton" to="HintButton" method="_on_hint_button_pressed"]

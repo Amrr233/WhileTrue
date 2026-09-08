@@ -9,7 +9,7 @@ var _loading := false
 
 func _ready() -> void:
 	if locked_label:
-		locked_label.text = "ACCESS DENIED"
+		locked_label.text = "Access denied (NO KEY)"
 		locked_label.visible = false
 		locked_label.modulate.a = 0.0
 		

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://mtivudukojti"]
+[gd_scene format=3 uid="uid://cy4h7mamx6sy0"]
 
 [ext_resource type="Script" uid="uid://dkhojijllkjx2" path="res://scripts/levels/final_boss_lead_in.gd" id="1_lead"]
 [ext_resource type="PackedScene" uid="uid://djxmn5887v32y" path="res://scenes/player/player.tscn" id="2_player"]

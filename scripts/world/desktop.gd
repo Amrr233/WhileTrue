@@ -25,3 +25,7 @@ func _ready() -> void:
 
 #func _on_start_menu_pressed() -> void:
 	#PauseMenu.toggle_pause()
+
+
+func _on_ie_icon_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

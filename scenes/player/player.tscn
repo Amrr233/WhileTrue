@@ -381,10 +381,12 @@ offset_left = 6.0
 offset_top = 6.0
 offset_right = 134.0
 offset_bottom = 24.0
+scale = Vector2(1.7, 1.7)
 script = ExtResource("2_dovo2")
 segment_texture = ExtResource("3_lvxji")
 segment_size = Vector2(20, 11)
 segment_gap = -6.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Heart" type="TextureRect" parent="HUD/HealthBar" unique_id=1688437284]
 layout_mode = 0

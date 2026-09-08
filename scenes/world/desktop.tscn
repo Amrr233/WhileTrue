@@ -21,7 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://bmwma65x0peru" path="res://assets/audio/sfx/Windows XP Startup.wav" id="17_3265r"]
 [ext_resource type="AudioStream" uid="uid://d3p16pgfgabir" path="res://assets/audio/sfx/Windows XP Error.wav" id="17_n22mp"]
 [ext_resource type="Script" uid="uid://dph0v1npo6u67" path="res://scripts/ui/pause_menu.gd" id="20_pause"]
-[ext_resource type="Script" uid="uid://cilrm1eiylkpm" path="res://scripts/world/ie_icon.gd" id="30_ie"]
+[ext_resource type="Script" uid="uid://2gr4x4k136ip" path="res://scenes/world/ie_icon.gd" id="22_eojca"]
+[ext_resource type="Texture2D" uid="uid://b6raduchi67k5" path="res://assets/art/ui/internet_explorer.png" id="22_y4wgv"]
 
 [sub_resource type="RectangleShape2D" id="GroundShape"]
 size = Vector2(801, 40)
@@ -32,8 +33,14 @@ size = Vector2(76.5625, 68)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n22mp"]
 size = Vector2(77.75, 67.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4wgv"]
+size = Vector2(77.75, 78)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikds4"]
-size = Vector2(79.375, 67)
+size = Vector2(79.375, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eojca"]
+size = Vector2(57, 56)
 
 [node name="Desktop" type="Node2D" unique_id=1245239160]
 script = ExtResource("1_1guff")
@@ -169,45 +176,11 @@ collision_layer = 2
 position = Vector2(232, 269)
 shape = SubResource("GroundShape")
 
-[node name="IEIcon" type="TextureButton" parent="Ui" unique_id=2000000001]
-offset_left = 680.0
-offset_top = 56.0
-offset_right = 744.0
-offset_bottom = 120.0
-texture_normal = ExtResource("5_1y8lu")
-ignore_texture_size = true
-stretch_mode = 5
-script = ExtResource("30_ie")
-
-[node name="Label" type="Label" parent="Ui/IEIcon" unique_id=2000000002]
-layout_mode = 0
-offset_left = -20.0
-offset_top = 64.0
-offset_right = 84.0
-offset_bottom = 87.0
-theme_override_fonts/font = ExtResource("14_yn8t8")
-theme_override_font_sizes/font_size = 10
-text = "Internet Explorer"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="LockedLabel" type="Label" parent="Ui/IEIcon" unique_id=2000000003]
-visible = false
-layout_mode = 0
-offset_left = -20.0
-offset_top = -18.0
-offset_right = 84.0
-offset_bottom = 2.0
-theme_override_fonts/font = ExtResource("14_yn8t8")
-theme_override_font_sizes/font_size = 10
-text = "[LOCKED - NEED KEY]"
-horizontal_alignment = 1
-
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("9_ikds4")]
 position = Vector2(210, 114)
 
 [node name="RecycleBin" type="Area2D" parent="." unique_id=1783241248]
-position = Vector2(93, 84)
+position = Vector2(93, 55)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("4_bin_script")
@@ -235,6 +208,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Collider for recycle bin icon" type="StaticBody2D" parent="." unique_id=164008325]
+position = Vector2(0, -27)
 collision_layer = 7
 collision_mask = 7
 
@@ -244,32 +218,23 @@ shape = SubResource("RectangleShape2D_n22mp")
 debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
 
 [node name="Collider for antivirus icon" type="StaticBody2D" parent="." unique_id=1368015297]
-position = Vector2(3, 140)
+position = Vector2(1, 107)
 collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider for antivirus icon" unique_id=955027381]
-position = Vector2(49.125, 123.125)
-shape = SubResource("RectangleShape2D_n22mp")
+position = Vector2(49.125, 118)
+shape = SubResource("RectangleShape2D_y4wgv")
 debug_color = Color(0.96032923, 0, 0.5193567, 0.41960785)
 
 [node name="antivirusIcon" type="Area2D" parent="." unique_id=793301714]
-position = Vector2(-34, 115)
+position = Vector2(-36, 82)
 collision_layer = 2
 script = ExtResource("6_ujlt8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="antivirusIcon" unique_id=1791655265]
-position = Vector2(87.3125, 144.5)
+position = Vector2(87.3125, 140.5)
 shape = SubResource("RectangleShape2D_ikds4")
-
-[node name="Label" type="Label" parent="antivirusIcon" unique_id=97333750]
-offset_left = 48.0
-offset_top = 166.0
-offset_right = 126.0
-offset_bottom = 189.0
-theme_override_fonts/font = ExtResource("14_yn8t8")
-theme_override_font_sizes/font_size = 12
-text = "Anti_Virus"
 
 [node name="EnterSound" type="AudioStreamPlayer" parent="antivirusIcon" unique_id=1668451596]
 stream = ExtResource("17_n22mp")
@@ -279,8 +244,36 @@ position = Vector2(86, 137)
 scale = Vector2(0.104433775, 0.08624916)
 texture = ExtResource("17_1guff")
 
+[node name="Label" type="Label" parent="antivirusIcon" unique_id=925878102]
+offset_left = 373.0
+offset_top = 223.0
+offset_right = 481.0
+offset_bottom = 246.0
+text = "Get the sword first"
+
 [node name="desktob starting" type="AudioStreamPlayer" parent="." unique_id=1544037763]
 stream = ExtResource("17_3265r")
 
+[node name="IEIcon" type="Area2D" parent="." unique_id=104766087]
+position = Vector2(-12, 10)
+script = ExtResource("22_eojca")
+
+[node name="Sprite2D" type="Sprite2D" parent="IEIcon" unique_id=169623551]
+position = Vector2(63, 336)
+scale = Vector2(0.1663975, 0.16398193)
+texture = ExtResource("22_y4wgv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IEIcon" unique_id=1862253587]
+position = Vector2(63.5, 334)
+shape = SubResource("RectangleShape2D_eojca")
+
+[node name="Label" type="Label" parent="IEIcon" unique_id=1973650027]
+offset_left = 373.0
+offset_top = 223.0
+offset_right = 481.0
+offset_bottom = 246.0
+text = "access denied"
+
 [connection signal="body_entered" from="RecycleBin" to="RecycleBin" method="_on_body_entered"]
 [connection signal="body_entered" from="antivirusIcon" to="antivirusIcon" method="_on_body_entered"]
+[connection signal="body_entered" from="IEIcon" to="IEIcon" method="_on_body_entered"]

@@ -282,6 +282,7 @@ max_health = 60
 speed = 90.0
 melee_range = 20.0
 knockback_resistance = 0.15
+intro_lines = Array[String](["I waited for you for so long", "You have no idea what you are fighting against"])
 teleport_cooldown = 3.5
 teleport_max_distance = 300.0
 decoy_count = 3

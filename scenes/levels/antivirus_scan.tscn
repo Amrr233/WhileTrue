@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bs4yohojgfwub" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item22.png" id="19_74vhd"]
 [ext_resource type="Texture2D" uid="uid://bxxldcfmjkcjk" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item26.png" id="20_1fk7u"]
 [ext_resource type="Texture2D" uid="uid://bxxpvxgtjp7b2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item4.png" id="21_6h6dt"]
+[ext_resource type="Script" uid="uid://bdkykjmogih7g" path="res://scripts/interactables/platform_2.gd" id="21_y12a5"]
 [ext_resource type="Texture2D" uid="uid://debraqorww8n0" path="res://assets/art/environments/recycle pin FOLDER.png" id="22_1fk7u"]
 [ext_resource type="Texture2D" uid="uid://rm2y1du81i3d" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item33.png" id="22_2oynw"]
 [ext_resource type="Script" uid="uid://hfxmrs718ohp" path="res://scripts/interactables/VerticalObstacle.gd" id="26_2oynw"]
@@ -38,11 +39,29 @@ size = Vector2(64, 41)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhv2c"]
 size = Vector2(39, 41)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssgea"]
+size = Vector2(42, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y12a5"]
+size = Vector2(68, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2efa6"]
+size = Vector2(66, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ht3ob"]
+size = Vector2(68, 26)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fy4if"]
 size = Vector2(172, 41)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhopo"]
+size = Vector2(182, 22)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f31id"]
 size = Vector2(47, 37.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qufom"]
+size = Vector2(49, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eiqjd"]
 size = Vector2(591.5, 41)
@@ -117,10 +136,10 @@ position = Vector2(-40, -395)
 position = Vector2(1932, -835)
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=1661484653]
-position = Vector2(-1372, 1083)
+position = Vector2(-568, 1081)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1565217111]
-position = Vector2(0, 1063)
+position = Vector2(-209, 1072)
 
 [node name="Spawn3" type="Marker2D" parent="Spawns" unique_id=1613524383]
 position = Vector2(916, 949)
@@ -345,6 +364,7 @@ texture = ExtResource("16_wvq8v")
 position = Vector2(210, 0)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("21_y12a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2" unique_id=125784645]
 position = Vector2(-17.5, 338)
@@ -359,10 +379,17 @@ texture = ExtResource("16_ibdd8")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform2" unique_id=843164449]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2/BounceTrigger" unique_id=1500568535]
+position = Vector2(-17, 326)
+shape = SubResource("RectangleShape2D_ssgea")
+
 [node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=1177129067]
 position = Vector2(330, -102)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("21_y12a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=399015728]
 position = Vector2(36, 435)
@@ -375,10 +402,17 @@ offset_right = 77.0
 offset_bottom = 454.0
 texture = ExtResource("17_7gf8y")
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform3" unique_id=399138059]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3/BounceTrigger" unique_id=1121242009]
+position = Vector2(35, 429)
+shape = SubResource("RectangleShape2D_y12a5")
+
 [node name="Platform5" type="StaticBody2D" parent="Platform" unique_id=290309057]
 position = Vector2(880, -102)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("21_y12a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5" unique_id=767178161]
 position = Vector2(-43, 397)
@@ -391,10 +425,17 @@ offset_right = -5.0
 offset_bottom = 418.0
 texture = ExtResource("18_n5wal")
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform5" unique_id=1012032031]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform5/BounceTrigger" unique_id=839759556]
+position = Vector2(-43, 389)
+shape = SubResource("RectangleShape2D_2efa6")
+
 [node name="Platform7" type="StaticBody2D" parent="Platform" unique_id=1053763229]
 position = Vector2(1175, -102)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("21_y12a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7" unique_id=259096690]
 position = Vector2(-113, 396)
@@ -407,16 +448,17 @@ offset_right = -66.0
 offset_bottom = 417.0
 texture = ExtResource("19_74vhd")
 
-[node name="TextureRect2" type="TextureRect" parent="Platform/Platform7" unique_id=1449699833]
-offset_left = -151.0
-offset_top = 375.0
-offset_right = -70.0
-offset_bottom = 417.0
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform7" unique_id=1096626124]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform7/BounceTrigger" unique_id=1203011283]
+position = Vector2(-113, 386)
+shape = SubResource("RectangleShape2D_ht3ob")
 
 [node name="Platform9" type="StaticBody2D" parent="Platform" unique_id=1049936556]
 position = Vector2(2162, -90)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("21_y12a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform9" unique_id=1669191197]
 position = Vector2(-19, 398)
@@ -429,10 +471,17 @@ offset_right = 89.0
 offset_bottom = 417.0
 texture = ExtResource("16_ibdd8")
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform9" unique_id=1694817956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform9/BounceTrigger" unique_id=662246219]
+position = Vector2(-20, 385)
+shape = SubResource("RectangleShape2D_dhopo")
+
 [node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=288573088]
 position = Vector2(397, -16)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("21_y12a5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4" unique_id=1838939170]
 position = Vector2(186.5, 311.75)
@@ -446,6 +495,12 @@ offset_bottom = 336.0
 texture = ExtResource("22_1fk7u")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform4" unique_id=1094982210]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4/BounceTrigger" unique_id=273240024]
+position = Vector2(186.5, 303)
+shape = SubResource("RectangleShape2D_qufom")
 
 [node name="Platform8" type="StaticBody2D" parent="Platform" unique_id=597491795]
 position = Vector2(1430, -35)

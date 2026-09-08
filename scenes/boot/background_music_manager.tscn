@@ -14,24 +14,24 @@ script = ExtResource("2_n08v2")
 
 [node name="DesktopMusic" type="AudioStreamPlayer" parent="." unique_id=812002988]
 stream = ExtResource("1_nybvi")
-volume_db = -3.986
+volume_db = -10.0
 
 [node name="RecycleBinMusic" type="AudioStreamPlayer" parent="." unique_id=1298846585]
 stream = ExtResource("3_o68ir")
-volume_db = -5.153
+volume_db = -10.0
 
 [node name="AntivirusHubMusic" type="AudioStreamPlayer" parent="." unique_id=823654451]
 stream = ExtResource("4_25wy8")
-volume_db = -7.908
+volume_db = -10.0
 
 [node name="CheckMusic" type="AudioStreamPlayer" parent="." unique_id=1244023149]
 stream = ExtResource("5_rvq2l")
-volume_db = -3.214
+volume_db = -10.0
 
 [node name="ScanMusic" type="AudioStreamPlayer" parent="." unique_id=1938503019]
 stream = ExtResource("6_aqb66")
-volume_db = -8.988
+volume_db = -10.0
 
 [node name="InvestigateMusic" type="AudioStreamPlayer" parent="." unique_id=1651967159]
 stream = ExtResource("7_bprnk")
-volume_db = 0.918
+volume_db = -10.0

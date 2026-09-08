@@ -31,14 +31,19 @@
 [ext_resource type="Texture2D" uid="uid://dpcm8ops3g8v6" path="res://assets/art/environments/recycle pin CUT.png" id="21_hi11t"]
 [ext_resource type="Script" uid="uid://src60fsbpwsp" path="res://scripts/ui/scan_status.gd" id="21_u01jt"]
 [ext_resource type="Texture2D" uid="uid://ub1kfpodfq1i" path="res://assets/art/ui/antivirus_check_MALEWARE.png" id="22_1fmxd"]
+[ext_resource type="Script" uid="uid://bdkykjmogih7g" path="res://scripts/interactables/platform_2.gd" id="23_74l08"]
 [ext_resource type="Texture2D" uid="uid://c5awalw0lx7am" path="res://assets/art/ui/antivirus_check_PROCESS.png" id="23_ou3e4"]
 [ext_resource type="Texture2D" uid="uid://multsb7sragx" path="res://assets/art/ui/antivirus_check_CLEAN.png" id="24_hi11t"]
+[ext_resource type="Script" uid="uid://dk2tp2226aerv" path="res://scenes/interactables/long_1.gd" id="30_e2jbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_540j4"]
 size = Vector2(48, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cdjtt"]
 size = Vector2(25, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0m37"]
+size = Vector2(50.5, 18.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbpmr"]
 size = Vector2(290.5, 35)
@@ -49,8 +54,14 @@ size = Vector2(86, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw4w0"]
 size = Vector2(35, 33.5)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_74l08"]
+load_path = "res://.godot/imported/antivirus_check_MALEWARE.png-4655b54b659542b8ed04ae7442a46bd4.ctex"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u01jt"]
 size = Vector2(225, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74l08"]
+size = Vector2(235, 20)
 
 [node name="AntivirusCheck" type="Node2D" unique_id=1197594841 node_paths=PackedStringArray("scan_bar", "scan_bar_2")]
 script = ExtResource("1_arena")
@@ -89,7 +100,7 @@ position = Vector2(47, 282)
 position = Vector2(36, -123)
 
 [node name="Spawn1" type="Marker2D" parent="Spawns" unique_id=725308070]
-position = Vector2(540, 345)
+position = Vector2(552, 347)
 
 [node name="Spawn2" type="Marker2D" parent="Spawns" unique_id=1095502375]
 position = Vector2(1326, 365)
@@ -356,6 +367,7 @@ texture = ExtResource("16_cbpmr")
 position = Vector2(86, -40)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform2" unique_id=1020177637]
 offset_left = 40.0
@@ -370,10 +382,17 @@ stretch_mode = 5
 position = Vector2(82.5, 407.5)
 shape = SubResource("RectangleShape2D_cdjtt")
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform2" unique_id=760281218]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2/BounceTrigger" unique_id=1120572537]
+position = Vector2(82, 398)
+shape = SubResource("RectangleShape2D_h0m37")
+
 [node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=250918857]
 position = Vector2(194, -42)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=1590560337]
 position = Vector2(75.5, 358.5)
@@ -388,10 +407,17 @@ texture = ExtResource("18_03h55")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform3" unique_id=1692412855]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3/BounceTrigger" unique_id=1926628506]
+position = Vector2(75.5, 351.25)
+shape = SubResource("RectangleShape2D_h0m37")
+
 [node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=128694815]
 position = Vector2(277, -84)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4" unique_id=268699462]
 position = Vector2(53, 362)
@@ -405,6 +431,12 @@ offset_bottom = 383.0
 texture = ExtResource("19_wb1u8")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform4" unique_id=397073055]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform4/BounceTrigger" unique_id=1568174712]
+position = Vector2(53, 354)
+shape = SubResource("RectangleShape2D_h0m37")
 
 [node name="Platform11" type="StaticBody2D" parent="Platform" unique_id=1357995682]
 position = Vector2(1709, -155)
@@ -426,6 +458,7 @@ texture = ExtResource("16_cbpmr")
 position = Vector2(743, -83)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform6" unique_id=217680712]
 position = Vector2(76.75, 358.5)
@@ -438,10 +471,17 @@ offset_right = 119.0
 offset_bottom = 383.0
 texture = ExtResource("16_cbpmr")
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform6" unique_id=746304811]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform6/BounceTrigger" unique_id=735625866]
+position = Vector2(76.75, 351)
+shape = SubResource("RectangleShape2D_h0m37")
+
 [node name="Platform12" type="StaticBody2D" parent="Platform" unique_id=643027274]
 position = Vector2(1510, -79)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12" unique_id=840045183]
 position = Vector2(76.75, 358.5)
@@ -454,10 +494,17 @@ offset_right = 119.0
 offset_bottom = 383.0
 texture = ExtResource("16_cbpmr")
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform12" unique_id=1359811956]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12/BounceTrigger" unique_id=688986581]
+position = Vector2(77, 351)
+shape = SubResource("RectangleShape2D_h0m37")
+
 [node name="Platform13" type="StaticBody2D" parent="Platform" unique_id=1711784411]
 position = Vector2(1598, -147)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13" unique_id=1032493352]
 position = Vector2(76.75, 358.5)
@@ -469,6 +516,13 @@ offset_top = 343.0
 offset_right = 119.0
 offset_bottom = 383.0
 texture = ExtResource("16_cbpmr")
+
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform13" unique_id=1573201189]
+position = Vector2(112, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform13/BounceTrigger" unique_id=306061783]
+position = Vector2(-34, 359)
+shape = SubResource("RectangleShape2D_h0m37")
 
 [node name="Platform7" type="AnimatableBody2D" parent="Platform" unique_id=395860092]
 position = Vector2(838, -126)
@@ -488,15 +542,11 @@ offset_bottom = 430.0
 texture = ExtResource("21_hi11t")
 expand_mode = 1
 
-[node name="Platform8" type="StaticBody2D" parent="Platform" unique_id=360612376]
-position = Vector2(1186, -10)
-collision_layer = 7
-collision_mask = 7
-
 [node name="Platform9" type="StaticBody2D" parent="Platform" unique_id=1448272052]
 position = Vector2(391, -84)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform9" unique_id=1602113886]
 position = Vector2(-16, 321)
@@ -512,10 +562,17 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform9" unique_id=110132905]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform9/BounceTrigger" unique_id=1002184200]
+position = Vector2(-16, 310)
+shape = SubResource("RectangleShape2D_h0m37")
+
 [node name="Platform14" type="StaticBody2D" parent="Platform" unique_id=607555929]
 position = Vector2(467.75, 275.5)
 collision_layer = 7
 collision_mask = 7
+script = ExtResource("23_74l08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform14" unique_id=233770924]
 position = Vector2(-41.25, -76.25)
@@ -531,8 +588,15 @@ expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="BounceTrigger" type="Area2D" parent="Platform/Platform14" unique_id=953282360]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform14/BounceTrigger" unique_id=454084068]
+position = Vector2(-41.75, -85.5)
+shape = SubResource("RectangleShape2D_h0m37")
+
 [node name="LONG1" type="StaticBody2D" parent="Platform" unique_id=135955972]
 collision_layer = 3
+script = ExtResource("30_e2jbx")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/LONG1" unique_id=882248357]
 offset_left = 457.0
@@ -542,7 +606,7 @@ offset_bottom = 335.0
 texture = ExtResource("24_hi11t")
 expand_mode = 1
 script = ExtResource("21_u01jt")
-texture_detected = ExtResource("22_1fmxd")
+texture_detected = SubResource("CompressedTexture2D_74l08")
 texture_process = ExtResource("23_ou3e4")
 texture_clean = ExtResource("24_hi11t")
 metadata/_edit_use_anchors_ = true
@@ -551,8 +615,15 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(574, 289)
 shape = SubResource("RectangleShape2D_u01jt")
 
+[node name="PlayerDetector" type="Area2D" parent="Platform/LONG1" unique_id=1780796349]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/LONG1/PlayerDetector" unique_id=292436224]
+position = Vector2(576, 281)
+shape = SubResource("RectangleShape2D_74l08")
+
 [node name="LONG2" type="StaticBody2D" parent="Platform" unique_id=617070175]
 collision_layer = 3
+script = ExtResource("30_e2jbx")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/LONG2" unique_id=1903084831]
 offset_left = 1187.0
@@ -570,6 +641,12 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/LONG2" unique_id=1644727587]
 position = Vector2(1306, 293)
 shape = SubResource("RectangleShape2D_u01jt")
+
+[node name="PlayerDetector" type="Area2D" parent="Platform/LONG2" unique_id=104075765]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/LONG2/PlayerDetector" unique_id=279773112]
+position = Vector2(1305, 281)
+shape = SubResource("RectangleShape2D_74l08")
 
 [node name="cursor" parent="." unique_id=1380842287 instance=ExtResource("17_540j4")]
 visible = false

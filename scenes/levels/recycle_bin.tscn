@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://cn41dwdcugo3" path="res://scenes/interactables/level_exit.tscn" id="30_ajdkx"]
 [ext_resource type="Texture2D" uid="uid://if3hs7gua86k" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item60.png" id="30_pspfu"]
 [ext_resource type="Script" uid="uid://d1djmwkxrfsmh" path="res://scripts/interactables/platform_8.gd" id="35_aildm"]
+[ext_resource type="Texture2D" uid="uid://navljammyr2s" path="res://assets/art/ui/Sword_1.png" id="37_m36km"]
 [ext_resource type="Texture2D" uid="uid://cdgfmbdrh5xww" path="res://assets/art/environments/recycle bin.jpg" id="47_cxqbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkmt1"]
@@ -704,6 +705,15 @@ texture = ExtResource("28_ajdkx")
 
 [node name="SwordPickup" parent="Platform/Platform13" unique_id=235410236 instance=ExtResource("29_mjela")]
 position = Vector2(555, 297)
+
+[node name="TextureRect" type="TextureRect" parent="Platform/Platform13/SwordPickup" unique_id=1341235513]
+offset_left = -23.0
+offset_top = -28.0
+offset_right = 23.0
+offset_bottom = 25.0
+texture = ExtResource("37_m36km")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="LevelExit" parent="Platform/Platform13" unique_id=1228670635 instance=ExtResource("30_ajdkx")]
 position = Vector2(631, 349)

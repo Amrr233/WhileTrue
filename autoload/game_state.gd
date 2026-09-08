@@ -9,7 +9,7 @@ var recycle_bin_completed: bool = false
 # --- Antivirus level progression ---
 var has_dash: bool = true
 var has_double_jump: bool = true
-var has_key: bool = false
+var has_key: bool = true
 var has_cure: bool = false
 
 var antivirus_check_completed: bool = false
@@ -39,7 +39,7 @@ func reset_progress() -> void:
 
 	has_dash = true
 	has_double_jump = true
-	has_key = false 
+	has_key = true
 	has_cure = false
 
 	antivirus_check_completed = false

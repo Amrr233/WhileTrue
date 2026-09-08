@@ -106,7 +106,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=710330229]
-position = Vector2(584, 243)
+position = Vector2(1067, 259)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="PlayerSpawn" unique_id=2105923266]
 position = Vector2(-40, -395)
@@ -413,13 +413,13 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform9" unique_id=1669191197]
-position = Vector2(83, 395.5)
+position = Vector2(-19, 398)
 shape = SubResource("RectangleShape2D_fy4if")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform9" unique_id=1705486798]
-offset_left = -11.0
+offset_left = -112.0
 offset_top = 375.0
-offset_right = 190.0
+offset_right = 89.0
 offset_bottom = 417.0
 texture = ExtResource("16_ibdd8")
 
@@ -451,8 +451,9 @@ position = Vector2(1262, 283)
 shape = SubResource("RectangleShape2D_eiqjd")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform8" unique_id=1359864598]
+offset_left = -151.0
 offset_top = 342.0
-offset_right = 665.0
+offset_right = 514.0
 offset_bottom = 384.0
 texture = ExtResource("20_1fk7u")
 
@@ -464,7 +465,7 @@ offset_bottom = 305.0
 texture = ExtResource("21_6h6dt")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/Platform8" unique_id=2099019734]
-position = Vector2(312, 362.5)
+position = Vector2(157, 360)
 shape = SubResource("RectangleShape2D_k525t")
 
 [node name="Platform10" type="StaticBody2D" parent="Platform" unique_id=1993421006]

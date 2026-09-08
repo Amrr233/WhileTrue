@@ -123,11 +123,12 @@ collision_mask = 3
 script = ExtResource("1_hunter")
 max_health = 12
 speed = 150.0
-chase_range = 280.0
+chase_range = 5.0
+melee_range = 5.0
 decoy_count = 4
 decoy_spawn_offset = 250.0
 projectile_scene = ExtResource("2_qjw4k")
-fire_range = 200.0
+fire_range = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=872589895]
 position = Vector2(3, 12.5)

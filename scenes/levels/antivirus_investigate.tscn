@@ -19,9 +19,16 @@
 [ext_resource type="Texture2D" uid="uid://dc1l8i3mwhhhf" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item2.png" id="15_eli30"]
 [ext_resource type="PackedScene" uid="uid://p1icj6uf45i0" path="res://scenes/world/cursor.tscn" id="15_ofryp"]
 [ext_resource type="PackedScene" uid="uid://cpel56wmqk22r" path="res://scenes/interactables/scrollbar_elevator.tscn" id="16_0nc7b"]
+[ext_resource type="Texture2D" uid="uid://besv87ghvnygj" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item1.png" id="18_03ofj"]
+[ext_resource type="Texture2D" uid="uid://bxxpvxgtjp7b2" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item4.png" id="19_42e5l"]
+[ext_resource type="Texture2D" uid="uid://7hdg3s7d0yme" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item5.png" id="20_1vul0"]
+[ext_resource type="Texture2D" uid="uid://djwpdn3p1hhda" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item6.png" id="21_a5pae"]
+[ext_resource type="Texture2D" uid="uid://dihl70xcc6yno" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item3.png" id="22_ji8e1"]
+[ext_resource type="Texture2D" uid="uid://df0uspe6mfw2h" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item11.png" id="23_ttpn0"]
+[ext_resource type="Texture2D" uid="uid://djlsjrppyxils" path="res://assets/art/ui/itchio-pxl-retro-computer-icons-set-110/itchio-pxl-retro-computer-icons-set-110/separated-items/itchio-pxl-retro-computer-icons-set-110-item110.png" id="24_x5bl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0nc7b"]
-size = Vector2(64, 41)
+size = Vector2(64, 43.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_se3md"]
 size = Vector2(64, 41)
@@ -47,7 +54,7 @@ unlock_flag = "has_key"
 reward_text = "INVESTIGATION COMPLETE — KEY OBTAINED"
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1393090974]
-position = Vector2(598, 173)
+position = Vector2(46, 295)
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1017970974]
 layer = 5
@@ -87,7 +94,6 @@ position = Vector2(210, 114)
 layer = -2
 
 [node name="background" type="ColorRect" parent="CanvasLayer" unique_id=1282710294]
-visible = false
 offset_left = -175.0
 offset_top = -154.0
 offset_right = 4169.0
@@ -298,9 +304,9 @@ shape = SubResource("RectangleShape2D_0nc7b")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform1" unique_id=298033714]
 offset_left = 13.0
-offset_top = 344.0
+offset_top = 343.0
 offset_right = 94.0
-offset_bottom = 386.0
+offset_bottom = 385.0
 texture = ExtResource("15_eli30")
 
 [node name="Platform2" type="StaticBody2D" parent="Platform" unique_id=1158102888]
@@ -309,15 +315,15 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform2" unique_id=1772307506]
-position = Vector2(53, 364.5)
+position = Vector2(77, 385)
 shape = SubResource("RectangleShape2D_0nc7b")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform2" unique_id=1102849815]
-offset_left = 13.0
-offset_top = 344.0
-offset_right = 94.0
-offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+offset_left = 38.0
+offset_top = 366.0
+offset_right = 119.0
+offset_bottom = 408.0
+texture = ExtResource("18_03ofj")
 
 [node name="Platform3" type="StaticBody2D" parent="Platform" unique_id=2105078407]
 position = Vector2(184, -221)
@@ -325,15 +331,15 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform3" unique_id=624546923]
-position = Vector2(53, 364.5)
+position = Vector2(93, 365)
 shape = SubResource("RectangleShape2D_0nc7b")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform3" unique_id=1906689409]
-offset_left = 13.0
-offset_top = 344.0
-offset_right = 94.0
-offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+offset_left = 52.0
+offset_top = 343.0
+offset_right = 133.0
+offset_bottom = 385.0
+texture = ExtResource("19_42e5l")
 
 [node name="Platform4" type="StaticBody2D" parent="Platform" unique_id=1300190004]
 position = Vector2(424, -225)
@@ -349,7 +355,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("20_1vul0")
 
 [node name="Platform5" type="StaticBody2D" parent="Platform" unique_id=600847376]
 position = Vector2(546, -104)
@@ -365,7 +371,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("21_a5pae")
 
 [node name="Platform6" type="StaticBody2D" parent="Platform" unique_id=732347358]
 position = Vector2(763, -104)
@@ -381,7 +387,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 1092.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("18_03ofj")
 
 [node name="Platform7" type="StaticBody2D" parent="Platform" unique_id=663992772]
 position = Vector2(1788, -22)
@@ -397,7 +403,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("22_ji8e1")
 
 [node name="Platform8" type="StaticBody2D" parent="Platform" unique_id=1267648223]
 position = Vector2(2057, -48)
@@ -413,7 +419,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("19_42e5l")
 
 [node name="Platform9" type="StaticBody2D" parent="Platform" unique_id=488617962]
 position = Vector2(2157, -145)
@@ -429,7 +435,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("20_1vul0")
 
 [node name="Platform10" type="StaticBody2D" parent="Platform" unique_id=867563734]
 position = Vector2(2323, -146)
@@ -445,7 +451,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("21_a5pae")
 
 [node name="Platform11" type="StaticBody2D" parent="Platform" unique_id=879995597]
 position = Vector2(2456, -23)
@@ -461,7 +467,7 @@ offset_left = 13.0
 offset_top = 344.0
 offset_right = 94.0
 offset_bottom = 386.0
-texture = ExtResource("15_eli30")
+texture = ExtResource("23_ttpn0")
 
 [node name="Platform12" type="StaticBody2D" parent="Platform" unique_id=753448805]
 position = Vector2(2558, -152)
@@ -469,21 +475,18 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/Platform12" unique_id=914734697]
-position = Vector2(52.5, 339)
+position = Vector2(33, 343)
 shape = SubResource("RectangleShape2D_qrxir")
 
 [node name="TextureRect" type="TextureRect" parent="Platform/Platform12" unique_id=676084044]
-offset_left = 13.0
-offset_top = 184.0
-offset_right = 94.0
-offset_bottom = 490.0
-texture = ExtResource("15_eli30")
+offset_left = -27.0
+offset_top = 201.0
+offset_right = 81.0
+offset_bottom = 507.0
+texture = ExtResource("24_x5bl8")
 
 [node name="ScrollbarElevator" parent="Platform" unique_id=818021359 instance=ExtResource("16_0nc7b")]
-position = Vector2(2510, 275)
-
-[node name="ScrollbarElevator2" parent="Platform" unique_id=840983225 instance=ExtResource("16_0nc7b")]
-position = Vector2(2687, 246)
+position = Vector2(2532, 279)
 
 [node name="Platform13" type="StaticBody2D" parent="Platform" unique_id=2024629233]
 position = Vector2(2697, -59)
